@@ -1,0 +1,244 @@
+@import './bootstrap-custom.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/src/index.scss';
+
+// overrides
+body {
+    background-color: $light;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+ol, ul {
+    padding-left: 0;
+    li {
+        margin-bottom: 0.5em;
+        padding-left: 0;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    $blackHover: rgba(63,63,63,0.15);
+    $blackActive: rgba(63,63,63,0.3);
+
+    .btn-#{$color} {
+        @include button-variant(
+            $value, // bg
+            transparent, // border
+            blend-colorburn($blackHover, $value),
+            transparent,
+            blend-colorburn($blackActive, $value),
+            transparent
+        );
+    }
+
+    .btn-outline-#{$color} {
+        @include button-outline-variant(
+            $value, // bg
+            color-yiq($value) // border
+        )
+    }
+}
+
+.btn {
+    &[disabled]:not(.btn-link), &.disabled:not(.btn-link) {
+        background-color: #ebebeb !important;
+        color: #d6d6d6 !important;
+        border-color: #d6d6d6 !important;
+    }
+
+    &.btn-link {
+        padding: $spacer;
+        &[disabled], &.disabled {
+            color: #d6d6d6;
+            text-decoration: line-through;
+        }
+    }
+
+    &-xs {
+        @include button-size($spacer, $spacer * 2, 12px, 1, $radius);
+    }
+}
+
+
+// @mixin tableSortPseudoElementColor($color) {
+//     thead > th, thead > td {
+//         &[aria-sort]::after {
+//             background-image: 
+//         }
+//     }
+// }
+
+@function tableSortBackgroundImage($color) {
+    // convert color to avoid escaping #, which will break UTF-8 string
+    $color: rgba($color, 1);
+
+    @return url('data:image/svg+xml;charset=utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.9394 6.43936L22.0607 8.56068L12 18.6213L1.93936 8.56068L4.06068 6.43936L12 14.3787L19.9394 6.43936Z" fill="#{$color}"/></svg>');
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0 $spacer;
+    thead > tr {
+        background-color: $gray-100;
+        th, td {
+            background-image: none !important;
+            border: none;
+            color: $gray-500;
+            font-size: 12px;
+            font-weight: 400;
+            padding-top: $spacer * 2;
+            padding-bottom: $spacer * 2;
+            white-space: nowrap;
+            // vertical-align: middle;
+
+            & > div:first-child {
+                display: inline-block;
+                line-height: 1;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            &[aria-sort] {
+                &::after {
+                    background: transparent tableSortBackgroundImage(black) 50% 50% no-repeat;
+                    background-size: contain;
+                    height: 0.8em;
+                    content: '';
+                    display: inline-block;
+                    margin-left: $spacer;
+                    // margin-top: 0.5em;
+                    opacity: 0.5;
+                    width: 1.5em;
+                }
+            }
+
+            &[aria-sort="ascending"], &[aria-sort="descending"] {
+                color: $gray-700;
+                &::after {
+                    opacity: 1;
+                }
+            }
+
+            &[aria-sort="descending"]::after {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    tbody > tr {
+        border-bottom: 1px solid $gray-400;
+
+        &:focus {
+            outline: none;
+        }
+
+        &.selected, &[aria-selected=true] {
+            background-color: rgba($blue, 0.1);
+
+            &:hover {
+                background-color: rgba($blue, 0.15);
+            }
+        }
+
+        &.disabled {
+            background-color: $gray-100;
+            & > td {
+                opacity: 0.2;
+                pointer-events: none;
+            }
+        }
+
+        td {
+            border-top: none;
+            transition: background-color .15s ease-in-out;
+            &:first-child {
+                border-radius: $radius 0 0 $radius;
+            }
+            &:last-child {
+                border-radius: 0 $radius $radius 0;
+            }
+        }
+
+        &:hover {
+            background-color: $gray-100;
+        }
+    }
+
+    &.table-dark {
+        color: $gray-400;
+        thead > tr {
+            background-color:lighten($dark, 5);
+
+            & > td, & > th {
+                color: $gray-600;
+                &[aria-sort]::after {
+                    background-image: tableSortBackgroundImage($white);
+                }
+
+                &[aria-sort="ascending"], &[aria-sort="descending"] {
+                    color: $white;
+                }
+            }
+        }
+
+        tbody > tr {
+            &.disabled {
+                background-color: rgba($white, 0.1);
+            }
+        }
+    }
+}
+
+.form-control-wrap {
+    position: relative;
+
+    // we expect that input or any input-component (text-like inputs)
+    // are fill whole space, so we make label absolute and centered vertically
+    label {
+        // background-color: 
+        position: absolute;
+        //TODO: left: position
+        top: 50%;
+        transform: translateY(-50%);
+        transition-property: transform;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    input:focus + label,
+    .not-empty + label,
+    .focus + label {
+        top: 0;
+        transform: scale(0.75) translateY(-50%);
+    }
+
+    .form-control {
+        &[type=date],
+        &[type=email],
+        &[type=number],
+        &[type=password],
+        &[type=text] {
+            
+        }
+    }
+
+    .form-controls-extra {
+        align-items: center;
+        display: flex;
+        font-size: 0.85em;
+        height: 100%;
+        right: 5px; // TODO
+        top: 0;
+        position: absolute;
+
+    }
+}
+
+.unicon {
+    & > svg {
+        display: block;
+        height: 1em;
+        width: 1em;
+    }
+}

@@ -190,37 +190,52 @@ ol, ul {
     }
 }
 
+input, textarea, select {
+    &.form-control {
+        &:focus {
+            box-shadow: none;
+        }
+        &:-webkit-autofill {
+            background-color: pink !important;
+        }
+    }
+}
+
 .form-control-wrap {
     position: relative;
 
     // we expect that input or any input-component (text-like inputs)
     // are fill whole space, so we make label absolute and centered vertically
     label {
-        // background-color: 
+        background-color: rgba($white,0);
+        border-radius: $radius;
+        display: block;
+        left: 0.75rem;
+        line-height: 0.75;
+        margin-bottom: 0;
+        padding: 2px 4px;
         position: absolute;
         //TODO: left: position
         top: 50%;
+        transform-origin: 0 0;
         transform: translateY(-50%);
-        transition-property: transform;
+        transition-property: transform, background-color, top;
+        transition-duration: .15s;
+        transition-timing-function: ease-in-out;
         pointer-events: none;
         user-select: none;
+    }
+
+    input:-webkit-autofill {
+        background-color: lighten($blue, 20);
     }
 
     input:focus + label,
     .not-empty + label,
     .focus + label {
+        background-color: $white;
         top: 0;
         transform: scale(0.75) translateY(-50%);
-    }
-
-    .form-control {
-        &[type=date],
-        &[type=email],
-        &[type=number],
-        &[type=password],
-        &[type=text] {
-            
-        }
     }
 
     .form-controls-extra {
@@ -232,6 +247,15 @@ ol, ul {
         top: 0;
         position: absolute;
 
+        & > .extra-control {
+            opacity: 0.5;
+            line-height: 0;
+            transition: opacity .1s ease-in-out;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
 }
 

@@ -26,6 +26,7 @@ export default Vue.extend({
 
         return {
             inputModel: '',
+            inputPasswordModel: '',
             tableCompact: false,
             tableData,
             tableFields: [
@@ -177,12 +178,12 @@ export default Vue.extend({
                 <div class="mb-4">
                     <h4>Input</h4>
                     <hm-input
+                        class="mb-4"
                         placeholder="фыыыы"
-                        size="sm"
                         v-model="inputModel"
                         label="123" />
 
-                    <input type="date">
+                    <hm-input type="password" v-model="inputPasswordModel" label="Пароль" show-password-btn />
                 </div>
             </div>
 

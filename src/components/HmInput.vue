@@ -37,7 +37,16 @@ export default BFormInput.extend({
         showClearBtn: {
             type: Boolean,
             default: true
+        },
+        showPasswordBtn: {
+            type: Boolean,
+            default: false
         }
+    },
+    data() {
+        return {
+            passwordShow: false
+        };
     },
     components: {
         HmIcon
@@ -52,6 +61,19 @@ export default BFormInput.extend({
          */
         const _bv = this;
 
+        let inputAttrs = _bv.computedAttrs;
+
+        let inputClass = _bv.computedClass;
+
+        // catch Bootstrap form input attributes and replace if needed
+        if (_bv.type === 'password' && this.passwordShow) {
+            inputAttrs = { ..._bv.computedAttrs, ...{ type: 'text' } };
+        }
+
+        if (_bv.localValue) {
+            inputClass = [..._bv.computedClass, 'not-empty'];
+        }
+
         /**
          * @see bootstrap-vue/src/components/form-input/form-input.js
          */
@@ -59,8 +81,8 @@ export default BFormInput.extend({
             'input',
             {
                 ref: 'input',
-                class: _bv.computedClass,
-                attrs: _bv.computedAttrs,
+                class: inputClass,
+                attrs: inputAttrs,
                 domProps: {
                     value: _bv.localValue
                 },
@@ -72,13 +94,13 @@ export default BFormInput.extend({
             input
         ];
 
-        if (this.label.length) {
+        if (!this.placeholder && this.label.length) {
             wrapChildren.push(
                 h('label', this.label)
             );
         }
 
-        // Block that could contain 
+        // Block that could contain additional controls to manipulate input
         const extraControls = [];
 
         const btnProps = {
@@ -90,7 +112,13 @@ export default BFormInput.extend({
             const clearBtn = h(
                 BButton,
                 {
-                    props: btnProps
+                    class: 'extra-control',
+                    props: btnProps,
+                    on: {
+                        click: (e) => {
+                            _bv.localValue = _bv.vModelValue = '';
+                        }
+                    }
                 },
                 [
                     h(HmIcon, {
@@ -104,7 +132,29 @@ export default BFormInput.extend({
             extraControls.push(clearBtn);
         }
 
-        if (this.type === 'password') {}
+        if (this.type === 'password' && this.showPasswordBtn) {
+            const showBtn = h(
+                BButton,
+                {
+                    class: 'extra-control',
+                    props: btnProps,
+                    on: {
+                        click: () => {
+                            this.passwordShow = !this.passwordShow;
+                        }
+                    }
+                },
+                [
+                    h(HmIcon, {
+                        props: {
+                            name: this.passwordShow ? 'eye-slash' : 'eye'
+                        }
+                    })
+                ]
+            );
+
+            extraControls.push(showBtn);
+        }
 
 
         const extraBlock = h(

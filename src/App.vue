@@ -49,6 +49,9 @@ export default Vue.extend({
             }
 
             return '';
+        },
+        logchange(e) {
+            console.log(e);
         }
     },
     components: {
@@ -180,10 +183,27 @@ export default Vue.extend({
                     <hm-input
                         class="mb-4"
                         placeholder="фыыыы"
+                        autocomplete="true"
                         v-model="inputModel"
                         label="123" />
 
                     <hm-input type="password" v-model="inputPasswordModel" label="Пароль" show-password-btn />
+
+                    <div class="mt-4">
+                        <b-form-input autofocus type="email" v-model.sync="inputModel" autocomplete="autocomplete"></b-form-input>
+                    </div>
+
+                    <div class="mt-4">
+                        <!-- regular input -->
+                        <pre>
+                            {{inputModel}}
+                            {{inputPasswordModel}}
+                        </pre>
+                        <form action="login.php">
+                            <input type="email" v-model="inputModel" autocomplete="off">
+                            <input type="password" v-model="inputPasswordModel">
+                        </form>
+                    </div>
                 </div>
             </div>
 

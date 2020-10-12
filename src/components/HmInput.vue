@@ -1,5 +1,4 @@
 <script>
-import Vue, { VNode } from 'vue';
 import { BButton, BFormInput } from 'bootstrap-vue';
 import { uniTimes, uniMultiply, uniEye, uniEyeSlash } from 'vue-unicons/src/icons';
 import HmIcon from 'vue-unicons/src/components/Unicon';
@@ -34,6 +33,10 @@ export default BFormInput.extend({
             type: String,
             default: ''
         },
+        labelBg: {
+            type: String,
+            default: '#fff'
+        },
         showClearBtn: {
             type: Boolean,
             default: true
@@ -48,9 +51,23 @@ export default BFormInput.extend({
             passwordShow: false
         };
     },
+    mounted() {
+        console.log(this.$refs.input, this.$refs.input.value);
+
+        setTimeout(() => {
+            
+        })
+
+        const unwatchInitial = this.$watch('value', (val) => {
+            console.log(val);
+
+            // if ()
+        }, { immediate: true });
+    },
     components: {
         HmIcon
     },
+    
     /**
      * In this case we forced to use render function
      * due to override it in original component
@@ -96,7 +113,8 @@ export default BFormInput.extend({
 
         if (!this.placeholder && this.label.length) {
             wrapChildren.push(
-                h('label', this.label)
+                h('label', this.label),
+                h('div', { class: 'test-border-overlay' })
             );
         }
 

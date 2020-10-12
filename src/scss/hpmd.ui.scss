@@ -224,16 +224,28 @@ input, textarea, select {
         transition-timing-function: ease-in-out;
         pointer-events: none;
         user-select: none;
+
+        &::after {
+            content: '';
+            background-color: #fff;
+            height: $border-width;
+            left: 0;
+            position: absolute;
+            width: 100%;
+        }
     }
 
+    /* TODO: doesn't work currently
+       chromium have a bug which prevents to style background color
     input:-webkit-autofill {
         background-color: lighten($blue, 20);
-    }
+    } */
 
+    input:-webkit-autofill + label,
     input:focus + label,
     .not-empty + label,
     .focus + label {
-        background-color: $white;
+        background-color: transparent;
         top: 0;
         transform: scale(0.75) translateY(-50%);
     }

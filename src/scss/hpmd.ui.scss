@@ -195,9 +195,6 @@ input, textarea, select {
         &:focus {
             box-shadow: none;
         }
-        &:-webkit-autofill {
-            background-color: pink !important;
-        }
     }
 }
 
@@ -213,7 +210,7 @@ input, textarea, select {
         left: 0.75rem;
         line-height: 0.75;
         margin-bottom: 0;
-        padding: 2px 4px;
+        // padding: 2px 4px;
         position: absolute;
         //TODO: left: position
         top: 50%;
@@ -224,6 +221,7 @@ input, textarea, select {
         transition-timing-function: ease-in-out;
         pointer-events: none;
         user-select: none;
+        z-index: 1;
 
         &::after {
             content: '';
@@ -233,6 +231,20 @@ input, textarea, select {
             position: absolute;
             width: 100%;
         }
+    }
+
+    label + .test-border-overlay {
+        background-color: rgba(255,255,255,0);
+        font-size: 0.75em;
+        height: 1px;
+        color: transparent;
+        left: calc(0.75rem - 4px);
+        user-select: none;
+        padding: 0 4px;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        transition: background-color .15s ease-in-out;
     }
 
     /* TODO: doesn't work currently
@@ -246,8 +258,13 @@ input, textarea, select {
     .not-empty + label,
     .focus + label {
         background-color: transparent;
+        color: $blue;
         top: 0;
         transform: scale(0.75) translateY(-50%);
+
+        & + .test-border-overlay {
+            background-color: rgba($white, 1);
+        }
     }
 
     .form-controls-extra {

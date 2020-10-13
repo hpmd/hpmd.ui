@@ -60,6 +60,7 @@ $border-radius: $radius;
 $border-radius-lg: $radius;
 $border-radius-sm: $radius;
 
+
 // Font sizes
 $h1-font-size: $font-size-base * 2;
 $h2-font-size: $font-size-base * 1.714;
@@ -144,19 +145,5 @@ $btn-link-disabled-color: $gray-300 !important;
 // $btn-block-spacing-y
 
 
-
-
-
-
-
-
-
-
-/* .btn {
-    &-main {
-        @include button-variant()
-    }
-    &-link-default {
-        @include button-variant(transparent, transparent, );
-    }
-} */
+// $input-padding-y: ;
+$input-border-radius: $radius;

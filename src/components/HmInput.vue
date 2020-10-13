@@ -114,7 +114,7 @@ export default BFormInput.extend({
         if (!this.placeholder && this.label.length) {
             wrapChildren.push(
                 h('label', this.label),
-                h('div', { class: 'test-border-overlay' })
+                h('div', { class: 'test-border-overlay' }, this.label)
             );
         }
 

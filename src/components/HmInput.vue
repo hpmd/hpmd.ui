@@ -80,6 +80,7 @@ export default {
             inputClass = [..._bv.computedClass, 'empty'];
         }
 
+        const shouldAddPrepend = !!this.$slots.prepend;
         const shouldAddAppend = !!this.$slots.append;
         const shouldAddPasswordBtn = !!(this.showPasswordBtn && _bv.type === 'password');
         const shouldAddClearBtn = !!(this.showClearBtn && _bv.localValue.length && !_bv.disabled);
@@ -87,6 +88,13 @@ export default {
 
         return (
             <div class={['form-control-wrap', this.isFocused ? 'focused' : '']}>
+                {/* prepend slot */ }
+                { shouldAddPrepend && (
+                    <div class="form-control-extra-prepend">
+                        {this.$slots.prepend}
+                    </div>
+                ) }
+
                 {/* input itself */}
                 <input
                     id={this.id}
@@ -113,6 +121,7 @@ export default {
                 { /* any of extra controls / append data are presented? */ }
                 { (shouldAddAppend || shouldAddPasswordBtn || shouldAddClearBtn) && (
                     <div class="form-control-extra">
+                        { /* create append named slot */ }
                         { shouldAddAppend && (
                             <div class="form-control-extra-append">
                                 {this.$slots.append}

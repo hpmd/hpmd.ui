@@ -25,8 +25,11 @@ export default Vue.extend({
         }))
 
         return {
-            inputModel: '',
-            inputPasswordModel: '',
+            inputs: {
+                text: '',
+                password: '',
+                number: null
+            },
             tableCompact: false,
             tableData,
             tableFields: [
@@ -180,29 +183,22 @@ export default Vue.extend({
 
                 <div class="mb-4">
                     <h4>Input</h4>
-                    <hm-input
-                        class="mb-4"
-                        placeholder="фыыыы"
-                        autocomplete="true"
-                        v-model="inputModel"
-                        label="123" />
-
-                    <hm-input type="password" v-model="inputPasswordModel" label="Пароль" show-password-btn />
+                    
 
                     <div class="mt-4">
-                        <b-form-input autofocus type="email" v-model.sync="inputModel" autocomplete="autocomplete"></b-form-input>
+                        <hm-input-ext v-model="inputs.text" type="email" label="E-mail" />
                     </div>
 
                     <div class="mt-4">
-                        <!-- regular input -->
-                        <pre>
-                            {{inputModel}}
-                            {{inputPasswordModel}}
-                        </pre>
-                        <form action="login.php">
-                            <input type="email" v-model="inputModel" autocomplete="off">
-                            <input type="password" v-model="inputPasswordModel">
-                        </form>
+                        <hm-input-ext v-model="inputs.password" type="password" label="Пароль" show-password-btn />
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input-ext v-model="inputs.number" type="number" label="Число" />
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input-ext v-model="inputs.number" type="number" label="Число" disabled />
                     </div>
                 </div>
             </div>

@@ -13,11 +13,8 @@ HmIcon.add([
 
 let _id = 0;
 
-/**
- * @see available options at:
- * https://bootstrap-vue.org/docs/components/form-input
- */
-export default BFormInput.extend({
+export default {
+    extends: BFormInput,
     /**
      * Most data inherited from
      * @see bootstrap-vue/src/componetns/form-input/form-input.js
@@ -33,10 +30,6 @@ export default BFormInput.extend({
             type: String,
             default: ''
         },
-        labelBg: {
-            type: String,
-            default: '#fff'
-        },
         showClearBtn: {
             type: Boolean,
             default: true
@@ -48,31 +41,27 @@ export default BFormInput.extend({
     },
     data() {
         return {
+            isFocused: false,
             passwordShow: false
         };
     },
-    mounted() {
-        console.log(this.$refs.input, this.$refs.input.value);
-
-        setTimeout(() => {
-            
-        })
-
-        const unwatchInitial = this.$watch('value', (val) => {
-            console.log(val);
-
-            // if ()
-        }, { immediate: true });
-    },
-    components: {
-        HmIcon
-    },
-    
-    /**
-     * In this case we forced to use render function
-     * due to override it in original component
-     */
-    render(h) {
+    // methods: {
+    //     _modifiedOnFocus(e) {
+    //         this.isFocused = true;
+    //         /**
+    //          * @this {BFormInput}
+    //          */
+    //         this.onFocus(e);
+    //     },
+    //     _modifiedOnBlur(e) {
+    //         this.isFocused = false;
+    //         /**
+    //          * @this {BFormInput}
+    //          */
+    //         this.onBlur(e);
+    //     }
+    // },
+    render() {
         /**
          * Let's refer BFormInput properties with "special" this
          */
@@ -87,113 +76,80 @@ export default BFormInput.extend({
             inputAttrs = { ..._bv.computedAttrs, ...{ type: 'text' } };
         }
 
-        if (_bv.localValue) {
-            inputClass = [..._bv.computedClass, 'not-empty'];
+        if (!_bv.localValue) {
+            inputClass = [..._bv.computedClass, 'empty'];
         }
 
-        /**
-         * @see bootstrap-vue/src/components/form-input/form-input.js
-         */
-        const input = h(
-            'input',
-            {
-                ref: 'input',
-                class: inputClass,
-                attrs: inputAttrs,
-                domProps: {
-                    value: _bv.localValue
-                },
-                on: _bv.computedListeners
-            }
-        );
+        const shouldAddAppend = !!this.$slots.append;
+        const shouldAddPasswordBtn = !!(this.showPasswordBtn && _bv.type === 'password');
+        const shouldAddClearBtn = !!(this.showClearBtn && _bv.localValue.length && !_bv.disabled);
 
-        const wrapChildren = [
-            input
-        ];
 
-        if (!this.placeholder && this.label.length) {
-            wrapChildren.push(
-                h('label', this.label),
-                h('div', { class: 'test-border-overlay' }, this.label)
-            );
-        }
-
-        // Block that could contain additional controls to manipulate input
-        const extraControls = [];
-
-        const btnProps = {
-            size: 'sm',
-            variant: 'link'
-        };
-
-        if (this.showClearBtn && _bv.localValue.length) {
-            const clearBtn = h(
-                BButton,
-                {
-                    class: 'extra-control',
-                    props: btnProps,
-                    on: {
-                        click: (e) => {
-                            _bv.localValue = _bv.vModelValue = '';
+        return (
+            <div class={['form-control-wrap', this.isFocused ? 'focused' : '']}>
+                {/* input itself */}
+                <input
+                    id={this.id}
+                    ref="input"
+                    class={ inputClass }
+                    { ...{ attrs: inputAttrs }}
+                    value={_bv.localValue}
+                    { ...{
+                        on:  {
+                            ..._bv.computedListeners,
+                            focus: () => { this.isFocused = true; },
+                            blur: () => { this.isFocused = false; }
                         }
-                    }
-                },
-                [
-                    h(HmIcon, {
-                        props: {
-                            name: 'multiply'
-                        }
-                    })
-                ]
-            );
+                    } } />
+                
+                {/* label */}
+                { !!this.label && (
+                    <div class="label">
+                        <label for={this.id}>{this.label}</label>
+                        <span class="label-bg">{this.label}</span>
+                    </div>
+                ) }
 
-            extraControls.push(clearBtn);
-        }
+                { /* any of extra controls / append data are presented? */ }
+                { (shouldAddAppend || shouldAddPasswordBtn || shouldAddClearBtn) && (
+                    <div class="form-control-extra">
+                        { shouldAddAppend && (
+                            <div class="form-control-extra-append">
+                                {this.$slots.append}
+                            </div>
+                        ) }
+                        
+                        { (shouldAddPasswordBtn || shouldAddClearBtn) && (
+                            <div class="form-control-extra-buttons">
+                                { shouldAddClearBtn && (
+                                    <BButton
+                                        class="extra-control"
+                                        size="sm"
+                                        variant="link"
+                                        onClick={() => {
+                                            _bv.localValue = _bv.vModelValue = '';
+                                        }}>
+                                        <HmIcon name="multiply" />
+                                    </BButton>
+                                ) }
 
-        if (this.type === 'password' && this.showPasswordBtn) {
-            const showBtn = h(
-                BButton,
-                {
-                    class: 'extra-control',
-                    props: btnProps,
-                    on: {
-                        click: () => {
-                            this.passwordShow = !this.passwordShow;
-                        }
-                    }
-                },
-                [
-                    h(HmIcon, {
-                        props: {
-                            name: this.passwordShow ? 'eye-slash' : 'eye'
-                        }
-                    })
-                ]
-            );
-
-            extraControls.push(showBtn);
-        }
-
-
-        const extraBlock = h(
-            'div',
-            {
-                class: 'form-controls-extra',
-            },
-            extraControls
-        );
-
-        if (extraControls.length) {
-            wrapChildren.push(extraBlock);
-        }
-
-        return h(
-            'div',
-            {
-                class: 'hm-input form-control-wrap'
-            },
-            wrapChildren
+                                { shouldAddPasswordBtn && (
+                                    <BButton
+                                        class="extra-control"
+                                        size="sm"
+                                        variant="link"
+                                        onClick={() => {
+                                            this.passwordShow = !this.passwordShow;
+                                        }}>
+                                        <HmIcon name={this.passwordShow ? 'eye-slash' : 'eye'} />
+                                    </BButton>
+                                ) }
+                            </div>
+                        ) }
+                    </div>
+                ) }
+            </div>
         );
     }
-});
+};
 </script>

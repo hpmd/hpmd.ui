@@ -2,6 +2,9 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~bootstrap-vue/src/index.scss';
 
+
+@import './form-common.scss';
+@import './input.scss';
 // overrides
 body {
     background-color: $light;
@@ -190,103 +193,6 @@ ol, ul {
     }
 }
 
-input, textarea, select {
-    &.form-control {
-        &:focus {
-            box-shadow: none;
-        }
-    }
-}
-
-.form-control-wrap {
-    position: relative;
-
-    // we expect that input or any input-component (text-like inputs)
-    // are fill whole space, so we make label absolute and centered vertically
-    label {
-        background-color: rgba($white,0);
-        border-radius: $radius;
-        display: block;
-        left: 0.75rem;
-        line-height: 0.75;
-        margin-bottom: 0;
-        // padding: 2px 4px;
-        position: absolute;
-        //TODO: left: position
-        top: 50%;
-        transform-origin: 0 0;
-        transform: translateY(-50%);
-        transition-property: transform, background-color, top;
-        transition-duration: .15s;
-        transition-timing-function: ease-in-out;
-        pointer-events: none;
-        user-select: none;
-        z-index: 1;
-
-        &::after {
-            content: '';
-            background-color: #fff;
-            height: $border-width;
-            left: 0;
-            position: absolute;
-            width: 100%;
-        }
-    }
-
-    label + .test-border-overlay {
-        background-color: rgba(255,255,255,0);
-        font-size: 0.75em;
-        height: 1px;
-        color: transparent;
-        left: calc(0.75rem - 4px);
-        user-select: none;
-        padding: 0 4px;
-        pointer-events: none;
-        position: absolute;
-        top: 0;
-        transition: background-color .15s ease-in-out;
-    }
-
-    /* TODO: doesn't work currently
-       chromium have a bug which prevents to style background color
-    input:-webkit-autofill {
-        background-color: lighten($blue, 20);
-    } */
-
-    input:-webkit-autofill + label,
-    input:focus + label,
-    .not-empty + label,
-    .focus + label {
-        background-color: transparent;
-        color: $blue;
-        top: 0;
-        transform: scale(0.75) translateY(-50%);
-
-        & + .test-border-overlay {
-            background-color: rgba($white, 1);
-        }
-    }
-
-    .form-controls-extra {
-        align-items: center;
-        display: flex;
-        font-size: 0.85em;
-        height: 100%;
-        right: 5px; // TODO
-        top: 0;
-        position: absolute;
-
-        & > .extra-control {
-            opacity: 0.5;
-            line-height: 0;
-            transition: opacity .1s ease-in-out;
-
-            &:hover {
-                opacity: 1;
-            }
-        }
-    }
-}
 
 .unicon {
     & > svg {

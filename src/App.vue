@@ -1,6 +1,7 @@
 <script>
 import Vue from 'vue';
 import HmInput from '@/components/HmInput.vue';
+import HmCheckbox from '@/components/HmCheckbox.vue';
 
 function getRandomIntInRange(min, max) {
     min = Math.ceil(min);
@@ -40,7 +41,8 @@ export default Vue.extend({
                 { key: 'tags', label: 'Метки', sortable: false },
                 { key: 'reach', label: 'Количество', sortable: true },
                 { key: 'action', label: 'Действие', sortable: false }
-            ]
+            ],
+            checkboxModel: false
         };
     },
     methods: {
@@ -58,7 +60,8 @@ export default Vue.extend({
         }
     },
     components: {
-        HmInput
+        HmInput,
+        HmCheckbox
     }
 });
 </script>
@@ -199,6 +202,12 @@ export default Vue.extend({
 
                     <div class="mt-4">
                         <hm-input-ext v-model="inputs.number" type="number" label="Число" disabled />
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-checkbox :indeterminate="true" v-model="checkboxModel">
+                            Активный пункт меню
+                        </hm-checkbox>
                     </div>
                 </div>
             </div>

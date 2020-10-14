@@ -1,6 +1,7 @@
 <script>
 import Vue from 'vue';
 import HmInput from '@/components/HmInput.vue';
+import HmBadge from '@/components/HmBadge.vue';
 
 function getRandomIntInRange(min, max) {
     min = Math.ceil(min);
@@ -58,7 +59,8 @@ export default Vue.extend({
         }
     },
     components: {
-        HmInput
+        HmInput,
+        HmBadge
     }
 });
 </script>
@@ -176,6 +178,89 @@ export default Vue.extend({
                     <b-btn variant="warning" active>some action</b-btn>
                     <b-btn variant="warning">second action</b-btn>
                 </b-btn-group>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">Labels</h2>
+
+                <b-row>
+                    <b-col>
+                        <div class="mt-4">
+                            <hm-badge variant="default">
+                                Default
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="primary">
+                                Primary
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="success">
+                                Success
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="info">
+                                Info
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="extra">
+                                Extra
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="danger">
+                                Danger
+                            </hm-badge>
+                        </div>
+                    </b-col>
+                    <b-col>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="default">
+                                Default
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="primary">
+                                Primary
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="success">
+                                Success
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="info">
+                                Info
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="extra">
+                                Extra
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="danger">
+                                Danger
+                            </hm-badge>
+                        </div>
+                    </b-col>
+                </b-row>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">

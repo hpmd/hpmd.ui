@@ -1,0 +1,28 @@
+.hm-badge {
+    padding: 0.3125rem;
+    color: $white;
+    line-height: 1em;
+
+    &.badge-pill {
+        padding: 0.3125rem 0.5rem;
+    }
+
+    &.badge-default {
+        background-color: $gray;
+    }
+    &.badge-primary {
+        background-color: $black;
+    }
+    &.badge-success {
+        background-color: $green;
+    }
+    &.badge-info {
+        background-color: $blue;
+    }
+    &.badge-extra {
+        background-color: $yellow;
+    }
+    &.badge-danger {
+        background-color: $red;
+    }
+}

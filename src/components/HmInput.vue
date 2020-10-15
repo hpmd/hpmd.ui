@@ -45,6 +45,14 @@ export default {
             passwordShow: false
         };
     },
+    // mounted() {
+    //     /**
+    //      * @this {BFormInput}
+    //      */
+    //     this.setWheelStopper(this.noWheel);
+
+    //     console.log('T', window.getComputedStyle(this.$refs.input ,null).getPropertyValue('background-color'));
+    // },
     // methods: {
     //     _modifiedOnFocus(e) {
     //         this.isFocused = true;
@@ -88,13 +96,6 @@ export default {
 
         return (
             <div class={['form-control-wrap', this.isFocused ? 'focused' : '']}>
-                {/* prepend slot */ }
-                { shouldAddPrepend && (
-                    <div class="form-control-extra-prepend">
-                        {this.$slots.prepend}
-                    </div>
-                ) }
-
                 {/* input itself */}
                 <input
                     id={this.id}
@@ -109,14 +110,24 @@ export default {
                             blur: () => { this.isFocused = false; }
                         }
                     } } />
-                
-                {/* label */}
-                { !!this.label && (
-                    <div class="label">
-                        <label for={this.id}>{this.label}</label>
-                        <span class="label-bg">{this.label}</span>
-                    </div>
-                ) }
+
+                {/* prepend slot */ }
+                <div class="prepend-container">
+                    { shouldAddPrepend && (
+                        <div class="form-control-extra-prepend">
+                            {this.$slots.prepend}
+                        </div>
+                    )}
+
+                    {/* label */}
+                    { !!this.label && (
+                        <div class="label">
+                            <label for={this.id}>{this.label}</label>
+                            <span class="label-bg">{this.label}</span>
+                        </div>
+                    ) }
+                </div>
+
 
                 { /* any of extra controls / append data are presented? */ }
                 { (shouldAddAppend || shouldAddPasswordBtn || shouldAddClearBtn) && (

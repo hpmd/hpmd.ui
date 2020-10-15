@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import HmInput from '@/components/HmInput.vue';
 import HmCheckbox from '@/components/HmCheckbox.vue';
+import HmRadio from '@/components/HmRadio.vue';
 import HmIcon from '@/components/HmIcon';
 
 /* eslint-disable no-param-reassign */
@@ -49,7 +50,12 @@ export default Vue.extend({
                 { key: 'reach', label: 'Количество', sortable: true },
                 { key: 'action', label: 'Действие', sortable: false }
             ],
-            checkboxModel: false
+            checkboxModel: true,
+            radioInputs: [
+                { key: 'A', text: 'Active'},
+                { key: 'B', text: 'On'},
+            ],
+            radioModel: 'B'
         };
     },
     methods: {
@@ -67,6 +73,7 @@ export default Vue.extend({
         }
     },
     components: {
+        HmRadio,
         HmCheckbox,
         HmIcon,
         HmInput
@@ -244,16 +251,36 @@ export default Vue.extend({
 
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-9">Form elements</h2>
+                
+                <b-row>
+                    <b-col>
+                        <div class="mb-4">
+                            <h4>Checkbox</h4>
 
-                <div class="mb-4">
-                    <h4>Checkbox</h4>
+                            <div class="mt-4">
+                                <hm-checkbox v-model="checkboxModel">
+                                    Аctive
+                                </hm-checkbox>
+                            </div>
+                        </div>
+                    </b-col>
+                    <b-col>
+                        <div class="mb-4">
+                            <h4>Radio</h4>
 
-                    <div class="mt-4">
-                        <hm-checkbox v-model="checkboxModel">
-                            Аctive
-                        </hm-checkbox>
-                    </div>
-                </div>
+                            <div
+                                v-for="radioInput in radioInputs"
+                                :key="`radio-${radioInput.key}`"
+                                class="mt-4">
+                                <hm-radio
+                                    :value="radioInput.key"
+                                    v-model="radioModel">
+                                    {{radioInput.text}}
+                                </hm-radio>
+                            </div>
+                        </div>
+                    </b-col>
+                </b-row>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">

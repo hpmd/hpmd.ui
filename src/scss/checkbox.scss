@@ -1,4 +1,4 @@
-.hm-checkbox {
+.custom-checkbox {
     display: table;
     padding-left: 1.75em;
     padding-top: 0.125em;
@@ -25,6 +25,16 @@
             background-image: url('../assets/icons/check.svg');
             background-size: 65% auto;
             background-position: 50% 40%;
+        }
+
+        &:disabled:checked ~ .custom-control-label:before {
+            color: $gray-700;
+            border-color: $gray-400;
+            background-color: $gray-400;
+        }
+
+        &:disabled:checked ~ .custom-control-label:after {
+            color: $gray-700;
         }
     }
     &:hover {

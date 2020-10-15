@@ -2,13 +2,16 @@
 import Vue from 'vue';
 import HmInput from '@/components/HmInput.vue';
 import HmBadge from '@/components/HmBadge.vue';
+import HmIcon from '@/components/HmIcon';
 
+/* eslint-disable no-param-reassign */
 function getRandomIntInRange(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
 
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
+/* eslint-enable */
 
 export default Vue.extend({
     name: 'App',
@@ -20,16 +23,20 @@ export default Vue.extend({
             date: new Date(getRandomIntInRange(0, Date.now())),
             tags: [null, 'added'][getRandomIntInRange(0, 1)],
             reach: getRandomIntInRange(0, 5000000),
-            action: [true, false][getRandomIntInRange(0,1)],
+            action: [true, false][getRandomIntInRange(0, 1)],
             active: (index === 4),
             disabled: (index === 7)
-        }))
+        }));
 
         return {
             inputs: {
                 text: '',
                 password: '',
-                number: null
+                number: null,
+                phone: '',
+                phoneFormatter(val) {
+                    return `+${val}`;
+                }
             },
             tableCompact: false,
             tableData,
@@ -59,8 +66,9 @@ export default Vue.extend({
         }
     },
     components: {
-        HmInput,
-        HmBadge
+        HmBadge,
+        HmIcon,
+        HmInput
     }
 });
 </script>
@@ -271,19 +279,47 @@ export default Vue.extend({
                     
 
                     <div class="mt-4">
-                        <hm-input-ext v-model="inputs.text" type="email" label="E-mail" />
+                        <hm-input v-model="inputs.text" type="email" label="E-mail" />
                     </div>
 
                     <div class="mt-4">
-                        <hm-input-ext v-model="inputs.password" type="password" label="Пароль" show-password-btn />
+                        <hm-input v-model="inputs.password" type="password" label="Пароль" show-password-btn />
                     </div>
 
                     <div class="mt-4">
-                        <hm-input-ext v-model="inputs.number" type="number" label="Число" />
+                        <hm-input
+                            v-model="inputs.number"
+                            type="number"
+                            label="Число">
+                            <template v-slot:prepend>
+                                <span class="lead">&#8381;</span>
+                            </template>
+                        </hm-input>
                     </div>
 
                     <div class="mt-4">
-                        <hm-input-ext v-model="inputs.number" type="number" label="Число" disabled />
+                        <hm-input
+                            v-model="inputs.number"
+                            type="number"
+                            label="Число"
+                            disabled>
+                            <template v-slot:append>
+                                <span class="lead">&#8381;</span>
+                            </template>
+                        </hm-input>
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input
+                            :formatter="inputs.phoneFormatter"
+                            v-model="inputs.phone"
+                            type="text"
+                            label="Номер телефона">
+                            <template v-slot:append>
+                                <span><strong>123</strong></span>
+                                <hm-icon name="eye-slash"></hm-icon>
+                            </template>
+                        </hm-input>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,3 @@
-
-
 .form-control-wrap {
     align-items: stretch;
     border: 1px solid $gray-400;
@@ -15,6 +13,7 @@
 
     .form-control {
         border: none;
+        border-radius: $radius 0 0 $radius;
         flex: 1;
         &:focus {
             border: none;
@@ -74,7 +73,7 @@
         & + .label {
             & > label {
                 background-color: transparent;
-                top: 0;
+                top: -$border-width;
                 transform: scale(0.75) translateY(-50%);
 
                 & + .label-bg {
@@ -98,14 +97,23 @@
         }
     }
 
-    
-
 
     .form-control-extra {
         background-color: rgba($white, 0.75);
         align-items: center;
         display: flex;
-        font-size: 0.85em;
+        // font-size: 0.85em;
+        
+        &-append, &-prepend {
+            display: flex;
+            align-items: center;
+            padding-right: $spacer * 2;
+            padding-left: $spacer * 3;
+
+            & + .form-control-extra-buttons {
+                border-left: 1px solid $gray-400;
+            }
+        }
 
         &-buttons {
             display: flex;
@@ -119,6 +127,10 @@
 
                 &:hover {
                     opacity: 1;
+                }
+
+                & + .extra-control {
+                    margin-left: $spacer;
                 }
             }
         }

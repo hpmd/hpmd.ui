@@ -246,38 +246,13 @@ export default Vue.extend({
                 <h2 class="mb-9">Form elements</h2>
 
                 <div class="mb-4">
-                    <h4>Checkboxe</h4>
+                    <h4>Checkbox</h4>
 
                     <div class="mt-4">
                         <hm-checkbox v-model="checkboxModel">
                             Аctive
                         </hm-checkbox>
                     </div>
-                    <!-- <div class="mt-4">
-                        <hm-checkbox v-model="checkboxModel">
-                            Hover
-                        </hm-checkbox>
-                    </div>
-                    <div class="mt-4">
-                        <hm-checkbox v-model="checkboxModel">
-                            Focus
-                        </hm-checkbox>
-                    </div>
-                    <div class="mt-4">
-                        <hm-checkbox v-model="checkboxModel">
-                            On
-                        </hm-checkbox>
-                    </div>
-                    <div class="mt-4">
-                        <hm-checkbox v-model="checkboxModel">
-                            Disabled
-                        </hm-checkbox>
-                    </div>
-                    <div class="mt-4">
-                        <hm-checkbox v-model="checkboxModel">
-                            Choice disabled
-                        </hm-checkbox>
-                    </div> -->
                 </div>
             </div>
 

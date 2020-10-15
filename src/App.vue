@@ -249,7 +249,7 @@ export default Vue.extend({
                     <h4>Checkboxe</h4>
 
                     <div class="mt-4">
-                        <hm-checkbox disabled v-model="checkboxModel">
+                        <hm-checkbox v-model="checkboxModel">
                             Аctive
                         </hm-checkbox>
                     </div>

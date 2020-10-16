@@ -194,7 +194,7 @@ export default Vue.extend({
                 <b-row>
                     <b-col>
                         <div class="mt-4">
-                            <hm-badge variant="default">
+                            <hm-badge>
                                 Default
                             </hm-badge>
                         </div>
@@ -214,7 +214,7 @@ export default Vue.extend({
                             </hm-badge>
                         </div>
                         <div class="mt-4">
-                            <hm-badge variant="extra">
+                            <hm-badge variant="warning">
                                 Extra
                             </hm-badge>
                         </div>
@@ -226,9 +226,7 @@ export default Vue.extend({
                     </b-col>
                     <b-col>
                         <div class="mt-4">
-                            <hm-badge
-                                pill
-                                variant="default">
+                            <hm-badge pill>
                                 Default
                             </hm-badge>
                         </div>
@@ -256,7 +254,7 @@ export default Vue.extend({
                         <div class="mt-4">
                             <hm-badge
                                 pill
-                                variant="extra">
+                                variant="warning">
                                 Extra
                             </hm-badge>
                         </div>

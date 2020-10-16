@@ -1,6 +1,7 @@
 <script>
 import Vue from 'vue';
 import HmInput from '@/components/HmInput.vue';
+import HmBadge from '@/components/HmBadge.vue';
 import HmCheckbox from '@/components/HmCheckbox.vue';
 import HmRadio from '@/components/HmRadio.vue';
 import HmIcon from '@/components/HmIcon';
@@ -74,6 +75,7 @@ export default Vue.extend({
     },
     components: {
         HmRadio,
+        HmBadge,
         HmCheckbox,
         HmIcon,
         HmInput
@@ -194,6 +196,87 @@ export default Vue.extend({
                     <b-btn variant="warning" active>some action</b-btn>
                     <b-btn variant="warning">second action</b-btn>
                 </b-btn-group>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Labels</h2>
+
+                <b-row>
+                    <b-col>
+                        <div class="mt-4">
+                            <hm-badge>
+                                Default
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="primary">
+                                Primary
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="success">
+                                Success
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="info">
+                                Info
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="warning">
+                                Extra
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge variant="danger">
+                                Danger
+                            </hm-badge>
+                        </div>
+                    </b-col>
+                    <b-col>
+                        <div class="mt-4">
+                            <hm-badge pill>
+                                Default
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="primary">
+                                Primary
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="success">
+                                Success
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="info">
+                                Info
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="warning">
+                                Extra
+                            </hm-badge>
+                        </div>
+                        <div class="mt-4">
+                            <hm-badge
+                                pill
+                                variant="danger">
+                                Danger
+                            </hm-badge>
+                        </div>
+                    </b-col>
+                </b-row>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">

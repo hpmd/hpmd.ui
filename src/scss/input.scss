@@ -14,10 +14,18 @@
     .form-control {
         border: none;
         border-radius: $radius 0 0 $radius;
-        flex: 1;
+        order: 2;
+        flex-grow: 1;
         &:focus {
             border: none;
         }
+    }
+
+    .prepend-container {
+        align-items: center;
+        display: flex;
+        order: 1;
+        position: relative;
     }
 
     // we expect that input or any input-component (text-like inputs)
@@ -27,7 +35,7 @@
         border-radius: $radius;
         color: $input-placeholder-color;
         display: block;
-        left: $spacer * 3;
+        left: calc(100% + (#{$spacer * 3}));
         // line-height: 0.75;
         margin-bottom: 0;
         // padding: 2px 4px;
@@ -36,28 +44,30 @@
         top: 50%;
         transform-origin: 0 0;
         transform: translateY(-50%);
-        transition-property: transform, background-color, top;
+        transition-property: transform, background-color, top, left;
         transition-duration: .15s;
         transition-timing-function: ease-in-out;
         pointer-events: none;
         user-select: none;
+        white-space: nowrap;
         z-index: 1;
     }
 
-    label + .label-bg {
+    .label-bg {
         background-color: transparent;
         font-size: 0.75em;
         height: 1px;
         color: transparent;
         left: $spacer * 2;
         user-select: none;
-        padding: 0 4px;
+        padding: 0 $spacer;
         pointer-events: none;
         position: absolute;
         top: -$border-width;
         transition-property: color, background-color;
         transition-duration: .15s;
         transition-timing-function: ease-in-out;
+        white-space: nowrap;
     }
 
     /* TODO: doesn't work currently
@@ -70,10 +80,12 @@
     input:focus,
     input:not(.empty),
     input.focus {
-        & + .label {
+        & + .prepend-container > .label {
             & > label {
                 background-color: transparent;
+                left: $spacer * 3;
                 top: -$border-width;
+                text-shadow: 0 0 1px $white;
                 transform: scale(0.75) translateY(-50%);
 
                 & + .label-bg {
@@ -85,14 +97,14 @@
 
     input:-webkit-autofill,
     input:not(.empty) {
-        & + .label > label {
+        & + .prepend-container > .label > label {
             color: $gray-500;
         }
     }
 
     input:focus,
     input.focus {
-        & + .label > label {
+        & + .prepend-container > .label > label {
             color: $blue;
         }
     }
@@ -102,14 +114,21 @@
         background-color: rgba($white, 0.75);
         align-items: center;
         display: flex;
+        order: 3;
         // font-size: 0.85em;
-        
+
         &-append, &-prepend {
             display: flex;
             align-items: center;
             padding-right: $spacer * 2;
             padding-left: $spacer * 3;
+        }
 
+        &-prepend {
+            align-self: stretch;
+        }
+
+        &-append {
             & + .form-control-extra-buttons {
                 border-left: 1px solid $gray-400;
             }

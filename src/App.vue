@@ -1,7 +1,7 @@
 <script>
 import Vue from 'vue';
-import HmInput from '@/components/HmInput.vue';
-import HmCheckbox from '@/components/HmCheckbox.vue';
+import HmInput from '@/components/HmInput';
+import HmCheckbox from '@/components/HmCheckbox';
 import HmIcon from '@/components/HmIcon';
 
 /* eslint-disable no-param-reassign */
@@ -34,6 +34,7 @@ export default Vue.extend({
                 password: '',
                 number: null,
                 phone: '',
+                error: '',
                 phoneFormatter(val) {
                     return `+${val}`;
                 }
@@ -194,7 +195,6 @@ export default Vue.extend({
 
                 <div class="mb-4">
                     <h4>Input</h4>
-                    
 
                     <div class="mt-4">
                         <hm-input v-model="inputs.text" type="email" label="E-mail" />
@@ -208,7 +208,9 @@ export default Vue.extend({
                         <hm-input
                             v-model="inputs.number"
                             type="number"
-                            label="Число">
+                            :min="0"
+                            :max="10"
+                            label="Число между 0 и 10">
                             <template v-slot:prepend>
                                 <span class="lead">&#8381;</span>
                             </template>
@@ -234,9 +236,18 @@ export default Vue.extend({
                             type="text"
                             label="Номер телефона">
                             <template v-slot:append>
-                                <span><strong>123</strong></span>
-                                <hm-icon name="eye-slash"></hm-icon>
+                                <span class="text-primary"><strong>123</strong></span>
+                                <hm-icon class="text-primary" name="eye-slash"></hm-icon>
                             </template>
+                        </hm-input>
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input
+                            v-model="inputs.error"
+                            type="text"
+                            :state="false"
+                            label="Номер телефона">
                         </hm-input>
                     </div>
                 </div>
@@ -308,7 +319,6 @@ export default Vue.extend({
                         </template>
                     </b-table>
                 </div>
-                
             </div>
         </b-container>
     </div>

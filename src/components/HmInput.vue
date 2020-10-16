@@ -1,6 +1,14 @@
 <script>
-import { BButton, BFormInput } from 'bootstrap-vue';
-import { uniTimes, uniMultiply, uniEye, uniEyeSlash } from 'vue-unicons/src/icons';
+import {
+    BButton,
+    BFormInput
+} from 'bootstrap-vue';
+import {
+    uniTimes,
+    uniMultiply,
+    uniEye,
+    uniEyeSlash
+} from 'vue-unicons/src/icons';
 import HmIcon from 'vue-unicons/src/components/Unicon';
 
 HmIcon.add([
@@ -9,9 +17,8 @@ HmIcon.add([
     uniEye,
     uniEyeSlash
 ]);
-//import HmIcon from 'vue-awesome/components/Icon';
+// import HmIcon from 'vue-awesome/components/Icon';
 
-let _id = 0;
 
 export default {
     extends: BFormInput,
@@ -104,7 +111,7 @@ export default {
                     { ...{ attrs: inputAttrs }}
                     value={_bv.localValue}
                     { ...{
-                        on:  {
+                        on: {
                             ..._bv.computedListeners,
                             focus: () => { this.isFocused = true; },
                             blur: () => { this.isFocused = false; }
@@ -138,7 +145,7 @@ export default {
                                 {this.$slots.append}
                             </div>
                         ) }
-                        
+
                         { (shouldAddPasswordBtn || shouldAddClearBtn) && (
                             <div class="form-control-extra-buttons">
                                 { shouldAddClearBtn && (
@@ -147,7 +154,8 @@ export default {
                                         size="sm"
                                         variant="link"
                                         onClick={() => {
-                                            _bv.localValue = _bv.vModelValue = '';
+                                            _bv.localValue = '';
+                                            _bv.vModelValue = '';
                                         }}>
                                         <HmIcon name="multiply" />
                                     </BButton>

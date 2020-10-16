@@ -1,15 +1,9 @@
 .custom-checkbox {
     display: table;
-    padding-left: 1.75em;
-    padding-top: 0.125em;
-    padding-bottom: 0.125em;
-    border-radius: 0.25rem;
+    border-radius: 0.125rem;
 
-    &__slot {
-        padding-right: 0.175em;
-    }
     .custom-control-input {
-        width: 1.75em;
+        width: 1.5rem;
         height: 1.5rem;
         &:focus + .custom-control-label:before {
             border-color: $dark;
@@ -24,7 +18,6 @@
         &:checked ~ .custom-control-label:after {
             background-image: url('../assets/icons/check.svg');
             background-size: 65% auto;
-            background-position: 50% 40%;
         }
 
         &:disabled:checked ~ .custom-control-label:before {
@@ -41,11 +34,27 @@
         background-color: $gray-300;
     }
     .custom-control-label {
-        &:before {
-            transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.2s ease-in;
+        padding-right: 0.25rem;
+        padding-left: 0.125rem;
+        font-size: 0.875em;
+        line-height: 1.5rem;
+        &:empty {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        &:before,
+        &:after {
+            border-radius: 0.125rem;
+            top: 0.35rem;
+            left: -1.15rem;
+            width: 0.8rem;
+            height: 0.8rem;
         }
         &:after {
-            background-position: 49% 40%;
+            border: 1px solid transparent;
+        }
+        &:before {
+            transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.2s ease-in;
         }
     }
 }

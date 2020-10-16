@@ -250,7 +250,7 @@ export default Vue.extend({
 
                     <div class="mt-4">
                         <hm-checkbox v-model="checkboxModel">
-                            Аctive
+                            Active
                         </hm-checkbox>
                     </div>
                 </div>

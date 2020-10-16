@@ -52,8 +52,8 @@ export default Vue.extend({
             ],
             checkboxModel: true,
             radioInputs: [
-                { key: 'A', text: 'Active'},
-                { key: 'B', text: 'On'},
+                { key: 'A', text: 'Active' },
+                { key: 'B', text: 'On' },
             ],
             radioModel: 'B'
         };

@@ -1,13 +1,10 @@
 
 .custom-radio {
     display: table;
-    padding-left: 1.75em;
-    padding-top: 0.125em;
-    padding-bottom: 0.125em;
     border-radius: 0.25rem;
 
     .custom-control-input {
-        width: 1.75em;
+        width: 1.5rem;
         height: 1.5rem;
 
         &:focus + .custom-control-label::before {
@@ -18,13 +15,13 @@
         &:checked ~ .custom-control-label::before {
             background-color: $white;
             border-color: $black;
-            border-width: 5px;
+            border-width: 4.5px;
         }
 
         &:checked:disabled ~ .custom-control-label::before {
             background-color: $gray-400;
             border-color: $gray-600;
-            border-width: 5px;
+            border-width: 4.5px;
         }
     }
 
@@ -33,6 +30,24 @@
     }
 
     .custom-control-label {
+        padding-right: 0.25rem;
+        padding-left: 0.125rem;
+        font-size: 0.875em;
+        line-height: 1.5rem;
+
+        &:empty {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        &:before,
+        &:after {
+            top: 0.35rem;
+            left: -1.15rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 0.75rem;
+        }
+
         &:before {
             transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.2s ease-in;
         }

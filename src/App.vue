@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import HmInput from '@/components/HmInput.vue';
 import HmBadge from '@/components/HmBadge.vue';
+import HmCheckbox from '@/components/HmCheckbox.vue';
 import HmIcon from '@/components/HmIcon';
 
 /* eslint-disable no-param-reassign */
@@ -48,7 +49,8 @@ export default Vue.extend({
                 { key: 'tags', label: 'Метки', sortable: false },
                 { key: 'reach', label: 'Количество', sortable: true },
                 { key: 'action', label: 'Действие', sortable: false }
-            ]
+            ],
+            checkboxModel: false
         };
     },
     methods: {
@@ -67,6 +69,7 @@ export default Vue.extend({
     },
     components: {
         HmBadge,
+        HmCheckbox,
         HmIcon,
         HmInput
     }
@@ -318,6 +321,20 @@ export default Vue.extend({
                                 <hm-icon name="eye-slash"></hm-icon>
                             </template>
                         </hm-input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">Form elements</h2>
+
+                <div class="mb-4">
+                    <h4>Checkbox</h4>
+
+                    <div class="mt-4">
+                        <hm-checkbox v-model="checkboxModel">
+                            Аctive
+                        </hm-checkbox>
                     </div>
                 </div>
             </div>

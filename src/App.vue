@@ -192,7 +192,7 @@ export default Vue.extend({
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
-                <h2 class="mb-9">Labels</h2>
+                <h2 class="mb-5">Labels</h2>
 
                 <b-row>
                     <b-col>

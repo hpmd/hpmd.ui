@@ -1,9 +1,9 @@
 .badge {
-    padding: $spacer * 1.5;
+    padding: 0.335em 0.45em;
     color: $white;
 
     &-pill {
-        padding: $spacer * 1.25 $spacer * 2;
+        padding: 0.335em 0.675em;
     }
 
     $primary: $black;

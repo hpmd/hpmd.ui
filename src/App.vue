@@ -56,7 +56,8 @@ export default Vue.extend({
                 { key: 'A', text: 'Active' },
                 { key: 'B', text: 'On' },
             ],
-            radioModel: 'B'
+            radioModel: 'B',
+            switchModel: false
         };
     },
     methods: {
@@ -360,6 +361,19 @@ export default Vue.extend({
                                     v-model="radioModel">
                                     {{radioInput.text}}
                                 </hm-radio>
+                            </div>
+                        </div>
+                    </b-col>
+                    <b-col>
+                        <div class="mb-4">
+                            <h4>Toggles</h4>
+
+                            <div class="mt-4">
+                                <hm-checkbox
+                                    switch
+                                    v-model="switchModel">
+                                    Active
+                                </hm-checkbox>
                             </div>
                         </div>
                     </b-col>

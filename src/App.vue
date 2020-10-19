@@ -4,7 +4,6 @@ import HmInput from '@/components/HmInput.vue';
 import HmBadge from '@/components/HmBadge.vue';
 import HmCheckbox from '@/components/HmCheckbox.vue';
 import HmRadio from '@/components/HmRadio.vue';
-import HmSwitch from '@/components/HmSwitch.vue';
 import HmIcon from '@/components/HmIcon';
 
 /* eslint-disable no-param-reassign */
@@ -80,8 +79,7 @@ export default Vue.extend({
         HmBadge,
         HmCheckbox,
         HmIcon,
-        HmInput,
-        HmSwitch
+        HmInput
     }
 });
 </script>
@@ -371,9 +369,11 @@ export default Vue.extend({
                             <h4>Toggles</h4>
 
                             <div class="mt-4">
-                                <hm-switch v-model="switchModel">
+                                <hm-checkbox
+                                    switch
+                                    v-model="switchModel">
                                     Active
-                                </hm-switch>
+                                </hm-checkbox>
                             </div>
                         </div>
                     </b-col>

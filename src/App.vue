@@ -4,6 +4,7 @@ import HmInput from '@/components/HmInput.vue';
 import HmBadge from '@/components/HmBadge.vue';
 import HmCheckbox from '@/components/HmCheckbox.vue';
 import HmRadio from '@/components/HmRadio.vue';
+import HmSwitch from '@/components/HmSwitch.vue';
 import HmIcon from '@/components/HmIcon';
 
 /* eslint-disable no-param-reassign */
@@ -56,7 +57,8 @@ export default Vue.extend({
                 { key: 'A', text: 'Active' },
                 { key: 'B', text: 'On' },
             ],
-            radioModel: 'B'
+            radioModel: 'B',
+            switchModel: false
         };
     },
     methods: {
@@ -78,7 +80,8 @@ export default Vue.extend({
         HmBadge,
         HmCheckbox,
         HmIcon,
-        HmInput
+        HmInput,
+        HmSwitch
     }
 });
 </script>
@@ -360,6 +363,17 @@ export default Vue.extend({
                                     v-model="radioModel">
                                     {{radioInput.text}}
                                 </hm-radio>
+                            </div>
+                        </div>
+                    </b-col>
+                    <b-col>
+                        <div class="mb-4">
+                            <h4>Toggles</h4>
+
+                            <div class="mt-4">
+                                <hm-switch v-model="switchModel">
+                                    Active
+                                </hm-switch>
                             </div>
                         </div>
                     </b-col>

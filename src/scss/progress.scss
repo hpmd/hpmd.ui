@@ -1,5 +1,7 @@
 .progress {
+    border-radius: $radius;
+
     &-bar {
-        border-radius: 0.25rem;
+        border-radius: $radius;
     }
 }

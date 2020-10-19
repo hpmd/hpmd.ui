@@ -5,6 +5,7 @@ import HmBadge from '@/components/HmBadge.vue';
 import HmCheckbox from '@/components/HmCheckbox.vue';
 import HmRadio from '@/components/HmRadio.vue';
 import HmIcon from '@/components/HmIcon';
+import HmProgress from '@/components/HmProgress';
 
 /* eslint-disable no-param-reassign */
 function getRandomIntInRange(min, max) {
@@ -79,7 +80,8 @@ export default Vue.extend({
         HmBadge,
         HmCheckbox,
         HmIcon,
-        HmInput
+        HmInput,
+        HmProgress
     }
 });
 </script>
@@ -275,6 +277,74 @@ export default Vue.extend({
                                 variant="danger">
                                 Danger
                             </hm-badge>
+                        </div>
+                    </b-col>
+                </b-row>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Progress bar</h2>
+
+                <b-row>
+                    <b-col cols="6">
+                        <div class="mt-4">
+                            <hm-progress />
+                        </div>
+                        <div class="mt-4">
+                            <hm-progress
+                                :value="55"
+                                variant="info" />
+                        </div>
+                        <div class="mt-4">
+                            <hm-progress
+                                :value="60"
+                                variant="success" />
+                        </div>
+                        <div class="mt-4">
+                            <hm-progress
+                                :value="65"
+                                variant="primary" />
+                        </div>
+                        <div class="mt-4">
+                            <hm-progress
+                                :value="70"
+                                variant="warning" />
+                        </div>
+                        <div class="mt-4">
+                            <hm-progress
+                                :value="75"
+                                variant="danger" />
+                        </div>
+
+                        <div class="mt-8">
+                            <hm-progress
+                                :value="55"
+                                variant="info"
+                                animated />
+                        </div>
+                        <div class="mt-4">
+                            <hm-progress
+                                :value="60"
+                                variant="success"
+                                animated />
+                        </div>
+                        <div class="mt-4">
+                            <hm-progress
+                                :value="65"
+                                variant="primary"
+                                animated />
+                        </div>
+                        <div class="mt-4">
+                            <hm-progress
+                                :value="70"
+                                variant="warning"
+                                animated />
+                        </div>
+                        <div class="mt-4">
+                            <hm-progress
+                                :value="75"
+                                variant="danger"
+                                animated />
                         </div>
                     </b-col>
                 </b-row>

@@ -6,6 +6,7 @@ import HmCheckbox from '@/components/HmCheckbox.vue';
 import HmRadio from '@/components/HmRadio.vue';
 import HmIcon from '@/components/HmIcon';
 import HmProgress from '@/components/HmProgress';
+import HmTooltip from '@/components/HmTooltip';
 
 /* eslint-disable no-param-reassign */
 function getRandomIntInRange(min, max) {
@@ -58,7 +59,8 @@ export default Vue.extend({
                 { key: 'B', text: 'On' },
             ],
             radioModel: 'B',
-            switchModel: false
+            switchModel: false,
+            showTooltip: true
         };
     },
     methods: {
@@ -81,7 +83,8 @@ export default Vue.extend({
         HmCheckbox,
         HmIcon,
         HmInput,
-        HmProgress
+        HmProgress,
+        HmTooltip
     }
 });
 </script>
@@ -404,8 +407,50 @@ export default Vue.extend({
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-12">Tooltips</h2>
+
+                <div class="mt-9 mb-9">
+                    <b-row>
+                        <b-col cols="2">
+                            <div
+                                class="d-flex justify-content-end align-items-center">
+                                <div
+                                    id="test-tooltip-1"
+                                    class="disabled"
+                                    style="height: 50px; width: 10px;"></div>
+                            </div>
+                        </b-col>
+                    </b-row>
+                    <hm-tooltip
+                        :show.sync="showTooltip"
+                        placement="right"
+                        target="test-tooltip-1">
+                        Тултип право
+                    </hm-tooltip>
+                    <hm-tooltip
+                        :show.sync="showTooltip"
+                        placement="top"
+                        target="test-tooltip-1">
+                        Тултип верх
+                    </hm-tooltip>
+                    <hm-tooltip
+                        :show.sync="showTooltip"
+                        placement="left"
+                        target="test-tooltip-1">
+                        Тултип лево
+                    </hm-tooltip>
+                    <hm-tooltip
+                        :show.sync="showTooltip"
+                        placement="bottom"
+                        target="test-tooltip-1">
+                        Тултип низ
+                    </hm-tooltip>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-9">Form elements</h2>
-                
+
                 <b-row>
                     <b-col>
                         <div class="mb-4">

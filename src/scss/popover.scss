@@ -1,0 +1,10 @@
+.popover {
+    box-shadow: 0px 4px 4px rgba(50, 50, 50, 0.1);
+    &-header {
+        border-bottom: none;
+        padding-top: $spacer * 5;
+    }
+    &-body {
+        padding-bottom: $spacer * 5;
+    }
+}

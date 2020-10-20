@@ -155,3 +155,25 @@ $btn-link-disabled-color: $gray-300 !important;
 $input-padding-x: $spacer * 3;
 $input-border-radius: $radius;
 $input-placeholder-color: $gray-500;
+
+// Popovers
+
+$popover-bg: $white;
+$popover-border-width: $border-width;
+$popover-border-color: $gray-300;
+$popover-border-radius: $radius;
+
+$popover-header-bg: $white;
+$popover-header-color: $headings-color !default;
+$popover-header-padding-y: $spacer * 1.625;
+$popover-header-padding-x: $spacer * 4;
+
+$popover-body-color: $body-color !default;
+$popover-body-padding-y: $spacer * 1.625;
+$popover-body-padding-x: $spacer * 4;
+
+$popover-arrow-width: $spacer * 5;
+$popover-arrow-height: $spacer * 3;
+$popover-arrow-color: $white;
+
+$popover-arrow-outer-color: $popover-border-color;

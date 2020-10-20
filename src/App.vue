@@ -58,7 +58,8 @@ export default Vue.extend({
                 { key: 'B', text: 'On' },
             ],
             radioModel: 'B',
-            switchModel: false
+            switchModel: false,
+            showPopover: true
         };
     },
     methods: {
@@ -400,6 +401,58 @@ export default Vue.extend({
                             </template>
                         </hm-input>
                     </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">Popovers</h2>
+
+                <div class="my-10">
+                    <b-row class="my-10">
+                        <b-col
+                            cols="5"
+                            class="my-9">
+                            <div
+                                class="d-flex justify-content-end align-items-center my-10">
+                                <div
+                                    id="test-popover-1"
+                                    class="disabled"
+                                    style="height: 150px; width: 100px;"></div>
+                            </div>
+                        </b-col>
+                    </b-row>
+                    <b-popover
+                        target="test-popover-1"
+                        placement="left"
+                        triggers="hover focus"
+                        :show.sync="showPopover">
+                        <template v-slot:title>Example heading</template>
+                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
+                    </b-popover>
+                    <b-popover
+                        target="test-popover-1"
+                        placement="right"
+                        triggers="hover focus"
+                        :show.sync="showPopover">
+                        <template v-slot:title>Example heading</template>
+                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
+                    </b-popover>
+                    <b-popover
+                        target="test-popover-1"
+                        placement="bottom"
+                        triggers="hover focus"
+                        :show.sync="showPopover">
+                        <template v-slot:title>Example heading</template>
+                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
+                    </b-popover>
+                    <b-popover
+                        target="test-popover-1"
+                        placement="top"
+                        triggers="hover focus"
+                        :show.sync="showPopover">
+                        <template v-slot:title>Example heading</template>
+                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
+                    </b-popover>
                 </div>
             </div>
 

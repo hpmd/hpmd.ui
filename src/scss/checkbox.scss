@@ -17,7 +17,7 @@
         }
         &:checked ~ .custom-control-label:after {
             background-image: url('../assets/icons/check.svg');
-            background-size: 65% auto;
+            background-size: 85% auto;
         }
 
         &:disabled:checked ~ .custom-control-label:before {

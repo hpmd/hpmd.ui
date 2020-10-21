@@ -155,3 +155,12 @@ $btn-link-disabled-color: $gray-300 !important;
 $input-padding-x: $spacer * 3;
 $input-border-radius: $radius;
 $input-placeholder-color: $gray-500;
+
+// Tooltips
+
+$tooltip-border-radius: $radius;
+$tooltip-padding-y: $spacer;
+$tooltip-padding-x: $spacer * 2;
+
+$tooltip-arrow-width: $spacer * 2;
+$tooltip-arrow-height: $spacer;

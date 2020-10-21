@@ -169,16 +169,19 @@ $form-validation-states: ("valid": ("color": $form-feedback-valid-color,
 
 // Popovers
 
+$popover-heading-padding-bottom: $spacer * 1.5;
+$popover-body-padding-top: $spacer * 1.5;
+
 $popover-bg: $white;
 $popover-border-width: $border-width;
 $popover-border-color: $gray-300;
 $popover-border-radius: $radius;
 
 $popover-header-bg: $white;
-$popover-header-padding-y: $spacer * 1.625;
+$popover-header-padding-y: $popover-heading-padding-bottom;
 $popover-header-padding-x: $spacer * 4;
 
-$popover-body-padding-y: $spacer * 1.625;
+$popover-body-padding-y: $popover-body-padding-top;
 $popover-body-padding-x: $spacer * 4;
 
 $popover-arrow-width: $spacer * 5;

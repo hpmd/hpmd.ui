@@ -7,6 +7,7 @@ import HmRadio from '@/components/HmRadio';
 import HmIcon from '@/components/HmIcon';
 import HmProgress from '@/components/HmProgress';
 import HmTooltip from '@/components/HmTooltip';
+import HmPopover from '@/components/HmPopover';
 
 /* eslint-disable no-param-reassign */
 function getRandomIntInRange(min, max) {
@@ -93,6 +94,7 @@ export default Vue.extend({
         HmCheckbox,
         HmIcon,
         HmInput,
+        HmPopover,
         HmProgress,
         HmTooltip
     }
@@ -529,38 +531,38 @@ export default Vue.extend({
                             </div>
                         </b-col>
                     </b-row>
-                    <b-popover
+                    <hm-popover
                         target="test-popover-1"
                         placement="left"
                         triggers="hover focus"
                         :show.sync="showPopover">
                         <template v-slot:title>Example heading</template>
                         <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
-                    </b-popover>
-                    <b-popover
+                    </hm-popover>
+                    <hm-popover
                         target="test-popover-1"
                         placement="right"
                         triggers="hover focus"
                         :show.sync="showPopover">
                         <template v-slot:title>Example heading</template>
                         <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
-                    </b-popover>
-                    <b-popover
+                    </hm-popover>
+                    <hm-popover
                         target="test-popover-1"
                         placement="bottom"
                         triggers="hover focus"
                         :show.sync="showPopover">
                         <template v-slot:title>Example heading</template>
                         <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
-                    </b-popover>
-                    <b-popover
+                    </hm-popover>
+                    <hm-popover
                         target="test-popover-1"
                         placement="top"
                         triggers="hover focus"
                         :show.sync="showPopover">
                         <template v-slot:title>Example heading</template>
                         <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
-                    </b-popover>
+                    </hm-popover>
                 </div>
             </div>
 

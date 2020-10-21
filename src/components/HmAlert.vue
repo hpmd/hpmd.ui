@@ -1,0 +1,45 @@
+<script>
+import { BAlert, BButtonClose } from 'bootstrap-vue';
+import { uniExclamationTriangle } from 'vue-unicons/src/icons';
+import HmIcon from '@/components/HmIcon';
+
+HmIcon.add([uniExclamationTriangle]);
+
+export default {
+    extends: BAlert,
+    render() {
+        return (
+            <BVTransition noFade={!this.fade}>
+                {this.localShow && (
+                    <div
+                        role="alert"
+                        aria-live="polite"
+                        aria-atomic="true"
+                        class={`alert alert-${this.variant}`}>
+                        <b-row class="align-items-center">
+                            <b-col cols="auto">
+                                <div class="alert-round rounded-circle d-flex align-items-center justify-content-center">
+                                    <HmIcon name="exclamation-triangle"></HmIcon>
+                                </div>
+                            </b-col>
+                            <b-col>
+                                {this.$slots.default}
+                            </b-col>
+                            {this.dismissible && (
+                                <b-col cols="auto">
+                                    <BButtonClose
+                                        aria-label={this.dismissLabel}
+                                        onClick={this.dismiss}>
+                                        {this.normalizeSlot('dismiss')}
+                                    </BButtonClose>
+                                </b-col>
+                            )}
+                        </b-row>
+                    </div>
+                )}
+            </BVTransition>
+        );
+    },
+    components: { HmIcon }
+};
+</script>

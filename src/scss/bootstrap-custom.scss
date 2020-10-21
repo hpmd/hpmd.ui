@@ -8,6 +8,7 @@
 // HPMD Custom
 $fontSize: 14px;
 $radius: 2px;
+$close-font-size: $fontSize * 1.5;
 // Colors
 $yiq-contrasted-threshold: 200;
 
@@ -62,6 +63,16 @@ $border-width: 1px;
 $border-radius: $radius;
 $border-radius-lg: $radius;
 $border-radius-sm: $radius;
+
+// Alerts
+//
+// Define alert colors, border radius, and padding.
+
+$alert-padding-y: $spacer * 5;
+$alert-padding-x: $spacer * 5;
+$alert-margin-bottom: $spacer * 6;
+$alert-border-radius: $radius;
+$alert-border-width: 0;
 
 // Progress bars
 $progress-border-radius: $radius;

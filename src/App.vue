@@ -1,11 +1,12 @@
 <script>
 import Vue from 'vue';
-import HmInput from '@/components/HmInput.vue';
-import HmBadge from '@/components/HmBadge.vue';
-import HmCheckbox from '@/components/HmCheckbox.vue';
-import HmRadio from '@/components/HmRadio.vue';
+import HmInput from '@/components/HmInput';
+import HmBadge from '@/components/HmBadge';
+import HmCheckbox from '@/components/HmCheckbox';
+import HmRadio from '@/components/HmRadio';
 import HmIcon from '@/components/HmIcon';
 import HmProgress from '@/components/HmProgress';
+import HmTooltip from '@/components/HmTooltip';
 
 /* eslint-disable no-param-reassign */
 function getRandomIntInRange(min, max) {
@@ -37,9 +38,21 @@ export default Vue.extend({
                 password: '',
                 number: null,
                 phone: '',
-                phoneFormatter(val) {
-                    return `+${val}`;
-                }
+                error: ''
+            },
+            masked: {
+                phone: '',
+                phoneMask: {
+                    mask: '{+7} (000) 000-00-00',
+                },
+                phoneRaw: '',
+
+                number: '',
+                numberMask: {
+                    mask: Number,
+                    thousandsSeparator: ' '
+                },
+                numberRaw: '',
             },
             tableCompact: false,
             tableData,
@@ -59,7 +72,8 @@ export default Vue.extend({
             ],
             radioModel: 'B',
             switchModel: false,
-            showPopover: true
+            showPopover: true,
+            showTooltip: true
         };
     },
     methods: {
@@ -71,9 +85,6 @@ export default Vue.extend({
             }
 
             return '';
-        },
-        logchange(e) {
-            console.log(e);
         }
     },
     components: {
@@ -82,7 +93,8 @@ export default Vue.extend({
         HmCheckbox,
         HmIcon,
         HmInput,
-        HmProgress
+        HmProgress,
+        HmTooltip
     }
 });
 </script>
@@ -356,7 +368,7 @@ export default Vue.extend({
 
                 <div class="mb-4">
                     <h4>Input</h4>
-                    
+
 
                     <div class="mt-4">
                         <hm-input v-model="inputs.text" type="email" label="E-mail" />
@@ -370,7 +382,9 @@ export default Vue.extend({
                         <hm-input
                             v-model="inputs.number"
                             type="number"
-                            label="Число">
+                            :min="0"
+                            :max="10"
+                            label="Число между 0 и 10">
                             <template v-slot:prepend>
                                 <span class="lead">&#8381;</span>
                             </template>
@@ -391,16 +405,110 @@ export default Vue.extend({
 
                     <div class="mt-4">
                         <hm-input
-                            :formatter="inputs.phoneFormatter"
                             v-model="inputs.phone"
-                            type="text"
+                            type="tel"
                             label="Номер телефона">
                             <template v-slot:append>
-                                <span><strong>123</strong></span>
-                                <hm-icon name="eye-slash"></hm-icon>
+                                <span class="text-primary"><strong>123</strong></span>
+                                <hm-icon class="text-primary" name="eye-slash"></hm-icon>
                             </template>
                         </hm-input>
                     </div>
+
+                    <div class="mt-4">
+                        <hm-input
+                            v-model="inputs.error"
+                            type="text"
+                            :state="false"
+                            label="Ошибка ввода">
+                        </hm-input>
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input
+                            v-model="inputs.text"
+                            :state="true"
+                            label="Ввод без проблем">
+                        </hm-input>
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input
+                            disabled
+                            v-model="inputs.error"
+                            type="text"
+                            :state="false"
+                            label="Номер телефона">
+                        </hm-input>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h4>Masked input</h4>
+
+                    <div class="mt-4">
+                        <hm-input
+                            label="Номер телефона"
+                            v-model="masked.phone"
+                            :mask="masked.phoneMask"
+                            type="tel"
+                            @inputRaw="masked.phoneRaw = $event">
+                        </hm-input>
+                        <pre class="bg-light p-4"><code>Model value: {{masked.phone}}<br>Raw value: {{masked.phoneRaw}}</code></pre>
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input
+                            label="Любое число"
+                            v-model="masked.number"
+                            :mask="masked.numberMask"
+                            type="text"
+                            @inputRaw="masked.numberRaw = $event">
+                        </hm-input>
+                        <pre class="bg-light p-4"><code>Model value: {{masked.number}}<br>Raw value: {{masked.numberRaw}}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-12">Tooltips</h2>
+
+                <div class="mt-9 mb-9">
+                    <b-row>
+                        <b-col cols="2">
+                            <div
+                                class="d-flex justify-content-end align-items-center">
+                                <div
+                                    id="test-tooltip-1"
+                                    class="disabled"
+                                    style="height: 50px; width: 10px;"></div>
+                            </div>
+                        </b-col>
+                    </b-row>
+                    <hm-tooltip
+                        :show.sync="showTooltip"
+                        placement="right"
+                        target="test-tooltip-1">
+                        Тултип право
+                    </hm-tooltip>
+                    <hm-tooltip
+                        :show.sync="showTooltip"
+                        placement="top"
+                        target="test-tooltip-1">
+                        Тултип верх
+                    </hm-tooltip>
+                    <hm-tooltip
+                        :show.sync="showTooltip"
+                        placement="left"
+                        target="test-tooltip-1">
+                        Тултип лево
+                    </hm-tooltip>
+                    <hm-tooltip
+                        :show.sync="showTooltip"
+                        placement="bottom"
+                        target="test-tooltip-1">
+                        Тултип низ
+                    </hm-tooltip>
                 </div>
             </div>
 
@@ -458,7 +566,7 @@ export default Vue.extend({
 
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-9">Form elements</h2>
-                
+
                 <b-row>
                     <b-col>
                         <div class="mb-4">
@@ -555,7 +663,6 @@ export default Vue.extend({
                         </template>
                     </b-table>
                 </div>
-                
             </div>
         </b-container>
     </div>

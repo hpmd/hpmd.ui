@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { BootstrapVue } from 'bootstrap-vue';
 import '@/scss/hpmd.ui.scss';
-import App from './App.vue';
+import App from './App';
 
 Vue.config.productionTip = false;
 

@@ -1,4 +1,5 @@
 <script>
+import debounce from 'lodash.debounce';
 import Vue from 'vue';
 import HmInput from '@/components/HmInput';
 import HmBadge from '@/components/HmBadge';
@@ -16,6 +17,8 @@ function getRandomIntInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 /* eslint-enable */
+
+
 
 export default Vue.extend({
     name: 'App',
@@ -38,7 +41,9 @@ export default Vue.extend({
                 password: '',
                 number: null,
                 phone: '',
-                error: ''
+                error: '',
+                inputGroup: '',
+                isInputGroupValid: null
             },
             masked: {
                 phone: '',
@@ -76,6 +81,9 @@ export default Vue.extend({
         };
     },
     methods: {
+        validateInputGroup: debounce(function validateInputGroup() {
+            this.inputs.isInputGroupValid = this.inputs.inputGroup.length >= 4;
+        }, 500),
         tableDataTrClass(item) {
             if (item.active) {
                 return 'selected';
@@ -466,6 +474,22 @@ export default Vue.extend({
                         </hm-input>
                         <pre class="bg-light p-4"><code>Model value: {{masked.number}}<br>Raw value: {{masked.numberRaw}}</code></pre>
                     </div>
+                </div>
+
+                <div>
+                    <h4>Input message</h4>
+
+                    <b-form-group
+                        description="Введите пин-код"
+                        :state="inputs.isInputGroupValid"
+                        :invalid-feedback="inputs.inputGroup.length > 0 ? 'Введите не менее 4 символов' : 'Поле не должно быть пустым'">
+                        <hm-input
+                            v-model="inputs.inputGroup"
+                            :state="inputs.isInputGroupValid"
+                            trim
+                            @input="validateInputGroup">
+                        </hm-input>
+                    </b-form-group>
                 </div>
             </div>
 

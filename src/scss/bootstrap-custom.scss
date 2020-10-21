@@ -171,3 +171,12 @@ $form-validation-states: (
         "icon": $form-feedback-icon-invalid
     ),
 );
+
+// Tooltips
+
+$tooltip-border-radius: $radius;
+$tooltip-padding-y: $spacer;
+$tooltip-padding-x: $spacer * 2;
+
+$tooltip-arrow-width: $spacer * 2;
+$tooltip-arrow-height: $spacer;

@@ -37,10 +37,21 @@ export default Vue.extend({
                 password: '',
                 number: null,
                 phone: '',
-                error: '',
-                phoneFormatter(val) {
-                    return `+${val}`;
-                }
+                error: ''
+            },
+            masked: {
+                phone: '',
+                phoneMask: {
+                    mask: '{+7} (000) 000-00-00',
+                },
+                phoneRaw: '',
+
+                number: '',
+                numberMask: {
+                    mask: Number,
+                    thousandsSeparator: ' '
+                },
+                numberRaw: '',
             },
             tableCompact: false,
             tableData,
@@ -71,9 +82,6 @@ export default Vue.extend({
             }
 
             return '';
-        },
-        logchange(e) {
-            console.log(e);
         }
     },
     components: {
@@ -393,9 +401,8 @@ export default Vue.extend({
 
                     <div class="mt-4">
                         <hm-input
-                            :formatter="inputs.phoneFormatter"
                             v-model="inputs.phone"
-                            type="text"
+                            type="tel"
                             label="Номер телефона">
                             <template v-slot:append>
                                 <span class="text-primary"><strong>123</strong></span>
@@ -409,8 +416,52 @@ export default Vue.extend({
                             v-model="inputs.error"
                             type="text"
                             :state="false"
+                            label="Ошибка ввода">
+                        </hm-input>
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input
+                            v-model="inputs.text"
+                            :state="true"
+                            label="Ввод без проблем">
+                        </hm-input>
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input
+                            disabled
+                            v-model="inputs.error"
+                            type="text"
+                            :state="false"
                             label="Номер телефона">
                         </hm-input>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h4>Masked input</h4>
+
+                    <div class="mt-4">
+                        <hm-input
+                            label="Номер телефона"
+                            v-model="masked.phone"
+                            :mask="masked.phoneMask"
+                            type="tel"
+                            @inputRaw="masked.phoneRaw = $event">
+                        </hm-input>
+                        <pre class="bg-light p-4"><code>Model value: {{masked.phone}}<br>Raw value: {{masked.phoneRaw}}</code></pre>
+                    </div>
+
+                    <div class="mt-4">
+                        <hm-input
+                            label="Любое число"
+                            v-model="masked.number"
+                            :mask="masked.numberMask"
+                            type="text"
+                            @inputRaw="masked.numberRaw = $event">
+                        </hm-input>
+                        <pre class="bg-light p-4"><code>Model value: {{masked.number}}<br>Raw value: {{masked.numberRaw}}</code></pre>
                     </div>
                 </div>
             </div>

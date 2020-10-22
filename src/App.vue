@@ -71,15 +71,165 @@ export default Vue.extend({
                 { key: 'reach', label: 'Количество', sortable: true },
                 { key: 'action', label: 'Действие', sortable: false }
             ],
-            checkboxModel: true,
-            radioInputs: [
-                { key: 'A', text: 'Active' },
-                { key: 'B', text: 'On' },
+            checkboxModels: [
+                {
+                    key: 'active',
+                    label: 'Аctive',
+                    value: false,
+                    class: '',
+                    disabled: false
+                },
+                {
+                    key: 'hover',
+                    label: 'Hover',
+                    value: false,
+                    class: 'custom-checkbox__hover',
+                    disabled: false
+                },
+                {
+                    key: 'focus',
+                    label: 'Focus',
+                    value: false,
+                    class: 'custom-checkbox__focus',
+                    disabled: false
+                },
+                {
+                    key: 'on',
+                    label: 'On',
+                    value: true,
+                    class: '',
+                    disabled: false
+                },
+                {
+                    key: 'disabled',
+                    label: 'Disabled',
+                    value: false,
+                    class: '',
+                    disabled: true
+                },
+                {
+                    key: 'choiceDisabled',
+                    label: 'Choice disabled',
+                    value: true,
+                    class: '',
+                    disabled: true
+                }
             ],
-            radioModel: 'B',
-            switchModel: false,
-            showAlert: true,
-            showTooltip: true
+            radioModels: [
+                {
+                    key: 'active',
+                    label: 'Аctive',
+                    value: '',
+                    class: '',
+                    disabled: false
+                },
+                {
+                    key: 'hover',
+                    label: 'Hover',
+                    value: '',
+                    class: 'custom-radio__hover',
+                    disabled: false
+                },
+                {
+                    key: 'focus',
+                    label: 'Focus',
+                    value: '',
+                    class: 'custom-radio__focus',
+                    disabled: false
+                },
+                {
+                    key: 'on',
+                    label: 'On',
+                    value: 'on',
+                    class: '',
+                    disabled: false
+                },
+                {
+                    key: 'disabled',
+                    label: 'Disabled',
+                    value: '',
+                    class: '',
+                    disabled: true
+                },
+                {
+                    key: 'choiceDisabled',
+                    label: 'Choice disabled',
+                    value: 'choiceDisabled',
+                    class: '',
+                    disabled: true
+                }
+            ],
+            switchModels: [
+                {
+                    key: 'active',
+                    label: 'Аctive',
+                    value: false,
+                    class: '',
+                    disabled: false
+                },
+                {
+                    key: 'hover',
+                    label: 'Hover',
+                    value: false,
+                    class: 'custom-switch__hover',
+                    disabled: false
+                },
+                {
+                    key: 'focus',
+                    label: 'Focus',
+                    value: false,
+                    class: 'custom-switch__focus',
+                    disabled: false
+                },
+                {
+                    key: 'on',
+                    label: 'On',
+                    value: true,
+                    class: '',
+                    disabled: false
+                },
+                {
+                    key: 'disabled',
+                    label: 'Disabled',
+                    value: false,
+                    class: '',
+                    disabled: true
+                },
+                {
+                    key: 'choiceDisabled',
+                    label: 'Choice disabled',
+                    value: true,
+                    class: '',
+                    disabled: true
+                }
+            ],
+            tooltipModels: [
+                {
+                    show: true,
+                    placement: 'right',
+                    target: 'test-tooltip-1',
+                    label: 'Тултип право'
+                },
+                {
+                    show: true,
+                    placement: 'top',
+                    target: 'test-tooltip-2',
+                    label: 'Тултип верх'
+                },
+                {
+                    show: true,
+                    placement: 'left',
+                    target: 'test-tooltip-3',
+                    label: 'Тултип лево'
+                },
+                {
+                    show: true,
+                    placement: 'bottom',
+                    target: 'test-tooltip-4',
+                    label: 'Тултип низ'
+                }
+            ],
+            showAlert: true
         };
     },
     methods: {
@@ -501,40 +651,48 @@ export default Vue.extend({
 
                 <div class="mt-9 mb-9">
                     <b-row>
-                        <b-col cols="2">
-                            <div
-                                class="d-flex justify-content-end align-items-center">
+                        <b-col cols="3">
+                            <div class="d-flex justify-content-center align-items-center">
                                 <div
                                     id="test-tooltip-1"
                                     class="disabled"
-                                    style="height: 50px; width: 10px;"></div>
+                                    style="height: 1px; width: 1px;"></div>
+                            </div>
+                        </b-col>
+                        <b-col cols="3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div
+                                    id="test-tooltip-2"
+                                    class="disabled"
+                                    style="height: 1px; width: 1px;"></div>
+                            </div>
+                        </b-col>
+                        <b-col cols="3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div
+                                    id="test-tooltip-3"
+                                    class="disabled"
+                                    style="height: 1px; width: 1px;"></div>
+                            </div>
+                        </b-col>
+                        <b-col cols="3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div
+                                    id="test-tooltip-4"
+                                    class="disabled"
+                                    style="height: 1px; width: 1px;"></div>
                             </div>
                         </b-col>
                     </b-row>
-                    <hm-tooltip
-                        :show.sync="showTooltip"
-                        placement="right"
-                        target="test-tooltip-1">
-                        Тултип право
-                    </hm-tooltip>
-                    <hm-tooltip
-                        :show.sync="showTooltip"
-                        placement="top"
-                        target="test-tooltip-1">
-                        Тултип верх
-                    </hm-tooltip>
-                    <hm-tooltip
-                        :show.sync="showTooltip"
-                        placement="left"
-                        target="test-tooltip-1">
-                        Тултип лево
-                    </hm-tooltip>
-                    <hm-tooltip
-                        :show.sync="showTooltip"
-                        placement="bottom"
-                        target="test-tooltip-1">
-                        Тултип низ
-                    </hm-tooltip>
+                    <template v-for="tooltipModel in tooltipModels">
+                        <hm-tooltip
+                            :key="`tooltip-${tooltipModel.target}`"
+                            :show.sync="tooltipModel.show"
+                            :placement="tooltipModel.placement"
+                            :target="tooltipModel.target">
+                            {{tooltipModel.label}}
+                        </hm-tooltip>
+                    </template>
                 </div>
             </div>
 
@@ -546,9 +704,15 @@ export default Vue.extend({
                         <div class="mb-4">
                             <h4>Checkbox</h4>
 
-                            <div class="mt-4">
-                                <hm-checkbox v-model="checkboxModel">
-                                    Аctive
+                            <div
+                                class="mt-4"
+                                v-for="checkboxModel in checkboxModels"
+                                :key="`checkbox-${checkboxModel.key}`">
+                                <hm-checkbox
+                                    :class="checkboxModel.class"
+                                    :disabled="checkboxModel.disabled"
+                                    v-model="checkboxModel.value">
+                                    {{checkboxModel.label}}
                                 </hm-checkbox>
                             </div>
                         </div>
@@ -558,13 +722,15 @@ export default Vue.extend({
                             <h4>Radio</h4>
 
                             <div
-                                v-for="radioInput in radioInputs"
-                                :key="`radio-${radioInput.key}`"
+                                v-for="radioModel in radioModels"
+                                :key="`radio-${radioModel.key}`"
                                 class="mt-4">
                                 <hm-radio
-                                    :value="radioInput.key"
-                                    v-model="radioModel">
-                                    {{radioInput.text}}
+                                    :class="radioModel.class"
+                                    :disabled="radioModel.disabled"
+                                    :value="radioModel.key"
+                                    v-model="radioModel.value">
+                                    {{radioModel.label}}
                                 </hm-radio>
                             </div>
                         </div>
@@ -573,11 +739,16 @@ export default Vue.extend({
                         <div class="mb-4">
                             <h4>Toggles</h4>
 
-                            <div class="mt-4">
+                            <div
+                                class="mt-4"
+                                v-for="switchModel in switchModels"
+                                :key="`checkbox-${switchModel.key}`">
                                 <hm-checkbox
                                     switch
-                                    v-model="switchModel">
-                                    Active
+                                    :class="switchModel.class"
+                                    :disabled="switchModel.disabled"
+                                    v-model="switchModel.value">
+                                    {{switchModel.label}}
                                 </hm-checkbox>
                             </div>
                         </div>

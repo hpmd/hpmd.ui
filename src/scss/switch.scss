@@ -1,22 +1,21 @@
 .custom-switch {
-    &:hover .custom-control-label:before {
-        border-color: lighten($yellow, 30);
-        background-color: lighten($yellow, 30);
-    }
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
 
     .custom-control-input {
+        height: 1.5rem;
+
         &:checked~.custom-control-label:before {
             border-color: $yellow;
             background-color: $yellow;
         }
-
-        &:focus~.custom-control-label:before {
-            box-shadow: none;
-            border-color: $black;
+        &:checked ~ .custom-control-label::after {
+            transform: translateY(-50%) translateX(0.75rem);
         }
 
-        &:disabled~.custom-control-label:before,
-        &:checked:disabled~.custom-control-label:before {
+        &:disabled ~ .custom-control-label:before,
+        &:checked:disabled ~ .custom-control-label:before {
             background-color: $gray-400;
             border-color: $gray-400;
         }
@@ -28,6 +27,7 @@
 
     .custom-control-label {
         padding-left: 0.2em;
+        font-size: 0.875em;
 
         &:empty {
             padding-left: 0;
@@ -42,8 +42,22 @@
             transition: transform 0.2s ease-in, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
         }
 
+        &:before,
         &:after {
-            background-color: $white;
+            top: 50%;
+            transform: translateY(-50%);
         }
+    }
+
+    &:focus~.custom-control-label:before,
+    &__focus .custom-control-label:before {
+        box-shadow: none;
+        border-color: $black;
+    }
+
+    &:hover .custom-control-label:before,
+    &__hover .custom-control-label:before {
+        border-color: lighten($yellow, 30);
+        background-color: lighten($yellow, 30);
     }
 }

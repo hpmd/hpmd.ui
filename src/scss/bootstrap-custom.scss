@@ -8,6 +8,7 @@
 // HPMD Custom
 $fontSize: 14px;
 $radius: 2px;
+$close-font-size: $fontSize * 1.5;
 // Colors
 $yiq-contrasted-threshold: 200;
 
@@ -62,6 +63,16 @@ $border-width: 1px;
 $border-radius: $radius;
 $border-radius-lg: $radius;
 $border-radius-sm: $radius;
+
+// Alerts
+//
+// Define alert colors, border radius, and padding.
+
+$alert-padding-y: $spacer * 5;
+$alert-padding-x: $spacer * 5;
+$alert-margin-bottom: $spacer * 6;
+$alert-border-radius: $radius;
+$alert-border-width: 0;
 
 // Progress bars
 $progress-border-radius: $radius;
@@ -169,8 +180,8 @@ $form-validation-states: ("valid": ("color": $form-feedback-valid-color,
 
 // Popovers
 
-$popover-heading-padding-bottom: $spacer * 1.5;
-$popover-body-padding-top: $spacer * 1.5;
+$popover-heading-padding-bottom: $spacer * 4;
+$popover-body-padding-bottom: $spacer * 5;
 
 $popover-bg: $white;
 $popover-border-width: $border-width;
@@ -181,7 +192,7 @@ $popover-header-bg: $white;
 $popover-header-padding-y: $popover-heading-padding-bottom;
 $popover-header-padding-x: $spacer * 4;
 
-$popover-body-padding-y: $popover-body-padding-top;
+$popover-body-padding-y: $popover-body-padding-bottom;
 $popover-body-padding-x: $spacer * 4;
 
 $popover-arrow-width: $spacer * 5;

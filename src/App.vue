@@ -1,4 +1,5 @@
 <script>
+import debounce from 'lodash.debounce';
 import Vue from 'vue';
 import HmInput from '@/components/HmInput';
 import HmBadge from '@/components/HmBadge';
@@ -8,6 +9,7 @@ import HmIcon from '@/components/HmIcon';
 import HmProgress from '@/components/HmProgress';
 import HmTooltip from '@/components/HmTooltip';
 import HmPopover from '@/components/HmPopover';
+import HmAlert from '@/components/HmAlert';
 
 /* eslint-disable no-param-reassign */
 function getRandomIntInRange(min, max) {
@@ -17,6 +19,8 @@ function getRandomIntInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 /* eslint-enable */
+
+
 
 export default Vue.extend({
     name: 'App',
@@ -39,7 +43,9 @@ export default Vue.extend({
                 password: '',
                 number: null,
                 phone: '',
-                error: ''
+                error: '',
+                inputGroup: '',
+                isInputGroupValid: null
             },
             masked: {
                 phone: '',
@@ -74,10 +80,14 @@ export default Vue.extend({
             radioModel: 'B',
             switchModel: false,
             showPopover: true,
+            showAlert: true,
             showTooltip: true
         };
     },
     methods: {
+        validateInputGroup: debounce(function validateInputGroup() {
+            this.inputs.isInputGroupValid = this.inputs.inputGroup.length >= 4;
+        }, 500),
         tableDataTrClass(item) {
             if (item.active) {
                 return 'selected';
@@ -89,6 +99,7 @@ export default Vue.extend({
         }
     },
     components: {
+        HmAlert,
         HmRadio,
         HmBadge,
         HmCheckbox,
@@ -470,6 +481,22 @@ export default Vue.extend({
                         <pre class="bg-light p-4"><code>Model value: {{masked.number}}<br>Raw value: {{masked.numberRaw}}</code></pre>
                     </div>
                 </div>
+
+                <div>
+                    <h4>Input message</h4>
+
+                    <b-form-group
+                        description="Введите пин-код"
+                        :state="inputs.isInputGroupValid"
+                        :invalid-feedback="inputs.inputGroup.length > 0 ? 'Введите не менее 4 символов' : 'Поле не должно быть пустым'">
+                        <hm-input
+                            v-model="inputs.inputGroup"
+                            :state="inputs.isInputGroupValid"
+                            trim
+                            @input="validateInputGroup">
+                        </hm-input>
+                    </b-form-group>
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
@@ -570,7 +597,7 @@ export default Vue.extend({
                 <h2 class="mb-9">Form elements</h2>
 
                 <b-row>
-                    <b-col>
+                    <b-col cols="4">
                         <div class="mb-4">
                             <h4>Checkbox</h4>
 
@@ -581,7 +608,7 @@ export default Vue.extend({
                             </div>
                         </div>
                     </b-col>
-                    <b-col>
+                    <b-col cols="4">
                         <div class="mb-4">
                             <h4>Radio</h4>
 
@@ -597,7 +624,7 @@ export default Vue.extend({
                             </div>
                         </div>
                     </b-col>
-                    <b-col>
+                    <b-col cols="4">
                         <div class="mb-4">
                             <h4>Toggles</h4>
 
@@ -607,6 +634,58 @@ export default Vue.extend({
                                     v-model="switchModel">
                                     Active
                                 </hm-checkbox>
+                            </div>
+                        </div>
+                    </b-col>
+                    <b-col cols="4">
+                        <div class="mb-4">
+                            <h4>Notifications</h4>
+
+                            <div class="bg-secondary p-3">
+                                <div class="mt-4">
+                                    <hm-alert
+                                        dismissible
+                                        :show="showAlert"
+                                        variant="success">
+                                        <p class="mb-0">
+                                            <b>Well done!</b> You successfully read
+                                            <b>this important alert message.</b>
+                                        </p>
+                                    </hm-alert>
+                                </div>
+                                <div class="mt-4">
+                                    <hm-alert
+                                        dismissible
+                                        :show="showAlert"
+                                        variant="info">
+                                        <p class="mb-0">
+                                            <b>Heads up!</b> This <b>alert needs your attention,</b>
+                                            but it's not super important.
+                                        </p>
+                                    </hm-alert>
+                                </div>
+                                <div class="mt-4">
+                                    <hm-alert
+                                        dismissible
+                                        :show="showAlert"
+                                        variant="warning">
+                                        <p class="mb-0">
+                                            <b>Warning!</b> Better check yourself,
+                                            you're <b>not looking too good.</b>
+                                        </p>
+                                    </hm-alert>
+                                </div>
+                                <div class="mt-4">
+                                    <hm-alert
+                                        dismissible
+                                        :show="showAlert"
+                                        variant="danger">
+                                        <p class="mb-0">
+                                            <b>Oh snap! Change a few things up</b>
+                                            and try submitting again.
+                                        </p>
+                                    </hm-alert>
+                                </div>
                             </div>
                         </div>
                     </b-col>

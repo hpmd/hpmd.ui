@@ -9,15 +9,11 @@ import {
     uniMultiply,
     uniEye,
     uniEyeSlash
-} from 'vue-unicons/src/icons';
-import HmIcon from 'vue-unicons/src/components/Unicon';
+} from '@/assets/icons/unicons';
+import HmIcon from './HmIcon';
 
-HmIcon.add([
-    uniTimes,
-    uniMultiply,
-    uniEye,
-    uniEyeSlash
-]);
+
+HmIcon.add(uniTimes, uniMultiply, uniEye, uniEyeSlash);
 // import HmIcon from 'vue-awesome/components/Icon';
 
 

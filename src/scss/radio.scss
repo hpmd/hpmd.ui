@@ -3,14 +3,15 @@
     display: table;
     border-radius: 0.25rem;
 
+    &:focus + .custom-control-label::before,
+    &__focus .custom-control-label:before {
+        border-color: $black;
+        box-shadow: none;
+    }
+
     .custom-control-input {
         width: 1.5rem;
         height: 1.5rem;
-
-        &:focus + .custom-control-label::before {
-            border-color: $black;
-            box-shadow: none;
-        }
 
         &:checked ~ .custom-control-label::before {
             background-color: $white;
@@ -25,7 +26,8 @@
         }
     }
 
-    &:hover {
+    &:hover,
+    &__hover {
         background-color: $gray-300;
     }
 

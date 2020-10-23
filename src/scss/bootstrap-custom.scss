@@ -180,8 +180,8 @@ $form-validation-states: ("valid": ("color": $form-feedback-valid-color,
 
 // Popovers
 
-$popover-heading-padding-bottom: $spacer * 4;
-$popover-body-padding-bottom: $spacer * 5;
+$popover-heading-padding-bottom: $spacer;
+$popover-body-padding-bottom: $spacer * 4;
 
 $popover-bg: $white;
 $popover-border-width: $border-width;

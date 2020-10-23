@@ -2,13 +2,16 @@
     display: inline-flex;
     border-radius: 0.125rem;
 
+    .custom-control-input:focus + .custom-control-label:before,
+    &__focus .custom-control-label:before {
+        border-color: $dark;
+        box-shadow: none;
+    }
+
     .custom-control-input {
         width: 1.5rem;
         height: 1.5rem;
-        &:focus + .custom-control-label:before {
-            border-color: $dark;
-            box-shadow: none;
-        }
+        
         &:indeterminate ~ .custom-control-label:before,
         &:checked ~ .custom-control-label:before {
             color: $white;
@@ -17,7 +20,7 @@
         }
         &:checked ~ .custom-control-label:after {
             background-image: url('../assets/icons/check.svg');
-            background-size: 85% auto;
+            background-size: contain;
         }
 
         &:disabled:checked ~ .custom-control-label:before {
@@ -27,10 +30,12 @@
         }
 
         &:disabled:checked ~ .custom-control-label:after {
-            color: $gray-700;
+            background-image: url('../assets/icons/check-gray.svg');
+            background-size: contain;
         }
     }
-    &:hover {
+    &:hover,
+    &__hover {
         background-color: $gray-300;
     }
     .custom-control-label {

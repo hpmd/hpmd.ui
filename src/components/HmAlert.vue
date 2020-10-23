@@ -1,9 +1,13 @@
 <script>
-import { BAlert, BButtonClose } from 'bootstrap-vue';
-import { uniExclamationTriangle } from 'vue-unicons/src/icons';
+import {
+    BAlert,
+    BButtonClose
+} from 'bootstrap-vue';
+import BVTransition from 'bootstrap-vue/src/utils/bv-transition';
+import { uniExclamationTriangle } from '@/assets/icons/unicons';
 import HmIcon from '@/components/HmIcon';
 
-HmIcon.add([uniExclamationTriangle]);
+HmIcon.add(uniExclamationTriangle);
 
 export default {
     extends: BAlert,
@@ -40,6 +44,10 @@ export default {
             </BVTransition>
         );
     },
-    components: { HmIcon }
+    components: {
+        HmIcon,
+        BVTransition,
+
+    }
 };
 </script>

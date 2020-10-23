@@ -8,6 +8,7 @@ import HmRadio from '@/components/HmRadio';
 import HmIcon from '@/components/HmIcon';
 import HmProgress from '@/components/HmProgress';
 import HmTooltip from '@/components/HmTooltip';
+import HmPopover from '@/components/HmPopover';
 import HmAlert from '@/components/HmAlert';
 
 /* eslint-disable no-param-reassign */
@@ -229,6 +230,9 @@ export default Vue.extend({
                     label: 'Тултип низ'
                 }
             ],
+            radioModel: 'B',
+            switchModel: false,
+            showPopover: true,
             showAlert: true
         };
     },
@@ -253,6 +257,7 @@ export default Vue.extend({
         HmCheckbox,
         HmIcon,
         HmInput,
+        HmPopover,
         HmProgress,
         HmTooltip
     }
@@ -693,6 +698,87 @@ export default Vue.extend({
                             {{tooltipModel.label}}
                         </hm-tooltip>
                     </template>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">Popovers</h2>
+
+                <div class="my-10">
+                    <b-row class="my-10">
+                        <b-col cols="4">
+                            <div
+                                class="d-flex justify-content-end align-items-center mb-5"
+                                style="height: 165px;">
+                                <div
+                                    id="test-popover-1"
+                                    class="disabled"
+                                    style="height: 1px; width: 1px;"></div>
+                            </div>
+                        </b-col>
+                        <b-col cols="4">
+                            <div
+                                class="d-flex justify-content-start align-items-center mb-5"
+                                style="height: 165px;">
+                                <div
+                                    id="test-popover-2"
+                                    class="disabled"
+                                    style="height: 1px; width: 1px;"></div>
+                            </div>
+                        </b-col>
+                        <b-col cols="4">
+                            <div
+                                class="d-flex justify-content-center align-items-start mb-5"
+                                style="height: 165px;">
+                                <div
+                                    id="test-popover-3"
+                                    class="disabled"
+                                    style="height: 1px; width: 1px;"></div>
+                            </div>
+                        </b-col>
+                        <b-col cols="4">
+                            <div
+                                class="d-flex justify-content-center align-items-end mb-5"
+                                style="height: 165px;">
+                                <div
+                                    id="test-popover-4"
+                                    class="disabled"
+                                    style="height: 1px; width: 1px;"></div>
+                            </div>
+                        </b-col>
+                    </b-row>
+                    <hm-popover
+                        target="test-popover-1"
+                        placement="left"
+                        triggers="hover focus"
+                        :show.sync="showPopover">
+                        <template v-slot:title>Example heading</template>
+                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
+                    </hm-popover>
+                    <hm-popover
+                        target="test-popover-2"
+                        placement="right"
+                        triggers="hover focus"
+                        :show.sync="showPopover">
+                        <template v-slot:title>Example heading</template>
+                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
+                    </hm-popover>
+                    <hm-popover
+                        target="test-popover-3"
+                        placement="bottom"
+                        triggers="hover focus"
+                        :show.sync="showPopover">
+                        <template v-slot:title>Example heading</template>
+                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
+                    </hm-popover>
+                    <hm-popover
+                        target="test-popover-4"
+                        placement="top"
+                        triggers="hover focus"
+                        :show.sync="showPopover">
+                        <template v-slot:title>Example heading</template>
+                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
+                    </hm-popover>
                 </div>
             </div>
 

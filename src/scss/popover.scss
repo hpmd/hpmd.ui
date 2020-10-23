@@ -1,0 +1,7 @@
+.popover {
+    box-shadow: $popover-box-shadow;
+    &-header {
+        border-bottom: none;
+        padding-top: $spacer * 5;
+    }
+}

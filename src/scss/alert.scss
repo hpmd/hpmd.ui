@@ -18,4 +18,9 @@
             fill: $value;
         }
     }
+
+    button.close:focus {
+        opacity: .75;
+        outline: none;
+    }
 }

@@ -1,6 +1,5 @@
 .custom-checkbox {
-    display: inline-flex;
-    border-radius: 0.125rem;
+    display: inline-block;
 
     .custom-control-input:focus + .custom-control-label:before,
     &__focus .custom-control-label:before {
@@ -9,9 +8,9 @@
     }
 
     .custom-control-input {
-        width: 1.5rem;
-        height: 1.5rem;
-        
+        width: 100%;
+        height: 100%;
+
         &:indeterminate ~ .custom-control-label:before,
         &:checked ~ .custom-control-label:before {
             color: $white;
@@ -34,24 +33,26 @@
             background-size: contain;
         }
     }
-    &:hover,
-    &__hover {
+    &:hover .custom-control-input:not(:disabled) ~ .custom-control-label,
+    &__hover .custom-control-input:not(:disabled) ~ .custom-control-label {
         background-color: $gray-300;
     }
     .custom-control-label {
         padding-right: 0.25rem;
-        padding-left: 0.125rem;
+        padding-left: 1.625rem;
+        margin-left: -1.5rem;
         font-size: 0.875em;
         line-height: 1.5rem;
+        border-radius: $radius;
+        min-height: 1.5rem;
         &:empty {
             padding-right: 0;
-            padding-left: 0;
         }
         &:before,
         &:after {
             border-radius: 0.125rem;
             top: 0.35rem;
-            left: -1.15rem;
+            left: 0.35rem;
             width: 0.8rem;
             height: 0.8rem;
         }

@@ -1,0 +1,147 @@
+.vue-slider {
+    padding: $spacer * 3 0;
+    width: auto;
+    height: $spacer / 2;
+    &-disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &-rail {
+        background-color: $gray-500;
+    }
+
+    &-process {
+        background-color: $blue;
+    }
+
+    &-mark {
+        z-index: 4;
+
+        &:first-child .vue-slider-mark-step,
+        &:last-child .vue-slider-mark-step {
+            display: none;
+        }
+
+        &-mark:first-child .vue-slider-mark-step,
+        &-mark:last-child .vue-slider-mark-step {
+            display: none;
+        }
+
+        &-label {
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        &-step {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba($black, 0.16);
+        }
+    }
+
+    &-dot {
+        width: $spacer * 5;
+        height: $spacer * 5;
+        &-handle {
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: $white;
+            box-sizing: border-box;
+            border: $spacer solid $blue;
+
+            &-focus {
+                box-shadow: 0px 0px 1px 2px rgba($blue, 0.36);
+            }
+
+            &-disabled {
+                cursor: not-allowed;
+                background-color: $gray-500;
+            }
+        }
+
+        &-tooltip {
+            &-inner {
+                font-size: $fontSize;
+                line-height: $spacer * 5;
+                white-space: nowrap;
+                min-width: 20px;
+                text-align: center;
+                color: $gray-500;
+                box-sizing: content-box;
+
+                &-top {
+                    &:after {
+                        top: 100%;
+                        left: 50%;
+                        transform: translate(-50%, 0);
+                        height: 0;
+                        width: 0;
+                        border-color: transparent;
+                        border-style: solid;
+                        border-width: 5px;
+                        border-top-color: inherit;
+                    }
+                }
+
+                &-bottom {
+                    &:after {
+                        bottom: 100%;
+                        left: 50%;
+                        transform: translate(-50%, 0);
+                        height: 0;
+                        width: 0;
+                        border-color: transparent;
+                        border-style: solid;
+                        border-width: 5px;
+                        border-bottom-color: inherit;
+                    }
+                }
+
+                &-left {
+                    &:after {
+                        left: 100%;
+                        top: 50%;
+                        transform: translate(0, -50%);
+                        height: 0;
+                        width: 0;
+                        border-color: transparent;
+                        border-style: solid;
+                        border-width: 5px;
+                        border-left-color: inherit;
+                    }
+                }
+
+                &-right {
+                    &:after {
+                        right: 100%;
+                        top: 50%;
+                        transform: translate(0, -50%);
+                        height: 0;
+                        width: 0;
+                        border-color: transparent;
+                        border-style: solid;
+                        border-width: 5px;
+                        border-right-color: inherit;
+                    }
+                }
+            }
+
+            &-wrapper {
+                opacity: 0;
+                transition: all 0.3s;
+
+                &-show {
+                    opacity: 1;
+                }
+            }
+
+            &-bottom {
+                bottom: -($spacer / 2)!important;
+            }
+        }
+    }
+}

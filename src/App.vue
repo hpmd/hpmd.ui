@@ -1,6 +1,11 @@
 <script>
 import debounce from 'lodash.debounce';
 import Vue from 'vue';
+import {
+    uniFileCreateMonochrome,
+    uniFileShredderMonochrome,
+    uniEllipsisV
+} from '@/assets/icons/unicons';
 import HmInput from '@/components/HmInput';
 import HmBadge from '@/components/HmBadge';
 import HmCheckbox from '@/components/HmCheckbox';
@@ -10,6 +15,14 @@ import HmProgress from '@/components/HmProgress';
 import HmTooltip from '@/components/HmTooltip';
 import HmPopover from '@/components/HmPopover';
 import HmAlert from '@/components/HmAlert';
+import HmDropdown from '@/components/HmDropdown';
+import HmDropdownItem from '@/components/HmDropdownItem';
+
+HmIcon.add(
+    uniFileCreateMonochrome,
+    uniFileShredderMonochrome,
+    uniEllipsisV
+);
 
 /* eslint-disable no-param-reassign */
 function getRandomIntInRange(min, max) {
@@ -252,13 +265,15 @@ export default Vue.extend({
     },
     components: {
         HmAlert,
-        HmRadio,
         HmBadge,
         HmCheckbox,
+        HmDropdown,
+        HmDropdownItem,
         HmIcon,
         HmInput,
         HmPopover,
         HmProgress,
+        HmRadio,
         HmTooltip
     }
 });
@@ -648,6 +663,41 @@ export default Vue.extend({
                             @input="validateInputGroup">
                         </hm-input>
                     </b-form-group>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Dropdown</h2>
+
+                <div class="mt-4">
+                    <hm-dropdown
+                        no-caret
+                        size="sm"
+                        variant="white">
+                        <template v-slot:button-content>
+                            <div class="d-flex justify-content-center">
+                                <hm-icon name="ellipsis-v"></hm-icon>
+                            </div>
+                        </template>
+                        <hm-dropdown-item>
+                            <div class="d-flex align-items-center">
+                                <hm-icon
+                                    style="fill: currentColor;"
+                                    class="mr-2"
+                                    name="file-create"></hm-icon>
+                                <p class="mb-0">Копировать</p>
+                            </div>
+                        </hm-dropdown-item>
+                        <hm-dropdown-item>
+                            <div class="d-flex align-items-center">
+                                <hm-icon
+                                    style="fill: currentColor;"
+                                    class="mr-2"
+                                    name="file-shredder"></hm-icon>
+                                <p class="mb-0">Удалить</p>
+                            </div>
+                        </hm-dropdown-item>
+                    </hm-dropdown>
                 </div>
             </div>
 

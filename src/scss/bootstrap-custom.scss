@@ -204,13 +204,21 @@ $popover-box-shadow: 0px 4px 4px rgba($black, 0.1);
 
 // Range Slider
 
-$range-slider-width: auto;
-$range-slider-height: $spacer / 2;
-$range-slider-padding-x: 0;
-$range-slider-padding-y: $spacer * 3;
-$range-slider-rail-bg: $gray-500;
-$range-slider-process-bg: $blue;
-$range-slider-dot-handle-focus-border-radius: 0px 0px 1px 2px rgba($range-slider-process-bg, 0.36);
+$rangeslider-unfill-bg: $gray-500;
+$rangeslider-fill-bg: $blue;
+$rangeslider-dot-bg: $white;
+$rangeslider-tooltip-bg: transparent;
+$rangeslider-tooltip-color: $gray-500;
+
+$rangeslider-width: auto;
+$rangeslider-height: $spacer / 2;
+$rangeslider-padding-x: 0;
+$rangeslider-padding-y: $spacer * 3;
+
+$rangeslider-dot-width: $spacer * 5;
+$rangeslider-dot-height: $spacer * 5;
+
+$rangeslider-dot-handle-focus-border-radius: 0px 0px 1px 2px rgba($range-slider-process-bg, 0.36);
 
 
 // Tooltips

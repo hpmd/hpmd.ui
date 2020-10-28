@@ -178,6 +178,29 @@ $form-validation-states: ("valid": ("color": $form-feedback-valid-color,
         "icon": $form-feedback-icon-invalid),
 );
 
+// Dropdowns
+//
+// Dropdown menu container and contents.
+
+$dropdown-padding-y: 0;
+$dropdown-spacer: 0;
+$dropdown-font-size: $font-size-base !default;
+$dropdown-border-color: $white;
+$dropdown-border-radius: $radius;
+$dropdown-border-width: 0;
+$dropdown-inner-border-radius: 0;
+$dropdown-divider-bg: $gray-300;
+$dropdown-divider-margin-y: 0;
+$dropdown-box-shadow: 0 4px 4px $gray-200;
+
+$dropdown-link-active-color: $white;
+$dropdown-link-active-bg: $black;
+
+$dropdown-item-padding-y: $spacer * 2;
+$dropdown-item-padding-x: $spacer * 2;
+
+$dropdown-header-padding: $dropdown-padding-y $dropdown-item-padding-x;
+
 // Popovers
 
 $popover-heading-padding-bottom: $spacer;

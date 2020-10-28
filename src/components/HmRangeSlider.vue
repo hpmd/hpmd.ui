@@ -4,17 +4,13 @@ import VueSlider from 'vue-slider-component';
 export default {
     extends: VueSlider,
     props: {
-        width: {
-            type: String,
-            default: 'none'
-        },
         height: {
-            type: String,
-            default: 'none'
+            type: Number,
+            default: 2
         },
         dotSize: {
-            type: String,
-            default: 'none'
+            type: Number,
+            default: 20
         },
         tooltipPlacement: {
             type: String,

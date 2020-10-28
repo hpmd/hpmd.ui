@@ -210,3 +210,30 @@ $tooltip-padding-x: $spacer * 2;
 
 $tooltip-arrow-width: $spacer * 2;
 $tooltip-arrow-height: $spacer;
+
+// Selector
+
+$hmselector-el-padding-x: $spacer * 2;
+$hmselector-el-padding-y: $spacer;
+
+$hm-selector-el-margin-right: $spacer * 2;
+$hm-selector-el-margin-bottom: $spacer * 2;
+
+$hm-selector-el-borderRadius: $spacer * 4;
+
+$hm-selector-el-fontSize: $fontSize * 0.85;
+$hm-selector-el-fontWeight: 600;
+
+$hm-selector-el-border-width: 1px;
+$hm-selector-el-border-unactive-color: $gray;
+$hm-selector-el-border-active-color: $yellow;
+$hm-selector-el-disabled-border-unactive-color: $gray-300;
+$hm-selector-el-disabled-border-active-color: transparent;
+
+$hm-selector-el-unactive-color: $gray;
+$hm-selector-el-disabled-unactive-color: $gray-300;
+$hm-selector-el-active-color: $black;
+$hm-selector-el-disabled-active-color: $gray-500;
+
+$hm-selector-el-disabled-unactive-bg: $gray-100;
+$hm-selector-el-disabled-active-bg: rgba($yellow, 0.3);

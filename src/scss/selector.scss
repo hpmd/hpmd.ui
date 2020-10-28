@@ -1,0 +1,104 @@
+.hm-selector {
+    &-flex-column, &-flex-row {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    &-flex-column {
+        flex-direction: column;
+    }
+    &-flex-row {
+        flex-direction: row;
+        .hm-selector-el + .hm-selector-el {
+            margin-left: 6px;
+        }
+    }
+    &-inline-block {
+        display: block;
+        & > .hm-selector-el {
+            font-weight: $hm-selector-el-fontWeight;
+            font-size: $hm-selector-el-fontSize;
+            display: inline-block;
+            margin-right: $hm-selector-el-margin-right;
+            margin-bottom: $hm-selector-el-margin-bottom;
+        }
+    }
+    &-table {
+        display: block;
+        & > .hm-selector-el {
+            display: table;
+            margin: 10px 0;
+        }
+    }
+
+    &-el {
+        line-height: 1;
+        position: relative;
+
+        .hm-selector-column &,
+        .hm-selector-flex-column & {
+            &+.hm-selector-el {
+                margin-top: 1em;
+            }
+        }
+
+        .hm-selector-row & {
+            &+.hm-selector-el {
+                margin-left: 1em;
+            }
+        }
+
+        input {
+            opacity: 0;
+            position: absolute;
+            z-index: 0;
+        }
+
+        label {
+            background-color: transparent;
+            cursor: pointer;
+            margin-bottom: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+        }
+
+        &-slot {
+            padding: $hmselector-el-padding-y $hmselector-el-padding-x;
+
+            border: $hm-selector-el-border-width solid $hm-selector-el-border-unactive-color;
+            line-height: 1.5;
+
+            border-radius: $hm-selector-el-borderRadius;
+            transition: background-color .2s ease-in-out;
+
+            color: $hm-selector-el-unactive-color;
+        }
+
+        input:checked+.hm-selector-el-slot {
+            background-color: $yellow;
+            border-color: $hm-selector-el-border-active-color;
+            color: $hm-selector-el-active-color;
+        }
+
+        &.disabled {
+            label {
+                cursor: default;
+            }
+
+            .hm-selector-el-slot {
+                border-color: $hm-selector-el-disabled-border-unactive-color!important;
+                color: $hm-selector-el-disabled-unactive-color!important;
+                background-color: $hm-selector-el-disabled-unactive-bg;
+            }
+
+            input:checked+.hm-selector-el-slot {
+                border-color: $hm-selector-el-disabled-border-active-color !important;
+                background-color: $hm-selector-el-disabled-active-bg;
+                color: $hm-selector-el-disabled-active-color!important;
+            }
+        }
+    }
+}

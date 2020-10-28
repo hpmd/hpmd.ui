@@ -2,8 +2,8 @@
 import debounce from 'lodash.debounce';
 import Vue from 'vue';
 import {
-    uniFileCreateMonochrome,
-    uniFileShredderMonochrome,
+    uniFilePlusAlt,
+    uniTrashAlt,
     uniEllipsisV
 } from '@/assets/icons/unicons';
 import HmInput from '@/components/HmInput';
@@ -19,8 +19,8 @@ import HmDropdown from '@/components/HmDropdown';
 import HmDropdownItem from '@/components/HmDropdownItem';
 
 HmIcon.add(
-    uniFileCreateMonochrome,
-    uniFileShredderMonochrome,
+    uniFilePlusAlt,
+    uniTrashAlt,
     uniEllipsisV
 );
 
@@ -684,7 +684,7 @@ export default Vue.extend({
                                 <hm-icon
                                     style="fill: currentColor;"
                                     class="mr-2"
-                                    name="file-create"></hm-icon>
+                                    name="file-plus-alt"></hm-icon>
                                 <p class="mb-0">Копировать</p>
                             </div>
                         </hm-dropdown-item>
@@ -693,7 +693,7 @@ export default Vue.extend({
                                 <hm-icon
                                     style="fill: currentColor;"
                                     class="mr-2"
-                                    name="file-shredder"></hm-icon>
+                                    name="trash-alt"></hm-icon>
                                 <p class="mb-0">Удалить</p>
                             </div>
                         </hm-dropdown-item>

@@ -233,3 +233,19 @@ $tooltip-padding-x: $spacer * 2;
 
 $tooltip-arrow-width: $spacer * 2;
 $tooltip-arrow-height: $spacer;
+
+// Modals
+
+// Padding applied to the modal body
+$modal-inner-padding: $spacer * 5;
+
+// Margin between elements in footer, must be lower than or equal to 2 * $modal-inner-padding
+$modal-footer-margin-between: $spacer * 2;
+
+$modal-header-border-color: transparent;
+$modal-footer-border-color: transparent;
+$modal-header-border-width: 0;
+$modal-footer-border-width: 0;
+$modal-header-padding-top: $spacer * 5;
+$modal-header-padding-x: $spacer * 5;
+$modal-header-padding: $modal-header-padding-top $modal-header-padding-x 0;

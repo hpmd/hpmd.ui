@@ -1,0 +1,14 @@
+.modal {
+    &-header {
+        .close {
+            padding: $modal-header-padding-top/2 $spacer * 5;
+            margin: 0;
+            margin-top: -$modal-header-padding-top/2;
+            margin-right: -$modal-header-padding-top;
+        }
+    }
+    &-footer {
+        padding: $modal-header-padding-top;
+        padding-top: 0;
+    }
+}

@@ -1,6 +1,11 @@
 <script>
 import debounce from 'lodash.debounce';
 import Vue from 'vue';
+import {
+    uniFilePlusAlt,
+    uniTrashAlt,
+    uniEllipsisV
+} from '@/assets/icons/unicons';
 import HmInput from '@/components/HmInput';
 import HmBadge from '@/components/HmBadge';
 import HmCheckbox from '@/components/HmCheckbox';
@@ -11,6 +16,15 @@ import HmTooltip from '@/components/HmTooltip';
 import HmPopover from '@/components/HmPopover';
 import HmAlert from '@/components/HmAlert';
 import HmAvatar from '@/components/HmAvatar';
+import HmModal from '@/components/HmModal';
+import HmDropdown from '@/components/HmDropdown';
+import HmDropdownItem from '@/components/HmDropdownItem';
+
+HmIcon.add(
+    uniFilePlusAlt,
+    uniTrashAlt,
+    uniEllipsisV
+);
 
 /* eslint-disable no-param-reassign */
 function getRandomIntInRange(min, max) {
@@ -234,6 +248,7 @@ export default Vue.extend({
             radioModel: 'B',
             switchModel: false,
             showPopover: true,
+            showModal: false,
             showAlert: true
         };
     },
@@ -254,14 +269,17 @@ export default Vue.extend({
     components: {
         HmAlert,
         HmAvatar,
-        HmRadio,
         HmBadge,
         HmCheckbox,
+        HmDropdown,
+        HmDropdownItem,
         HmIcon,
         HmInput,
         HmPopover,
         HmProgress,
-        HmTooltip
+        HmRadio,
+        HmTooltip,
+        HmModal
     }
 });
 </script>
@@ -499,6 +517,27 @@ export default Vue.extend({
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Modals</h2>
+
+                <div class="mt-4">
+                    <b-btn
+                        variant="warning"
+                        v-on:click="showModal = !showModal">
+                        Показать модальное окно
+                    </b-btn>
+                    <hm-modal
+                        v-model="showModal"
+                        ok-variant="warning"
+                        cancel-variant="light"
+                        ok-title="Ясно"
+                        cancel-title="Понятно"
+                        title="Напоминалочка">
+                        <p class="mb-0">Производство в принципе масштабирует убывающий инвестиционный продукт. Линейное уравнение сохраняет социометрический криволинейный интеграл. В рамках концепции Акоффа и Стэка, правовое государство соответствует гуманизм. Ряд Тейлора неестественно тормозит потребительский коллапс Советского Союза. Теорема представляет собой  культ  личности. Огибающая очевидна не для всех. Ряд Тейлора неестественно тормозит. Ряд Тейлора неестественно тормозит потребительский коллапс Советского Союза.</p>
+                    </hm-modal>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Progress bar</h2>
 
                 <b-row>
@@ -686,6 +725,41 @@ export default Vue.extend({
                             @input="validateInputGroup">
                         </hm-input>
                     </b-form-group>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Dropdown</h2>
+
+                <div class="mt-4">
+                    <hm-dropdown
+                        no-caret
+                        size="sm"
+                        variant="white">
+                        <template v-slot:button-content>
+                            <div class="d-flex justify-content-center">
+                                <hm-icon name="ellipsis-v"></hm-icon>
+                            </div>
+                        </template>
+                        <hm-dropdown-item>
+                            <div class="d-flex align-items-center">
+                                <hm-icon
+                                    style="fill: currentColor;"
+                                    class="mr-2"
+                                    name="file-plus-alt"></hm-icon>
+                                <p class="mb-0">Копировать</p>
+                            </div>
+                        </hm-dropdown-item>
+                        <hm-dropdown-item>
+                            <div class="d-flex align-items-center">
+                                <hm-icon
+                                    style="fill: currentColor;"
+                                    class="mr-2"
+                                    name="trash-alt"></hm-icon>
+                                <p class="mb-0">Удалить</p>
+                            </div>
+                        </hm-dropdown-item>
+                    </hm-dropdown>
                 </div>
             </div>
 

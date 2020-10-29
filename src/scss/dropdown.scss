@@ -1,0 +1,23 @@
+.dropdown {
+    &-toggle {
+        &:hover {
+            box-shadow: $dropdown-box-shadow;
+        }
+    }
+
+    &.show .dropdown-toggle {
+        box-shadow: $dropdown-box-shadow;
+    }
+
+    &-menu {
+        box-shadow: $dropdown-box-shadow;
+        li {
+            border-top: 1px solid $gray-300;
+            margin-bottom: 0;
+
+            &:first-child {
+                border-top: none;
+            }
+        }
+    }
+}

@@ -10,6 +10,7 @@ import HmProgress from '@/components/HmProgress';
 import HmTooltip from '@/components/HmTooltip';
 import HmPopover from '@/components/HmPopover';
 import HmAlert from '@/components/HmAlert';
+import HmAvatar from '@/components/HmAvatar';
 
 /* eslint-disable no-param-reassign */
 function getRandomIntInRange(min, max) {
@@ -252,6 +253,7 @@ export default Vue.extend({
     },
     components: {
         HmAlert,
+        HmAvatar,
         HmRadio,
         HmBadge,
         HmCheckbox,
@@ -322,6 +324,42 @@ export default Vue.extend({
                             </ul>
                         </b-col>
                     </b-row>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <div class="mt-4 d-flex justify-content-start">
+                    <hm-avatar
+                        class="mr-3 mb-2"
+                        variant="light"
+                        size="sm"
+                        src="https://placekitten.com/300/300" />
+                    <hm-avatar
+                        class="mr-3 mb-2"
+                        size="sm"
+                        variant="light" />
+                </div>
+                <div class="mt-4 d-flex justify-content-start">
+                    <hm-avatar
+                        class="mr-3 mb-2"
+                        variant="light"
+                        size="md"
+                        src="https://placekitten.com/300/300" />
+                    <hm-avatar
+                        class="mr-3 mb-2"
+                        size="md"
+                        variant="light" />
+                </div>
+                <div class="mt-4 d-flex justify-content-start">
+                    <hm-avatar
+                        class="mr-3 mb-2"
+                        variant="light"
+                        size="lg"
+                        src="https://placekitten.com/300/300" />
+                    <hm-avatar
+                        class="mr-3 mb-2"
+                        size="lg"
+                        variant="light" />
                 </div>
             </div>
 

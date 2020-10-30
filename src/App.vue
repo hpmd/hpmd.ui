@@ -15,6 +15,7 @@ import HmProgress from '@/components/HmProgress';
 import HmTooltip from '@/components/HmTooltip';
 import HmPopover from '@/components/HmPopover';
 import HmAlert from '@/components/HmAlert';
+import HmRangeSlider from '@/components/HmRangeSlider';
 import HmModal from '@/components/HmModal';
 import HmDropdown from '@/components/HmDropdown';
 import HmDropdownItem from '@/components/HmDropdownItem';
@@ -245,6 +246,8 @@ export default Vue.extend({
                 }
             ],
             radioModel: 'B',
+            rangeSliderModel1: [20],
+            rangeSliderModel2: [7, 20],
             switchModel: false,
             showPopover: true,
             showModal: false,
@@ -275,6 +278,7 @@ export default Vue.extend({
         HmInput,
         HmPopover,
         HmProgress,
+        HmRangeSlider,
         HmRadio,
         HmTooltip,
         HmModal
@@ -687,6 +691,23 @@ export default Vue.extend({
                             @input="validateInputGroup">
                         </hm-input>
                     </b-form-group>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Слайдер</h2>
+
+                <div class="mt-4">
+                    <hm-range-slider
+                        :min="0"
+                        :max="30"
+                        v-model="rangeSliderModel1"></hm-range-slider>
+                </div>
+                <div class="mt-4">
+                    <hm-range-slider
+                        :min="0"
+                        :max="30"
+                        v-model="rangeSliderModel2"></hm-range-slider>
                 </div>
             </div>
 

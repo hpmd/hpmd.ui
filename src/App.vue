@@ -16,6 +16,9 @@ import HmTooltip from '@/components/HmTooltip';
 import HmPopover from '@/components/HmPopover';
 import HmAlert from '@/components/HmAlert';
 import HmAvatar from '@/components/HmAvatar';
+import HmSelector from '@/components/HmSelector';
+import HmSelectorEl from '@/components/HmSelectorEl';
+import HmRangeSlider from '@/components/HmRangeSlider';
 import HmModal from '@/components/HmModal';
 import HmDropdown from '@/components/HmDropdown';
 import HmDropdownItem from '@/components/HmDropdownItem';
@@ -246,8 +249,25 @@ export default Vue.extend({
                 }
             ],
             radioModel: 'B',
+            rangeSliderModel1: [20],
+            rangeSliderModel2: [7, 20],
             switchModel: false,
             showPopover: true,
+            selectors: {
+                active: {
+                    text: 'Активная',
+                    disabled: false
+                },
+                available: {
+                    text: 'Доступная',
+                    disabled: false
+                },
+                nonactive: {
+                    text: 'Неактивная',
+                    disabled: true
+                }
+            },
+            selectorModel: ['active'],
             showModal: false,
             showAlert: true
         };
@@ -277,7 +297,10 @@ export default Vue.extend({
         HmInput,
         HmPopover,
         HmProgress,
+        HmRangeSlider,
         HmRadio,
+        HmSelector,
+        HmSelectorEl,
         HmTooltip,
         HmModal
     }
@@ -346,6 +369,19 @@ export default Vue.extend({
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">Avatars</h2>
+
+                <div class="mt-4 d-flex justify-content-start">
+                    <hm-avatar
+                        class="mr-3 mb-2"
+                        variant="light"
+                        size="xs"
+                        src="https://placekitten.com/300/300" />
+                    <hm-avatar
+                        class="mr-3 mb-2"
+                        size="xs"
+                        variant="light" />
+                </div>
                 <div class="mt-4 d-flex justify-content-start">
                     <hm-avatar
                         class="mr-3 mb-2"
@@ -729,6 +765,23 @@ export default Vue.extend({
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Слайдер</h2>
+
+                <div class="mt-4">
+                    <hm-range-slider
+                        :min="0"
+                        :max="30"
+                        v-model="rangeSliderModel1"></hm-range-slider>
+                </div>
+                <div class="mt-4">
+                    <hm-range-slider
+                        :min="0"
+                        :max="30"
+                        v-model="rangeSliderModel2"></hm-range-slider>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Dropdown</h2>
 
                 <div class="mt-4">
@@ -760,6 +813,24 @@ export default Vue.extend({
                             </div>
                         </hm-dropdown-item>
                     </hm-dropdown>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">Selector</h2>
+
+                <div class="mt-4">
+                    <hm-selector layout="inline-block">
+                        <hm-selector-el
+                            v-for="(selector, key) in selectors"
+                            v-model="selectorModel"
+                            :key="`selector-${key}`"
+                            :value="key"
+                            :disabled="selector.disabled"
+                            :checkbox-limit="1">
+                            {{selector.text}}
+                        </hm-selector-el>
+                    </hm-selector>
                 </div>
             </div>
 

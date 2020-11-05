@@ -13,6 +13,11 @@ export default {
                 <HmIcon name="user"></HmIcon>
             )];
         }
+    },
+    mounted() {
+        if (this.size === 'xs' && this.$el && this.$el.className.indexOf('b-avatar-xs') === -1) {
+            this.$el.classList.add('b-avatar-xs');
+        }
     }
 };
 </script>

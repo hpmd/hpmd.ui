@@ -2,6 +2,11 @@
     width: $hmavatar-md-size;
     height: $hmavatar-md-size;
 
+    &-xs {
+        width: $hmavatar-xs-size;
+        height: $hmavatar-xs-size;
+    }
+
     &-sm {
         width: $hmavatar-sm-size;
         height: $hmavatar-sm-size;

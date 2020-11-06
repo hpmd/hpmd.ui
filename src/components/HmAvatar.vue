@@ -83,8 +83,6 @@ export default {
 
         let $content = null;
 
-        console.log('kek ', this, hasNormalizedSlot);
-
         if (hasNormalizedSlot()) {
             // Default slot overrides props
 

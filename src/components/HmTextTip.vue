@@ -21,7 +21,8 @@ export default {
                 <span
                     id={`hm-texttip-${_uid}`}
                     class="hm-texttip"
-                    tabindex="0">
+                    tabindex="0"
+                    aria-controls={_uid}>
                     {this.$slots.default}
                 </span>
                 <HmTooltip

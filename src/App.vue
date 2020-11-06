@@ -21,6 +21,9 @@ import HmRangeSlider from '@/components/HmRangeSlider';
 import HmModal from '@/components/HmModal';
 import HmDropdown from '@/components/HmDropdown';
 import HmDropdownItem from '@/components/HmDropdownItem';
+import HmNav from '@/components/HmNav';
+import HmNavItem from '@/components/HmNavItem';
+import HmNavItemDropdown from '@/components/HmNavItemDropdown';
 
 HmIcon.add(
     uniFilePlusAlt,
@@ -294,6 +297,9 @@ export default Vue.extend({
         HmDropdownItem,
         HmIcon,
         HmInput,
+        HmNav,
+        HmNavItem,
+        HmNavItemDropdown,
         HmPopover,
         HmProgress,
         HmRangeSlider,
@@ -1134,20 +1140,20 @@ export default Vue.extend({
                             class="mb-5"
                             cols="6">
                             <h5>Tabs</h5>
-                            <b-nav tabs>
-                                <b-nav-item active>Выбранная</b-nav-item>
-                                <b-nav-item>Доступная</b-nav-item>
-                                <b-nav-item class="hover">Ховер</b-nav-item>
-                                <b-nav-item disabled>Недоступная</b-nav-item>
-                            </b-nav>
+                            <hm-nav tabs>
+                                <hm-nav-item active>Выбранная</hm-nav-item>
+                                <hm-nav-item>Доступная</hm-nav-item>
+                                <hm-nav-item class="hover">Ховер</hm-nav-item>
+                                <hm-nav-item disabled>Недоступная</hm-nav-item>
+                            </hm-nav>
                         </b-col>
                         <b-col
                             class="mb-5"
                             cols="6">
                             <h5>Tabs with dropdowns</h5>
-                            <b-nav tabs>
-                                <b-nav-item active>Выбранная</b-nav-item>
-                                <b-nav-item-dropdown
+                            <hm-nav tabs>
+                                <hm-nav-item active>Выбранная</hm-nav-item>
+                                <hm-nav-item-dropdown
                                     variant="light"
                                     text="Доступная">
                                     <b-dropdown-item>One</b-dropdown-item>
@@ -1155,27 +1161,27 @@ export default Vue.extend({
                                     <b-dropdown-item>Two</b-dropdown-item>
                                     <b-dropdown-divider></b-dropdown-divider>
                                     <b-dropdown-item>Three</b-dropdown-item>
-                                </b-nav-item-dropdown>
-                                <b-nav-item>Доступная</b-nav-item>
-                                <b-nav-item disabled>Недоступная</b-nav-item>
-                            </b-nav>
+                                </hm-nav-item-dropdown>
+                                <hm-nav-item>Доступная</hm-nav-item>
+                                <hm-nav-item disabled>Недоступная</hm-nav-item>
+                            </hm-nav>
                         </b-col>
                         <b-col
                             class="mb-5"
                             cols="6">
                             <h5>Pills</h5>
-                            <b-nav pills>
-                                <b-nav-item active>Выбранная</b-nav-item>
-                                <b-nav-item>Доступная</b-nav-item>
-                            </b-nav>
+                            <hm-nav pills>
+                                <hm-nav-item active>Выбранная</hm-nav-item>
+                                <hm-nav-item>Доступная</hm-nav-item>
+                            </hm-nav>
                         </b-col>
                         <b-col
                             class="mb-5"
                             cols="6">
                             <h5>Pills with dropdowns</h5>
-                            <b-nav pills>
-                                <b-nav-item active>Выбранная</b-nav-item>
-                                <b-nav-item-dropdown
+                            <hm-nav pills>
+                                <hm-nav-item active>Выбранная</hm-nav-item>
+                                <hm-nav-item-dropdown
                                     variant="light"
                                     text="Доступная">
                                     <b-dropdown-item>One</b-dropdown-item>
@@ -1183,10 +1189,10 @@ export default Vue.extend({
                                     <b-dropdown-item>Two</b-dropdown-item>
                                     <b-dropdown-divider></b-dropdown-divider>
                                     <b-dropdown-item>Three</b-dropdown-item>
-                                </b-nav-item-dropdown>
-                                <b-nav-item title-link-class="hover">Доступная</b-nav-item>
-                                <b-nav-item disabled>Недоступная</b-nav-item>
-                            </b-nav>
+                                </hm-nav-item-dropdown>
+                                <hm-nav-item title-link-class="hover">Доступная</hm-nav-item>
+                                <hm-nav-item disabled>Недоступная</hm-nav-item>
+                            </hm-nav>
                         </b-col>
                     </b-row>
                 </div>

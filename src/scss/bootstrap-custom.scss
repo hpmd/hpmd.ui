@@ -189,15 +189,17 @@ $dropdown-border-color: $white;
 $dropdown-border-radius: $radius;
 $dropdown-border-width: 0;
 $dropdown-inner-border-radius: 0;
-$dropdown-divider-bg: $gray-300;
+$dropdown-divider-bg: $gray-500;
+$dropdown-disabled-bg: $gray-300;
 $dropdown-divider-margin-y: 0;
 $dropdown-box-shadow: 0 4px 4px $gray-200;
+$dropdown-text-fontWeight: 600;
 
 $dropdown-link-active-color: $white;
 $dropdown-link-active-bg: $black;
 
 $dropdown-item-padding-y: $spacer * 2;
-$dropdown-item-padding-x: $spacer * 2;
+$dropdown-item-padding-x: $spacer * 3;
 
 $dropdown-header-padding: $dropdown-padding-y $dropdown-item-padding-x;
 
@@ -297,3 +299,25 @@ $modal-footer-border-width: 0;
 $modal-header-padding-top: $spacer * 5;
 $modal-header-padding-x: $spacer * 5;
 $modal-header-padding: $modal-header-padding-top $modal-header-padding-x 0;
+
+// Navs
+
+$nav-link-padding-y: $spacer * 2;
+$nav-link-padding-x: $spacer * 2;
+
+$nav-link-pills-padding-y: $spacer;
+$nav-link-pills-padding-x: $spacer * 3;
+
+$nav-link-disabled-color: $gray-400;
+
+$nav-tabs-border-color: $black;
+$nav-tabs-border-width: $spacer / 2;
+$nav-tabs-border-radius: $radius;
+$nav-tabs-link-hover-border-color: transparent transparent $gray-500 transparent;
+$nav-tabs-link-color: $gray-500;
+$nav-tabs-link-active-color: $black;
+$nav-tabs-link-active-border-color: transparent transparent $nav-tabs-border-color transparent;
+
+$nav-pills-border-radius: $radius;
+$nav-pills-link-active-color: $white;
+$nav-pills-link-active-bg: $black;

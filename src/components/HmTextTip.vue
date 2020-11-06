@@ -15,18 +15,19 @@ export default {
     },
     render() {
         const { _uid } = this;
+        const id = `hm-texttip-${_uid}`;
 
         return (
             <span>
                 <span
-                    id={`hm-texttip-${_uid}`}
+                    id={id}
                     class="hm-texttip"
                     tabindex="0"
                     aria-controls={_uid}>
                     {this.$slots.default}
                 </span>
                 <HmTooltip
-                    target={`hm-texttip-${_uid}`}
+                    target={id}
                     triggers={this.triggers}>
                     {this.tip}
                 </HmTooltip>

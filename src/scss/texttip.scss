@@ -3,7 +3,9 @@
     padding: $tooltip-padding-y $tooltip-padding-x;
     border-radius: $radius;
 
-    &:hover {
+    &:hover,
+    &:focus {
+        outline: none;
         background-color: $texttip-hover-bg;
     }
 }

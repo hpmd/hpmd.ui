@@ -10,22 +10,22 @@ export default {
         },
         triggers: {
             type: String,
-            default: 'hover'
+            default: 'hover focus'
         }
     },
     render() {
-        const rndId = Math.round(Math.random() * 9999);
+        const { _uid } = this;
 
         return (
             <span>
                 <span
-                    id={`hm-texttip-${rndId}`}
+                    id={`hm-texttip-${_uid}`}
                     class="hm-texttip"
-                    title={this.tip}>
+                    tabindex="0">
                     {this.$slots.default}
                 </span>
                 <HmTooltip
-                    target={`hm-texttip-${rndId}`}
+                    target={`hm-texttip-${_uid}`}
                     triggers={this.triggers}>
                     {this.tip}
                 </HmTooltip>

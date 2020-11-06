@@ -23,7 +23,9 @@ export default {
                         <b-row class="align-items-center">
                             <b-col cols="auto">
                                 <div class="alert-round rounded-circle d-flex align-items-center justify-content-center">
-                                    <HmIcon name="exclamation-triangle"></HmIcon>
+                                    <HmIcon
+                                        class="d-flex"
+                                        name="exclamation-triangle"></HmIcon>
                                 </div>
                             </b-col>
                             <b-col>

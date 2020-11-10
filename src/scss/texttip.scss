@@ -1,0 +1,11 @@
+.hm-texttip {
+    background-color: $texttip-bg;
+    padding: $tooltip-padding-y $tooltip-padding-x;
+    border-radius: $radius;
+
+    &:hover,
+    &:focus {
+        outline: none;
+        background-color: $texttip-hover-bg;
+    }
+}

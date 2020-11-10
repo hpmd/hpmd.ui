@@ -256,8 +256,8 @@ $rangeslider-dot-handle-focus-border-radius: 0px 0px 1px 2px rgba($rangeslider-f
 // Tooltips
 
 $tooltip-border-radius: $radius;
-$tooltip-padding-y: $spacer;
-$tooltip-padding-x: $spacer * 2;
+$tooltip-padding-y: 0px;
+$tooltip-padding-x: $spacer / 2;
 
 $tooltip-arrow-width: $spacer * 2;
 $tooltip-arrow-height: $spacer;
@@ -289,6 +289,14 @@ $hm-selector-el-disabled-active-color: $gray-500;
 
 $hm-selector-el-disabled-unactive-bg: $gray-100;
 $hm-selector-el-disabled-active-bg: rgba($yellow, 0.3);
+
+// Text tip
+
+$texttip-bg: $gray-400;
+$texttip-hover-bg: rgba($blue, 0.3);
+
+$texttip-padding-x: 0;
+$texttip-padding-y: rgba($blue, 0.3);
 
 
 // Modals

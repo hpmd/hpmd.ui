@@ -1,0 +1,32 @@
+.b-avatar {
+    width: $hmavatar-md-size;
+    height: $hmavatar-md-size;
+
+    &-xs {
+        width: $hmavatar-xs-size;
+        height: $hmavatar-xs-size;
+    }
+
+    &-sm {
+        width: $hmavatar-sm-size;
+        height: $hmavatar-sm-size;
+    }
+
+    &-lg {
+        width: $hmavatar-lg-size;
+        height: $hmavatar-lg-size;
+    }
+
+    &-custom {
+        .hm-icon {
+            width: 60%;
+            height: 60%;
+
+            svg {
+                width: 100%;
+                height: 100%;
+                fill: currentColor;
+            }
+        }
+    }
+}

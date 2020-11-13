@@ -138,10 +138,20 @@ export default {
                     <div class="drag-file-circle mr-5">
                         <HmIcon name={ this.error ? 'exclamation-circle' : 'upload'} />
                     </div>
-                    <div class="drag-file-placeholder-wrap">
-                        <p class="drag-file-placeholder mb-1">{this.error ? this.errorPlaceholder : this.placeholder}</p>
-                        <span class="drag-file-placeholder-tip">{this.error ? this.errorPlaceholderTip : this.placeholderTip}</span>
-                    </div>
+                    {
+                        (this.value && this.value.length && this.$slots.hasFiles) ?
+                            (
+                                <div class="drag-file-placeholder-wrap">
+                                    {this.$slots.hasFiles}
+                                </div>
+                            ) :
+                            (
+                                <div class="drag-file-placeholder-wrap">
+                                    <p class="drag-file-placeholder mb-1">{this.error ? this.errorPlaceholder : this.placeholder}</p>
+                                    <span class="drag-file-placeholder-tip">{this.error ? this.errorPlaceholderTip : this.placeholderTip}</span>
+                                </div>
+                            )
+                    }
                     <BFormFile
                         draggable="draggable"
                         disabled={this.disabled}

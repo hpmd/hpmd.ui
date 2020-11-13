@@ -663,7 +663,7 @@ export default Vue.extend({
                         <h4>Drag n drop</h4>
 
                         <div class="mt-4">
-                            <hm-drag-file v-model="dragAndDropModel" />
+                            <hm-drag-file v-model="dragAndDropModel"></hm-drag-file>
                         </div>
                     </b-col>
                     <b-col>
@@ -673,7 +673,8 @@ export default Vue.extend({
                             <div style="position: relative; height: 300px;">
                                 <hm-drag-file
                                     fill-container
-                                    v-model="dragAndDropModel" />
+                                    v-model="dragAndDropModel">
+                                </hm-drag-file>
                             </div>
                         </div>
                     </b-col>

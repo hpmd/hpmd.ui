@@ -26,6 +26,12 @@ import HmTextTip from '@/components/HmTextTip';
 import HmNav from '@/components/HmNav';
 import HmNavItem from '@/components/HmNavItem';
 import HmNavItemDropdown from '@/components/HmNavItemDropdown';
+import {
+    HmInputGroup,
+    HmInputGroupAppend,
+    HmInputGroupPrepend
+} from '@/components/input-group';
+import HmButton from '@/components/HmButton';
 
 HmIcon.add(
     uniFilePlusAlt,
@@ -295,11 +301,15 @@ export default Vue.extend({
         HmAlert,
         HmAvatar,
         HmBadge,
+        HmButton,
         HmCheckbox,
         HmDropdown,
         HmDropdownItem,
         HmIcon,
         HmInput,
+        HmInputGroup,
+        HmInputGroupAppend,
+        HmInputGroupPrepend,
         HmNav,
         HmNavItem,
         HmNavItemDropdown,
@@ -756,7 +766,7 @@ export default Vue.extend({
                     </div>
                 </div>
 
-                <div>
+                <div class="mb-4">
                     <h4>Input message</h4>
 
                     <b-form-group
@@ -770,6 +780,50 @@ export default Vue.extend({
                             @input="validateInputGroup">
                         </hm-input>
                     </b-form-group>
+                </div>
+
+                <div>
+                    <h4>Input group</h4>
+
+                    <hm-input-group class="mb-5">
+                        <hm-input
+                            v-model="inputs.text"
+                            label="Append slot" />
+
+                        <template v-slot:append>
+                            <hm-button variant="primary">test</hm-button>
+                        </template>
+                    </hm-input-group>
+
+                    <hm-input-group class="mb-5">
+                        <hm-input-group-prepend>
+                            <hm-button variant="warning">Left action</hm-button>
+                        </hm-input-group-prepend>
+                        <hm-input v-model="inputs.text" label="Prepend component" />
+                    </hm-input-group>
+
+                    <hm-input-group class="mb-5">
+                        <hm-input-group-prepend is-text>
+                            Just any text
+                        </hm-input-group-prepend>
+
+                        <hm-input v-model="inputs.text" label="Text prepend"></hm-input>
+                    </hm-input-group>
+
+                    <hm-input-group>
+                        <hm-input-group-prepend>
+                            <hm-dropdown text="Choose" variant="warning">
+                                <hm-dropdown-item>Option 1</hm-dropdown-item>
+                                <hm-dropdown-item>Option 2</hm-dropdown-item>
+                            </hm-dropdown>
+                        </hm-input-group-prepend>
+
+                        <hm-input v-model="inputs.text" label="Both sides" />
+
+                        <hm-input-group-append>
+                            <hm-button variant="primary">Action!</hm-button>
+                        </hm-input-group-append>
+                    </hm-input-group>
                 </div>
             </div>
 

@@ -1,3 +1,18 @@
+/* $themeColor: $primary;
+$bgColor: $gray-400;
+
+
+
+@import '~vue-slider-component/lib/theme/default.scss';
+
+// Overrides
+.vue-slider-dot {
+    @at-root &-handle {
+        border: 2px solid $themeColor;
+    }
+} */
+
+
 .vue-slider {
     padding: $rangeslider-padding-y $rangeslider-padding-x;
     width: $rangeslider-width;
@@ -30,7 +45,9 @@
         }
 
         &-label {
-            font-size: $fontSize;
+            color: $rangeslider-mark-color;
+            font-size: $rangeslider-mark-fontsize;
+            margin-top: $rangeslider-mark-margin-top !important;
             white-space: nowrap;
         }
 
@@ -56,7 +73,7 @@
             border-radius: 50%;
             background-color: $rangeslider-dot-bg;
             box-sizing: border-box;
-            border: $spacer solid $rangeslider-fill-bg;
+            border: $spacer/2 solid $rangeslider-fill-bg;
 
             &-focus {
                 box-shadow: $rangeslider-dot-handle-focus-border-radius;
@@ -146,7 +163,11 @@
             }
 
             &-bottom {
-                bottom: -($spacer / 2)!important;
+                bottom: $rangeslider-tooltip-offset-bottom !important;
+            }
+
+            &-top {
+                top: $rangeslider-tooltip-offset-top !important;
             }
         }
     }

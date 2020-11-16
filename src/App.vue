@@ -33,6 +33,7 @@ import {
 } from '@/components/input-group';
 import { HmButton } from '@/components/button';
 import { HmButtonGroup } from '@/components/button-group';
+import { HmTable } from '@/components/table';
 
 HmIcon.add(
     uniFilePlusAlt,
@@ -323,7 +324,8 @@ export default Vue.extend({
         HmSelectorEl,
         HmTextTip,
         HmTooltip,
-        HmModal
+        HmModal,
+        HmTable
     }
 });
 </script>
@@ -1058,7 +1060,7 @@ export default Vue.extend({
                                     class="small mr-4">default</span>
                                 <hm-dropdown
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1076,7 +1078,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     disabled
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1094,7 +1096,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     class="hover"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1112,7 +1114,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     class="focus"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1130,7 +1132,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     v-model="dropdownModel"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1153,7 +1155,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     split
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1191,7 +1193,7 @@ export default Vue.extend({
                                     split
                                     class="hover"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1210,7 +1212,7 @@ export default Vue.extend({
                                     split
                                     class="focus"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1229,7 +1231,7 @@ export default Vue.extend({
                                     split
                                     v-model="dropdownModel"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1243,6 +1245,19 @@ export default Vue.extend({
                         </div>
                     </b-col>
                 </b-row>
+
+                <div class="mt-5">
+                    <h5>Sizing</h5>
+
+                    <hm-dropdown
+                        class="mr-3"
+                        v-for="sizekey in ['xs', 'sm', 'md', 'lg']"
+                        :size="sizekey"
+                        :key="`dropdown-size-${sizekey}`"
+                        :text="`Size ${sizekey}`">
+                        <hm-dropdown-item>123</hm-dropdown-item>
+                    </hm-dropdown>
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
@@ -1323,7 +1338,7 @@ export default Vue.extend({
                             :key="`selector-${key}`"
                             :value="key"
                             :disabled="selector.disabled"
-                            :checkbox-limit="1">
+                            :checkbox-limit="3">
                             {{selector.text}}
                         </hm-selector-el>
                     </hm-selector>
@@ -1595,7 +1610,7 @@ export default Vue.extend({
                     v-for="tableStyle in ['light', 'dark']"
                     :key="`table-${tableStyle}`">
                     <h4>{{tableStyle}}</h4>
-                    <b-table
+                    <hm-table
                         :table-variant="tableStyle"
                         primary-key="id"
                         hover
@@ -1633,7 +1648,7 @@ export default Vue.extend({
                                 action
                             </hm-button>
                         </template>
-                    </b-table>
+                    </hm-table>
                 </div>
             </div>
         </b-container>

@@ -32,6 +32,7 @@ import {
     HmInputGroupPrepend
 } from '@/components/input-group';
 import { HmButton } from '@/components/button';
+import { HmButtonGroup } from '@/components/button-group';
 
 HmIcon.add(
     uniFilePlusAlt,
@@ -302,6 +303,7 @@ export default Vue.extend({
         HmAvatar,
         HmBadge,
         HmButton,
+        HmButtonGroup,
         HmCheckbox,
         HmDropdown,
         HmDropdownItem,
@@ -832,12 +834,17 @@ export default Vue.extend({
 
                 <div class="mt-4">
                     <hm-range-slider
+                        tooltip="always"
+                        :marks="true"
+                        lazy
                         :min="0"
                         :max="30"
                         v-model="rangeSliderModel1"></hm-range-slider>
                 </div>
                 <div class="mt-4">
                     <hm-range-slider
+                        lazy
+                        tooltip-placement="bottom"
                         :min="0"
                         :max="30"
                         v-model="rangeSliderModel2"></hm-range-slider>

@@ -6,11 +6,20 @@ export default {
     props: {
         dotSize: {
             type: Number,
-            default: 20
+            default: 16
         },
-        tooltipPlacement: {
-            type: String,
-            default: 'bottom'
+        height: {
+            type: Number,
+            default: 2
+        },
+        /**
+         * true means that model will be updated after action (drag / click / move is finished)
+         * It's highly recommended to keep it "true" in complex interfaces
+         * cause of huge performance impact
+         */
+        lazy: {
+            type: Boolean,
+            default: true
         }
     },
     computed: {

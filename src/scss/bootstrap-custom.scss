@@ -201,7 +201,7 @@ $dropdown-divider-bg: $gray-500;
 $dropdown-disabled-bg: $gray-300;
 $dropdown-divider-margin-y: 0;
 $dropdown-box-shadow: 0 4px 4px $gray-200;
-$dropdown-text-fontWeight: 600;
+$dropdown-text-fontWeight: 400;
 
 $dropdown-link-active-color: $white;
 $dropdown-link-active-bg: $black;
@@ -253,10 +253,40 @@ $rangeslider-padding-y: $spacer * 3;
 $rangeslider-dot-width: $spacer * 4;
 $rangeslider-dot-height: $spacer * 4;
 $rangeslider-dot-handle-focus-border-radius: 0px 0px 1px 2px rgba($rangeslider-fill-bg, 0.36);
-
 $rangeslider-mark-fontsize: 11px;
 $rangeslider-mark-color: $gray-400;
 $rangeslider-mark-margin-top: $rangeslider-dot-height / 2;
+
+// File
+$custom-file-width: auto;
+$custom-file-height: 2.25em;
+$custom-file-height-inner: calc(1em + 0.5em);
+$custom-file-focus-border-color: transparent;
+$custom-file-focus-box-shadow: none;
+$custom-file-disabled-bg: $input-disabled-bg !default;
+
+$custom-file-padding-y: 0.25em;
+$custom-file-padding-x: 0.25em;
+$custom-file-line-height: 1em;
+$custom-file-color: $black;
+$custom-file-border-color: transparent;
+$custom-file-border-radius: $radius * 2;
+$custom-file-button-color: $gray;
+$custom-file-button-bg: $gray-300;
+$custom-file-button-margin-right: $spacer * 3;
+
+// Drop and down
+$drag-file-border-style: 1px;
+$drag-file-border-style-basic: dashed;
+$drag-file-border-style-active: solid;
+
+$drag-file-basic-color: $gray-500;
+$drag-file-active-color: $blue;
+$drag-file-error-color: $red;
+
+$drag-file-circle-width: $spacer * 10;
+$drag-file-circle-height: $spacer * 10;
+$drag-file-circle-icon-color: $white;
 
 
 // Tooltips

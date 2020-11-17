@@ -1,0 +1,62 @@
+.b-calendar {
+    @each $color, $value in $theme-colors {
+        & .btn-#{$color},
+        & .btn-outline-#{$color} {
+            color: $value;
+        }
+    }
+    &:focus {
+        outline: none;
+    }
+    &-grid {
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+    &-header {
+        output {
+            border-bottom: none;
+            border-radius: 0;
+            &:nth-child(2) {
+                border-left: 0;
+            }
+        }
+    }
+    &-selected-bg {
+        background-color: $calendar-range-selected-bg!important;
+    }
+    &-grid-weekdays {
+        padding: $calendar-grid-weekdays-padding-x $calendar-grid-weekdays-padding-y;
+        small {
+            max-width: $spacer * 8;
+            font-size: $calendar-grid-font-size-numbers!important;
+            color: $gray-600;
+        }
+    }
+    &-grid-body {
+        padding: $calendar-grid-body-padding-x $calendar-grid-body-padding-y;
+
+        &-item {
+            max-width: $spacer * 8;
+        }
+
+        .col[data-date] {
+            .btn {
+                font-size: $calendar-grid-font-size-numbers !important;
+            }
+        }
+
+        .row.no-gutters {
+            margin-bottom: $spacer;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &-inner {
+        min-width: auto !important;
+    }
+}

@@ -23,6 +23,7 @@ import HmModal from '@/components/HmModal';
 import HmDropdown from '@/components/HmDropdown';
 import HmDropdownItem from '@/components/HmDropdownItem';
 import HmTextTip from '@/components/HmTextTip';
+import HmCalendar from '@/components/HmCalendar';
 import HmNav from '@/components/HmNav';
 import HmNavItem from '@/components/HmNavItem';
 import HmNavItemDropdown from '@/components/HmNavItemDropdown';
@@ -262,6 +263,7 @@ export default Vue.extend({
                     label: 'Тултип низ'
                 }
             ],
+            datepickerModel: '',
             radioModel: 'B',
             rangeSliderModel1: [20],
             rangeSliderModel2: [7, 20],
@@ -284,8 +286,9 @@ export default Vue.extend({
             selectorModel: ['active'],
             showModal: false,
             dropdownModel: true,
+            showAlert: true,
             dragAndDropModel: [],
-            showAlert: true
+            calendarModel: []
         };
     },
     methods: {
@@ -306,6 +309,7 @@ export default Vue.extend({
         HmAlert,
         HmAvatar,
         HmBadge,
+        HmCalendar,
         HmButton,
         HmButtonGroup,
         HmCheckbox,
@@ -668,6 +672,26 @@ export default Vue.extend({
                     </b-col>
                 </b-row>
             </div>
+
+             <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">Calendar</h2>
+
+                <div class="mb-4">
+                    <b-row class="align-items-end">
+                        <b-col>
+                            <hm-calendar
+                                range
+                                v-model="calendarModel" />
+                        </b-col>
+                        <b-col>
+                            <hm-calendar
+                                hide-header
+                                range
+                                v-model="calendarModel" />
+                        </b-col>
+                    </b-row>
+                </div>
+             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-9">File Input</h2>

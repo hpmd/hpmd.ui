@@ -299,6 +299,18 @@ $tooltip-arrow-width: $spacer * 2;
 $tooltip-arrow-height: $spacer;
 
 
+// Calendar
+$calendar-range-selected-bg: $gray-300;
+
+$calendar-grid-weekdays-padding-x: $spacer * 2;
+$calendar-grid-weekdays-padding-y: $spacer * 4;
+
+$calendar-grid-body-padding-x: $spacer * 4;
+$calendar-grid-body-padding-y: $spacer * 4;
+
+$calendar-grid-font-size-numbers: 0.75em;
+
+
 // Selector
 
 $hmselector-el-padding-x: $spacer * 2;

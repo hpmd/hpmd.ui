@@ -26,6 +26,8 @@ import HmTextTip from '@/components/HmTextTip';
 import HmNav from '@/components/HmNav';
 import HmNavItem from '@/components/HmNavItem';
 import HmNavItemDropdown from '@/components/HmNavItemDropdown';
+import HmFormFile from '@/components/HmFormFile';
+import HmDragFile from '@/components/HmDragFile';
 import {
     HmInputGroup,
     HmInputGroupAppend,
@@ -282,6 +284,7 @@ export default Vue.extend({
             selectorModel: ['active'],
             showModal: false,
             dropdownModel: true,
+            dragAndDropModel: [],
             showAlert: true
         };
     },
@@ -306,6 +309,7 @@ export default Vue.extend({
         HmButton,
         HmButtonGroup,
         HmCheckbox,
+        HmDragFile,
         HmDropdown,
         HmDropdownItem,
         HmIcon,
@@ -325,6 +329,7 @@ export default Vue.extend({
         HmTextTip,
         HmTooltip,
         HmModal,
+        HmFormFile,
         HmTable
     }
 });
@@ -659,6 +664,39 @@ export default Vue.extend({
                                 :value="75"
                                 variant="danger"
                                 animated />
+                        </div>
+                    </b-col>
+                </b-row>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">File Input</h2>
+
+                <b-row>
+                    <b-col>
+                        <h4>Drag n drop</h4>
+
+                        <div class="mt-4">
+                            <hm-drag-file v-model="dragAndDropModel"></hm-drag-file>
+                        </div>
+                    </b-col>
+                    <b-col>
+                        <h4>Drag n drop fill container</h4>
+
+                        <div class="mt-4">
+                            <div style="position: relative; height: 300px;">
+                                <hm-drag-file
+                                    fill-container
+                                    v-model="dragAndDropModel">
+                                </hm-drag-file>
+                            </div>
+                        </div>
+                    </b-col>
+                    <b-col>
+                        <h4>Upload/input</h4>
+
+                        <div class="mt-4">
+                            <hm-form-file></hm-form-file>
                         </div>
                     </b-col>
                 </b-row>

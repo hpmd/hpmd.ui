@@ -260,6 +260,7 @@ export default Vue.extend({
                     label: 'Тултип низ'
                 }
             ],
+            datepickerModel: '',
             radioModel: 'B',
             rangeSliderModel1: [20],
             rangeSliderModel2: [7, 20],

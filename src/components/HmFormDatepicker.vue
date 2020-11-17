@@ -40,89 +40,6 @@ export default {
             disabled,
             readonly
         } = this;
-        const placeholder = isUndefinedOrNull(this.placeholder) ?
-            this.labelNoDateSelected :
-            this.placeholder;
-
-        // Optional footer buttons
-        let $footer = [];
-
-        if (this.todayButton) {
-            const label = this.labelTodayButton;
-            $footer.push(
-                <BButton
-                    size="sm"
-                    disabled={disabled || readonly}
-                    variant={this.todayButtonVariant}
-                    aria-label={label || null}
-                    onClick={this.onTodayButton}>
-                    {label}
-                </BButton>
-            );
-        }
-
-        if (this.resetButton) {
-            const label = this.labelResetButton;
-            $footer.push(
-                <BButton
-                    size="sm"
-                    disabled={disabled || readonly}
-                    variant={this.resetButtonVariant}
-                    aria-label={label || null}
-                    onClick={this.onResetButton}>
-                    {label}
-                </BButton>
-            );
-        }
-
-        if (this.closeButton) {
-            const label = this.labelCloseButton;
-            $footer.push(
-                <BButton
-                    size="sm"
-                    disabled={disabled}
-                    variant={this.closeButtonVariant}
-                    aria-label={label || null}
-                    onClick={this.onCloseButton}>
-                    {label}
-                </BButton>
-            );
-        }
-
-        if ($footer.length > 0) {
-            $footer = [
-                <div
-                    staticClass="b-form-date-controls d-flex flex-wrap"
-                    class={{
-                        'justify-content-between': $footer.length > 1,
-                        'justify-content-end': $footer.length < 2
-                    }}>
-                    {$footer}
-                </div>
-            ];
-        }
-
-        const $calendar = (
-            <HmCalendar
-                key="calendar"
-                ref="calendar"
-                staticClass="b-form-date-calendar w-100"
-                props={this.calendarProps}
-                onSelected={this.onSelected}
-                onInput={this.onInput}
-                onContext={this.onContext}
-                scopedSlots={pick($scopedSlots, [
-                    'nav-prev-decade',
-                    'nav-prev-year',
-                    'nav-prev-month',
-                    'nav-this-month',
-                    'nav-next-month',
-                    'nav-next-year',
-                    'nav-next-decade'
-                ])}>
-                {$footer}
-            </HmCalendar>
-        );
 
         let $result;
 
@@ -134,6 +51,90 @@ export default {
                     type="date" />
             );
         } else {
+            const placeholder = isUndefinedOrNull(this.placeholder) ?
+                this.labelNoDateSelected :
+                this.placeholder;
+
+            // Optional footer buttons
+            let $footer = [];
+
+            if (this.todayButton) {
+                const label = this.labelTodayButton;
+                $footer.push(
+                    <BButton
+                        size="sm"
+                        disabled={disabled || readonly}
+                        variant={this.todayButtonVariant}
+                        aria-label={label || null}
+                        onClick={this.onTodayButton}>
+                        {label}
+                    </BButton>
+                );
+            }
+
+            if (this.resetButton) {
+                const label = this.labelResetButton;
+                $footer.push(
+                    <BButton
+                        size="sm"
+                        disabled={disabled || readonly}
+                        variant={this.resetButtonVariant}
+                        aria-label={label || null}
+                        onClick={this.onResetButton}>
+                        {label}
+                    </BButton>
+                );
+            }
+
+            if (this.closeButton) {
+                const label = this.labelCloseButton;
+                $footer.push(
+                    <BButton
+                        size="sm"
+                        disabled={disabled}
+                        variant={this.closeButtonVariant}
+                        aria-label={label || null}
+                        onClick={this.onCloseButton}>
+                        {label}
+                    </BButton>
+                );
+            }
+
+            if ($footer.length > 0) {
+                $footer = [
+                    <div
+                        staticClass="b-form-date-controls d-flex flex-wrap"
+                        class={{
+                            'justify-content-between': $footer.length > 1,
+                            'justify-content-end': $footer.length < 2
+                        }}>
+                        {$footer}
+                    </div>
+                ];
+            }
+
+            const $calendar = (
+                <HmCalendar
+                    key="calendar"
+                    ref="calendar"
+                    staticClass="b-form-date-calendar w-100"
+                    props={this.calendarProps}
+                    onSelected={this.onSelected}
+                    onInput={this.onInput}
+                    onContext={this.onContext}
+                    scopedSlots={pick($scopedSlots, [
+                        'nav-prev-decade',
+                        'nav-prev-year',
+                        'nav-prev-month',
+                        'nav-this-month',
+                        'nav-next-month',
+                        'nav-next-year',
+                        'nav-next-decade'
+                    ])}>
+                    {$footer}
+                </HmCalendar>
+            );
+
             $result = (
                 <BVFormBtnLabelControl
                     ref="control"

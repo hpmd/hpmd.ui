@@ -27,6 +27,7 @@ import HmCalendar from '@/components/HmCalendar';
 import HmNav from '@/components/HmNav';
 import HmNavItem from '@/components/HmNavItem';
 import HmNavItemDropdown from '@/components/HmNavItemDropdown';
+import HmSelect from '@/components/HmSelect';
 import HmFormFile from '@/components/HmFormFile';
 import HmDragFile from '@/components/HmDragFile';
 import {
@@ -284,6 +285,27 @@ export default Vue.extend({
                 }
             },
             selectorModel: ['active'],
+            selectBar: {
+                value: 'Развлекательный контент',
+                options: [
+                    'Развлекательный контент',
+                    'Авто',
+                    'Здоровое питание',
+                    'Стриминговые сервисы'
+                ]
+            },
+            searchBar: {
+                value: [
+                    { name: 'Развлекательный контент', code: 'a' }
+                ],
+                options: [
+                    { name: 'Развлекательный контент', code: 'a' },
+                    { name: 'Авто', code: 'b' },
+                    { name: 'Другое', code: 'c' },
+                    { name: 'Здоровое питание', code: 'd' },
+                    { name: 'Стриминговые сервисы', code: 'e' }
+                ]
+            },
             showModal: false,
             dropdownModel: true,
             showAlert: true,
@@ -303,6 +325,14 @@ export default Vue.extend({
             }
 
             return '';
+        },
+        addTag(newTag) {
+            const tag = {
+                name: newTag,
+                code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+            };
+            this.searchBar.options.push(tag);
+            this.searchBar.value.push(tag);
         }
     },
     components: {
@@ -328,6 +358,7 @@ export default Vue.extend({
         HmProgress,
         HmRangeSlider,
         HmRadio,
+        HmSelect,
         HmSelector,
         HmSelectorEl,
         HmTextTip,
@@ -582,6 +613,32 @@ export default Vue.extend({
                         </div>
                     </b-col>
                 </b-row>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Select Input</h2>
+
+                <div class="mt-4">
+                    <b-row>
+                        <b-col>
+                            <h5>Select bar</h5>
+                            <hm-select
+                                v-model="selectBar.value"
+                                :options='selectBar.options'/>
+                        </b-col>
+                        <b-col>
+                            <h5>Search bar multiple selection</h5>
+                            <hm-select
+                                track-by="name"
+                                label="name"
+                                taggable
+                                multiple
+                                v-model="searchBar.value"
+                                :options='searchBar.options'
+                                v-on:tag="addTag"/>
+                        </b-col>
+                    </b-row>
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">

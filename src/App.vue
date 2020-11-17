@@ -28,6 +28,14 @@ import HmNavItem from '@/components/HmNavItem';
 import HmNavItemDropdown from '@/components/HmNavItemDropdown';
 import HmFormFile from '@/components/HmFormFile';
 import HmDragFile from '@/components/HmDragFile';
+import {
+    HmInputGroup,
+    HmInputGroupAppend,
+    HmInputGroupPrepend
+} from '@/components/input-group';
+import { HmButton } from '@/components/button';
+import { HmButtonGroup } from '@/components/button-group';
+import { HmTable } from '@/components/table';
 
 HmIcon.add(
     uniFilePlusAlt,
@@ -298,12 +306,17 @@ export default Vue.extend({
         HmAlert,
         HmAvatar,
         HmBadge,
+        HmButton,
+        HmButtonGroup,
         HmCheckbox,
         HmDragFile,
         HmDropdown,
         HmDropdownItem,
         HmIcon,
         HmInput,
+        HmInputGroup,
+        HmInputGroupAppend,
+        HmInputGroupPrepend,
         HmNav,
         HmNavItem,
         HmNavItemDropdown,
@@ -316,7 +329,8 @@ export default Vue.extend({
         HmTextTip,
         HmTooltip,
         HmModal,
-        HmFormFile
+        HmFormFile,
+        HmTable
     }
 });
 </script>
@@ -438,32 +452,32 @@ export default Vue.extend({
                     <div class="mb-5">
                         <p class="mb-0"><strong>Solid</strong></p>
                         <div>
-                            <b-btn variant="warning" class="mr-2">Yellow</b-btn>
-                            <b-btn variant="light" class="mr-2">Light</b-btn>
-                            <b-btn variant="primary" class="mr-2">Blue</b-btn>
-                            <b-btn variant="danger" class="mr-2">Red</b-btn>
-                            <b-btn variant="warning" class="mr-2" disabled="disabled">Disabled</b-btn>
+                            <hm-button variant="warning" class="mr-2">Yellow</hm-button>
+                            <hm-button variant="light" class="mr-2">Light</hm-button>
+                            <hm-button variant="primary" class="mr-2">Blue</hm-button>
+                            <hm-button variant="danger" class="mr-2">Red</hm-button>
+                            <hm-button variant="warning" class="mr-2" disabled="disabled">Disabled</hm-button>
                         </div>
                     </div>
 
                     <div class="mb-5">
                         <p class="mb-0"><strong>Outline</strong></p>
                         <div>
-                            <b-btn variant="outline-warning" class="mr-2">Yellow</b-btn>
-                            <b-btn variant="outline-light" class="mr-2">Light</b-btn>
-                            <b-btn variant="outline-primary" class="mr-2">Blue</b-btn>
-                            <b-btn variant="outline-danger" class="mr-2">Red</b-btn>
-                            <b-btn variant="warning" class="mr-2" disabled="disabled">Disabled</b-btn>
+                            <hm-button variant="outline-warning" class="mr-2">Yellow</hm-button>
+                            <hm-button variant="outline-light" class="mr-2">Light</hm-button>
+                            <hm-button variant="outline-primary" class="mr-2">Blue</hm-button>
+                            <hm-button variant="outline-danger" class="mr-2">Red</hm-button>
+                            <hm-button variant="warning" class="mr-2" disabled="disabled">Disabled</hm-button>
                         </div>
                     </div>
 
                     <div>
                         <p class="mb-0"><strong>Secondary actions</strong></p>
                         <div>
-                            <b-btn variant="link" class="mr-2 text-dark">Regular</b-btn>
-                            <b-btn variant="link" class="mr-2 text-blue">Blue</b-btn>
-                            <b-btn variant="link" class="mr-2 text-danger">Dangerous</b-btn>
-                            <b-btn variant="link" class="mr-2" disabled="disabled">Disabled</b-btn>
+                            <hm-button variant="link" class="mr-2 text-dark">Regular</hm-button>
+                            <hm-button variant="link" class="mr-2 text-blue">Blue</hm-button>
+                            <hm-button variant="link" class="mr-2 text-danger">Dangerous</hm-button>
+                            <hm-button variant="link" class="mr-2" disabled="disabled">Disabled</hm-button>
                         </div>
                     </div>
                 </div>
@@ -471,18 +485,18 @@ export default Vue.extend({
                 <div class="mb-6">
                     <h4>Sizes</h4>
                     <div>
-                        <b-btn variant="warning" class="mr-2" size="xs">Condensed (xs)</b-btn>
-                        <b-btn variant="warning" size="sm" class="mr-2">small (sm)</b-btn>
-                        <b-btn variant="warning" size="md" class="mr-2">regular (md)</b-btn>
-                        <b-btn variant="warning" size="lg" class="mr-2">large (lg)</b-btn>
+                        <hm-button variant="warning" class="mr-2" size="xs">Condensed (xs)</hm-button>
+                        <hm-button variant="warning" size="sm" class="mr-2">small (sm)</hm-button>
+                        <hm-button variant="warning" size="md" class="mr-2">regular (md)</hm-button>
+                        <hm-button variant="warning" size="lg" class="mr-2">large (lg)</hm-button>
                     </div>
                 </div>
 
                 <h3>Grouping</h3>
-                <b-btn-group>
-                    <b-btn variant="warning" active>some action</b-btn>
-                    <b-btn variant="warning">second action</b-btn>
-                </b-btn-group>
+                <hm-button-group>
+                    <hm-button variant="warning" active>some action</hm-button>
+                    <hm-button variant="warning">second action</hm-button>
+                </hm-button-group>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
@@ -570,11 +584,11 @@ export default Vue.extend({
                 <h2 class="mb-5">Modals</h2>
 
                 <div class="mt-4">
-                    <b-btn
+                    <hm-button
                         variant="warning"
                         v-on:click="showModal = !showModal">
                         Показать модальное окно
-                    </b-btn>
+                    </hm-button>
                     <hm-modal
                         v-model="showModal"
                         ok-variant="warning"
@@ -794,7 +808,7 @@ export default Vue.extend({
                     </div>
                 </div>
 
-                <div>
+                <div class="mb-4">
                     <h4>Input message</h4>
 
                     <b-form-group
@@ -809,6 +823,50 @@ export default Vue.extend({
                         </hm-input>
                     </b-form-group>
                 </div>
+
+                <div>
+                    <h4>Input group</h4>
+
+                    <hm-input-group class="mb-5">
+                        <hm-input
+                            v-model="inputs.text"
+                            label="Append slot" />
+
+                        <template v-slot:append>
+                            <hm-button variant="primary">test</hm-button>
+                        </template>
+                    </hm-input-group>
+
+                    <hm-input-group class="mb-5">
+                        <hm-input-group-prepend>
+                            <hm-button variant="warning">Left action</hm-button>
+                        </hm-input-group-prepend>
+                        <hm-input v-model="inputs.text" label="Prepend component" />
+                    </hm-input-group>
+
+                    <hm-input-group class="mb-5">
+                        <hm-input-group-prepend is-text>
+                            Just any text
+                        </hm-input-group-prepend>
+
+                        <hm-input v-model="inputs.text" label="Text prepend"></hm-input>
+                    </hm-input-group>
+
+                    <hm-input-group>
+                        <hm-input-group-prepend>
+                            <hm-dropdown text="Choose" variant="warning">
+                                <hm-dropdown-item>Option 1</hm-dropdown-item>
+                                <hm-dropdown-item>Option 2</hm-dropdown-item>
+                            </hm-dropdown>
+                        </hm-input-group-prepend>
+
+                        <hm-input v-model="inputs.text" label="Both sides" />
+
+                        <hm-input-group-append>
+                            <hm-button variant="primary">Action!</hm-button>
+                        </hm-input-group-append>
+                    </hm-input-group>
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
@@ -816,12 +874,17 @@ export default Vue.extend({
 
                 <div class="mt-4">
                     <hm-range-slider
+                        tooltip="always"
+                        :marks="true"
+                        lazy
                         :min="0"
                         :max="30"
                         v-model="rangeSliderModel1"></hm-range-slider>
                 </div>
                 <div class="mt-4">
                     <hm-range-slider
+                        lazy
+                        tooltip-placement="bottom"
                         :min="0"
                         :max="30"
                         v-model="rangeSliderModel2"></hm-range-slider>
@@ -1035,7 +1098,7 @@ export default Vue.extend({
                                     class="small mr-4">default</span>
                                 <hm-dropdown
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1053,7 +1116,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     disabled
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1071,7 +1134,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     class="hover"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1089,7 +1152,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     class="focus"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1107,7 +1170,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     v-model="dropdownModel"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1130,7 +1193,7 @@ export default Vue.extend({
                                 <hm-dropdown
                                     split
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1168,7 +1231,7 @@ export default Vue.extend({
                                     split
                                     class="hover"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1187,7 +1250,7 @@ export default Vue.extend({
                                     split
                                     class="focus"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1206,7 +1269,7 @@ export default Vue.extend({
                                     split
                                     v-model="dropdownModel"
                                     size="sm"
-                                    variant="outline-light">
+                                    variant="light">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                     <b-dropdown-divider />
@@ -1220,6 +1283,19 @@ export default Vue.extend({
                         </div>
                     </b-col>
                 </b-row>
+
+                <div class="mt-5">
+                    <h5>Sizing</h5>
+
+                    <hm-dropdown
+                        class="mr-3"
+                        v-for="sizekey in ['xs', 'sm', 'md', 'lg']"
+                        :size="sizekey"
+                        :key="`dropdown-size-${sizekey}`"
+                        :text="`Size ${sizekey}`">
+                        <hm-dropdown-item>123</hm-dropdown-item>
+                    </hm-dropdown>
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
@@ -1300,7 +1376,7 @@ export default Vue.extend({
                             :key="`selector-${key}`"
                             :value="key"
                             :disabled="selector.disabled"
-                            :checkbox-limit="1">
+                            :checkbox-limit="3">
                             {{selector.text}}
                         </hm-selector-el>
                     </hm-selector>
@@ -1572,7 +1648,7 @@ export default Vue.extend({
                     v-for="tableStyle in ['light', 'dark']"
                     :key="`table-${tableStyle}`">
                     <h4>{{tableStyle}}</h4>
-                    <b-table
+                    <hm-table
                         :table-variant="tableStyle"
                         primary-key="id"
                         hover
@@ -1606,11 +1682,11 @@ export default Vue.extend({
                         <template v-slot:cell(reach)="data">{{data.value.toLocaleString()}}</template>
 
                         <template v-slot:cell(action)="data">
-                            <b-btn variant="warning" size="xs" v-if="data.value">
+                            <hm-button variant="warning" size="xs" v-if="data.value">
                                 action
-                            </b-btn>
+                            </hm-button>
                         </template>
-                    </b-table>
+                    </hm-table>
                 </div>
             </div>
         </b-container>

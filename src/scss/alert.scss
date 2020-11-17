@@ -3,13 +3,9 @@
     background-color: $white;
 
     &-round {
+        font-size: 150%;
         width: 48px;
         height: 48px;
-
-        & .unicon svg {
-            width: 1.5em;
-            height: 1.5em;
-        }
     }
 
     @each $color, $value in $theme-colors {

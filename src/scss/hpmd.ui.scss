@@ -6,6 +6,7 @@
 @import './form-common.scss';
 @import './input.scss';
 @import './badge.scss';
+@import './button.scss';
 @import './checkbox.scss';
 @import './icon.scss';
 @import './radio.scss';
@@ -22,6 +23,7 @@
 @import './tabs.scss';
 @import './file.scss';
 @import './dragfile.scss';
+@import './input-group.scss';
 
 // overrides
 body {
@@ -34,49 +36,6 @@ ol, ul {
     li {
         margin-bottom: 0.5em;
         padding-left: 0;
-    }
-}
-
-@each $color, $value in $theme-colors {
-    $blackHover: rgba(63,63,63,0.15);
-    $blackActive: rgba(63,63,63,0.3);
-
-    .btn-#{$color} {
-        @include button-variant(
-            $value, // bg
-            transparent, // border
-            blend-colorburn($blackHover, $value),
-            transparent,
-            blend-colorburn($blackActive, $value),
-            transparent
-        );
-    }
-
-    .btn-outline-#{$color} {
-        @include button-outline-variant(
-            $value, // bg
-            color-yiq($value) // border
-        )
-    }
-}
-
-.btn {
-    &[disabled]:not(.btn-link), &.disabled:not(.btn-link) {
-        background-color: #ebebeb !important;
-        color: #d6d6d6 !important;
-        border-color: #d6d6d6 !important;
-    }
-
-    &.btn-link {
-        padding: $spacer;
-        &[disabled], &.disabled {
-            color: #d6d6d6;
-            text-decoration: line-through;
-        }
-    }
-
-    &-xs {
-        @include button-size($spacer, $spacer * 2, 12px, 1, $radius);
     }
 }
 

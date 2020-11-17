@@ -1,12 +1,3 @@
-$select-border-radius: $radius;
-$select-tags-padding-x: $spacer * 2;
-$select-tags-padding-y: $spacer * 2;
-$select-tags-font-size: 0.875em;
-$select-tags-border: 1px solid $gray-400;
-$select-tags-bg: $blue;
-$select-tag-bg: $gray-400;
-$select-tag-font-size: 1.4em;
-
 fieldset[disabled] .multiselect{
     pointer-events: none;
 }

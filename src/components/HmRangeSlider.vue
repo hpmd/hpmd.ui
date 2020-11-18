@@ -1,52 +1,25 @@
 <script>
-import VueSlider from 'vue-slider-component';
+import VueRangeSlider from 'vue-range-component';
 
 export default {
-    extends: VueSlider,
+    extends: VueRangeSlider,
     props: {
-        dotSize: {
-            type: Number,
-            default: 16
-        },
         height: {
             type: Number,
             default: 2
         },
-        /**
-         * true means that model will be updated after action (drag / click / move is finished)
-         * It's highly recommended to keep it "true" in complex interfaces
-         * cause of huge performance impact
-         */
-        lazy: {
-            type: Boolean,
-            default: true
+        tooltipDir: {
+            type: String,
+            default: 'bottom'
         }
     },
     computed: {
-        containerStyles() {
+        wrapStyles() {
             return {};
         },
-        dotBaseStyle() {
-            let dotPos;
-
-            if (this.isHorizontal) {
-                dotPos = {
-                    transform: `translate(${this.isReverse ? '50%' : '-50%'}, -50%)`,
-                    WebkitTransform: `translate(${this.isReverse ? '50%' : '-50%'}, -50%)`,
-                    top: '50%',
-                    [this.direction === 'ltr' ? 'left' : 'right']: '0',
-                };
-            } else {
-                dotPos = {
-                    transform: `translate(-50%, ${this.isReverse ? '50%' : '-50%'})`,
-                    WebkitTransform: `translate(-50%, ${this.isReverse ? '50%' : '-50%'})`,
-                    left: '50%',
-                    [this.direction === 'btt' ? 'bottom' : 'top']: '0',
-                };
-            }
-
-            return dotPos;
+        tooltipStyles() {
+            return {};
         }
     }
-}; // https://nightcatsama.github.io/vue-slider-component
+}; // https://github.com/xwpongithub/vue-range-slider
 </script>

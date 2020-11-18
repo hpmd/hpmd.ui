@@ -261,7 +261,7 @@ export default Vue.extend({
                 }
             ],
             radioModel: 'B',
-            rangeSliderModel1: [20],
+            rangeSliderModel1: 20,
             rangeSliderModel2: [7, 20],
             switchModel: false,
             showPopover: true,
@@ -834,7 +834,7 @@ export default Vue.extend({
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Слайдер</h2>
 
-                <div class="mt-4">
+                <div class="my-4">
                     <hm-range-slider
                         tooltip="always"
                         :marks="true"
@@ -843,7 +843,7 @@ export default Vue.extend({
                         :max="30"
                         v-model="rangeSliderModel1"></hm-range-slider>
                 </div>
-                <div class="mt-4">
+                <div class="my-4">
                     <hm-range-slider
                         lazy
                         tooltip-placement="bottom"
@@ -1512,13 +1512,16 @@ export default Vue.extend({
                                 v-for="radioModel in radioModels"
                                 :key="`radio-${radioModel.key}`"
                                 class="mt-4">
-                                <hm-radio
-                                    :class="radioModel.class"
-                                    :disabled="radioModel.disabled"
-                                    :value="radioModel.key"
-                                    v-model="radioModel.value">
-                                    {{radioModel.label}}
-                                </hm-radio>
+                                <b-form-group>
+                                    <hm-radio
+                                        :class="radioModel.class"
+                                        :disabled="radioModel.disabled"
+                                        :value="radioModel.key"
+                                        v-model="radioModel.value"
+                                        name="radio-btns">
+                                        {{radioModel.label}}
+                                    </hm-radio>
+                                </b-form-group>
                             </div>
                         </div>
                     </b-col>

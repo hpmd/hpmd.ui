@@ -6,34 +6,50 @@ import {
     uniTrashAlt,
     uniEllipsisV
 } from '@/assets/icons/unicons';
-import HmInput from '@/components/HmInput';
-import HmBadge from '@/components/HmBadge';
-import HmCheckbox from '@/components/HmCheckbox';
-import HmRadio from '@/components/HmRadio';
-import HmIcon from '@/components/HmIcon';
-import HmProgress from '@/components/HmProgress';
-import HmTooltip from '@/components/HmTooltip';
-import HmPopover from '@/components/HmPopover';
-import HmAlert from '@/components/HmAlert';
-import HmAvatar from '@/components/HmAvatar';
-import HmSelector from '@/components/HmSelector';
-import HmSelectorEl from '@/components/HmSelectorEl';
-import HmRangeSlider from '@/components/HmRangeSlider';
-import HmModal from '@/components/HmModal';
-import HmDropdown from '@/components/HmDropdown';
-import HmDropdownItem from '@/components/HmDropdownItem';
-import HmTextTip from '@/components/HmTextTip';
-import HmNav from '@/components/HmNav';
-import HmNavItem from '@/components/HmNavItem';
-import HmNavItemDropdown from '@/components/HmNavItemDropdown';
+
+import { HmAlert } from '@/components/alert';
+import { HmAvatar } from '@/components/avatar';
+import { HmBadge } from '@/components/badge';
+import { HmButton } from '@/components/button';
+import { HmButtonGroup } from '@/components/button-group';
+import { HmCheckbox } from '@/components/checkbox';
+import {
+    HmDropdown,
+    HmDropdownItem
+} from '@/components/dropdown';
+import { HmIcon } from '@/components/icon';
+import { HmInput } from '@/components/input';
 import {
     HmInputGroup,
     HmInputGroupAppend,
     HmInputGroupPrepend
 } from '@/components/input-group';
-import { HmButton } from '@/components/button';
-import { HmButtonGroup } from '@/components/button-group';
+import { HmModal } from '@/components/modal';
+import {
+    HmNav,
+    HmNavItem,
+    HmNavItemDropdown
+} from '@/components/nav';
+import { HmPopover } from '@/components/popover';
+import { HmProgress } from '@/components/progress';
+import { HmRadio } from '@/components/radio';
+import { HmRangeSlider } from '@/components/range-slider';
+import { HmSelect } from '@/components/select';
+import {
+    HmSelector,
+    HmSelectorEl
+} from '@/components/selector';
 import { HmTable } from '@/components/table';
+import { HmTextTip } from '@/components/text-tip';
+import { HmTooltip } from '@/components/tooltip';
+
+import HmCalendar from '@/components/HmCalendar';
+import HmFormFile from '@/components/HmFormFile';
+import HmDragFile from '@/components/HmDragFile';
+
+
+
+
 
 HmIcon.add(
     uniFilePlusAlt,
@@ -260,6 +276,7 @@ export default Vue.extend({
                     label: 'Тултип низ'
                 }
             ],
+            datepickerModel: '',
             radioModel: 'B',
             rangeSliderModel1: 20,
             rangeSliderModel2: [7, 20],
@@ -280,9 +297,32 @@ export default Vue.extend({
                 }
             },
             selectorModel: ['active'],
+            selectBar: {
+                value: 'Развлекательный контент',
+                options: [
+                    'Развлекательный контент',
+                    'Авто',
+                    'Здоровое питание',
+                    'Стриминговые сервисы'
+                ]
+            },
+            searchBar: {
+                value: [
+                    { name: 'Развлекательный контент', code: 'a' }
+                ],
+                options: [
+                    { name: 'Развлекательный контент', code: 'a' },
+                    { name: 'Авто', code: 'b' },
+                    { name: 'Другое', code: 'c' },
+                    { name: 'Здоровое питание', code: 'd' },
+                    { name: 'Стриминговые сервисы', code: 'e' }
+                ]
+            },
             showModal: false,
             dropdownModel: true,
-            showAlert: true
+            showAlert: true,
+            dragAndDropModel: [],
+            calendarModel: []
         };
     },
     methods: {
@@ -297,15 +337,25 @@ export default Vue.extend({
             }
 
             return '';
+        },
+        addTag(newTag) {
+            const tag = {
+                name: newTag,
+                code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+            };
+            this.searchBar.options.push(tag);
+            this.searchBar.value.push(tag);
         }
     },
     components: {
         HmAlert,
         HmAvatar,
         HmBadge,
+        HmCalendar,
         HmButton,
         HmButtonGroup,
         HmCheckbox,
+        HmDragFile,
         HmDropdown,
         HmDropdownItem,
         HmIcon,
@@ -320,11 +370,13 @@ export default Vue.extend({
         HmProgress,
         HmRangeSlider,
         HmRadio,
+        HmSelect,
         HmSelector,
         HmSelectorEl,
         HmTextTip,
         HmTooltip,
         HmModal,
+        HmFormFile,
         HmTable
     }
 });
@@ -576,6 +628,32 @@ export default Vue.extend({
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Select Input</h2>
+
+                <div class="mt-4">
+                    <b-row>
+                        <b-col>
+                            <h5>Select bar</h5>
+                            <hm-select
+                                v-model="selectBar.value"
+                                :options='selectBar.options'/>
+                        </b-col>
+                        <b-col>
+                            <h5>Search bar multiple selection</h5>
+                            <hm-select
+                                track-by="name"
+                                label="name"
+                                taggable
+                                multiple
+                                v-model="searchBar.value"
+                                :options='searchBar.options'
+                                v-on:tag="addTag"/>
+                        </b-col>
+                    </b-row>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Modals</h2>
 
                 <div class="mt-4">
@@ -659,6 +737,59 @@ export default Vue.extend({
                                 :value="75"
                                 variant="danger"
                                 animated />
+                        </div>
+                    </b-col>
+                </b-row>
+            </div>
+
+             <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">Calendar</h2>
+
+                <div class="mb-4">
+                    <b-row class="align-items-end">
+                        <b-col>
+                            <hm-calendar
+                                range
+                                v-model="calendarModel" />
+                        </b-col>
+                        <b-col>
+                            <hm-calendar
+                                hide-header
+                                range
+                                v-model="calendarModel" />
+                        </b-col>
+                    </b-row>
+                </div>
+             </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">File Input</h2>
+
+                <b-row>
+                    <b-col>
+                        <h4>Drag n drop</h4>
+
+                        <div class="mt-4">
+                            <hm-drag-file v-model="dragAndDropModel"></hm-drag-file>
+                        </div>
+                    </b-col>
+                    <b-col>
+                        <h4>Drag n drop fill container</h4>
+
+                        <div class="mt-4">
+                            <div style="position: relative; height: 300px;">
+                                <hm-drag-file
+                                    fill-container
+                                    v-model="dragAndDropModel">
+                                </hm-drag-file>
+                            </div>
+                        </div>
+                    </b-col>
+                    <b-col>
+                        <h4>Upload/input</h4>
+
+                        <div class="mt-4">
+                            <hm-form-file></hm-form-file>
                         </div>
                     </b-col>
                 </b-row>
@@ -834,7 +965,7 @@ export default Vue.extend({
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Слайдер</h2>
 
-                <div class="my-4">
+                <div class="my-5">
                     <hm-range-slider
                         tooltip="always"
                         :marks="true"
@@ -843,7 +974,7 @@ export default Vue.extend({
                         :max="30"
                         v-model="rangeSliderModel1"></hm-range-slider>
                 </div>
-                <div class="my-4">
+                <div class="my-5">
                     <hm-range-slider
                         lazy
                         tooltip-placement="bottom"

@@ -247,10 +247,40 @@ $rangeslider-height: $spacer / 2;
 $rangeslider-dot-width: $spacer * 4;
 $rangeslider-dot-height: $spacer * 4;
 $rangeslider-dot-handle-focus-border-radius: 0px 0px 1px 2px rgba($rangeslider-fill-bg, 0.36);
-
 $rangeslider-mark-fontsize: 11px;
 $rangeslider-mark-color: $gray-400;
 $rangeslider-mark-margin-top: $rangeslider-dot-height / 2;
+
+// File
+$custom-file-width: auto;
+$custom-file-height: 2.25em;
+$custom-file-height-inner: calc(1em + 0.5em);
+$custom-file-focus-border-color: transparent;
+$custom-file-focus-box-shadow: none;
+$custom-file-disabled-bg: $input-disabled-bg !default;
+
+$custom-file-padding-y: 0.25em;
+$custom-file-padding-x: 0.25em;
+$custom-file-line-height: 1em;
+$custom-file-color: $black;
+$custom-file-border-color: transparent;
+$custom-file-border-radius: $radius * 2;
+$custom-file-button-color: $gray;
+$custom-file-button-bg: $gray-300;
+$custom-file-button-margin-right: $spacer * 3;
+
+// Drop and down
+$drag-file-border-style: 1px;
+$drag-file-border-style-basic: dashed;
+$drag-file-border-style-active: solid;
+
+$drag-file-basic-color: $gray-500;
+$drag-file-active-color: $blue;
+$drag-file-error-color: $red;
+
+$drag-file-circle-width: $spacer * 10;
+$drag-file-circle-height: $spacer * 10;
+$drag-file-circle-icon-color: $white;
 
 
 // Tooltips
@@ -261,6 +291,30 @@ $tooltip-padding-x: $spacer / 2;
 
 $tooltip-arrow-width: $spacer * 2;
 $tooltip-arrow-height: $spacer;
+
+
+
+// Select input
+$select-border-radius: $radius;
+$select-tags-padding-x: $spacer * 2;
+$select-tags-padding-y: $spacer * 2;
+$select-tags-font-size: 0.875em;
+$select-tags-border: 1px solid $gray-400;
+$select-tags-bg: $blue;
+$select-tag-bg: $gray-400;
+$select-tag-font-size: 1.4em;
+
+// Calendar
+$calendar-range-selected-bg: $gray-300;
+
+$calendar-grid-weekdays-padding-x: $spacer * 2;
+$calendar-grid-weekdays-padding-y: $spacer * 4;
+
+$calendar-grid-body-padding-x: $spacer * 4;
+$calendar-grid-body-padding-y: $spacer * 4;
+
+$calendar-grid-font-size-numbers: 0.75em;
+
 
 
 // Selector

@@ -1,0 +1,28 @@
+.custom-file {
+    width: $custom-file-width;
+    &-label {
+        display: flex;
+        align-items: center;
+
+        &:before {
+            content: attr(data-browse);
+            display: inline-block;
+            height: $custom-file-height-inner;
+            padding: $custom-file-padding-y $custom-file-padding-x;
+            line-height: $custom-file-line-height;
+            color: $custom-file-button-color;
+            background-color: $custom-file-button-bg;
+            border-radius: $custom-file-border-radius;
+            vertical-align: middle;
+            margin-right: $custom-file-button-margin-right;
+        }
+        &:after {
+            display: none;
+        }
+    }
+
+    .form-file-text {
+        display: inline-block!important;
+        line-height: 1.5em;
+    }
+}

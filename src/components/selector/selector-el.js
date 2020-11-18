@@ -1,6 +1,4 @@
-<script>
 export default {
-    name: 'HmSelectorEl',
     model: {
         prop: 'modelValue',
         event: 'change'
@@ -20,10 +18,18 @@ export default {
             type: Boolean,
             default: false
         },
-        // checkbox specific
+        /**
+         * How many elements could be selected
+         * Checkbox mode specific
+         * @example
+         * // 0 - no limitation, 1 = [checked], 2 = [checked1, checked2] etc.
+         */
         checkboxLimit: {
             type: Number,
-            default: 0 // 0 - no limitation, 1 = [checked], 2 = [checked1, checked2] etc.
+            default: 0,
+            validator(val) {
+                return val >= 0;
+            }
         },
         reselect: {
             type: Boolean,
@@ -54,7 +60,7 @@ export default {
             return mv;
         },
         classes() {
-            const classes = [];
+            const classes = ['hm-selector-el'];
 
             if (this.disabled) {
                 classes.push('disabled');
@@ -95,25 +101,26 @@ export default {
                 this.$emit('change', isChecked ? this.trueValue : this.falseValue);
             }
         }
+    },
+    render() {
+        // Might be broken in Vue3
+        const parentUid = this.$parent._uid;
+
+        return (
+            <div class={this.classes}>
+                <input
+                    type="checkbox"
+                    id={this.safeId}
+                    name={`hm_sel_${parentUid}`}
+                    checked={this.isChecked}
+                    disabled={this.isDisabled}
+                    value={this.value}
+                    onChange={this.onInputChange} />
+                <div class="hm-selector-el-slot">
+                    { this.$slots.default }
+                </div>
+                <label for={this.safeId}></label>
+            </div>
+        );
     }
 };
-</script>
-
-
-<template>
-    <div class="hm-selector-el"
-        :class="classes">
-        <input
-            type="checkbox"
-            :id="safeId"
-            :name="`hm_sel_${$parent._uid}`"
-            :checked="isChecked"
-            :disabled="isDisabled"
-            :value="value"
-            v-on:change="onInputChange">
-        <div class="hm-selector-el-slot">
-            <slot></slot>
-        </div>
-        <label :for="safeId"></label>
-    </div>
-</template>

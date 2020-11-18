@@ -9,7 +9,7 @@ import {
     uniEye,
     uniEyeSlash
 } from '@/assets/icons/unicons';
-import HmIcon from './HmIcon';
+import { HmIcon } from '../icon';
 
 
 HmIcon.add(uniTimes, uniMultiply, uniEye, uniEyeSlash);

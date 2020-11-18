@@ -1,4 +1,3 @@
-<script>
 import VueRangeSlider from 'vue-range-component';
 
 export default {
@@ -22,4 +21,3 @@ export default {
         }
     }
 }; // https://github.com/xwpongithub/vue-range-slider
-</script>

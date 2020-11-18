@@ -4,7 +4,7 @@ import {
     uniExclamationCircle
 } from '@/assets/icons/unicons';
 import { BFormFile } from 'bootstrap-vue';
-import HmIcon from './HmIcon';
+import { HmIcon } from './icon';
 
 
 HmIcon.add(

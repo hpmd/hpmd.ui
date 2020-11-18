@@ -1,7 +1,6 @@
-<script>
 import { BModal } from 'bootstrap-vue';
-import HmIcon from '@/components/HmIcon';
 import { uniTimes } from '@/assets/icons/unicons';
+import { HmIcon } from '../icon';
 
 HmIcon.add([uniTimes]);
 
@@ -14,6 +13,7 @@ export default {
             )];
         }
     },
-    components: { HmIcon }
+    components: {
+        HmIcon
+    }
 };
-</script>

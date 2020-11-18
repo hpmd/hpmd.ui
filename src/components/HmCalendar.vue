@@ -1,6 +1,5 @@
 <script>
 import { BCalendar } from 'bootstrap-vue';
-import HmIcon from '@/components/HmIcon';
 import { uniCalendarAlt } from '@/assets/icons/unicons';
 import identity from 'bootstrap-vue/src/utils/identity';
 import {
@@ -11,6 +10,7 @@ import {
 } from 'bootstrap-vue/src/utils/date';
 import { toString } from 'bootstrap-vue/src/utils/string';
 import { BIconChevronLeft } from 'bootstrap-vue/src/icons/icons';
+import { HmIcon } from './icon';
 
 HmIcon.add(uniCalendarAlt);
 

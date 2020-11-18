@@ -1,6 +1,4 @@
-<script>
 import { BAvatar } from 'bootstrap-vue';
-import HmIcon from '@/components/HmIcon';
 import { uniUser } from '@/assets/icons/unicons';
 import { omit } from 'bootstrap-vue/src/utils/object';
 import { pluckProps } from 'bootstrap-vue/src/utils/props';
@@ -8,6 +6,7 @@ import { isLink } from 'bootstrap-vue/src/utils/router';
 import { BButton } from 'bootstrap-vue/src/components/button/button';
 import { BLink, props as BLinkProps } from 'bootstrap-vue/src/components/link/link';
 import { BIcon } from 'bootstrap-vue/src/icons/icon';
+import { HmIcon } from '../icon';
 
 HmIcon.add(uniUser);
 
@@ -97,7 +96,7 @@ export default {
                     style={variant ? {} : { width: '100%', height: '100%' }}
                     src={src}
                     alt={alt}
-                    onError={this.onImgError}/>
+                    onError={this.onImgError} />
             );
             $content = (
                 <span staticClass="b-avatar-img">
@@ -109,7 +108,7 @@ export default {
                 <BIcon
                     icon={icon}
                     aria-hidden="true"
-                    alt={alt}/>
+                    alt={alt} />
             );
         } else if (text) {
             $content = (
@@ -169,4 +168,3 @@ export default {
         return h(tag, componentData, [$content, $badge]);
     }
 };
-</script>

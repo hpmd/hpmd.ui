@@ -1,11 +1,10 @@
-<script>
 import {
-    BAlert,
-    BButtonClose
+    BAlert
 } from 'bootstrap-vue';
 import BVTransition from 'bootstrap-vue/src/utils/bv-transition';
 import { uniExclamationTriangle } from '@/assets/icons/unicons';
-import HmIcon from '@/components/HmIcon';
+import { HmIcon } from '../icon';
+import { HmButtonClose } from '../button';
 
 HmIcon.add(uniExclamationTriangle);
 
@@ -33,11 +32,11 @@ export default {
                             </b-col>
                             {this.dismissible && (
                                 <b-col cols="auto">
-                                    <BButtonClose
+                                    <HmButtonClose
                                         aria-label={this.dismissLabel}
                                         onClick={this.dismiss}>
                                         {this.normalizeSlot('dismiss')}
-                                    </BButtonClose>
+                                    </HmButtonClose>
                                 </b-col>
                             )}
                         </b-row>
@@ -48,8 +47,8 @@ export default {
     },
     components: {
         HmIcon,
+        HmButtonClose,
         BVTransition,
 
     }
 };
-</script>

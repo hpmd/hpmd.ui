@@ -1,4 +1,3 @@
-<script>
 import VueSlider from 'vue-slider-component';
 
 export default {
@@ -49,4 +48,3 @@ export default {
         }
     }
 }; // https://nightcatsama.github.io/vue-slider-component
-</script>

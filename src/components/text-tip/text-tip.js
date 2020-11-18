@@ -1,8 +1,6 @@
-<script>
-import HmTooltip from '@/components/HmTooltip';
+import { HmTooltip } from '../tooltip';
 
 export default {
-    name: 'HmTextTip',
     props: {
         tip: {
             type: String,
@@ -38,4 +36,3 @@ export default {
         HmTooltip
     }
 };
-</script>

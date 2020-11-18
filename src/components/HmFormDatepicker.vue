@@ -5,7 +5,7 @@ import { isUndefinedOrNull } from 'bootstrap-vue/src/utils/inspect';
 import { parseYMD } from 'bootstrap-vue/src/utils/date';
 import { pick } from 'bootstrap-vue/src/utils/object';
 import HmCalendar from '@/components/HmCalendar';
-import HmInput from '@/components/HmInput';
+import { HmInput } from './input';
 
 export default {
     extends: BFormDatepicker,

@@ -14,7 +14,7 @@ export default {
         /**
          * true means that model will be updated after action (drag / click / move is finished)
          * It's highly recommended to keep it "true" in complex interfaces
-         * cause of huge performance impact
+         * due to huge performance impact on updating model in each render
          */
         lazy: {
             type: Boolean,

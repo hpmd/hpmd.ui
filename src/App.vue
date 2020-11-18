@@ -33,7 +33,7 @@ import {
 import { HmPopover } from '@/components/popover';
 import { HmProgress } from '@/components/progress';
 import { HmRadio } from '@/components/radio';
-import { HmRangeSlider } from '@/components/range-slider';
+import { HmRangeSliderOld } from '@/components/range-slider';
 import { HmSelect } from '@/components/select';
 import {
     HmSelector,
@@ -368,7 +368,7 @@ export default Vue.extend({
         HmNavItemDropdown,
         HmPopover,
         HmProgress,
-        HmRangeSlider,
+        HmRangeSliderOld,
         HmRadio,
         HmSelect,
         HmSelector,
@@ -966,21 +966,21 @@ export default Vue.extend({
                 <h2 class="mb-5">Слайдер</h2>
 
                 <div class="mt-4">
-                    <hm-range-slider
+                    <hm-range-slider-old
                         tooltip="always"
                         :marks="true"
                         lazy
                         :min="0"
                         :max="30"
-                        v-model="rangeSliderModel1"></hm-range-slider>
+                        v-model="rangeSliderModel1"></hm-range-slider-old>
                 </div>
                 <div class="mt-4">
-                    <hm-range-slider
+                    <hm-range-slider-old
                         lazy
                         tooltip-placement="bottom"
                         :min="0"
                         :max="30"
-                        v-model="rangeSliderModel2"></hm-range-slider>
+                        v-model="rangeSliderModel2"></hm-range-slider-old>
                 </div>
             </div>
 

@@ -1,13 +1,13 @@
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
-import HmRangeSlider from './range-slider';
+import HmRangeSliderOld from './range-slider-old';
 
 const HmRangeSliderPlugin = pluginFactory({
     components: {
-        HmRangeSlider
+        HmRangeSliderOld
     }
 });
 
 export {
     HmRangeSliderPlugin,
-    HmRangeSlider
+    HmRangeSliderOld
 };

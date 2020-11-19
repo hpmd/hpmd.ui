@@ -60,3 +60,22 @@
         min-width: auto !important;
     }
 }
+
+.b-form-datepicker {
+    box-sizing: border-box;
+
+    &.focus,
+    &:focus {
+        box-shadow: none;
+    }
+
+    label {
+        min-height: auto!important;
+        height: calc(1.5em + 0.75rem + 2px)!important;
+    }
+
+    button {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

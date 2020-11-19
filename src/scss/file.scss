@@ -1,5 +1,12 @@
 .custom-file {
     width: $custom-file-width;
+
+    &:hover,
+    &-input:hover,
+    &-label:hover {
+        cursor: pointer;
+    }
+
     &-label {
         display: flex;
         align-items: center;
@@ -24,5 +31,11 @@
     .form-file-text {
         display: inline-block!important;
         line-height: 1.5em;
+    }
+
+    &-input:disabled + .custom-file-label {
+        span {
+            color: $gray-500;
+        }
     }
 }

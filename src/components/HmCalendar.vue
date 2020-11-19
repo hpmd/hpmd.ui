@@ -319,7 +319,7 @@ export default {
                             // Selected date style (need to computed from variant)
                             [this.computedVariant]: isSelected,
                             // Today day style (if not selected), same variant color as selected date
-                            [this.computedTodayVariant]: isToday && highlightToday && !isSelected && day.isThisMonth,
+                            'font-weight-bold': isToday && highlightToday && !isSelected && day.isThisMonth,
                             // Non selected/today styling
                             'btn-outline-light': !(isToday && highlightToday) && !isSelected && !isActive,
                             'btn-light': !(isToday && highlightToday) && !isSelected && isActive,

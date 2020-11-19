@@ -44,6 +44,7 @@ import { HmTextTip } from '@/components/text-tip';
 import { HmTooltip } from '@/components/tooltip';
 
 import HmCalendar from '@/components/HmCalendar';
+import HmFormDatepicker from '@/components/HmFormDatepicker';
 import HmFormFile from '@/components/HmFormFile';
 import HmDragFile from '@/components/HmDragFile';
 
@@ -358,6 +359,7 @@ export default Vue.extend({
         HmDragFile,
         HmDropdown,
         HmDropdownItem,
+        HmFormDatepicker,
         HmIcon,
         HmInput,
         HmInputGroup,
@@ -632,13 +634,13 @@ export default Vue.extend({
 
                 <div class="mt-4">
                     <b-row>
-                        <b-col>
+                        <b-col cols="6">
                             <h5>Select bar</h5>
                             <hm-select
                                 v-model="selectBar.value"
                                 :options='selectBar.options'/>
                         </b-col>
-                        <b-col>
+                        <b-col cols="6">
                             <h5>Search bar multiple selection</h5>
                             <hm-select
                                 track-by="name"
@@ -758,6 +760,11 @@ export default Vue.extend({
                                 range
                                 v-model="calendarModel" />
                         </b-col>
+                        <b-col>
+                            <hm-form-datepicker
+                                hide-header
+                                v-model="datepickerModel" />
+                        </b-col>
                     </b-row>
                 </div>
              </div>
@@ -770,16 +777,18 @@ export default Vue.extend({
                         <h4>Drag n drop</h4>
 
                         <div class="mt-4">
-                            <hm-drag-file v-model="dragAndDropModel"></hm-drag-file>
+                            <hm-drag-file
+                                show-input
+                                v-model="dragAndDropModel"></hm-drag-file>
                         </div>
                     </b-col>
                     <b-col>
-                        <h4>Drag n drop fill container</h4>
+                        <h4>Drag n drop fill absolute</h4>
 
                         <div class="mt-4">
                             <div style="position: relative; height: 300px;">
                                 <hm-drag-file
-                                    fill-container
+                                    fill-absolute
                                     v-model="dragAndDropModel">
                                 </hm-drag-file>
                             </div>
@@ -789,7 +798,8 @@ export default Vue.extend({
                         <h4>Upload/input</h4>
 
                         <div class="mt-4">
-                            <hm-form-file></hm-form-file>
+                            <hm-form-file 
+                                    disabled></hm-form-file>
                         </div>
                     </b-col>
                 </b-row>

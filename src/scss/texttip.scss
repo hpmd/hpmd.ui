@@ -1,6 +1,6 @@
 .hm-texttip {
     background-color: $texttip-bg;
-    padding: $tooltip-padding-y $tooltip-padding-x;
+    padding: $texttip-padding-y $texttip-padding-x;
     border-radius: $radius;
 
     &:hover,

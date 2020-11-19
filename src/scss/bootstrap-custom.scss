@@ -240,9 +240,15 @@ $popover-box-shadow: 0px 4px 4px rgba($black, 0.1);
 $rangeslider-unfill-bg: $gray-400;
 $rangeslider-fill-bg: $primary;
 $rangeslider-dot-bg: $white;
+$rangeslider-tooltip-bg: transparent;
+$rangeslider-tooltip-color: $gray-600;
+$rangeslider-tooltip-offset-top: -($spacer);
+$rangeslider-tooltip-offset-bottom: -($spacer / 2);
 
 $rangeslider-width: auto;
 $rangeslider-height: $spacer / 2;
+$rangeslider-padding-x: 0;
+$rangeslider-padding-y: $spacer * 3;
 
 $rangeslider-dot-width: $spacer * 4;
 $rangeslider-dot-height: $spacer * 4;
@@ -286,8 +292,8 @@ $drag-file-circle-icon-color: $white;
 // Tooltips
 
 $tooltip-border-radius: $radius;
-$tooltip-padding-y: 0px;
-$tooltip-padding-x: $spacer / 2;
+$tooltip-padding-y: $spacer;
+$tooltip-padding-x: $spacer * 2;
 
 $tooltip-arrow-width: $spacer * 2;
 $tooltip-arrow-height: $spacer;
@@ -350,7 +356,7 @@ $texttip-bg: $gray-400;
 $texttip-hover-bg: rgba($blue, 0.3);
 
 $texttip-padding-x: 0;
-$texttip-padding-y: rgba($blue, 0.3);
+$texttip-padding-y: $spacer / 2;
 
 
 // Modals

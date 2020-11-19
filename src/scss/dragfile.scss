@@ -6,14 +6,30 @@
     border-radius: $radius;
     position: relative;
     transition: border-color .3s ease-out, border-style .3s ease-out;
+    background-color: #fff;
+
+    &-show-input {
+        margin-bottom: 2em;
+        .custom-file {
+            opacity: 1;
+            &-label {
+                opacity: 1;
+                height: calc(1em + 0.5em);
+                top: auto;
+                bottom: -1.75em;
+                margin-bottom: 0;
+                overflow: hidden;
+            }
+        }
+    }
 
     &-wrap {
         pointer-events: none;
         padding: $spacer * 14 $spacer * 14;
     }
 
-    &-fill {
-        position: absolute;
+    &-fill-absolute,
+    &-fill-fixed {
         top: 0;
         left: 0;
         right: 0;
@@ -26,11 +42,18 @@
         }
     }
 
+    &-fill-absolute {
+        position: absolute;
+    }
+    &-fill-fixed {
+        position: fixed;
+    }
+
     &-input,
     &-input input,
     &-input label {
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;
         width: 100%;
         height: 100%;

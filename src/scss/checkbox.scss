@@ -60,7 +60,9 @@
             border: 1px solid transparent;
         }
         &:before {
-            transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.2s ease-in;
+            transition-property: background-color, border-color, box-shadow;
+            transition-duration: .15s;
+            transition-timing-function: ease-in-out;
         }
     }
 }

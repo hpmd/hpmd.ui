@@ -798,8 +798,7 @@ export default Vue.extend({
                         <h4>Upload/input</h4>
 
                         <div class="mt-4">
-                            <hm-form-file 
-                                    disabled></hm-form-file>
+                            <hm-form-file></hm-form-file>
                         </div>
                     </b-col>
                 </b-row>

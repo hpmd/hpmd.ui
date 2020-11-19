@@ -47,8 +47,7 @@ import HmCalendar from '@/components/HmCalendar';
 import HmFormFile from '@/components/HmFormFile';
 import HmDragFile from '@/components/HmDragFile';
 
-
-
+import { HmTip } from '@/components/tip';
 
 
 HmIcon.add(
@@ -374,6 +373,7 @@ export default Vue.extend({
         HmSelector,
         HmSelectorEl,
         HmTextTip,
+        HmTip,
         HmTooltip,
         HmModal,
         HmFormFile,
@@ -650,6 +650,30 @@ export default Vue.extend({
                                 v-on:tag="addTag"/>
                         </b-col>
                     </b-row>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Подсказка</h2>
+
+                <div class="mt-4">
+                    <hm-tip>
+                        <template>
+                            Как считаются показатели
+                        </template>
+                        <template v-slot:tooltip>
+                            <div class="text-left">
+                                <b class="">Коэффициент вовлеченности:</b>
+                                <span class="d-table mb-4">((лайки + комментарии) / охват) * 100%</span>
+
+                                <b>Среднее кол-во лайков:</b>
+                                <span class="d-table mb-4">общее количество лайков / количество постов</span>
+
+                                <b>Среднее кол-во комментариев:</b>
+                                <span class="d-table mb-4">общее количество комментариев / количество постов</span>
+                            </div>
+                        </template>
+                    </hm-tip>
                 </div>
             </div>
 

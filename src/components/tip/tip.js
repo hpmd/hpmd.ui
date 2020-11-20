@@ -55,5 +55,9 @@ export default {
                 </HmTooltip>
             </span>
         );
+    },
+    components: {
+        HmIcon,
+        HmTooltip
     }
 };

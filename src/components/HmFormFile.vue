@@ -19,12 +19,7 @@ export default {
     },
     watch: {
         value(val, oldVal) {
-            if (
-                (this.multiple && (val.length !== oldVal.length)) ||
-                (!this.multiple && val !== oldVal)
-            ) {
-                this.handleFiles(val);
-            }
+            this.handleFiles(val);
         }
     }
 };

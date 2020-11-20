@@ -16,6 +16,11 @@ export default {
             type: String,
             default: 'Файл не выбран'
         }
+    },
+    watch: {
+        value(val) {
+            this.handleFiles(val);
+        }
     }
 };
 </script>

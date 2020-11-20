@@ -3,7 +3,7 @@ import {
     uniUpload,
     uniExclamationCircle
 } from '@/assets/icons/unicons';
-import { BFormFile } from 'bootstrap-vue';
+import HmFormFile from '@/components/HmFormFile';
 import { HmIcon } from './icon';
 
 
@@ -39,13 +39,36 @@ export default {
             type: Boolean,
             default: false
         },
-        fillContainer: {
-            type: Boolean,
-            default: false
+        view: {
+            type: String,
+            default: 'block',
+            validator(val) {
+                return ['block', 'fill-absolute', 'fill-fixed'].indexOf(val) !== -1;
+            }
+        },
+        top: {
+            type: String,
+            default: '0px'
+        },
+        left: {
+            type: String,
+            default: '0px'
+        },
+        right: {
+            type: String,
+            default: '0px'
+        },
+        bottom: {
+            type: String,
+            default: '0px'
         },
         value: {
             type: Array,
             default: () => ([])
+        },
+        showInput: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -65,11 +88,30 @@ export default {
                 classes.push('drag-file-error');
             }
 
-            if (this.fillContainer) {
-                classes.push('drag-file-fill');
+            if (this.view !== 'block') {
+                classes.push(`drag-file-${this.view}`);
+            }
+
+            if (this.showInput) {
+                classes.push('drag-file-show-input');
             }
 
             return classes;
+        },
+        containerStyles() {
+            const {
+                top,
+                left,
+                right,
+                bottom
+            } = this;
+
+            return {
+                top,
+                left,
+                right,
+                bottom
+            };
         }
     },
     methods: {
@@ -129,6 +171,7 @@ export default {
     render() {
         return (
             <div
+                style={this.containerStyles}
                 onDragenter={this.onDragenter}
                 onDragover={this.onDragover}
                 onDragleave={this.onDragleave}
@@ -152,7 +195,7 @@ export default {
                                 </div>
                             )
                     }
-                    <BFormFile
+                    <HmFormFile
                         draggable="draggable"
                         disabled={this.disabled}
                         multiple
@@ -165,7 +208,7 @@ export default {
     },
     components: {
         HmIcon,
-        BFormFile
+        HmFormFile
     }
 };
 </script>

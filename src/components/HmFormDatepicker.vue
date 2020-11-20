@@ -23,6 +23,10 @@ export default {
             // Variant color to use for today's date (defaults to `selectedVariant`)
             type: String,
             default: 'primary'
+        },
+        range: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -119,6 +123,7 @@ export default {
                     ref="calendar"
                     staticClass="b-form-date-calendar w-100"
                     props={this.calendarProps}
+                    range={this.range}
                     onSelected={this.onSelected}
                     onInput={this.onInput}
                     onContext={this.onContext}

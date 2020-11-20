@@ -8,6 +8,10 @@
         box-shadow: none;
     }
 
+    .custom-control-input:focus:checked ~ .custom-control-label:after {
+        border: 1px solid $blue;
+    }
+
     .custom-control-input {
         width: 100%;
         height: 100%;

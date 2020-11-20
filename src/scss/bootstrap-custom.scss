@@ -291,12 +291,14 @@ $drag-file-circle-width: $spacer * 10;
 $drag-file-circle-height: $spacer * 10;
 $drag-file-circle-icon-color: $white;
 
+$drag-file-z-index: 1000;
+
 
 // Tooltips
 
 $tooltip-border-radius: $radius;
-$tooltip-padding-y: 0px;
-$tooltip-padding-x: $spacer / 2;
+$tooltip-padding-y: $spacer;
+$tooltip-padding-x: $spacer * 2;
 
 $tooltip-arrow-width: $spacer * 2;
 $tooltip-arrow-height: $spacer;
@@ -359,7 +361,7 @@ $texttip-bg: $gray-400;
 $texttip-hover-bg: rgba($blue, 0.3);
 
 $texttip-padding-x: 0;
-$texttip-padding-y: rgba($blue, 0.3);
+$texttip-padding-y: $spacer / 2;
 
 
 // Modals

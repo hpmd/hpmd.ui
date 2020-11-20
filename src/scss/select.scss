@@ -160,7 +160,10 @@ fieldset[disabled] .multiselect{
         font-size: $select-tags-font-size;
 
         &-wrap{
-            display:inline-block;
+            display: inline-flex;
+            flex-wrap: wrap;
+            width: calc(100% - 40px);
+            margin-top: -10px;
         }
     }
 
@@ -170,7 +173,8 @@ fieldset[disabled] .multiselect{
         padding: $spacer $spacer;
         padding-right: 22px;
         border-radius: $select-border-radius;
-        margin-right:10px;
+        margin-right: 10px;
+        margin-top: 10px;
         color:#000;
         line-height:1;
         background: $select-tag-bg;

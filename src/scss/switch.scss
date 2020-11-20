@@ -23,6 +23,11 @@
         &:disabled~.custom-control-label:after {
             background-color: $gray-500;
         }
+
+        &:focus + .custom-control-label:before{
+            box-shadow: none;
+            border-color: $black;
+        }
     }
 
     .custom-control-label {
@@ -49,7 +54,6 @@
         }
     }
 
-    &:focus~.custom-control-label:before,
     &__focus .custom-control-label:before {
         box-shadow: none;
         border-color: $black;

@@ -1,18 +1,3 @@
-/* $themeColor: $primary;
-$bgColor: $gray-400;
-
-
-
-@import '~vue-slider-component/lib/theme/default.scss';
-
-// Overrides
-.vue-slider-dot {
-    @at-root &-handle {
-        border: 2px solid $themeColor;
-    }
-} */
-
-
 .vue-slider {
     padding: $rangeslider-padding-y $rangeslider-padding-x;
     width: $rangeslider-width;

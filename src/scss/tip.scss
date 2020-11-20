@@ -1,0 +1,25 @@
+$tip-tooltip-padding-y: $spacer;
+$tip-tooltip-padding-x: $spacer * 2;
+$tip-text-font-size: 1.125em;
+$tip-text-font-weight: 600;
+$tip-icon-font-size: 1.375em;
+
+
+.hm-tip {
+    &-tooltip {
+        padding: $tip-tooltip-padding-y $tip-tooltip-padding-x;
+    }
+
+    &-text {
+        font-size: $tip-text-font-size;
+        font-weight: $tip-text-font-weight;
+    }
+
+    &-icon {
+        font-size: $tip-icon-font-size;
+
+        svg {
+            fill: currentColor;
+        }
+    }
+}

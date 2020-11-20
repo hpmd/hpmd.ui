@@ -788,7 +788,7 @@ export default Vue.extend({
                         <div class="mt-4">
                             <div style="position: relative; height: 300px;">
                                 <hm-drag-file
-                                    fill-absolute
+                                    view="fill-absolute"
                                     v-model="dragAndDropModel">
                                 </hm-drag-file>
                             </div>

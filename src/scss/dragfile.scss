@@ -7,11 +7,13 @@
     position: relative;
     transition: border-color .3s ease-out, border-style .3s ease-out;
     background-color: #fff;
+    z-index: $drag-file-z-index;
 
     &-show-input {
         margin-bottom: 2em;
         .custom-file {
             opacity: 1;
+            width: 100%;
             &-label {
                 opacity: 1;
                 height: calc(1em + 0.5em);

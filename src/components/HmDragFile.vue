@@ -39,17 +39,12 @@ export default {
             type: Boolean,
             default: false
         },
-        fillAbsolute: {
-            type: Boolean,
-            default: false
-        },
-        fillFixed: {
-            type: Boolean,
-            default: false
-        },
-        zIndex: {
-            type: Number,
-            default: 1000
+        view: {
+            type: String,
+            default: 'block',
+            validator(val) {
+                return ['block', 'fill-absolute', 'fill-fixed'].indexOf(val) !== -1;
+            }
         },
         top: {
             type: String,
@@ -66,14 +61,6 @@ export default {
         bottom: {
             type: String,
             default: '0px'
-        },
-        width: {
-            type: String,
-            default: '100%'
-        },
-        height: {
-            type: String,
-            default: '100%'
         },
         value: {
             type: Array,
@@ -101,12 +88,8 @@ export default {
                 classes.push('drag-file-error');
             }
 
-            if (this.fillAbsolute) {
-                classes.push('drag-file-fill-absolute');
-            }
-
-            if (this.fillFixed) {
-                classes.push('drag-file-fill-fixed');
+            if (this.view !== 'block') {
+                classes.push(`drag-file-${this.view}`);
             }
 
             if (this.showInput) {
@@ -120,19 +103,14 @@ export default {
                 top,
                 left,
                 right,
-                bottom,
-                width,
-                height
+                bottom
             } = this;
 
             return {
-                zIndex: `${this.zIndex}`,
                 top,
                 left,
                 right,
-                bottom,
-                width,
-                height
+                bottom
             };
         }
     },

@@ -18,7 +18,7 @@ export default {
         }
     },
     watch: {
-        value(val, oldVal) {
+        value(val) {
             this.handleFiles(val);
         }
     }

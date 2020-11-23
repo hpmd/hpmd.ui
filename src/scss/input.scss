@@ -135,6 +135,7 @@
             padding: 0 $spacer * 2;
 
             & > .extra-control {
+                color: $dark;
                 opacity: 0.5;
                 line-height: 0;
                 transition: opacity .1s ease-in-out;

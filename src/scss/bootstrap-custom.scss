@@ -356,12 +356,16 @@ $hm-selector-el-disabled-unactive-bg: $gray-100;
 $hm-selector-el-disabled-active-bg: rgba($yellow, 0.3);
 
 // Text tip
+// inline
+$tip-inline-bg: $gray-300;
+$tip-inline-hover-bg: rgba($primary, 0.3);
 
-$texttip-bg: $gray-400;
-$texttip-hover-bg: rgba($blue, 0.3);
+$tip-inline-padding-x: $spacer / 2;
+$tip-inline-padding-y: $spacer / 2;
 
-$texttip-padding-x: 0;
-$texttip-padding-y: $spacer / 2;
+$tip-tooltip-padding-y: $spacer;
+$tip-tooltip-padding-x: $spacer * 2;
+$tip-block-icon-font-size: 1.375em;
 
 
 // Modals

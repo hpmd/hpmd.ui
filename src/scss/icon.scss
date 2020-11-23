@@ -1,14 +1,14 @@
 .hm-icon {
     display: inline-block;
+    fill: currentColor;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
+    width: auto;
 
-    & > svg {
-        width: auto;
-        height: 1em; /* or any other relative font sizes */
-
-        /* You would have to include the following two lines to make this work in Safari */
-        //max-width: 100%;
-        //max-height: 100%;
-    }
+    /* You would have to include the following two lines to make this work in Safari */
+    //max-width: 100%;
+    //max-height: 100%;
 }
 
 .uim-primary {

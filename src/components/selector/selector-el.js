@@ -1,3 +1,10 @@
+/**
+ * @typedef {object} SelectorEl
+ * @property {String}   value            selector value
+ * @property {String}   checkboxLimit    how many elements could be selected
+ * @property {String}   trueValue        true value
+ * @property {String}   falseValue       false value
+  */
 export default {
     model: {
         prop: 'modelValue',
@@ -80,6 +87,9 @@ export default {
         }
     },
     methods: {
+        /**
+         * onInput handler
+         */
         onInputChange(e) {
             const isChecked = e.target.checked;
 

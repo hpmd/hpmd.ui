@@ -1,5 +1,13 @@
+/**
+ * @typedef {object} RangeSlider
+ * @property {Number}   dotSize    dot width and height
+ * @property {Boolean}  height     line height
+ * @property {Number}   lazy       lazy update
+  */
+
 import VueSlider from 'vue-slider-component';
 
+// https://nightcatsama.github.io/vue-slider-component
 export default {
     extends: VueSlider,
     props: {
@@ -47,4 +55,4 @@ export default {
             return dotPos;
         }
     }
-}; // https://nightcatsama.github.io/vue-slider-component
+};

@@ -1,9 +1,9 @@
+/**
+ * @typedef {object} Selector
+ * @property {String}   layout    layout mode
+  */
 export default {
     props: {
-        horizontal: {
-            type: Boolean,
-            default: false
-        },
         layout: {
             type: String,
             default: 'flex-column'

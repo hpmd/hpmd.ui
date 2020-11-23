@@ -1,4 +1,11 @@
 <script>
+/**
+ * @typedef {object} FormDatepicker
+ * @property {Boolean}   useNative          native input[type="file"]
+ * @property {String}   selectedVariant    selected bootstrap theme
+ * @property {String}   todayVariant       today bootstrap theme
+ * @property {Boolean}   range              date range selection
+ */
 import { BFormDatepicker } from 'bootstrap-vue';
 import { BVFormBtnLabelControl } from 'bootstrap-vue/src/utils/bv-form-btn-label-control';
 import { isUndefinedOrNull } from 'bootstrap-vue/src/utils/inspect';
@@ -30,6 +37,10 @@ export default {
         }
     },
     methods: {
+
+        /**
+         * onInput handler for native input
+         */
         onInputNative(ymd) {
             if (this.localYMD !== ymd) {
                 this.localYMD = ymd;

@@ -1,4 +1,11 @@
 <script>
+/**
+ * @typedef {object} Calendar
+ * @property {String}   locale             calendar locale
+ * @property {String}   range              date range selection
+ * @property {String}   selectedVariant    selected bootstrap theme
+ * @property {String}   todayVariant       today bootstrap theme
+ */
 import { BCalendar } from 'bootstrap-vue';
 import { uniCalendarAlt } from '@/assets/icons/unicons';
 import identity from 'bootstrap-vue/src/utils/identity';
@@ -56,6 +63,9 @@ export default {
         }
     },
     methods: {
+        /**
+         * emit 'selected' event
+         */
         emitSelected(date) {
             // Performed in a `$nextTick()` to (probably) ensure
             // the input event has emitted first
@@ -72,6 +82,9 @@ export default {
                 });
             }
         },
+        /**
+         * day selection at click event
+         */
         onClickDay(day) {
             const {
                 activeDate,
@@ -164,12 +177,12 @@ export default {
                 <div class="d-flex align-items-center">
                     {
                         showIcon && (
-                            <HmIcon
-                                class="d-inline-flex mr-1"
-                                name="calendar-alt" />
+                            <div class="d-inline-flex mr-1">
+                                <HmIcon name="calendar-alt" />
+                            </div>
                         )
                     }
-                    <span>
+                    <span class="text-nowrap">
                         {
                             date ?
                                 [

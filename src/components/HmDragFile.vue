@@ -1,4 +1,18 @@
 <script>
+/**
+ * @typedef {object} DragFile
+ * @property {String}   placeholder            placeholder
+ * @property {String}   placeholderTip         placeholder tip
+ * @property {String}   errorPlaceholder       error placeholder
+ * @property {String}   errorPlaceholderTip    error placeholder tip
+ * @property {Boolean}   error                 show error message
+ * @property {String}   view                   view mode (block, fill-absolute, fill-fixed)
+ * @property {String}   top                    top indent
+ * @property {String}   left                   left indent
+ * @property {String}   right                  right indent
+ * @property {String}   bottom                 bottom indent
+ * @property {Boolean}   showInput             show input
+  */
 import {
     uniUpload,
     uniExclamationCircle
@@ -115,6 +129,9 @@ export default {
         }
     },
     methods: {
+        /**
+         * stop event bubbling
+         */
         stopEvent(
             event,
             {
@@ -133,24 +150,42 @@ export default {
                 event.stopImmediatePropagation();
             }
         },
+        /**
+         * onDragenter handler
+         */
         onDragenter(event) {
             this.stopEvent(event);
             this.dragging = true;
         },
+        /**
+         * onDragover handler
+         */
         onDragover(event) {
             this.stopEvent(event);
             this.dragging = true;
         },
+        /**
+         * onDragleave handler
+         */
         onDragleave(event) {
             this.stopEvent(event);
             this.dragging = false;
         },
+        /**
+         * convert method arguments to array
+         */
         arrayFrom(...args) {
             return Array.from(...args);
         },
+        /**
+         * onInput handler
+         */
         onInput(event) {
             this.$emit('input', event);
         },
+        /**
+         * onChange handler
+         */
         onChange(event) {
             const { target, dataTransfer = {} } = event;
 
@@ -161,6 +196,9 @@ export default {
 
             this.onInput(files);
         },
+        /**
+         * onDrop handler
+         */
         onDrop(event) {
             this.stopEvent(event);
             this.dragging = false;
@@ -178,8 +216,10 @@ export default {
                 onDrop={this.onDrop}
                 class={this.mainClasses}>
                 <div class="drag-file-wrap d-flex justify-content-center align-items-center">
-                    <div class="drag-file-circle mr-5">
-                        <HmIcon name={ this.error ? 'exclamation-circle' : 'upload'} />
+                    <div class="drag-file-circle-wrap mr-5">
+                        <div class="drag-file-circle">
+                            <HmIcon name={ this.error ? 'exclamation-circle' : 'upload'} />
+                        </div>
                     </div>
                     {
                         (this.value && this.value.length && this.$slots.hasFiles) ?

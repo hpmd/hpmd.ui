@@ -1,4 +1,13 @@
+/**
+ * @typedef {object} Avatar
+ * @property {String}   size       Icon size(xs, sm, md, lg)
+ * @property {String}   variant    Applies one of the Bootstrap theme color variants to the component
+ * @property {String}   src        Image URL to use for the avatar
+ */
+import { uniUser } from '@/assets/icons/unicons';
 import { HmIcon } from '../icon';
+
+HmIcon.add(uniUser);
 
 export default {
     name: 'HmAvatar',
@@ -22,6 +31,9 @@ export default {
         };
     },
     computed: {
+        /**
+         * Сomputed property to generate a list of classes for the main container
+         */
         containerClasses() {
             const isValidSize = this.sizes.indexOf(this.size) > -1;
             return {

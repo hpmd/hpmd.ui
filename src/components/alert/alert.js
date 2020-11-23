@@ -48,7 +48,6 @@ export default {
     components: {
         HmIcon,
         HmButtonClose,
-        BVTransition,
-
+        BVTransition
     }
 };

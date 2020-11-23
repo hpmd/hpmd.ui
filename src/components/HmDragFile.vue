@@ -5,13 +5,13 @@
  * @property {String}   placeholderTip         placeholder tip
  * @property {String}   errorPlaceholder       error placeholder
  * @property {String}   errorPlaceholderTip    error placeholder tip
- * @property {Boolean}   error                 show error message
+ * @property {Boolean}  error                  show error message
  * @property {String}   view                   view mode (block, fill-absolute, fill-fixed)
  * @property {String}   top                    top indent
  * @property {String}   left                   left indent
  * @property {String}   right                  right indent
  * @property {String}   bottom                 bottom indent
- * @property {Boolean}   showInput             show input
+ * @property {Boolean}  showInput              show input
   */
 import {
     uniUpload,

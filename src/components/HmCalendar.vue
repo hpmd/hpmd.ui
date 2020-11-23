@@ -2,7 +2,7 @@
 /**
  * @typedef {object} Calendar
  * @property {String}   locale             calendar locale
- * @property {String}   range              date range selection
+ * @property {Boolean}  range              date range selection
  * @property {String}   selectedVariant    selected bootstrap theme
  * @property {String}   todayVariant       today bootstrap theme
  */

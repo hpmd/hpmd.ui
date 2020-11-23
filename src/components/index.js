@@ -18,7 +18,8 @@ import { HmRangeSliderPlugin } from './range-slider';
 import { HmSelectPlugin } from './select';
 import { HmSelectorPlugin } from './selector';
 import { HmTablePlugin } from './table';
-import { HmTextTipPlugin } from './tip';
+import { HmTipPlugin } from './tip';
+import { HmTooltipPlugin } from './tootip';
 
 
 
@@ -41,7 +42,9 @@ const componentsPlugin = pluginFactory({
         HmRangeSliderPlugin,
         HmSelectPlugin,
         HmSelectorPlugin,
-        HmTablePlugin
+        HmTablePlugin,
+        HmTipPlugin,
+        HmTooltipPlugin
     }
 });
 

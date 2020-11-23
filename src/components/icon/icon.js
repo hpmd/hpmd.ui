@@ -77,17 +77,14 @@ export default {
         const viewBox = `0 0 ${this.icon.width} ${this.icon.height}`;
 
         return (
-            <div
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
                 class="hm-icon"
-                aria-role="img">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox={viewBox}
-                    width="1"
-                    height="1"
-                    domPropsInnerHTML={this.icon.content}>
-                </svg>
-            </div>
+                viewBox={viewBox}
+                width="1"
+                height="1"
+                domPropsInnerHTML={this.icon.content}>
+            </svg>
         );
     }
 };

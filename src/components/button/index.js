@@ -10,6 +10,9 @@ const HmButtonPlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/button}
+ */
 export {
     HmButtonPlugin,
     BButtonClose as HmButtonClose,

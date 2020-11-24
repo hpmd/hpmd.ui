@@ -7,6 +7,9 @@ const HmButtonGroupPlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/button-group}
+ */
 export {
     HmButtonGroup,
     HmButtonGroupPlugin

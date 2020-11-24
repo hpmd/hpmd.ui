@@ -7,6 +7,9 @@ const HmBadgePlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/badge}
+ */
 export {
     HmBadgePlugin,
     HmBadge

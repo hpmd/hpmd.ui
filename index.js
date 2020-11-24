@@ -7,6 +7,7 @@ const install = installFactory({
     }
 });
 
+
 const HpmdUI = {
     install,
     NAME: 'HPMD.ui'
@@ -14,7 +15,6 @@ const HpmdUI = {
 
 export {
     install,
-    NAME,
     HpmdUI
 };
 

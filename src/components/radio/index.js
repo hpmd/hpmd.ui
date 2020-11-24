@@ -7,6 +7,9 @@ const HmRadioPlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/form-radio}
+ */
 export {
     HmRadioPlugin,
     HmRadio

@@ -17,7 +17,9 @@ const HmInputGroupPlugin = pluginFactory({
     }
 });
 
-
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/input-group}
+ */
 export {
     HmInputGroupPlugin,
     HmInputGroup,

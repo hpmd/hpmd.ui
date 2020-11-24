@@ -1,4 +1,7 @@
+import { uniUser } from '@/assets/icons/unicons';
 import { HmIcon } from '../icon';
+
+HmIcon.add(uniUser);
 
 export default {
     name: 'HmAvatar',

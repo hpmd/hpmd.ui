@@ -1,9 +1,16 @@
 {
   "name": "hpmd.ui",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "private": true,
   "description": "UI Kit for dashboard purposes. Include scss styles based on Bootstrap and Vue 2 components",
-  "keywords": ["Vue 2", "Vue", "Bootstrap", "UI", "scss", "Bootstrap Vue"],
+  "keywords": [
+    "Vue 2",
+    "Vue",
+    "Bootstrap",
+    "UI",
+    "scss",
+    "Bootstrap Vue"
+  ],
   "author": {
     "name": "Sasha Hydro",
     "email": "a.smirnov@hpmd.ru",

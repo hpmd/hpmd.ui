@@ -1,4 +1,3 @@
-<script>
 import { BCalendar } from 'bootstrap-vue';
 import { uniCalendarAlt } from '@/assets/icons/unicons';
 import identity from 'bootstrap-vue/src/utils/identity';
@@ -10,7 +9,7 @@ import {
 } from 'bootstrap-vue/src/utils/date';
 import { toString } from 'bootstrap-vue/src/utils/string';
 import { BIconChevronLeft } from 'bootstrap-vue/src/icons/icons';
-import { HmIcon } from './icon';
+import { HmIcon } from '@/components/icon';
 
 HmIcon.add(uniCalendarAlt);
 
@@ -259,7 +258,7 @@ export default {
                 aria-label={label || null}
                 aria-disabled={btnDisabled ? 'true' : null}
                 aria-keyshortcuts={shortcut || null}
-                onClick={btnDisabled ? () => {} : handler}>
+                onClick={btnDisabled ? () => { } : handler}>
                 <div aria-hidde={true}>
                     {content}
                 </div>
@@ -524,4 +523,3 @@ export default {
         HmIcon
     }
 };
-</script>

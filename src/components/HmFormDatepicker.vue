@@ -11,7 +11,7 @@ import { BVFormBtnLabelControl } from 'bootstrap-vue/src/utils/bv-form-btn-label
 import { isUndefinedOrNull } from 'bootstrap-vue/src/utils/inspect';
 import { parseYMD } from 'bootstrap-vue/src/utils/date';
 import { pick } from 'bootstrap-vue/src/utils/object';
-import HmCalendar from '@/components/HmCalendar';
+import { HmCalendar } from '@/components/calendar';
 import { HmInput } from './input';
 
 /**

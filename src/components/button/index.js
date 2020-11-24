@@ -1,7 +1,7 @@
 import { BButton, BButtonClose } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmButtonPlugin = pluginFactory({
+const ButtonPlugin = pluginFactory({
     components: {
         HmButton: BButton,
         HmBtn: BButton,
@@ -14,7 +14,7 @@ const HmButtonPlugin = pluginFactory({
  * @see {@link https://bootstrap-vue.org/docs/components/button}
  */
 export {
-    HmButtonPlugin,
+    ButtonPlugin,
     BButtonClose as HmButtonClose,
     BButton as HmButton
 };

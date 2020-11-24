@@ -1,7 +1,7 @@
 import { BButtonGroup as HmButtonGroup } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmButtonGroupPlugin = pluginFactory({
+const ButtonGroupPlugin = pluginFactory({
     components: {
         HmButtonGroup
     }
@@ -11,6 +11,6 @@ const HmButtonGroupPlugin = pluginFactory({
  * @see {@link https://bootstrap-vue.org/docs/components/button-group}
  */
 export {
-    HmButtonGroup,
-    HmButtonGroupPlugin
+    ButtonGroupPlugin,
+    HmButtonGroup
 };

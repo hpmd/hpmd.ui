@@ -13,6 +13,7 @@ import { HmAvatar } from '@/components/avatar';
 import { HmBadge } from '@/components/badge';
 import { HmButton } from '@/components/button';
 import { HmButtonGroup } from '@/components/button-group';
+import { HmCalendar } from '@/components/calendar';
 import { HmCheckbox } from '@/components/checkbox';
 import {
     HmDropdown,
@@ -43,7 +44,6 @@ import {
 import { HmTable } from '@/components/table';
 import { HmTooltip } from '@/components/tooltip';
 
-import HmCalendar from '@/components/HmCalendar';
 import HmFormDatepicker from '@/components/HmFormDatepicker';
 import HmFormFile from '@/components/HmFormFile';
 import HmDragFile from '@/components/HmDragFile';

@@ -4,7 +4,7 @@ import {
 } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmDropdownPlugin = pluginFactory({
+const DropdownPlugin = pluginFactory({
     components: {
         HmDropdown,
         HmDropdownItem
@@ -15,7 +15,7 @@ const HmDropdownPlugin = pluginFactory({
  * @see {@link https://bootstrap-vue.org/docs/components/dropdown}
  */
 export {
-    HmDropdownPlugin,
+    DropdownPlugin,
     HmDropdown,
     HmDropdownItem
 };

@@ -1,50 +1,50 @@
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-import { HmAlertPlugin } from './alert';
-import { HmAvatarPlugn } from './avatar';
-import { HmBadgePlugin } from './badge';
-import { HmButtonPlugin } from './button';
-import { HmButtonGroupPlugin } from './button-group';
-import { HmDropdownPlugin } from './dropdown';
-import { HmIconPlugin } from './icon';
-import { HmInputPlugin } from './input';
-import { HmInputGroupPlugin } from './input-group';
-import { HmModalPlugin } from './modal';
-import { HmNavPlugin } from './nav';
-import { HmPopoverPlugin } from './popover';
-import { HmProgressPlugin } from './progress';
-import { HmRadioPlugin } from './radio';
-import { HmRangeSliderPlugin } from './range-slider';
-import { HmSelectPlugin } from './select';
-import { HmSelectorPlugin } from './selector';
-import { HmTablePlugin } from './table';
-import { HmTipPlugin } from './tip';
-import { HmTooltipPlugin } from './tootip';
+import { AlertPlugin } from './alert';
+import { AvatarPlugn } from './avatar';
+import { BadgePlugin } from './badge';
+import { ButtonPlugin } from './button';
+import { ButtonGroupPlugin } from './button-group';
+import { DropdownPlugin } from './dropdown';
+import { IconPlugin } from './icon';
+import { InputPlugin } from './input';
+import { InputGroupPlugin } from './input-group';
+import { ModalPlugin } from './modal';
+import { NavPlugin } from './nav';
+import { PopoverPlugin } from './popover';
+import { ProgressPlugin } from './progress';
+import { RadioPlugin } from './radio';
+import { RangeSliderPlugin } from './range-slider';
+import { SelectPlugin } from './select';
+import { SelectorPlugin } from './selector';
+import { TablePlugin } from './table';
+import { TipPlugin } from './tip';
+import { TooltipPlugin } from './tootip';
 
 
 
 const componentsPlugin = pluginFactory({
     plugins: {
-        HmAlertPlugin,
-        HmAvatarPlugn,
-        HmBadgePlugin,
-        HmButtonPlugin,
-        HmButtonGroupPlugin,
-        HmDropdownPlugin,
-        HmIconPlugin,
-        HmInputPlugin,
-        HmInputGroupPlugin,
-        HmModalPlugin,
-        HmNavPlugin,
-        HmPopoverPlugin,
-        HmProgressPlugin,
-        HmRadioPlugin,
-        HmRangeSliderPlugin,
-        HmSelectPlugin,
-        HmSelectorPlugin,
-        HmTablePlugin,
-        HmTipPlugin,
-        HmTooltipPlugin
+        AlertPlugin,
+        AvatarPlugn,
+        BadgePlugin,
+        ButtonPlugin,
+        ButtonGroupPlugin,
+        DropdownPlugin,
+        IconPlugin,
+        InputPlugin,
+        InputGroupPlugin,
+        ModalPlugin,
+        NavPlugin,
+        PopoverPlugin,
+        ProgressPlugin,
+        RadioPlugin,
+        RangeSliderPlugin,
+        SelectPlugin,
+        SelectorPlugin,
+        TablePlugin,
+        TipPlugin,
+        TooltipPlugin
     }
 });
 

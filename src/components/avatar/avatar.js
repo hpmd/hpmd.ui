@@ -3,17 +3,35 @@ import { HmIcon } from '../icon';
 
 HmIcon.add(uniUser);
 
+/**
+ * Component to work with user avatars
+ * @class HmAvatar
+ * @example
+ * <hm-avatar
+ *    variant="light"
+ *    size="lg"
+ *    src="..." />
+ */
 export default {
     name: 'HmAvatar',
     props: {
+        /**
+         * Sets icon size (xs, sm, md, lg)
+         */
         size: {
             type: String,
             default: 'md'
         },
+        /**
+         * Applies one of the Bootstrap theme color variants to the component
+         */
         variant: {
             type: String,
             default: 'secondary'
         },
+        /**
+         * Image URL to use for the avatar
+         */
         src: {
             type: String,
             default: ''
@@ -25,6 +43,9 @@ export default {
         };
     },
     computed: {
+        /**
+         * Сomputed property to generate a list of classes for the main container
+         */
         containerClasses() {
             const isValidSize = this.sizes.indexOf(this.size) > -1;
             return {

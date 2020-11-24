@@ -1,8 +1,11 @@
 .b-calendar {
-    @each $color, $value in $theme-colors {
-        & .btn-#{$color},
-        & .btn-outline-#{$color} {
-            color: $value;
+    &-grid-body {
+        @each $color, $value in $theme-colors {
+
+            & .btn-#{$color},
+            & .btn-outline-#{$color} {
+                color: $value;
+            }
         }
     }
     &:focus {

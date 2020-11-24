@@ -1,12 +1,26 @@
 import VueSlider from 'vue-slider-component';
 
+/**
+ * Component for displaying the calendar
+ * @class HmRangeSlider
+ * @extends VueSlider
+ * @see {@link https://nightcatsama.github.io/vue-slider-component} Docs
+ * @example
+ * <hm-calendar v-model="..." />
+ */
 export default {
     extends: VueSlider,
     props: {
+        /**
+         * dot width and height
+         */
         dotSize: {
             type: Number,
             default: 16
         },
+        /**
+         * line height
+         */
         height: {
             type: Number,
             default: 2
@@ -22,9 +36,15 @@ export default {
         }
     },
     computed: {
+        /**
+         * overwritten container styles
+         */
         containerStyles() {
             return {};
         },
+        /**
+         * overwritten dot styles
+         */
         dotBaseStyle() {
             let dotPos;
 
@@ -47,4 +67,4 @@ export default {
             return dotPos;
         }
     }
-}; // https://nightcatsama.github.io/vue-slider-component
+};

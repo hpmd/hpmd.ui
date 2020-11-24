@@ -25,7 +25,7 @@ export default {
                     };
                 }
 
-                if (this.value && this.value.length) {
+                if (this.value && this.value.length && this.taggable) {
                     result['margin-top'] = '8px';
                 }
             }

@@ -16,14 +16,20 @@ HmIcon.add(uniTimes, uniMultiply, uniEye, uniEyeSlash);
 // import HmIcon from 'vue-awesome/components/Icon';
 
 
+/**
+ * Bootstrap input on steroids (more or less with material UI functionality)
+ * Currently supports:
+ * - any text-like input (text, email, password, tel)
+ * - number
+ * - native date / time
+ * @class HmInput
+ * @extends BFormInput
+ * @see {@link https://bootstrap-vue.org/docs/components/form-input} Original docs
+ * @see {@link bootstrap-vue/src/componetns/form-input/form-input.js}
+ *      {@link bootstrap-vue/src/mixins/*}
+ */
 export default {
     extends: BFormInput,
-    /**
-     * Most data inherited from
-     * @see bootstrap-vue/src/componetns/form-input/form-input.js
-     * and related mixins in form-input:
-     * @see bootstrap-vue/src/mixins/*
-     */
     props: {
         /**
          * Label to replace placeholder attribute
@@ -114,9 +120,18 @@ export default {
         }
     },
     methods: {
+        /**
+         * Set focus enabled
+         * @todo Watch for possible updates: focus listener could be added
+         */
         onFocusEnh() {
             this.isFocused = true;
         },
+        /**
+         * Set focus disabled, triggers BFormInput.onBlur
+         * @override BFormInput.onBlur
+         * @param {FocusEvent} e
+         */
         onBlurEnh(e) {
             this.isFocused = false;
             /**
@@ -127,7 +142,8 @@ export default {
         },
         /**
          * Use it when its necessary to bypass BFormInput onInput method
-         * currently ignores formatter property, due to use with masks
+         * currently ignores formatter property, due to possible conflict with masks
+         * @emits InputEvent
          */
         hijackOriginalOnInput(value) {
             const _bv = this;
@@ -139,6 +155,8 @@ export default {
         /**
          * Handler for IMask directive "accept" event
          * which fires on every user input
+         * @emits IMask.accept
+         * @emits HmInput.inputRaw
          */
         onImaskInput(e) {
             const { value, unmaskedValue } = e.detail;
@@ -152,6 +170,7 @@ export default {
         /**
          * Handler for IMask directive "complete" event
          * which fires when mask is fullfilled
+         * @emits IMask.complete
          */
         onImaskComplete(e) {
             // Emit original IMask "complete" event up

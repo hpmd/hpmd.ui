@@ -1,11 +1,4 @@
 <script>
-/**
- * @typedef {object} Calendar
- * @property {String}   locale             calendar locale
- * @property {Boolean}  range              date range selection
- * @property {String}   selectedVariant    selected bootstrap theme
- * @property {String}   todayVariant       today bootstrap theme
- */
 import { BCalendar } from 'bootstrap-vue';
 import { uniCalendarAlt } from '@/assets/icons/unicons';
 import identity from 'bootstrap-vue/src/utils/identity';
@@ -21,27 +14,50 @@ import { HmIcon } from './icon';
 
 HmIcon.add(uniCalendarAlt);
 
+/**
+ * Component for displaying the calendar
+ * @class HmCalendar
+ * @extends BCalendar
+ * @see {@link https://bootstrap-vue.org/docs/components/calendar} Docs
+ * @example
+ * <hm-calendar v-model="..." />
+ */
 export default {
     extends: BCalendar,
     props: {
+        /**
+         * calendar locale
+         */
         locale: {
             type: String,
             default: 'ru'
         },
+        /**
+         * date range selection
+         */
         range: {
             type: Boolean,
             default: false
         },
+        /**
+         * selected bootstrap theme
+         */
         selectedVariant: {
             // Variant color to use for the selected date
             type: String,
             default: 'dark'
         },
+        /**
+         * today bootstrap theme
+         */
         todayVariant: {
             // Variant color to use for today's date (defaults to `selectedVariant`)
             type: String,
             default: 'primary'
         },
+        /**
+         * label without date
+         */
         labelNoDateSelected: {
             type: String,
             default: 'Дата не выбрана'
@@ -58,6 +74,9 @@ export default {
         };
     },
     computed: {
+        /**
+         * overwritten computed property returning today variant for buttons
+         */
         computedTodayVariant() {
             return `btn-outline-${this.todayVariant}`;
         }
@@ -65,6 +84,8 @@ export default {
     methods: {
         /**
          * emit 'selected' event
+         * @param {object|Date} date
+         * @returns {void}
          */
         emitSelected(date) {
             // Performed in a `$nextTick()` to (probably) ensure
@@ -84,6 +105,8 @@ export default {
         },
         /**
          * day selection at click event
+         * @param {object|Date} day
+         * @returns {void}
          */
         onClickDay(day) {
             const {

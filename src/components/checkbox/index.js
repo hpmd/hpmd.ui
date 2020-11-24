@@ -7,6 +7,9 @@ const HmCheckboxPlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/form-checkbox}
+ */
 export {
     HmCheckboxPlugin,
     HmCheckbox

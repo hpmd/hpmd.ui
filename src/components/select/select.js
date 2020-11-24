@@ -1,7 +1,11 @@
-import { Multiselect as HmSelect } from 'vue-multiselect';
+import { Multiselect } from 'vue-multiselect';
 
+/**
+ * @extends Multiselect
+ * @see {@link https://vue-multiselect.js.org/}
+ */
 export default {
-    extends: HmSelect,
+    extends: Multiselect,
     computed: {
         inputStyle() {
             let result = {};

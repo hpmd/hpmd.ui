@@ -12,6 +12,10 @@
   */
 const _iconsMap = {};
 
+/**
+ * Component to ease work with SVG icons
+ * @class HmIcon
+ */
 export default {
     /**
      * Class method to register new icons (for global usage)
@@ -35,31 +39,29 @@ export default {
 
     name: 'HmIcon',
     props: {
+        /**
+         * Color to fill icon with
+         * Accepts color value or any keyword
+         * @default 'currentColor': icon will inherit text color
+         */
         fill: {
             type: String,
-            default: 'inherit'
+            default: 'currentColor'
         },
-        height: {
-            type: [String, Number],
-            default: '1em'
-        },
-        iconStyle: {
-            type: String,
-            default: 'line',
-            validator(val) {
-                return ['line', 'monochrome'].indexOf(val) !== -1;
-            }
-        },
+        /**
+         * Icon name to target icon in map
+         * @see {@link /src/assets/icons/unicons.js} for examples
+         */
         name: {
             type: String,
             default: ''
-        },
-        width: {
-            type: [String, Number],
-            default: '1em'
         }
     },
     computed: {
+        /**
+         * Getter for possible icon in map by passed "name" property
+         * @returns {Icon?} Icon added to map
+         */
         icon() {
             const _icon = _iconsMap[this.name];
 
@@ -83,6 +85,7 @@ export default {
                 viewBox={viewBox}
                 width="1"
                 height="1"
+                fill={this.fill}
                 domPropsInnerHTML={this.icon.content}>
             </svg>
         );

@@ -7,6 +7,9 @@ const HmTooltipPlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/tooltip}
+ */
 export {
     HmTooltipPlugin,
     HmTooltip

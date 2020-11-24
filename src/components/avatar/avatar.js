@@ -1,25 +1,37 @@
-/**
- * @typedef {object} Avatar
- * @property {String}   size       Icon size(xs, sm, md, lg)
- * @property {String}   variant    Applies one of the Bootstrap theme color variants to the component
- * @property {String}   src        Image URL to use for the avatar
- */
 import { uniUser } from '@/assets/icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniUser);
 
+/**
+ * Component to work with user avatars
+ * @class HmAvatar
+ * @example
+ * <hm-avatar
+ *    variant="light"
+ *    size="lg"
+ *    src="..." />
+ */
 export default {
     name: 'HmAvatar',
     props: {
+        /**
+         * Sets icon size (xs, sm, md, lg)
+         */
         size: {
             type: String,
             default: 'md'
         },
+        /**
+         * Applies one of the Bootstrap theme color variants to the component
+         */
         variant: {
             type: String,
             default: 'secondary'
         },
+        /**
+         * Image URL to use for the avatar
+         */
         src: {
             type: String,
             default: ''

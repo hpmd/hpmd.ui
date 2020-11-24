@@ -25,6 +25,9 @@ const HmTablePlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/table}
+ */
 export {
     HmTablePlugin,
     HmTable,

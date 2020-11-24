@@ -1,26 +1,37 @@
 /**
- * @typedef {object} SelectorEl
- * @property {String}   value            selector value
- * @property {String}   checkboxLimit    how many elements could be selected
- * @property {String}   trueValue        true value
- * @property {String}   falseValue       false value
-  */
+ * Component for easy work with checkbox and radio
+ * @class HmSelectorEl
+ * @example
+ * <hm-selector layout="inline-block">
+ *      <hm-selector-el
+ *          v-for="(selector, key) in selectors"
+ *          v-model="..."
+ *          :key="..."
+ *          :value="key"
+ *          :disabled="selector.disabled"
+ *          :checkbox-limit="3">
+ *          {{selector.text}}
+ *      </hm-selector-el>
+ * </hm-selector>
+ */
 export default {
     model: {
         prop: 'modelValue',
         event: 'change'
     },
     props: {
+        /**
+         * selector value
+         */
         value: {
             type: [String, Number, Object]
         },
         modelValue: {
             default: ''
         },
-        selected: {
-            type: Boolean,
-            default: false
-        },
+        /**
+         * sets the "disabled" attribute value on the form control
+         */
         disabled: {
             type: Boolean,
             default: false
@@ -42,9 +53,15 @@ export default {
             type: Boolean,
             default: false
         },
+        /**
+         * true value
+         */
         trueValue: {
             default: true
         },
+        /**
+         * false value
+         */
         falseValue: {
             default: false
         }
@@ -55,6 +72,9 @@ export default {
         };
     },
     computed: {
+        /**
+         * selector-el is checked
+         */
         isChecked() {
             let mv;
 
@@ -66,6 +86,9 @@ export default {
 
             return mv;
         },
+        /**
+         * list of classes for the main container
+         */
         classes() {
             const classes = ['hm-selector-el'];
 
@@ -75,6 +98,9 @@ export default {
 
             return classes;
         },
+        /**
+         * selector-el is disabled
+         */
         isDisabled() {
             return (
                 this.disabled || (
@@ -89,6 +115,8 @@ export default {
     methods: {
         /**
          * onInput handler
+         * @param {object|Event} event
+         * @returns {void}
          */
         onInputChange(e) {
             const isChecked = e.target.checked;

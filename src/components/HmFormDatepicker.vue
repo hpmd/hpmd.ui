@@ -14,6 +14,18 @@ import { pick } from 'bootstrap-vue/src/utils/object';
 import HmCalendar from '@/components/HmCalendar';
 import { HmInput } from './input';
 
+/**
+ * Customized, cross-browser consistent,
+ * file input control that supports single file,
+ * multiple files, and directory upload (for browsers that support directory mode).
+ * @class HmFormDatepicker
+ * @extends BFormDatepicker
+ * @see {@link https://bootstrap-vue.org/docs/components/form-datepicker} Docs
+ * @example
+ * <hm-form-datepicker
+ *      hide-header
+ *      v-model="..." />
+ */
 export default {
     extends: BFormDatepicker,
     props: {
@@ -37,9 +49,10 @@ export default {
         }
     },
     methods: {
-
         /**
          * onInput handler for native input
+         * @param {object|Object} ymd
+         * @returns {void}
          */
         onInputNative(ymd) {
             if (this.localYMD !== ymd) {

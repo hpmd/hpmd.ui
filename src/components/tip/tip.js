@@ -7,6 +7,7 @@ HmIcon.add(uniInfoCircle);
 /**
  * Component to wrap any text/element to show tooltip on it or next to it
  * Could be used both with "tip" property or tip slot
+ * @class HmTip
  * @example
  * // <hm-tip>
  * //    <input v-model="cpu" />

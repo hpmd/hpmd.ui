@@ -13,6 +13,9 @@ const HmNavPlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/nav}
+ */
 export {
     HmNavPlugin,
     HmNav,

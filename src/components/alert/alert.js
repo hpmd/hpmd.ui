@@ -1,6 +1,4 @@
-import {
-    BAlert
-} from 'bootstrap-vue';
+import { BAlert } from 'bootstrap-vue';
 import BVTransition from 'bootstrap-vue/src/utils/bv-transition';
 import { uniExclamationTriangle } from '@/assets/icons/unicons';
 import { HmIcon } from '../icon';
@@ -8,6 +6,10 @@ import { HmButtonClose } from '../button';
 
 HmIcon.add(uniExclamationTriangle);
 
+/**
+ * @extends BAlert
+ * @see {@link https://bootstrap-vue.org/docs/components/alert}
+ */
 export default {
     extends: BAlert,
     render() {

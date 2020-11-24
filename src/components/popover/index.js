@@ -7,6 +7,9 @@ const HmPopoverPlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/popover}
+ */
 export {
     HmPopoverPlugin,
     HmPopover

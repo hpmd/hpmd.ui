@@ -11,6 +11,9 @@ const HmDropdownPlugin = pluginFactory({
     }
 });
 
+/**
+ * @see {@link https://bootstrap-vue.org/docs/components/dropdown}
+ */
 export {
     HmDropdownPlugin,
     HmDropdown,

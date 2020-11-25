@@ -1,5 +1,5 @@
 import { installFactory } from 'bootstrap-vue/src/utils/plugins';
-import componentsPlugin from './components';
+import componentsPlugin from './src/components';
 
 const install = installFactory({
     plugins: {

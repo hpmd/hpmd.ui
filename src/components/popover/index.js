@@ -1,7 +1,7 @@
 import { BPopover as HmPopover } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmPopoverPlugin = pluginFactory({
+const PopoverPlugin = pluginFactory({
     components: {
         HmPopover
     }
@@ -11,6 +11,6 @@ const HmPopoverPlugin = pluginFactory({
  * @see {@link https://bootstrap-vue.org/docs/components/popover}
  */
 export {
-    HmPopoverPlugin,
+    PopoverPlugin,
     HmPopover
 };

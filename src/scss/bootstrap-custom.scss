@@ -316,7 +316,8 @@ $select-tag-bg: $gray-400;
 $select-tag-font-size: 1.4em;
 
 // Calendar
-$calendar-range-selected-bg: $gray-300;
+$calendar-selected-date-bg: $primary;
+$calendar-range-selected-bg: lighten($calendar-selected-date-bg, 45);
 
 $calendar-grid-weekdays-padding-x: $spacer * 2;
 $calendar-grid-weekdays-padding-y: $spacer * 4;

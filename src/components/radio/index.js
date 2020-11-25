@@ -1,9 +1,13 @@
-import { BFormRadio as HmRadio } from 'bootstrap-vue';
+import {
+    BFormRadio as HmRadio,
+    BFormRadioGroup as HmRadioGroup
+} from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmRadioPlugin = pluginFactory({
+const RadioPlugin = pluginFactory({
     components: {
-        HmRadio
+        HmRadio,
+        HmRadioGroup
     }
 });
 
@@ -11,6 +15,7 @@ const HmRadioPlugin = pluginFactory({
  * @see {@link https://bootstrap-vue.org/docs/components/form-radio}
  */
 export {
-    HmRadioPlugin,
-    HmRadio
+    RadioPlugin,
+    HmRadio,
+    HmRadioGroup
 };

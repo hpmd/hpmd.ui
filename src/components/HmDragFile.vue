@@ -3,8 +3,8 @@ import {
     uniUpload,
     uniExclamationCircle
 } from '@/assets/icons/unicons';
-import HmFormFile from '@/components/HmFormFile';
-import { HmIcon } from './icon';
+import { HmFileInput } from '@/components/file-input';
+import { HmIcon } from '@/components/icon';
 
 
 HmIcon.add(
@@ -285,7 +285,7 @@ export default {
                                 </div>
                             )
                     }
-                    <HmFormFile
+                    <HmFileInput
                         draggable="draggable"
                         disabled={this.disabled}
                         multiple
@@ -298,7 +298,7 @@ export default {
     },
     components: {
         HmIcon,
-        HmFormFile
+        HmFileInput
     }
 };
 </script>

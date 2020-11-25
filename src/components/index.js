@@ -7,6 +7,7 @@ import { ButtonPlugin } from './button';
 import { ButtonGroupPlugin } from './button-group';
 import { CalendarPlugin } from './calendar';
 import { CheckboxPlugin } from './checkbox';
+import { DatepickerPlugin } from './datepicker';
 import { DropdownPlugin } from './dropdown';
 import { FileInputPlugin } from './file-input';
 import { FormPlugin } from './form';
@@ -36,6 +37,7 @@ const componentsPlugin = pluginFactory({
         ButtonGroupPlugin,
         CalendarPlugin,
         CheckboxPlugin,
+        DatepickerPlugin,
         DropdownPlugin,
         FileInputPlugin,
         FormPlugin,

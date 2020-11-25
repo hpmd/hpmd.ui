@@ -2,8 +2,8 @@
     &-grid-body {
         @each $color, $value in $theme-colors {
 
-            & .btn-#{$color},
-            & .btn-outline-#{$color} {
+            &.btn-#{$color},
+            &.btn-outline-#{$color} {
                 color: $value;
             }
         }
@@ -27,7 +27,11 @@
         }
     }
     &-selected-bg {
-        background-color: $calendar-range-selected-bg!important;
+        background-color: $calendar-range-selected-bg !important;
+        border-radius: 0 !important;
+    }
+    &-date {
+        border-radius: $radius;
     }
     &-grid-weekdays {
         padding: $calendar-grid-weekdays-padding-x $calendar-grid-weekdays-padding-y;

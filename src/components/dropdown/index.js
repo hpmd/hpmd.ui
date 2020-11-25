@@ -1,5 +1,7 @@
 import {
     BDropdown as HmDropdown,
+    BDropdownItemButton as HmDropdownItemButton,
+    BDropdownDivider as HmDropdownDivider,
     BDropdownItem as HmDropdownItem
 } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
@@ -7,6 +9,8 @@ import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 const DropdownPlugin = pluginFactory({
     components: {
         HmDropdown,
+        HmDropdownItemButton,
+        HmDropdownDivider,
         HmDropdownItem
     }
 });
@@ -17,5 +21,7 @@ const DropdownPlugin = pluginFactory({
 export {
     DropdownPlugin,
     HmDropdown,
+    HmDropdownItemButton,
+    HmDropdownDivider,
     HmDropdownItem
 };

@@ -211,38 +211,21 @@ export default Vue.extend({
                     disabled: true
                 }
             ],
-            tooltipModels: [
-                {
-                    show: true,
-                    placement: 'right',
-                    target: 'test-tooltip-1',
-                    label: 'Тултип право'
-                },
-                {
-                    show: true,
-                    placement: 'top',
-                    target: 'test-tooltip-2',
-                    label: 'Тултип верх'
-                },
-                {
-                    show: true,
-                    placement: 'left',
-                    target: 'test-tooltip-3',
-                    label: 'Тултип лево'
-                },
-                {
-                    show: true,
-                    placement: 'bottom',
-                    target: 'test-tooltip-4',
-                    label: 'Тултип низ'
-                }
-            ],
+            tooltip: {
+                placement: 'top',
+                variant: 'black',
+                trigger: 'hover'
+            },
+            popover: {
+                placement: 'top',
+                variant: 'default',
+                trigger: 'hover'
+            },
             datepickerModel: '',
             radioModel: 'B',
             rangeSliderModel1: 20,
             rangeSliderModel2: [7, 20],
             switchModel: false,
-            showPopover: true,
             selectors: {
                 active: {
                     text: 'Активная',
@@ -283,7 +266,12 @@ export default Vue.extend({
             dropdownModel: true,
             showAlert: true,
             dragAndDropModel: [],
-            calendarModel: []
+            calendar: {
+                single: null,
+                range: [new Date(Date.now() - 259200000), new Date(Date.now())],
+                inputSingle: null,
+                inputRange: []
+            }
         };
     },
     methods: {
@@ -612,63 +600,71 @@ export default Vue.extend({
                 <div class="row">
                     <div class="col">
                         <div class="mt-4">
-                            <hm-progress />
-                        </div>
-                        <div class="mt-4">
-                            <hm-progress
-                                :value="55"
-                                variant="info" />
-                        </div>
-                        <div class="mt-4">
-                            <hm-progress
-                                :value="60"
-                                variant="success" />
-                        </div>
-                        <div class="mt-4">
-                            <hm-progress
-                                :value="65"
-                                variant="primary" />
-                        </div>
-                        <div class="mt-4">
-                            <hm-progress
-                                :value="70"
-                                variant="warning" />
-                        </div>
-                        <div class="mt-4">
-                            <hm-progress
-                                :value="75"
-                                variant="danger" />
+                            <h4>Empty</h4>
+                            <hm-progress>
+                                <hm-progress-bar label="empty"></hm-progress-bar>
+                            </hm-progress>
                         </div>
 
-                        <div class="mt-8">
+                        <div class="mt-5">
+                            <h4>Solid</h4>
                             <hm-progress
+                                class="mt-4"
+                                height="2px"
                                 :value="55"
-                                variant="info"
-                                animated />
-                        </div>
-                        <div class="mt-4">
+                                variant="primary" />
                             <hm-progress
-                                :value="60"
-                                variant="success"
-                                animated />
-                        </div>
-                        <div class="mt-4">
+                                class="mt-4"
+                                height="4px"
+                                :value="23"
+                                variant="warning" />
                             <hm-progress
-                                :value="65"
+                                class="mt-4"
+                                height="8px"
+                                :value="94"
+                                variant="danger" />
+                            <hm-progress
+                                class="mt-4"
+                                height="16px"
+                                :value="44"
+                                variant="dark" />
+                        </div>
+
+                        <div class="mt-5">
+                            <h4>Animated</h4>
+                            <hm-progress
+                                class="mt-4"
+                                height="2px"
+                                :value="55"
                                 variant="primary"
                                 animated />
-                        </div>
-                        <div class="mt-4">
                             <hm-progress
-                                :value="70"
+                                class="mt-4"
+                                height="4px"
+                                :value="23"
                                 variant="warning"
                                 animated />
-                        </div>
-                        <div class="mt-4">
                             <hm-progress
-                                :value="75"
+                                class="mt-4"
+                                height="8px"
+                                :value="94"
                                 variant="danger"
                                 animated />
+                            <hm-progress
+                                class="mt-4"
+                                height="16px"
+                                :value="44"
+                                variant="dark"
+                                animated />
+                        </div>
+
+                        <div class="mt-5">
+                            <h4>Multiple bars</h4>
+                            <hm-progress max="100">
+                                <hm-progress-bar value="24" variant="primary" show-progress></hm-progress-bar>
+                                <hm-progress-bar value="13" variant="warning" show-progress></hm-progress-bar>
+                                <hm-progress-bar value="33" variant="danger" show-progress></hm-progress-bar>
+                            </hm-progress>
                         </div>
                     </div>
                 </div>
@@ -681,17 +677,17 @@ export default Vue.extend({
                     <div class="row align-items-end">
                         <div class="col">
                             <hm-calendar
-                                range
-                                v-model="calendarModel" />
+                                is-range
+                                v-model="calendar.range" />
                         </div>
                         <div class="col">
                             <hm-calendar
                                 hide-header
-                                range
-                                v-model="calendarModel" />
+                                v-model="calendar.single" />
                         </div>
                         <div class="col">
                             <hm-datepicker
+                                range
                                 hide-header
                                 v-model="datepickerModel" />
                         </div>
@@ -929,47 +925,35 @@ export default Vue.extend({
                 <div class="row">
                     <div class="col">
                         <div class="mt-4">
-                            <h5>Small Solid Dropdowns</h5>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">default</span>
-                                <hm-dropdown
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <hm-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <hm-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <hm-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
+                            <h5>Solid Dropdown</h5>
+                            <hm-dropdown
+                                variant="warning">
+                                <template v-slot:button-content>small dropdown</template>
+                                <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
+                                <hm-dropdown-divider />
+                                <hm-dropdown-item>Информационный текст</hm-dropdown-item>
+                                <hm-dropdown-divider />
+                                <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
+                                <hm-dropdown-divider />
+                                <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
+                            </hm-dropdown>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mt-4">
-                            <h5>Small Solid Split Dropdowns</h5>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">default</span>
-                                <hm-dropdown
-                                    split
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <hm-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <hm-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <hm-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
+                            <h5>Solid Split Dropdowns</h5>
+                            <hm-dropdown
+                                split
+                                variant="warning">
+                                <template v-slot:button-content>small dropdown</template>
+                                <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
+                                <hm-dropdown-divider />
+                                <hm-dropdown-item>Информационный текст</hm-dropdown-item>
+                                <hm-dropdown-divider />
+                                <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
+                                <hm-dropdown-divider />
+                                <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
+                            </hm-dropdown>
                         </div>
                     </div>
                 </div>
@@ -989,13 +973,11 @@ export default Vue.extend({
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
-                <h2 class="mb-5">Dropdown</h2>
+                <h2 class="mb-5">Navigation and Tabs</h2>
 
                 <div class="mt-4">
-                    <b-row>
-                        <b-col
-                            class="mb-5"
-                            cols="6">
+                    <div class="row">
+                        <div class="col-6 mb-5">
                             <h5>Tabs</h5>
                             <hm-nav tabs>
                                 <hm-nav-item active>Выбранная</hm-nav-item>
@@ -1003,55 +985,49 @@ export default Vue.extend({
                                 <hm-nav-item class="hover">Ховер</hm-nav-item>
                                 <hm-nav-item disabled>Недоступная</hm-nav-item>
                             </hm-nav>
-                        </b-col>
-                        <b-col
-                            class="mb-5"
-                            cols="6">
+                        </div>
+                        <div class="col-6 mb-5">
                             <h5>Tabs with dropdowns</h5>
                             <hm-nav tabs>
                                 <hm-nav-item active>Выбранная</hm-nav-item>
                                 <hm-nav-item-dropdown
                                     variant="light"
                                     text="Доступная">
-                                    <b-dropdown-item>One</b-dropdown-item>
-                                    <b-dropdown-divider></b-dropdown-divider>
-                                    <b-dropdown-item>Two</b-dropdown-item>
-                                    <b-dropdown-divider></b-dropdown-divider>
-                                    <b-dropdown-item>Three</b-dropdown-item>
+                                    <hm-dropdown-item>One</hm-dropdown-item>
+                                    <hm-dropdown-divider></hm-dropdown-divider>
+                                    <hm-dropdown-item>Two</hm-dropdown-item>
+                                    <hm-dropdown-divider></hm-dropdown-divider>
+                                    <hm-dropdown-item>Three</hm-dropdown-item>
                                 </hm-nav-item-dropdown>
                                 <hm-nav-item>Доступная</hm-nav-item>
                                 <hm-nav-item disabled>Недоступная</hm-nav-item>
                             </hm-nav>
-                        </b-col>
-                        <b-col
-                            class="mb-5"
-                            cols="6">
+                        </div>
+                        <div class="col-6 mb-5">
                             <h5>Pills</h5>
                             <hm-nav pills>
                                 <hm-nav-item active>Выбранная</hm-nav-item>
                                 <hm-nav-item>Доступная</hm-nav-item>
                             </hm-nav>
-                        </b-col>
-                        <b-col
-                            class="mb-5"
-                            cols="6">
+                        </div>
+                        <div class="col-6 mb-5">
                             <h5>Pills with dropdowns</h5>
                             <hm-nav pills>
                                 <hm-nav-item active>Выбранная</hm-nav-item>
                                 <hm-nav-item-dropdown
                                     variant="light"
                                     text="Доступная">
-                                    <b-dropdown-item>One</b-dropdown-item>
-                                    <b-dropdown-divider></b-dropdown-divider>
-                                    <b-dropdown-item>Two</b-dropdown-item>
-                                    <b-dropdown-divider></b-dropdown-divider>
-                                    <b-dropdown-item>Three</b-dropdown-item>
+                                    <hm-dropdown-item>One</hm-dropdown-item>
+                                    <hm-dropdown-divider></hm-dropdown-divider>
+                                    <hm-dropdown-item>Two</hm-dropdown-item>
+                                    <hm-dropdown-divider></hm-dropdown-divider>
+                                    <hm-dropdown-item>Three</hm-dropdown-item>
                                 </hm-nav-item-dropdown>
                                 <hm-nav-item title-link-class="hover">Доступная</hm-nav-item>
                                 <hm-nav-item disabled>Недоступная</hm-nav-item>
                             </hm-nav>
-                        </b-col>
-                    </b-row>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1088,10 +1064,8 @@ export default Vue.extend({
                     Огибающая очевидна не для всех. Ряд Тейлора неестественно тормозит.</p>
 
                 <h4>Блок с подсказкой</h4>
-                <hm-tip>
-                        <template>
-                            Как считаются показатели
-                        </template>
+                    <hm-tip class="mb-4">
+                        <span>Как считаются показатели</span>
                         <template v-slot:tip>
                             <div class="text-left">
                                 <b class="">Коэффициент вовлеченности:</b>
@@ -1128,132 +1102,94 @@ export default Vue.extend({
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
-                <h2 class="mb-12">Tooltips</h2>
+                <h2 class="mb-4">Tooltips</h2>
 
-                <div class="mt-9 mb-9">
-                    <b-row>
-                        <b-col cols="3">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <div
-                                    id="test-tooltip-1"
-                                    class="disabled"
-                                    style="height: 1px; width: 1px;"></div>
-                            </div>
-                        </b-col>
-                        <b-col cols="3">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <div
-                                    id="test-tooltip-2"
-                                    class="disabled"
-                                    style="height: 1px; width: 1px;"></div>
-                            </div>
-                        </b-col>
-                        <b-col cols="3">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <div
-                                    id="test-tooltip-3"
-                                    class="disabled"
-                                    style="height: 1px; width: 1px;"></div>
-                            </div>
-                        </b-col>
-                        <b-col cols="3">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <div
-                                    id="test-tooltip-4"
-                                    class="disabled"
-                                    style="height: 1px; width: 1px;"></div>
-                            </div>
-                        </b-col>
-                    </b-row>
-                    <template v-for="tooltipModel in tooltipModels">
-                        <hm-tooltip
-                            :key="`tooltip-${tooltipModel.target}`"
-                            :show.sync="tooltipModel.show"
-                            :placement="tooltipModel.placement"
-                            :target="tooltipModel.target">
-                            {{tooltipModel.label}}
-                        </hm-tooltip>
-                    </template>
+                <div class="bg-light p-5 rounded mb-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <hm-form-group stacked label="Placement">
+                                <hm-radio v-model="tooltip.placement" name="tt-placement" value="left">Left</hm-radio>
+                                <hm-radio v-model="tooltip.placement" name="tt-placement" value="top">Top</hm-radio>
+                                <hm-radio v-model="tooltip.placement" name="tt-placement" value="right">Right</hm-radio>
+                                <hm-radio v-model="tooltip.placement" name="tt-placement" value="bottom">Bottom</hm-radio>
+                            </hm-form-group>
+                        </div>
+                        <div class="col-4">
+                            <hm-form-group label="Variant">
+                                <hm-radio v-model="tooltip.variant" name="tt-variant" value="black">Default</hm-radio>
+                                <hm-radio v-model="tooltip.variant" name="tt-variant" value="primary">Primary</hm-radio>
+                                <hm-radio v-model="tooltip.variant" name="tt-variant" value="warning">Warning</hm-radio>
+                                <hm-radio v-model="tooltip.variant" name="tt-variant" value="danger">Danger</hm-radio>
+                                <hm-radio v-model="tooltip.variant" name="tt-variant" value="light">Light</hm-radio>
+                            </hm-form-group>
+                        </div>
+                        <div class="col-4">
+                            <hm-form-group label="Trigger">
+                                <hm-radio v-model="tooltip.trigger" value="click">Click</hm-radio>
+                                <hm-radio v-model="tooltip.trigger" value="hover">Hover</hm-radio>
+                                <hm-radio v-model="tooltip.trigger" value="focus">Focus</hm-radio>
+                            </hm-form-group>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <hm-button id="tooltip-target">Interact me</hm-button>
+
+                    <hm-tooltip
+                        target="tooltip-target"
+                        :variant="tooltip.variant"
+                        :placement="tooltip.placement"
+                        :triggers="tooltip.trigger">
+                        Yay! Tooltip!
+                    </hm-tooltip>
                 </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-9">Popovers</h2>
 
-                <div class="my-10">
-                    <b-row class="my-10">
-                        <b-col cols="4">
-                            <div
-                                class="d-flex justify-content-end align-items-center mb-5"
-                                style="height: 165px;">
-                                <div
-                                    id="test-popover-1"
-                                    class="disabled"
-                                    style="height: 1px; width: 1px;"></div>
-                            </div>
-                        </b-col>
-                        <b-col cols="4">
-                            <div
-                                class="d-flex justify-content-start align-items-center mb-5"
-                                style="height: 165px;">
-                                <div
-                                    id="test-popover-2"
-                                    class="disabled"
-                                    style="height: 1px; width: 1px;"></div>
-                            </div>
-                        </b-col>
-                        <b-col cols="4">
-                            <div
-                                class="d-flex justify-content-center align-items-start mb-5"
-                                style="height: 165px;">
-                                <div
-                                    id="test-popover-3"
-                                    class="disabled"
-                                    style="height: 1px; width: 1px;"></div>
-                            </div>
-                        </b-col>
-                        <b-col cols="4">
-                            <div
-                                class="d-flex justify-content-center align-items-end mb-5"
-                                style="height: 165px;">
-                                <div
-                                    id="test-popover-4"
-                                    class="disabled"
-                                    style="height: 1px; width: 1px;"></div>
-                            </div>
-                        </b-col>
-                    </b-row>
+                <div class="mb-6 bg-light rounded p-5">
+                    <div class="row">
+                        <div class="col-4">
+                            <hm-form-group>
+                                <hm-radio v-model="popover.placement" value="left" name="po-placement">Left</hm-radio>
+                                <hm-radio v-model="popover.placement" value="top" name="po-placement">Top</hm-radio>
+                                <hm-radio v-model="popover.placement" value="right" name="po-placement">Right</hm-radio>
+                                <hm-radio v-model="popover.placement" value="bottom" name="po-placement">Bottom</hm-radio>
+                            </hm-form-group>
+                        </div>
+                        <div class="col-4">
+                            <hm-form-group label="Variant">
+                                <hm-radio v-model="popover.variant" name="po-variant" value="default">Default</hm-radio>
+                                <hm-radio v-model="popover.variant" name="po-variant" value="primary">Primary</hm-radio>
+                                <hm-radio v-model="popover.variant" name="po-variant" value="warning">Warning</hm-radio>
+                                <hm-radio v-model="popover.variant" name="po-variant" value="danger">Danger</hm-radio>
+                                <hm-radio v-model="popover.variant" name="po-variant" value="light">Light</hm-radio>
+                            </hm-form-group>
+                        </div>
+                        <div class="col-4">
+                            <hm-form-group label="Trigger">
+                                <hm-radio v-model="popover.trigger" value="click">Click</hm-radio>
+                                <hm-radio v-model="popover.trigger" value="hover">Hover</hm-radio>
+                                <hm-radio v-model="popover.trigger" value="focus">Focus</hm-radio>
+                            </hm-form-group>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <hm-button id="popover-target" variant="primary">Interact me!</hm-button>
+
                     <hm-popover
-                        target="test-popover-1"
-                        placement="left"
-                        triggers="hover focus"
-                        :show.sync="showPopover">
-                        <template v-slot:title>Example heading</template>
-                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
-                    </hm-popover>
-                    <hm-popover
-                        target="test-popover-2"
-                        placement="right"
-                        triggers="hover focus"
-                        :show.sync="showPopover">
-                        <template v-slot:title>Example heading</template>
-                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
-                    </hm-popover>
-                    <hm-popover
-                        target="test-popover-3"
-                        placement="bottom"
-                        triggers="hover focus"
-                        :show.sync="showPopover">
-                        <template v-slot:title>Example heading</template>
-                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
-                    </hm-popover>
-                    <hm-popover
-                        target="test-popover-4"
-                        placement="top"
-                        triggers="hover focus"
-                        :show.sync="showPopover">
-                        <template v-slot:title>Example heading</template>
-                        <template>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum.</template>
+                        target="popover-target"
+                        :variant="popover.variant"
+                        :placement="popover.placement"
+                        :triggers="popover.trigger">
+                        <template #title>Popover title</template>
+                        <div>
+                            Some amazing <hm-badge variant="primary">content</hm-badge>!
+                        </div>
                     </hm-popover>
                 </div>
             </div>
@@ -1261,8 +1197,8 @@ export default Vue.extend({
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-9">Form elements</h2>
 
-                <b-row>
-                    <b-col cols="4">
+                <div class="row">
+                    <div class="col-4">
                         <div class="mb-4">
                             <h4>Checkbox</h4>
 
@@ -1278,8 +1214,8 @@ export default Vue.extend({
                                 </hm-checkbox>
                             </div>
                         </div>
-                    </b-col>
-                    <b-col cols="4">
+                    </div>
+                    <div class="col-4">
                         <div class="mb-4">
                             <h4>Radio</h4>
 
@@ -1287,7 +1223,7 @@ export default Vue.extend({
                                 v-for="radioModel in radioModels"
                                 :key="`radio-${radioModel.key}`"
                                 class="mt-4">
-                                <b-form-group>
+                                <hm-form-group>
                                     <hm-radio
                                         :class="radioModel.class"
                                         :disabled="radioModel.disabled"
@@ -1296,11 +1232,11 @@ export default Vue.extend({
                                         name="radio-btns">
                                         {{radioModel.label}}
                                     </hm-radio>
-                                </b-form-group>
+                                </hm-form-group>
                             </div>
                         </div>
-                    </b-col>
-                    <b-col cols="4">
+                    </div>
+                    <div class="col-4">
                         <div class="mb-4">
                             <h4>Toggles</h4>
 
@@ -1317,15 +1253,15 @@ export default Vue.extend({
                                 </hm-checkbox>
                             </div>
                         </div>
-                    </b-col>
-                </b-row>
+                    </div>
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
-                <h2 class="mb-4">Notifications</h2>
+                <h2 class="mb-4">Alert / Toast</h2>
 
-                <b-row>
-                    <b-col cols="6">
+                <div class="row">
+                    <div class="col-6">
                         <div class="bg-secondary p-3">
                             <div class="mt-4">
                                 <hm-alert
@@ -1372,15 +1308,15 @@ export default Vue.extend({
                                 </hm-alert>
                             </div>
                         </div>
-                    </b-col>
-                </b-row>
+                    </div>
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-9">Tables</h2>
 
                 <div class="mb-4">
-                    <b-form-checkbox v-model="tableCompact">Condensed</b-form-checkbox>
+                    <hm-checkbox v-model="tableCompact">Condensed</hm-checkbox>
                 </div>
 
                 <div
@@ -1400,11 +1336,11 @@ export default Vue.extend({
                         selectable
                         select-mode="range">
                         <template v-slot:head(id)>
-                            <b-form-checkbox></b-form-checkbox>
+                            <hm-checkbox></hm-checkbox>
                         </template>
 
                         <template v-slot:cell(id)="data">
-                            <b-form-checkbox v-model="data.item.active"></b-form-checkbox>
+                            <hm-checkbox v-model="data.item.active"></hm-checkbox>
                         </template>
 
                         <template v-slot:cell(status)="data">
@@ -1413,7 +1349,7 @@ export default Vue.extend({
 
                         <template v-slot:cell(tags)="data">
                             <template v-if="data.value">
-                                <b-badge variant="dark">{{data.value}}</b-badge>
+                                <hm-badge variant="dark">{{data.value}}</hm-badge>
                             </template>
                         </template>
 

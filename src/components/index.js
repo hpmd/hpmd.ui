@@ -1,11 +1,15 @@
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
 import { AlertPlugin } from './alert';
-import { AvatarPlugn } from './avatar';
+import { AvatarPlugin } from './avatar';
 import { BadgePlugin } from './badge';
 import { ButtonPlugin } from './button';
 import { ButtonGroupPlugin } from './button-group';
+import { CalendarPlugin } from './calendar';
+import { CheckboxPlugin } from './checkbox';
 import { DropdownPlugin } from './dropdown';
+import { FileInputPlugin } from './file-input';
+import { FormPlugin } from './form';
 import { IconPlugin } from './icon';
 import { InputPlugin } from './input';
 import { InputGroupPlugin } from './input-group';
@@ -19,18 +23,22 @@ import { SelectPlugin } from './select';
 import { SelectorPlugin } from './selector';
 import { TablePlugin } from './table';
 import { TipPlugin } from './tip';
-import { TooltipPlugin } from './tootip';
+import { TooltipPlugin } from './tooltip';
 
 
 
 const componentsPlugin = pluginFactory({
     plugins: {
         AlertPlugin,
-        AvatarPlugn,
+        AvatarPlugin,
         BadgePlugin,
         ButtonPlugin,
         ButtonGroupPlugin,
+        CalendarPlugin,
+        CheckboxPlugin,
         DropdownPlugin,
+        FileInputPlugin,
+        FormPlugin,
         IconPlugin,
         InputPlugin,
         InputGroupPlugin,

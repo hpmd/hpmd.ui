@@ -11,10 +11,14 @@ import {
 } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmTablePlugin = pluginFactory({
+const TableLitePlugin = pluginFactory({
     components: {
-        HmTable,
-        HmTableLite,
+        HmTableLite
+    }
+});
+
+const TableSimplePlugin = pluginFactory({
+    components: {
         HmTableSimple,
         HmTbody,
         HmThead,
@@ -25,11 +29,24 @@ const HmTablePlugin = pluginFactory({
     }
 });
 
+const TablePlugin = pluginFactory({
+    components: {
+        HmTable
+    },
+    plugins: {
+        TableLitePlugin,
+        TableSimplePlugin
+    }
+});
+
 /**
  * @see {@link https://bootstrap-vue.org/docs/components/table}
  */
 export {
-    HmTablePlugin,
+    TablePlugin,
+    TableLitePlugin,
+    TableSimplePlugin,
+
     HmTable,
     HmTableLite,
     HmTableSimple,

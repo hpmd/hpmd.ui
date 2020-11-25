@@ -8,47 +8,8 @@ import {
     uniEllipsisV
 } from '@/assets/icons/unicons';
 
-import { HmAlert } from '@/components/alert';
-import { HmAvatar } from '@/components/avatar';
-import { HmBadge } from '@/components/badge';
-import { HmButton } from '@/components/button';
-import { HmButtonGroup } from '@/components/button-group';
-import { HmCalendar } from '@/components/calendar';
-import { HmCheckbox } from '@/components/checkbox';
-import {
-    HmDropdown,
-    HmDropdownItem
-} from '@/components/dropdown';
 import { HmIcon } from '@/components/icon';
-import { HmInput } from '@/components/input';
-import {
-    HmInputGroup,
-    HmInputGroupAppend,
-    HmInputGroupPrepend
-} from '@/components/input-group';
-import { HmModal } from '@/components/modal';
-import {
-    HmNav,
-    HmNavItem,
-    HmNavItemDropdown
-} from '@/components/nav';
-import { HmPopover } from '@/components/popover';
-import { HmProgress } from '@/components/progress';
-import { HmRadio } from '@/components/radio';
-import { HmRangeSlider } from '@/components/range-slider';
-import { HmSelect } from '@/components/select';
-import {
-    HmSelector,
-    HmSelectorEl
-} from '@/components/selector';
-import { HmTable } from '@/components/table';
-import { HmTooltip } from '@/components/tooltip';
-
-import HmFormDatepicker from '@/components/HmFormDatepicker';
-import HmFormFile from '@/components/HmFormFile';
 import HmDragFile from '@/components/HmDragFile';
-
-import { HmTip } from '@/components/tip';
 
 
 HmIcon.add(
@@ -348,44 +309,14 @@ export default Vue.extend({
         }
     },
     components: {
-        HmAlert,
-        HmAvatar,
-        HmBadge,
-        HmCalendar,
-        HmButton,
-        HmButtonGroup,
-        HmCheckbox,
-        HmDragFile,
-        HmDropdown,
-        HmDropdownItem,
-        HmFormDatepicker,
-        HmIcon,
-        HmInput,
-        HmInputGroup,
-        HmInputGroupAppend,
-        HmInputGroupPrepend,
-        HmNav,
-        HmNavItem,
-        HmNavItemDropdown,
-        HmPopover,
-        HmProgress,
-        HmRangeSlider,
-        HmRadio,
-        HmSelect,
-        HmSelector,
-        HmSelectorEl,
-        HmTip,
-        HmTooltip,
-        HmModal,
-        HmFormFile,
-        HmTable
+        HmDragFile
     }
 });
 </script>
 
 <template>
     <div id="app">
-        <b-container>
+        <div class="container">
             <h1 class="mb-10">HPMD UI</h1>
 
             <div class="bg-white rounded shadow p-5 mb-8">
@@ -420,8 +351,8 @@ export default Vue.extend({
 
                 <div>
                     <h4>Lists</h4>
-                    <b-row>
-                        <b-col>
+                    <div class="row">
+                        <div class="col">
                             <p><strong>Numbered list</strong></p>
                             <ol>
                                 <li>Element 1</li>
@@ -429,8 +360,8 @@ export default Vue.extend({
                                 <li>Element 3</li>
                                 <li>Element 4</li>
                             </ol>
-                        </b-col>
-                        <b-col>
+                        </div>
+                        <div class="col">
                             <p><strong>Bullet list</strong></p>
                             <ul>
                                 <li>Element 1</li>
@@ -439,8 +370,8 @@ export default Vue.extend({
                                 <li>Element 3</li>
                                 <li>Element 4</li>
                             </ul>
-                        </b-col>
-                    </b-row>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -550,8 +481,8 @@ export default Vue.extend({
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Labels</h2>
 
-                <b-row>
-                    <b-col>
+                <div class="row">
+                    <div class="col">
                         <div class="mt-4">
                             <hm-badge>
                                 Default
@@ -582,8 +513,8 @@ export default Vue.extend({
                                 Danger
                             </hm-badge>
                         </div>
-                    </b-col>
-                    <b-col>
+                    </div>
+                    <div class="col">
                         <div class="mt-4">
                             <hm-badge pill>
                                 Default
@@ -624,22 +555,22 @@ export default Vue.extend({
                                 Danger
                             </hm-badge>
                         </div>
-                    </b-col>
-                </b-row>
+                    </div>
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Select Input</h2>
 
                 <div class="mt-4">
-                    <b-row>
-                        <b-col cols="6">
+                    <div class="row">
+                        <div class="col">
                             <h5>Select bar</h5>
                             <hm-select
                                 v-model="selectBar.value"
                                 :options='selectBar.options'/>
-                        </b-col>
-                        <b-col cols="6">
+                        </div>
+                        <div class="col">
                             <h5>Search bar multiple selection</h5>
                             <hm-select
                                 track-by="name"
@@ -649,8 +580,8 @@ export default Vue.extend({
                                 v-model="searchBar.value"
                                 :options='searchBar.options'
                                 v-on:tag="addTag"/>
-                        </b-col>
-                    </b-row>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -678,8 +609,8 @@ export default Vue.extend({
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Progress bar</h2>
 
-                <b-row>
-                    <b-col cols="6">
+                <div class="row">
+                    <div class="col">
                         <div class="mt-4">
                             <hm-progress />
                         </div>
@@ -739,49 +670,50 @@ export default Vue.extend({
                                 variant="danger"
                                 animated />
                         </div>
-                    </b-col>
-                </b-row>
+                    </div>
+                </div>
             </div>
 
              <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-9">Calendar</h2>
 
                 <div class="mb-4">
-                    <b-row class="align-items-end">
-                        <b-col>
+                    <div class="row align-items-end">
+                        <div class="col">
                             <hm-calendar
                                 range
                                 v-model="calendarModel" />
-                        </b-col>
-                        <b-col>
+                        </div>
+                        <div class="col">
                             <hm-calendar
                                 hide-header
                                 range
                                 v-model="calendarModel" />
-                        </b-col>
-                        <b-col>
-                            <hm-form-datepicker
+                        </div>
+                        <div class="col">
+                            <hm-datepicker
                                 hide-header
                                 v-model="datepickerModel" />
-                        </b-col>
-                    </b-row>
+                        </div>
+                    </div>
                 </div>
              </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-9">File Input</h2>
 
-                <b-row>
-                    <b-col>
+                <div class="row">
+                    <div class="col">
                         <h4>Drag n drop</h4>
 
                         <div class="mt-4">
                             <hm-drag-file
                                 show-input
-                                v-model="dragAndDropModel"></hm-drag-file>
+                                v-model="dragAndDropModel">
+                            </hm-drag-file>
                         </div>
-                    </b-col>
-                    <b-col>
+                    </div>
+                    <div class="col">
                         <h4>Drag n drop fill absolute</h4>
 
                         <div class="mt-4">
@@ -792,15 +724,15 @@ export default Vue.extend({
                                 </hm-drag-file>
                             </div>
                         </div>
-                    </b-col>
-                    <b-col>
+                    </div>
+                    <div class="col">
                         <h4>Upload/input</h4>
 
                         <div class="mt-4">
-                            <hm-form-file></hm-form-file>
+                            <hm-file-input />
                         </div>
-                    </b-col>
-                </b-row>
+                    </div>
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">
@@ -808,7 +740,6 @@ export default Vue.extend({
 
                 <div class="mb-4">
                     <h4>Input</h4>
-
 
                     <div class="mt-4">
                         <hm-input v-model="inputs.text" type="email" label="E-mail" />
@@ -912,7 +843,7 @@ export default Vue.extend({
                 <div class="mb-4">
                     <h4>Input message</h4>
 
-                    <b-form-group
+                    <hm-form-group
                         description="Введите пин-код"
                         :state="inputs.isInputGroupValid"
                         :invalid-feedback="inputs.inputGroup.length > 0 ? 'Введите не менее 4 символов' : 'Поле не должно быть пустым'">
@@ -922,7 +853,7 @@ export default Vue.extend({
                             trim
                             @input="validateInputGroup">
                         </hm-input>
-                    </b-form-group>
+                    </hm-form-group>
                 </div>
 
                 <div>
@@ -995,8 +926,8 @@ export default Vue.extend({
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Dropdown</h2>
 
-                <b-row>
-                    <b-col>
+                <div class="row">
+                    <div class="col">
                         <div class="mt-4">
                             <h5>Small Solid Dropdowns</h5>
                             <div class="d-flex justify-content-start align-items-center mb-3">
@@ -1008,89 +939,17 @@ export default Vue.extend({
                                     variant="warning">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
+                                    <hm-dropdown-divider />
                                     <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
+                                    <hm-dropdown-divider />
                                     <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">disable</span>
-                                <hm-dropdown
-                                    disabled
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">hover</span>
-                                <hm-dropdown
-                                    class="hover"
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">focus</span>
-                                <hm-dropdown
-                                    class="focus"
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">click</span>
-                                <hm-dropdown
-                                    v-model="dropdownModel"
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
+                                    <hm-dropdown-divider />
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                 </hm-dropdown>
                             </div>
                         </div>
-                    </b-col>
-                    <b-col>
+                    </div>
+                    <div class="col">
                         <div class="mt-4">
                             <h5>Small Solid Split Dropdowns</h5>
                             <div class="d-flex justify-content-start align-items-center mb-3">
@@ -1103,287 +962,17 @@ export default Vue.extend({
                                     variant="warning">
                                     <template v-slot:button-content>small dropdown</template>
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
+                                    <hm-dropdown-divider />
                                     <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
+                                    <hm-dropdown-divider />
                                     <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">disable</span>
-                                <hm-dropdown
-                                    split
-                                    disabled
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">hover</span>
-                                <hm-dropdown
-                                    split
-                                    class="hover"
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">focus</span>
-                                <hm-dropdown
-                                    split
-                                    class="focus"
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">click</span>
-                                <hm-dropdown
-                                    split
-                                    v-model="dropdownModel"
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
+                                    <hm-dropdown-divider />
                                     <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
                                 </hm-dropdown>
                             </div>
                         </div>
-                    </b-col>
-
-                    <b-col>
-                        <div class="mt-4">
-                            <h5>Small Solid Dropdowns</h5>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">default</span>
-                                <hm-dropdown
-                                    size="sm"
-                                    variant="light">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">disable</span>
-                                <hm-dropdown
-                                    disabled
-                                    size="sm"
-                                    variant="light">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">hover</span>
-                                <hm-dropdown
-                                    class="hover"
-                                    size="sm"
-                                    variant="light">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">focus</span>
-                                <hm-dropdown
-                                    class="focus"
-                                    size="sm"
-                                    variant="light">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">click</span>
-                                <hm-dropdown
-                                    v-model="dropdownModel"
-                                    size="sm"
-                                    variant="light">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                        </div>
-                    </b-col>
-                    <b-col>
-                        <div class="mt-4">
-                            <h5>Small Solid Split Dropdowns</h5>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">default</span>
-                                <hm-dropdown
-                                    split
-                                    size="sm"
-                                    variant="light">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">disable</span>
-                                <hm-dropdown
-                                    split
-                                    disabled
-                                    size="sm"
-                                    variant="warning">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">hover</span>
-                                <hm-dropdown
-                                    split
-                                    class="hover"
-                                    size="sm"
-                                    variant="light">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">focus</span>
-                                <hm-dropdown
-                                    split
-                                    class="focus"
-                                    size="sm"
-                                    variant="light">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mb-3">
-                                <span
-                                    style="width: 15%;"
-                                    class="small mr-4">click</span>
-                                <hm-dropdown
-                                    split
-                                    v-model="dropdownModel"
-                                    size="sm"
-                                    variant="light">
-                                    <template v-slot:button-content>small dropdown</template>
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Информационный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Карусельный текст</hm-dropdown-item>
-                                    <b-dropdown-divider />
-                                    <hm-dropdown-item>Текстовый текст</hm-dropdown-item>
-                                </hm-dropdown>
-                            </div>
-                        </div>
-                    </b-col>
-                </b-row>
+                    </div>
+                </div>
 
                 <div class="mt-5">
                     <h5>Sizing</h5>
@@ -1840,7 +1429,7 @@ export default Vue.extend({
                     </hm-table>
                 </div>
             </div>
-        </b-container>
+        </div>
     </div>
 </template>
 

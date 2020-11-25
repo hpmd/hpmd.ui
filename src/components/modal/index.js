@@ -1,13 +1,13 @@
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 import HmModal from './modal';
 
-const HmModalPlugin = pluginFactory({
+const ModalPlugin = pluginFactory({
     components: {
         HmModal
     }
 });
 
 export {
-    HmModalPlugin,
+    ModalPlugin,
     HmModal
 };

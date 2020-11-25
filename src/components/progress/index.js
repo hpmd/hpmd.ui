@@ -1,9 +1,13 @@
-import { BProgress as HmProgress } from 'bootstrap-vue';
+import {
+    BProgress as HmProgress,
+    BProgressBar as HmProgressBar
+} from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmProgressPlugin = pluginFactory({
+const ProgressPlugin = pluginFactory({
     components: {
-        HmProgress
+        HmProgress,
+        HmProgressBar
     }
 });
 
@@ -11,6 +15,7 @@ const HmProgressPlugin = pluginFactory({
  * @see {@link https://bootstrap-vue.org/docs/components/progress}
  */
 export {
-    HmProgressPlugin,
-    HmProgress
+    ProgressPlugin,
+    HmProgress,
+    HmProgressBar
 };

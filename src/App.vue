@@ -11,8 +11,6 @@ import {
 import { HmIcon } from '@/components/icon';
 import HmDragFile from '@/components/HmDragFile';
 
-import { HmTip } from '@/components/tip';
-
 
 HmIcon.add(
     uniFilePlusAlt,
@@ -301,8 +299,7 @@ export default Vue.extend({
     },
     components: {
         HmDragFile,
-        HmIcon,
-        HmTip
+        HmIcon
     }
 });
 </script>

@@ -6,7 +6,9 @@ import { BadgePlugin } from './badge';
 import { ButtonPlugin } from './button';
 import { ButtonGroupPlugin } from './button-group';
 import { CalendarPlugin } from './calendar';
+import { CardPlugin } from './card';
 import { CheckboxPlugin } from './checkbox';
+import { CollapsePlugin } from './collapse';
 import { DatepickerPlugin } from './datepicker';
 import { DropdownPlugin } from './dropdown';
 import { FileInputPlugin } from './file-input';
@@ -37,7 +39,9 @@ const componentsPlugin = pluginFactory({
         ButtonPlugin,
         ButtonGroupPlugin,
         CalendarPlugin,
+        CardPlugin,
         CheckboxPlugin,
+        CollapsePlugin,
         DatepickerPlugin,
         DropdownPlugin,
         FileInputPlugin,

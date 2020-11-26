@@ -21,6 +21,7 @@ import { ProgressPlugin } from './progress';
 import { RadioPlugin } from './radio';
 import { RangeSliderPlugin } from './range-slider';
 import { SelectPlugin } from './select';
+import { SpinButtonPlugin } from './spin-button';
 import { SelectorPlugin } from './selector';
 import { TablePlugin } from './table';
 import { TipPlugin } from './tip';
@@ -44,6 +45,7 @@ const componentsPlugin = pluginFactory({
         IconPlugin,
         InputPlugin,
         InputGroupPlugin,
+        SpinButtonPlugin,
         ModalPlugin,
         NavPlugin,
         PopoverPlugin,

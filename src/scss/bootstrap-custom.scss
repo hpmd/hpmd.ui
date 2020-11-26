@@ -327,6 +327,11 @@ $calendar-grid-body-padding-y: $spacer * 4;
 
 $calendar-grid-font-size-numbers: 0.75em;
 
+// Spin Button
+
+$spinbutton-focus-box-shadow: 0 0 0 $spacer / 2 rgba($gray-500, 0.25);
+$spinbutton-focus-border-color: #ced4da;
+$spinbutton-bdi-min-width: 100%;
 
 
 // Selector

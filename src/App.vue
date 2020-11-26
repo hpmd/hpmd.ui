@@ -265,6 +265,7 @@ export default Vue.extend({
             showModal: false,
             dropdownModel: true,
             showAlert: true,
+            spinButtonModel: 0,
             dragAndDropModel: [],
             calendar: {
                 single: null,
@@ -297,7 +298,8 @@ export default Vue.extend({
         }
     },
     components: {
-        HmDragFile
+        HmDragFile,
+        HmIcon
     }
 });
 </script>
@@ -544,6 +546,33 @@ export default Vue.extend({
                             </hm-badge>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-9">Spin Button</h2>
+
+                <div class="mt-4">
+                    <h5>Spin Button</h5>
+                    <hm-form-spinbutton v-model="spinButtonModel" />
+                </div>
+                <div class="mt-4">
+                    <h5>Spin Button disabled</h5>
+                    <hm-form-spinbutton
+                        disabled
+                        v-model="spinButtonModel" />
+                </div>
+                <div class="mt-4">
+                    <h5>Spin Button inline</h5>
+                    <hm-form-spinbutton
+                        inline
+                        v-model="spinButtonModel" />
+                </div>
+                <div class="mt-4">
+                    <h5>Spin Button vertical</h5>
+                    <hm-form-spinbutton
+                        vertical
+                        v-model="spinButtonModel" />
                 </div>
             </div>
 

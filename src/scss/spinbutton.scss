@@ -1,0 +1,15 @@
+.b-form-spinbutton {
+    output {
+        border: none!important;
+    }
+
+    bdi {
+        min-width: $spinbutton-bdi-min-width!important;
+    }
+
+    &:focus,
+    &.focus {
+        box-shadow: $spinbutton-focus-box-shadow;
+        border-color: $spinbutton-focus-border-color;
+    }
+}

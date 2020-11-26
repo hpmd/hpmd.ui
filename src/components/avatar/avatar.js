@@ -39,7 +39,8 @@ export default {
     },
     data() {
         return {
-            sizes: ['xs', 'sm', 'md', 'lg']
+            sizes: ['xs', 'sm', 'md', 'lg'],
+            isImgAvailable: true
         };
     },
     computed: {
@@ -54,6 +55,11 @@ export default {
             };
         }
     },
+    methods: {
+        handleError() {
+            this.isImgAvailable = false;
+        }
+    },
     render() {
         return (
             <div
@@ -61,11 +67,12 @@ export default {
                 class={this.containerClasses}>
                 <div class="hm-avatar-img">
                     {
-                        (this.src && this.src.length) ?
+                        (this.src && this.src.length && this.isImgAvailable) ?
                             (
                                 <img
                                     src={this.src}
-                                    alt="avatar"/>
+                                    alt="avatar"
+                                    onError={this.handleError} />
                             ) :
                             (
                                 <HmIcon

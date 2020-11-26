@@ -1,15 +1,17 @@
 import {
     BNav as HmNav,
     BNavItem as HmNavItem,
-    BNavItemDropdown as HmNavItemDropdown
+    BNavItemDropdown as HmNavItemDropdown,
+    BNavText as HmNavText
 } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmNavPlugin = pluginFactory({
+const NavPlugin = pluginFactory({
     components: {
         HmNav,
         HmNavItem,
-        HmNavItemDropdown
+        HmNavItemDropdown,
+        HmNavText
     }
 });
 
@@ -17,8 +19,9 @@ const HmNavPlugin = pluginFactory({
  * @see {@link https://bootstrap-vue.org/docs/components/nav}
  */
 export {
-    HmNavPlugin,
+    NavPlugin,
     HmNav,
     HmNavItem,
-    HmNavItemDropdown
+    HmNavItemDropdown,
+    HmNavText
 };

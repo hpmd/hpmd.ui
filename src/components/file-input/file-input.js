@@ -1,4 +1,3 @@
-<script>
 import { BFormFile } from 'bootstrap-vue';
 
 /**
@@ -37,9 +36,11 @@ export default {
         }
     },
     watch: {
+        /**
+         * @this {BFormFile}
+         */
         value(val) {
             this.handleFiles(val);
         }
     }
 };
-</script>

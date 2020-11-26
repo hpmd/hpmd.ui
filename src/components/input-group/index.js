@@ -7,7 +7,7 @@ import {
 } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmInputGroupPlugin = pluginFactory({
+const InputGroupPlugin = pluginFactory({
     components: {
         HmInputGroup,
         HmInputGroupAddon,
@@ -21,7 +21,7 @@ const HmInputGroupPlugin = pluginFactory({
  * @see {@link https://bootstrap-vue.org/docs/components/input-group}
  */
 export {
-    HmInputGroupPlugin,
+    InputGroupPlugin,
     HmInputGroup,
     HmInputGroupAddon,
     HmInputGroupAppend,

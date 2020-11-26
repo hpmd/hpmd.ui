@@ -1,4 +1,3 @@
-<script>
 /**
  * @typedef {object} FormDatepicker
  * @property {Boolean}  useNative          native input[type="file"]
@@ -11,8 +10,8 @@ import { BVFormBtnLabelControl } from 'bootstrap-vue/src/utils/bv-form-btn-label
 import { isUndefinedOrNull } from 'bootstrap-vue/src/utils/inspect';
 import { parseYMD } from 'bootstrap-vue/src/utils/date';
 import { pick } from 'bootstrap-vue/src/utils/object';
-import HmCalendar from '@/components/HmCalendar';
-import { HmInput } from './input';
+import { HmCalendar } from '@/components/calendar';
+import { HmInput } from '@/components/input';
 
 /**
  * Customized, cross-browser consistent,
@@ -205,4 +204,3 @@ export default {
         BVFormBtnLabelControl
     }
 };
-</script>

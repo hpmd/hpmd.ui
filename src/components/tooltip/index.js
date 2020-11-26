@@ -1,7 +1,7 @@
 import { BTooltip as HmTooltip } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
-const HmTooltipPlugin = pluginFactory({
+const TooltipPlugin = pluginFactory({
     components: {
         HmTooltip
     }
@@ -11,6 +11,6 @@ const HmTooltipPlugin = pluginFactory({
  * @see {@link https://bootstrap-vue.org/docs/components/tooltip}
  */
 export {
-    HmTooltipPlugin,
+    TooltipPlugin,
     HmTooltip
 };

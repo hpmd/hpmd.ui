@@ -3,6 +3,10 @@
         border: none!important;
     }
 
+    bdi {
+        min-width: $spinbutton-bdi-min-width!important;
+    }
+
     &:focus,
     &.focus {
         box-shadow: $spinbutton-focus-box-shadow;

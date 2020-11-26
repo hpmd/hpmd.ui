@@ -1,13 +1,13 @@
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 import HmAlert from './alert';
 
-const HmAlertPlugin = pluginFactory({
+const AlertPlugin = pluginFactory({
     components: {
         HmAlert
     }
 });
 
 export {
-    HmAlertPlugin,
+    AlertPlugin,
     HmAlert
 };

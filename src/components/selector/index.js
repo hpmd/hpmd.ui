@@ -2,7 +2,7 @@ import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 import HmSelector from './selector';
 import HmSelectorEl from './selector-el';
 
-const HmSelectorPlugin = pluginFactory({
+const SelectorPlugin = pluginFactory({
     components: {
         HmSelector,
         HmSelectorEl
@@ -10,7 +10,7 @@ const HmSelectorPlugin = pluginFactory({
 });
 
 export {
-    HmSelectorPlugin,
+    SelectorPlugin,
     HmSelector,
     HmSelectorEl
 };

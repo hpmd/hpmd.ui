@@ -1,4 +1,3 @@
-<script>
 import { BCalendar } from 'bootstrap-vue';
 import { uniCalendarAlt } from '@/assets/icons/unicons';
 import identity from 'bootstrap-vue/src/utils/identity';
@@ -10,7 +9,7 @@ import {
 } from 'bootstrap-vue/src/utils/date';
 import { toString } from 'bootstrap-vue/src/utils/string';
 import { BIconChevronLeft } from 'bootstrap-vue/src/icons/icons';
-import { HmIcon } from './icon';
+import { HmIcon } from '@/components/icon';
 
 HmIcon.add(uniCalendarAlt);
 
@@ -33,9 +32,9 @@ export default {
             default: 'ru'
         },
         /**
-         * date range selection
+         * date range (date1 - date2) selection
          */
-        range: {
+        isRange: {
             type: Boolean,
             default: false
         },
@@ -45,7 +44,7 @@ export default {
         selectedVariant: {
             // Variant color to use for the selected date
             type: String,
-            default: 'dark'
+            default: 'primary'
         },
         /**
          * today bootstrap theme
@@ -53,7 +52,7 @@ export default {
         todayVariant: {
             // Variant color to use for today's date (defaults to `selectedVariant`)
             type: String,
-            default: 'primary'
+            default: 'secondary'
         },
         /**
          * label without date
@@ -90,7 +89,7 @@ export default {
         emitSelected(date) {
             // Performed in a `$nextTick()` to (probably) ensure
             // the input event has emitted first
-            if (this.range) {
+            if (this.isRange) {
                 this.$nextTick(() => {
                     this.$emit('selected', [
                         parseYMD(this.selectedStartYMD),
@@ -111,7 +110,8 @@ export default {
         onClickDay(day) {
             const {
                 activeDate,
-                selectedDate
+                selectedDate,
+                isRange
             } = this;
             const clickedDate = parseYMD(day.ymd);
             let date;
@@ -124,14 +124,14 @@ export default {
                         datesEqual(clickedDate, selectedDate) ? selectedDate : clickedDate
                     );
 
-                    if (this.range && this.isSelectedStartDate && new Date(date) < new Date(this.selectedStartYMD)) {
+                    if (isRange && this.isSelectedStartDate && new Date(date) < new Date(this.selectedStartYMD)) {
                         this.selectedEndYMD = this.selectedStartYMD;
                         this.selectedStartYMD = date;
                         this.isSelectedStartDate = !this.isSelectedStartDate;
-                    } else if (this.range && this.isSelectedStartDate) {
+                    } else if (isRange && this.isSelectedStartDate) {
                         this.selectedEndYMD = date;
                         this.isSelectedStartDate = !this.isSelectedStartDate;
-                    } else if (this.range && !this.isSelectedStartDate) {
+                    } else if (isRange && !this.isSelectedStartDate) {
                         this.selectedStartYMD = date;
                         this.selectedEndYMD = '';
                         this.isSelectedStartDate = !this.isSelectedStartDate;
@@ -163,6 +163,7 @@ export default {
             gridHelpId,
             activeId,
             isLive,
+            isRange,
             isRTL,
             activeYMD,
             selectedYMD,
@@ -225,7 +226,7 @@ export default {
                 class={this.hideHeader ? 'sr-only' : ''}
                 title={this.selectedDate ? this.labelSelectedDate || null : null}>
                 {
-                    this.range ?
+                    isRange ?
                         [
                             getHeaderOutput(toLocaleDateString(this.selectedStartYMD ? new Date(this.selectedStartYMD) : null), true),
                             getHeaderOutput(toLocaleDateString(this.selectedEndYMD ? new Date(this.selectedEndYMD) : null))
@@ -259,7 +260,7 @@ export default {
                 aria-label={label || null}
                 aria-disabled={btnDisabled ? 'true' : null}
                 aria-keyshortcuts={shortcut || null}
-                onClick={btnDisabled ? () => {} : handler}>
+                onClick={btnDisabled ? () => { } : handler}>
                 <div aria-hidde={true}>
                     {content}
                 </div>
@@ -332,7 +333,7 @@ export default {
                 let isSelected;
                 let isRangeBg = false;
 
-                if (this.range) {
+                if (isRange) {
                     isSelected = day.ymd === selectedStartYMD || day.ymd === selectedEndYMD;
 
                     isRangeBg = new Date(day.ymd) > new Date(selectedStartYMD) && new Date(day.ymd) < new Date(selectedEndYMD);
@@ -345,7 +346,7 @@ export default {
                 // "fake" button
                 const $btn = (
                     <span
-                        staticClass="btn border-0 text-nowrap rounded-0 font-weight-light m-0"
+                        staticClass="b-calendar-date btn border-0 text-nowrap font-weight-light m-0"
                         class={{
                             // Give the fake button a focus ring
                             focus: isActive && this.gridHasFocus,
@@ -479,14 +480,14 @@ export default {
     },
     watch: {
         selectedYMD(newYMD, oldYMD) {
-            if (newYMD !== oldYMD && !this.range) {
+            if (newYMD !== oldYMD && !this.isRange) {
                 this.$emit('input', this.valueAsDate ? parseYMD(newYMD) || null : newYMD || '');
             }
         },
         selectedStartYMD(newYMD, oldYMD) {
             const dates = [];
 
-            if (newYMD !== oldYMD && this.range) {
+            if (newYMD !== oldYMD && this.isRange) {
                 if (this.selectedStartYMD) {
                     dates.push(parseYMD(this.selectedStartYMD));
                 }
@@ -498,14 +499,14 @@ export default {
                 }
 
                 this.$emit('input', dates);
-            } else if (newYMD !== oldYMD && !this.range) {
+            } else if (newYMD !== oldYMD && !this.isRange) {
                 this.$emit('input', this.valueAsDate ? parseYMD(newYMD) || null : newYMD || '');
             }
         },
         selectedEndYMD(newYMD, oldYMD) {
             const dates = [];
 
-            if (newYMD !== oldYMD && this.range) {
+            if (newYMD !== oldYMD && this.isRange) {
                 if (this.selectedStartYMD) {
                     dates.push(parseYMD(this.selectedStartYMD));
                 }
@@ -524,4 +525,3 @@ export default {
         HmIcon
     }
 };
-</script>

@@ -1,13 +1,13 @@
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 import HmAvatar from './avatar';
 
-const HmAvatarPlugin = pluginFactory({
+const AvatarPlugin = pluginFactory({
     components: {
         HmAvatar
     }
 });
 
 export {
-    HmAvatarPlugin,
+    AvatarPlugin,
     HmAvatar
 };

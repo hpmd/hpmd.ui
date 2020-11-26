@@ -21,27 +21,27 @@ export default {
                         aria-live="polite"
                         aria-atomic="true"
                         class={`alert alert-${this.variant}`}>
-                        <b-row class="align-items-center">
-                            <b-col cols="auto">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
                                 <div class="alert-round rounded-circle d-flex align-items-center justify-content-center">
                                     <HmIcon
                                         class="d-flex"
                                         name="exclamation-triangle"></HmIcon>
                                 </div>
-                            </b-col>
-                            <b-col>
+                            </div>
+                            <div class="col">
                                 {this.$slots.default}
-                            </b-col>
+                            </div>
                             {this.dismissible && (
-                                <b-col cols="auto">
+                                <div class="col-auto">
                                     <HmButtonClose
                                         aria-label={this.dismissLabel}
                                         onClick={this.dismiss}>
                                         {this.normalizeSlot('dismiss')}
                                     </HmButtonClose>
-                                </b-col>
+                                </div>
                             )}
-                        </b-row>
+                        </div>
                     </div>
                 )}
             </BVTransition>

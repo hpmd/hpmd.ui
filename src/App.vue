@@ -50,6 +50,8 @@ import HmDragFile from '@/components/HmDragFile';
 
 import { HmTip } from '@/components/tip';
 
+import { HmFormSpinbutton } from '@/components/spin-button';
+
 
 HmIcon.add(
     uniFilePlusAlt,
@@ -321,6 +323,7 @@ export default Vue.extend({
             showModal: false,
             dropdownModel: true,
             showAlert: true,
+            spinButtonModel: 0,
             dragAndDropModel: [],
             calendarModel: []
         };
@@ -359,6 +362,7 @@ export default Vue.extend({
         HmDropdown,
         HmDropdownItem,
         HmFormDatepicker,
+        HmFormSpinbutton,
         HmIcon,
         HmInput,
         HmInputGroup,
@@ -626,6 +630,14 @@ export default Vue.extend({
                         </div>
                     </b-col>
                 </b-row>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Spin Button</h2>
+
+                <div class="mt-4">
+                    <hm-form-spinbutton v-model="spinButtonModel" />
+                </div>
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">

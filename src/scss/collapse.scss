@@ -1,0 +1,50 @@
+$collapse-button-fontSize: 1em;
+$collapse-button-fontWeight: 600;
+$collapse-button-lineHeight: 1.3125em;
+$collapse-button-borderBottom: 1px solid transparent;
+$collapse-button-active-borderBottom: 1px solid $blue;
+
+$collapse-button-icon-width: $spacer * 4;
+$collapse-button-icon-height: $spacer * 4;
+$collapse-button-icon-bg: transparent;
+$collapse-button-icon-active-bg: $blue;
+$collapse-button-icon-color: $black;
+$collapse-button-icon-active-color: $white;
+$collapse-button-icon-marginRight: $spacer;
+
+.hm-collapse {
+    &-button {
+        display: inline-flex;
+        align-items: center;
+        font-weight: $collapse-button-fontWeight;
+        font-size: $collapse-button-fontSize;
+        line-height: $collapse-button-lineHeight;
+        border-bottom: $collapse-button-borderBottom;
+
+        &:hover {
+            cursor: pointer;
+            border-bottom: $collapse-button-active-borderBottom;
+        }
+
+        &-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: $collapse-button-icon-width;
+            height: $collapse-button-icon-height;
+            border-radius: 100%;
+            margin-right: $collapse-button-icon-marginRight;
+            overflow: hidden;
+            transition: background-color .15s ease-out, color .15s ease-out;
+        }
+
+        &.active {
+            .hm-collapse-button-icon {
+                background-color: $collapse-button-icon-active-bg;
+                color: $collapse-button-icon-active-color;
+                transform: rotate(180deg);
+                transform-origin: 50% 50%;
+            }
+        }
+    }
+}

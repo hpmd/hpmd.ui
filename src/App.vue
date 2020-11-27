@@ -262,7 +262,6 @@ export default Vue.extend({
                     { name: 'Стриминговые сервисы', code: 'e' }
                 ]
             },
-            collapseModel: false,
             showModal: false,
             dropdownModel: true,
             showAlert: true,
@@ -607,22 +606,7 @@ export default Vue.extend({
                 <h2 class="mb-5">Collapse</h2>
 
                 <div class="mt-4">
-                    <hm-button
-                        class="mr-2"
-                        variant="dark"
-                        size="sm"
-                        v-on:click="collapseModel = !collapseModel">
-                        Ссылка с href
-                    </hm-button>
-                    <hm-button
-                        variant="dark"
-                        size="sm"
-                        v-on:click="collapseModel = !collapseModel">
-                        Кнопка с data-target
-                    </hm-button>
-                    <hm-collapse
-                        class="mt-2"
-                        v-model="collapseModel">
+                    <hm-collapse button-text="Статистика по блогерам">
                         <hm-card>
                             Производство в принципе масштабирует убывающий инвестиционный продукт. Линейное уравнение сохраняет социометрический криволинейный интеграл. В рамках концепции Акоффа и Стэка, правовое государство соответствует гуманизм. Ряд Тейлора неестественно тормозит потребительский коллапс Советского Союза. Теорема представляет собой  культ  личности. Огибающая очевидна не для всех. Ряд Тейлора неестественно тормозит.
                             Ряд Тейлора неестественно тормозит потребительский коллапс Советского Союза. Теорема представляет собой культ личности. Огибающая очевидна не для всех. Ряд Тейлора неестественно тормозит.

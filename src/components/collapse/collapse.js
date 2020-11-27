@@ -37,7 +37,7 @@ export default {
          * Button classes
          */
         buttonClasses() {
-            const classes = ['hm-collapse-button'];
+            const classes = ['hm-collapse-button', 'mb-2'];
 
             if (this.value) {
                 classes.push('active');

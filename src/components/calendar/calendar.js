@@ -64,6 +64,9 @@ export default {
             type: String,
             default: 'Дата не выбрана'
         },
+        /**
+         * show buttons to switch year
+         */
         showYearBtns: {
             type: Boolean,
             default: false

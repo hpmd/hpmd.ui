@@ -258,7 +258,7 @@ export default {
         const $nextMonthIcon = (
             this.normalizeSlot('nav-next-month', navScope) ||
             h(BIconChevronLeft, { props: navNextProps })
-        );
+        );// 
 
         // Utility to create the date navigation buttons
         const makeNavBtn = (content, label, handler, btnDisabled, shortcut) => (
@@ -301,7 +301,7 @@ export default {
         const $gridCaption = (
             <header
                 key="grid-caption"
-                staticClass="b-calendar-grid-caption text-center font-weight-bold d-flex justify-content-between align-items-center"
+                staticClass="b-calendar-grid-caption text-center font-weight-bold d-flex justify-content-around align-items-center"
                 class={this.disabled ? 'text-muted' : ''}
                 id={gridCaptionId}
                 aria-live={isLive ? 'polite' : null}

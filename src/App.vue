@@ -719,6 +719,7 @@ export default Vue.extend({
                     <div class="row align-items-end">
                         <div class="col">
                             <hm-calendar
+                                show-year-btns
                                 is-range
                                 v-model="calendar.range" />
                         </div>

@@ -8,7 +8,10 @@ import {
     parseYMD
 } from 'bootstrap-vue/src/utils/date';
 import { toString } from 'bootstrap-vue/src/utils/string';
-import { BIconChevronLeft } from 'bootstrap-vue/src/icons/icons';
+import {
+    BIconChevronLeft,
+    BIconChevronDoubleLeft
+} from 'bootstrap-vue/src/icons/icons';
 import { HmIcon } from '@/components/icon';
 
 HmIcon.add(uniCalendarAlt);
@@ -60,6 +63,13 @@ export default {
         labelNoDateSelected: {
             type: String,
             default: 'Дата не выбрана'
+        },
+        /**
+         * show buttons to switch year
+         */
+        showYearBtns: {
+            type: Boolean,
+            default: false
         },
         value: {
             type: [String, Date, Array]
@@ -252,9 +262,9 @@ export default {
 
         // Utility to create the date navigation buttons
         const makeNavBtn = (content, label, handler, btnDisabled, shortcut) => (
-            <button
-                staticClass="btn btn-sm border-0"
-                class={[this.computedNavButtonVariant, { disabled: btnDisabled }]}
+            <div
+                staticClass="b-calendar-btn border-0"
+                class={[{ disabled: btnDisabled }]}
                 title={label || null}
                 type="button"
                 aria-label={label || null}
@@ -264,7 +274,7 @@ export default {
                 <div aria-hidde={true}>
                     {content}
                 </div>
-            </button>
+            </div>
         );
 
         // Generate the date navigation buttons
@@ -278,16 +288,34 @@ export default {
                 aria-controls={gridId}></div>
         );
 
+        const $prevYearIcon = (
+            this.normalizeSlot('nav-prev-year', navScope) ||
+            h(BIconChevronDoubleLeft, { props: navPrevProps })
+        );
+        const $nextYearIcon = (
+            this.normalizeSlot('nav-next-year', navScope) ||
+            h(BIconChevronDoubleLeft, { props: navNextProps })
+        );
+
         // Caption for calendar grid
         const $gridCaption = (
             <header
                 key="grid-caption"
-                staticClass="b-calendar-grid-caption text-center font-weight-bold d-flex justify-content-between align-items-center"
+                staticClass="b-calendar-grid-caption text-center font-weight-bold d-flex justify-content-around align-items-center"
                 class={this.disabled ? 'text-muted' : ''}
                 id={gridCaptionId}
                 aria-live={isLive ? 'polite' : null}
                 aria-atomic={isLive ? 'true' : null}>
                 {[
+                    this.showYearBtns ?
+                        makeNavBtn(
+                            $prevYearIcon,
+                            this.labelPrevYear,
+                            this.gotoPrevYear,
+                            this.prevYearDisabled,
+                            'Alt+PageDown'
+                        ) :
+                        h(),
                     makeNavBtn(
                         $prevMonthIcon,
                         this.labelPrevMonth,
@@ -302,7 +330,16 @@ export default {
                         this.gotoNextMonth,
                         this.nextMonthDisabled,
                         'PageUp'
-                    )
+                    ),
+                    this.showYearBtns ?
+                        makeNavBtn(
+                            $nextYearIcon,
+                            this.labelNextYear,
+                            this.gotoNextYear,
+                            this.nextYearDisabled,
+                            'Alt+PageUp'
+                        ) :
+                        h()
                 ]}
             </header>
         );
@@ -310,7 +347,7 @@ export default {
         // Calendar weekday headings
         const $gridWeekDays = (
             <div
-                staticClass="b-calendar-grid-weekdays row no-gutters border-bottom"
+                staticClass="b-calendar-grid-weekdays row no-gutters border-bottom d-flex justify-content-center"
                 aria-hidden="true">
                 {
                     this.calendarHeadings.map((d, idx) => (
@@ -409,7 +446,7 @@ export default {
         });
         $gridBody = (
             <div
-                staticClass="b-calendar-grid-body"
+                staticClass="b-calendar-grid-body d-table"
                 style={this.disabled ? 'pointer-events: none;' : ''}>
                 {$gridBody}
             </div>

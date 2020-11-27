@@ -262,9 +262,9 @@ export default {
 
         // Utility to create the date navigation buttons
         const makeNavBtn = (content, label, handler, btnDisabled, shortcut) => (
-            <button
-                staticClass="btn btn-sm border-0"
-                class={[this.computedNavButtonVariant, { disabled: btnDisabled }]}
+            <div
+                staticClass="b-calendar-btn border-0"
+                class={[{ disabled: btnDisabled }]}
                 title={label || null}
                 type="button"
                 aria-label={label || null}
@@ -274,7 +274,7 @@ export default {
                 <div aria-hidde={true}>
                     {content}
                 </div>
-            </button>
+            </div>
         );
 
         // Generate the date navigation buttons
@@ -307,7 +307,7 @@ export default {
                 aria-live={isLive ? 'polite' : null}
                 aria-atomic={isLive ? 'true' : null}>
                 {[
-                    this.showYearButtons ?
+                    this.showYearBtns ?
                         makeNavBtn(
                             $prevYearIcon,
                             this.labelPrevYear,
@@ -331,7 +331,7 @@ export default {
                         this.nextMonthDisabled,
                         'PageUp'
                     ),
-                    this.showYearButtons ?
+                    this.showYearBtns ?
                         makeNavBtn(
                             $nextYearIcon,
                             this.labelNextYear,

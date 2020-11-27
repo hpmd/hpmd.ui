@@ -1,4 +1,17 @@
 .b-calendar {
+    &-btn {
+        padding: $spacer * 2;
+
+        div {
+            color: $gray-500;
+        }
+
+        &:hover {
+            div {
+                color: $gray-700;
+            }
+        }
+    }
     &-grid-body {
         @each $color, $value in $theme-colors {
 

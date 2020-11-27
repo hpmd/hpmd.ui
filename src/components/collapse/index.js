@@ -1,5 +1,5 @@
-import { BCollapse as HmCollapse } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
+import HmCollapse from './collapse';
 
 const CollapsePlugin = pluginFactory({
     components: {

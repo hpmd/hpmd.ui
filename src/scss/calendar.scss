@@ -43,6 +43,7 @@
     }
     &-grid-body {
         padding: $calendar-grid-body-padding-x $calendar-grid-body-padding-y;
+        margin: 0 auto;
 
         &-item {
             max-width: $spacer * 8;

@@ -35,13 +35,15 @@ $collapse-button-icon-marginRight: $spacer;
             border-radius: 100%;
             margin-right: $collapse-button-icon-marginRight;
             overflow: hidden;
-            transition: background-color .3s ease-out, color .3s ease-out;
+            transition: background-color .15s ease-out, color .15s ease-out;
         }
 
         &.active {
             .hm-collapse-button-icon {
                 background-color: $collapse-button-icon-active-bg;
                 color: $collapse-button-icon-active-color;
+                transform: rotate(180deg);
+                transform-origin: 50% 50%;
             }
         }
     }

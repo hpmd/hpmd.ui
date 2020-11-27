@@ -258,7 +258,7 @@ export default {
         const $nextMonthIcon = (
             this.normalizeSlot('nav-next-month', navScope) ||
             h(BIconChevronLeft, { props: navNextProps })
-        );// 
+        );
 
         // Utility to create the date navigation buttons
         const makeNavBtn = (content, label, handler, btnDisabled, shortcut) => (

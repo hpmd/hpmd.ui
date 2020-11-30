@@ -1,8 +1,36 @@
+const places = {
+    topleft: [],
+    topright: [],
+    topcenter: [],
+    bottomleft: [],
+    bottomcenter: [],
+    bottom: []
+};
+
+let _id = 1;
+
+class Notification {
+    constructor(id, opts) {
+        this.id = id;
+        this.title = opts.title || null;
+        this.variant = opts.variant || 
+    }
+}
+
 
 export default {
-    add(toastObject) {
+    add(options) {
+        let placement = toastObject.place;
 
+        if (!placement || !(placement in places)) {
+            placement = this.defaultPosition;
+        }
+
+        const notification = new Notification(`toast-ntf-${_id++}`, options);
+
+        places[placement].push(notification);
     },
+
     name: 'HmToaster',
     props: {
         defaultPosition: {
@@ -12,24 +40,20 @@ export default {
     },
     data() {
         return {
-            ntfs: {
-                topleft: [],
-                topright: [],
-                topcenter: [],
-                bottomleft: [],
-                bottomcenter: [],
-                bottom: []
-            }
+            places
         };
     },
     render() {
-        const toasterKeys = Object.keys(this.ntfs);
+        const placeKeys = Object.keys(places);
 
         return (
             <div class="hm-toaster">
                 {
-                    toasterKeys.map(key => {
+                    placeKeys.map(key => {
                         // tbd
+                        return (
+
+                        )
                     })
                 }
             </div>

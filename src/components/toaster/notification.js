@@ -73,7 +73,7 @@ export default {
 
         },
         close() {
-            this.$emit('close')
+            this.$emit('close');
         }
     },
     mounted() {
@@ -82,7 +82,7 @@ export default {
     components: {
         HmIcon
     },
-    render(h) {
+    render() {
         const contentAttrs = {};
 
         // If content is string we will render it as html content

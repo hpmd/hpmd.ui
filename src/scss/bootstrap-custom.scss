@@ -304,6 +304,14 @@ $tooltip-arrow-width: $spacer * 2;
 $tooltip-arrow-height: $spacer;
 
 
+// Toaster and Notifications
+$toaster-z-index: 1300;
+$toaster-top-margin: $spacer * 2;
+$toaster-right-margin: $spacer * 2;
+$toaster-bottom-margin: $spacer * 2;
+$toaster-left-margin: $spacer * 2;
+
+
 
 // Select input
 $select-border-radius: $radius;

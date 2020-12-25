@@ -1,0 +1,44 @@
+.hm-toaster {
+    height: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: $toaster-z-index;
+
+    &-place {
+        position: fixed;
+
+        &-topleft {
+            top: $toaster-top-margin;
+            left: $toaster-left-margin;
+        }
+
+        &-topcenter {
+            top: $toaster-top-margin;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &-topright {
+            top: $toaster-top-margin;
+            right: $toaster-right-margin;
+        }
+
+        &-bottomleft {
+            bottom: $toaster-bottom-margin;
+            left: $toaster-left-margin;
+        }
+
+        &-bottomcenter {
+            bottom: $toaster-bottom-margin;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &-bottomright {
+            bottom: $toaster-bottom-margin;
+            right: $toaster-right-margin;
+        }
+    }
+}

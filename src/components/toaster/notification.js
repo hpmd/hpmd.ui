@@ -4,6 +4,7 @@ import { HmIcon } from '../icon';
 HmIcon.add(uniMultiply);
 
 export default {
+    name: 'HmNotification',
     props: {
         /**
          * Should notification be auto-closed after "delay" time
@@ -19,7 +20,7 @@ export default {
          * Accept both regular text and html template in string
          */
         content: {
-            type: String,
+            type: String | Object,
             default: ''
         },
         /**
@@ -83,12 +84,26 @@ export default {
         HmIcon
     },
     render() {
-        const contentAttrs = {};
+        const isVNode = typeof this.content === 'object';
 
-        // If content is string we will render it as html content
-        // otherwise content block will be empty
-        if (typeof this.content === 'string') {
-            contentAttrs.innerHTML = this.content;
+        function renderContent() {
+            if (isVNode) {
+                console.log(this.content);
+                return (
+                    <div class="hm-ntf-body">
+                        {this.content}
+                    </div>
+                );
+            }
+
+            return (
+                <div
+                    class="hm-ntf-body"
+                    {...{ domProps: {
+                        innerHTML: this.content.toString()
+                    }}}>
+                </div>
+            );
         }
 
         return (
@@ -106,10 +121,8 @@ export default {
                     </div>
                     <button onClick={this.close}><HmIcon name="multiply" /></button>
                 </div>
-                <div
-                    class="hm-ntf-body"
-                    {...contentAttrs}>
-                </div>
+
+                {renderContent.call(this)}
             </div>
         );
     }

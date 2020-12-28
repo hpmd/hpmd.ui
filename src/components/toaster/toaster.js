@@ -11,6 +11,8 @@ const places = {
 
 let _id = 1;
 
+const DEFAULT_POSITION = 'topright';
+
 /**
  * @class Notification
  * @public
@@ -42,7 +44,7 @@ class Notification {
         this.autoClose = autoClose;
 
         /**
-         * @type {string?}
+         * @type {string|VNode|VNode[]}
          */
         this.content = content;
 
@@ -86,10 +88,12 @@ export default {
      * @see {@link ./notification.js} - props
      */
     add(options) {
+        // debugger;
         const { placement } = options;
 
         if (!placement || !(placement in places)) {
-            options.placement = this.defaultPosition;
+            // kinda shitty
+            options.placement = this.props.defaultPosition.default;
         }
 
         const notification = new Notification(
@@ -97,7 +101,7 @@ export default {
             options
         );
 
-        places[placement].push(notification);
+        places[options.placement].push(notification);
     },
 
     name: 'HmToaster',

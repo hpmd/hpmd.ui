@@ -9,6 +9,7 @@ import {
 } from '@/assets/icons/unicons';
 
 import { HmIcon } from '@/components/icon';
+import { HmToaster } from '@/components/toaster';
 import HmDragFile from '@/components/HmDragFile';
 
 
@@ -276,6 +277,20 @@ export default Vue.extend({
         };
     },
     methods: {
+        showToast(isVnode) {
+            const content = isVnode ?
+                [
+                    this.$createElement('div', { class: 'text-danger' }, 'Кастомный контент'),
+                    this.$createElement('div', [
+                        this.$createElement('a', { className: 'link', attrs: { href: '#' } }, 'ссылочка')
+                    ])
+                ] :
+                'Просто текст сообщения';
+
+            this.$hmToaster.add({
+                content
+            });
+        },
         validateInputGroup: debounce(function validateInputGroup() {
             this.inputs.isInputGroupValid = this.inputs.inputGroup.length >= 4;
         }, 500),
@@ -634,6 +649,26 @@ export default Vue.extend({
                         <p class="mb-0">Производство в принципе масштабирует убывающий инвестиционный продукт. Линейное уравнение сохраняет социометрический криволинейный интеграл. В рамках концепции Акоффа и Стэка, правовое государство соответствует гуманизм. Ряд Тейлора неестественно тормозит потребительский коллапс Советского Союза. Теорема представляет собой  <hm-text-tip tip="Подсказка в тексте">культ</hm-text-tip>  личности. Огибающая очевидна не для всех. Ряд Тейлора неестественно тормозит. Ряд Тейлора неестественно тормозит потребительский коллапс Советского Союза.</p>
                     </hm-modal>
                 </div>
+            </div>
+
+            <div class="bg-white p-5 shadow rounded mb-8">
+                <h2 class="mb-5">Toast (Notification)</h2>
+
+                <div>
+                    <hm-button
+                        variant="warning"
+                        @click="showToast(false)">
+                        Обычное сообщение
+                    </hm-button>
+
+                    <hm-button
+                        variant="primary"
+                        @click="showToast(true)">
+                        HTML-шаблон
+                    </hm-button>
+                </div>
+
+                <hm-toaster />
             </div>
 
             <div class="bg-white p-5 shadow rounded mb-8">

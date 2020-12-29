@@ -1,17 +1,25 @@
+import Vue from 'vue';
 import HmNotification from './notification';
 
-const places = {
+/* const places = {
     topleft: [],
     topright: [],
     topcenter: [],
     bottomleft: [],
     bottomcenter: [],
     bottom: []
+}; */
+
+const places = {
+    topleft: {},
+    topcenter: {},
+    topright: {},
+    bottomleft: {},
+    bottomcenter: {},
+    bottomright: {}
 };
 
 let _id = 1;
-
-const DEFAULT_POSITION = 'topright';
 
 /**
  * @class Notification
@@ -29,7 +37,7 @@ class Notification {
         content = '',
         headingIconName = null,
         placement = 'topleft',
-        showTimerProgress = false,
+        showProgressTimer = false,
         title = null,
         variant = 'default'
     }) {
@@ -66,7 +74,7 @@ class Notification {
         /**
          * @type {boolean}
          */
-        this.showTimerProgress = showTimerProgress;
+        this.showProgressTimer = showProgressTimer;
 
         /**
          * @type {string}
@@ -101,7 +109,8 @@ export default {
             options
         );
 
-        places[options.placement].push(notification);
+        // places[options.placement].push(notification);
+        Vue.set(places[notification.placement], notification.id, notification);
     },
 
     name: 'HmToaster',
@@ -117,14 +126,22 @@ export default {
         };
     },
     methods: {
-        removeNtf(placement, id) {
+        removeNtf({id, placement}) {
             const _msgs = places[placement];
+
+            /* if (!Array.isArray(_msgs)) {
+                console.error(`Invalid "placement" value: ${placement}`);
+            }
 
             for (let i = 0; i < _msgs.length; i++) {
                 if (_msgs[i].id === id) {
+                    console.log('Found', _msgs[i]);
                     _msgs.splice(i, 1);
                     break;
                 }
+            } */
+            if (_msgs[id]) {
+                this.$delete(_msgs, id);
             }
         }
     },
@@ -134,21 +151,38 @@ export default {
     render() {
         const placeKeys = Object.keys(places);
 
-        return (
-            <div class="hm-toaster">
-                {placeKeys.map((placeKey) => {
-                    const className = `hm-toaster-place hm-toaster-place-${placeKey}`;
-                    // tbd
-                    return (
-                        <div
-                            className={className}
+        /**
+         * <div
+                            class={className}
                             id={`hm-toaster-place-${placeKey}`}>
                             {places[placeKey].map((ntf) => (
                                 <HmNotification
                                     { ... { props: ntf } }
-                                    onClose={this.removeNtf}
+                                    onClose={this.removeNtf.bind(this, ntf.id, ntf.placement)}
                                 />
                             ))}
+                        </div>
+         */
+
+        return (
+            <div class="hm-toaster">
+                {placeKeys.map((placeKey) => {
+                    const className = `hm-toaster-place hm-toaster-place-${placeKey}`;
+
+                    return (
+                        <div
+                            class={className}
+                            id={`hm-toaster-place-${placeKey}`}>
+                            {Object.keys(places[placeKey]).map((ntfId) => {
+                                const ntf = places[placeKey][ntfId];
+
+                                return (
+                                    <HmNotification
+                                        { ... { props: ntf } }
+                                        onClose={this.removeNtf}
+                                    />
+                                );
+                            })}
                         </div>
                     );
                 })}

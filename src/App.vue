@@ -9,7 +9,6 @@ import {
 } from '@/assets/icons/unicons';
 
 import { HmIcon } from '@/components/icon';
-import { HmToaster } from '@/components/toaster';
 import HmDragFile from '@/components/HmDragFile';
 
 
@@ -80,6 +79,13 @@ export default Vue.extend({
                 { key: 'reach', label: 'Количество', sortable: true },
                 { key: 'action', label: 'Действие', sortable: false }
             ],
+            toast: {
+                autoClose: true,
+                delay: 5,
+                placement: 'topright',
+                showProgressTimer: false,
+                variant: 'default',
+            },
             checkboxModels: [
                 {
                     key: 'active',
@@ -287,8 +293,21 @@ export default Vue.extend({
                 ] :
                 'Просто текст сообщения';
 
+            const {
+                autoClose,
+                delay,
+                placement,
+                showProgressTimer,
+                variant
+            } = this.toast;
+
             this.$hmToaster.add({
-                content
+                autoClose,
+                content,
+                delay,
+                placement,
+                showProgressTimer,
+                variant
             });
         },
         validateInputGroup: debounce(function validateInputGroup() {
@@ -653,6 +672,106 @@ export default Vue.extend({
 
             <div class="bg-white p-5 shadow rounded mb-8">
                 <h2 class="mb-5">Toast (Notification)</h2>
+
+                <div class="bg-light p-5 rounded mb-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <hm-form-group
+                                stacked
+                                label="Placement">
+                                <hm-radio
+                                    v-model="toast.placement"
+                                    name="toast-placement"
+                                    value="topleft">
+                                    Top Left
+                                </hm-radio>
+                                <hm-radio
+                                    v-model="toast.placement"
+                                    name="toast-placement"
+                                    value="topcenter">
+                                    Top Center
+                                </hm-radio>
+                                <hm-radio
+                                    v-model="toast.placement"
+                                    name="toast-placement"
+                                    value="topright">
+                                    Top Right
+                                </hm-radio>
+                                <hm-radio
+                                    v-model="toast.placement"
+                                    name="toast-placement"
+                                    value="bottomleft">
+                                    Bottom Left
+                                </hm-radio>
+                                <hm-radio
+                                    v-model="toast.placement"
+                                    name="toast-placement"
+                                    value="bottomcenter">
+                                    Bottom Center
+                                </hm-radio>
+                                <hm-radio
+                                    v-model="toast.placement"
+                                    name="toast-placement"
+                                    value="bottomright">
+                                    Bottom Right
+                                </hm-radio>
+                            </hm-form-group>
+                        </div>
+                        <div class="col-4">
+                            <hm-form-group label="Variant">
+                                <hm-radio
+                                    v-model="toast.variant"
+                                    name="toast-variant"
+                                    value="black">
+                                    Default
+                                </hm-radio>
+                                <hm-radio
+                                    v-model="toast.variant"
+                                    name="toast-variant"
+                                    value="primary">
+                                    Primary
+                                </hm-radio>
+                                <hm-radio
+                                    v-model="toast.variant"
+                                    name="toast-variant"
+                                    value="warning">
+                                    Warning
+                                </hm-radio>
+                                <hm-radio
+                                    v-model="toast.variant"
+                                    name="toast-variant"
+                                    value="danger">
+                                    Danger
+                                </hm-radio>
+                                <hm-radio
+                                    v-model="toast.variant"
+                                    name="toast-variant"
+                                    value="light">
+                                    Light
+                                </hm-radio>
+                            </hm-form-group>
+                        </div>
+                        <div class="col-4">
+                            <hm-form-group label="Delay / Auto-close">
+                                <hm-checkbox
+                                    class="mb-4"
+                                    v-model="toast.autoClose">
+                                    Автозакрытие
+                                </hm-checkbox>
+
+                                <hm-input
+                                    class="mb-4"
+                                    type="number"
+                                    v-model="toast.delay"
+                                    label="Задержка (в секундах)" />
+
+                                <hm-checkbox v-model="toast.showProgressTimer">
+                                    Показывать прогресс-бар до закрытия
+                                </hm-checkbox>
+                            </hm-form-group>
+                        </div>
+                    </div>
+                </div>
 
                 <div>
                     <hm-button

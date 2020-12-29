@@ -3,9 +3,15 @@ import { HmIcon } from '../icon';
 
 HmIcon.add(uniMultiply);
 
+const MAX_POSSIBLE_DELAY = 60;
+
 export default {
     name: 'HmNotification',
     props: {
+        id: {
+            type: String,
+            required: true
+        },
         /**
          * Should notification be auto-closed after "delay" time
          * if "false" delay will make no effect and
@@ -17,29 +23,45 @@ export default {
         },
         /**
          * Notification body as string
-         * Accept both regular text and html template in string
+         * Accepted data:
+         * 1. text string
+         * 2. VNode object
+         * 3. VNode array
          */
         content: {
-            type: String | Object,
+            type: [String, Object, Array],
             default: ''
         },
         /**
          * How long should notification be shown before being auto-closed
          * in seconds
+         * Max possible value is 60
          */
         delay: {
             type: Number,
-            default: 5
+            default: 5,
+            validator(val) {
+                return val > 0 && val <= MAX_POSSIBLE_DELAY;
+            }
         },
         headingIconName: {
             type: String,
             default: ''
+        },
+        placement: {
+            type: String
         },
         /**
          * Heading / title text
          */
         title: {
             type: String
+        },
+        /**
+         * Show progress bar when auto-close is enabled?
+         */
+        showProgressTimer: {
+            type: Boolean
         },
         /**
          * Notification color style
@@ -51,6 +73,7 @@ export default {
     },
     data() {
         return {
+            isHovered: false,
             timer: null
         };
     },
@@ -71,47 +94,95 @@ export default {
     },
     methods: {
         runTimer() {
+            console.log(`${this.id}: set timer`);
+            const _delay = (
+                parseFloat(this.delay < MAX_POSSIBLE_DELAY ? this.delay : MAX_POSSIBLE_DELAY)
+            ) * 1000;
 
+            this.timer = setTimeout(() => {
+                console.log(`${this.id}: timer callback is executed`);
+                this.close();
+            }, _delay);
+
+            console.log(`${this.id}: timer id is: ${this.timer}`);
         },
+        /**
+         * Emits "close event"
+         * We don't pass any data, because toaster will handle it
+         */
         close() {
-            this.$emit('close');
+            this.$emit('close', { id: this.id, placement: this.placement });
+            console.log(`${this.id}: close method executed`);
         }
     },
     mounted() {
-
+        if (this.autoClose) {
+            this.runTimer();
+        }
+    },
+    beforeDestroy() {
+        clearTimeout(this.timer);
+        this.timer = null;
     },
     components: {
         HmIcon
     },
     render() {
+        const vm = this;
         const isVNode = typeof this.content === 'object';
+
+        function renderProgressBar() {
+            if (!vm.autoClose || !vm.showProgressTimer) return null;
+
+            const style = {};
+
+            if (!vm.isHovered) {
+                style.animationDuration = `${vm.delay}s`;
+            }
+
+            const classes = ['hm-ntf-progress-bar'];
+
+            if (!vm.isHovered && !!vm.timer) {
+                classes.push('hm-ntf-progress-bar-active');
+            }
+
+
+            return (
+                <div class="hm-ntf-progress-container">
+                    <div class={classes} style={style}></div>
+                </div>
+            );
+        }
 
         function renderContent() {
             if (isVNode) {
-                console.log(this.content);
                 return (
                     <div class="hm-ntf-body">
-                        {this.content}
+                        {vm.content}
                     </div>
                 );
             }
 
+            const innerHTML = {
+                domProps: {
+                    innerHTML: vm.content.toString()
+                }
+            };
+
             return (
                 <div
                     class="hm-ntf-body"
-                    {...{ domProps: {
-                        innerHTML: this.content.toString()
-                    }}}>
+                    {...innerHTML}>
                 </div>
             );
         }
 
         return (
             <div
-                className={this._classes}
+                class={this._classes}
                 role="alertdialog">
-                <div className="hm-ntf-heading d-flex align-items-center">
-                    <div className="hm-ntf-heading-text">
+                <div class="hm-ntf-heading d-flex align-items-center">
+                    <div class="hm-ntf-heading-text">
                         {
                             (this.headingIconName && (
                                 <HmIcon name={this.headingIconName} />
@@ -122,7 +193,8 @@ export default {
                     <button onClick={this.close}><HmIcon name="multiply" /></button>
                 </div>
 
-                {renderContent.call(this)}
+                {renderContent()}
+                {renderProgressBar()}
             </div>
         );
     }

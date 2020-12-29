@@ -1,7 +1,7 @@
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
-import Toaster from './toaster';
+import Icon from './icon';
 
-const HELPER_NAME = '$hmToaster';
+const HELPER_NAME = '$hmIcon';
 
 const plugin = (Vue) => {
     if (!Object.prototype.hasOwnProperty.call(Vue.prototype, HELPER_NAME)) {
@@ -11,14 +11,14 @@ const plugin = (Vue) => {
             {
                 get() {
                     return {
-                        add: Toaster.add.bind(Toaster)
-                    }
+                        add: Icon.add.bind(Icon)
+                    };
                 }
             }
         );
     }
-};
+}
 
-export const HmToasterHelperPlugin = pluginFactory({
+export const HmIconHelperPlugin = pluginFactory({
     plugins: { plugin }
 });

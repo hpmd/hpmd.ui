@@ -7,7 +7,20 @@
     z-index: $toaster-z-index;
 
     &-place {
+        box-sizing: border-box;
         position: fixed;
+
+        @include media-breakpoint-up('xs') {
+            width: 100%;
+        }
+
+        @include media-breakpoint-up('md') {
+            width: 50%;
+        }
+
+        @include media-breakpoint-up('lg') {
+            width: 33.33333%;
+        }
 
         &-topleft {
             top: $toaster-top-margin;
@@ -39,6 +52,61 @@
         &-bottomright {
             bottom: $toaster-bottom-margin;
             right: $toaster-right-margin;
+        }
+    }
+}
+
+@keyframes hm-ntf-progress {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(0);
+    }
+}
+
+.hm-ntf {
+    background-color: #fff;
+    border-radius: $notification-radius;
+    box-shadow: $notification-shadow;
+    width: 100%;
+
+    & + .hm-ntf {
+        margin-top: $notification-space-between;
+    }
+
+    &-heading {
+        padding: $notification-title-padding-y $notification-title-padding-y;
+
+        &-text {
+            flex-grow: 1;
+        }
+    }
+
+    &-body {
+        padding: $notification-body-padding-y $notification-body-padding-x;
+    }
+
+    &-progress-container {
+        background-color:$gray-300;
+        display: block;
+        height: 10px; // $notification-progress-height;
+        position: relative;
+    }
+
+    &-progress-bar {
+        background-color:red;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform-origin: 0 50%;
+        transform: scaleX(1);
+        width: 100%;
+
+        &.hm-ntf-progress-bar-active {
+            animation-name: hm-ntf-progress;
+            animation-timing-function: linear;
         }
     }
 }

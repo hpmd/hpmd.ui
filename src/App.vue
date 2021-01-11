@@ -760,6 +760,7 @@ export default Vue.extend({
                                 </hm-checkbox>
 
                                 <hm-input
+                                    number
                                     class="mb-4"
                                     type="number"
                                     v-model="toast.delay"

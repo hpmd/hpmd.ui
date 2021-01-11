@@ -91,16 +91,24 @@ class Notification {
 
 export default {
     /**
-     * Method to add new notification
+     * Global Method to add new notification
      * @param {Object} options
-     * @see {@link ./notification.js} - props
+     * @see {@link ./notification.js}: available props are listed in Notification.props
+     * @example
+     * // import { HmToaster } from 'hpmd.ui/src/components/toaster'
+     * // ...
+     * // HmToaster.add(options);
+     * //
+     * // or if you use this library as a plugin (Vue.use(HpmdUI))
+     * // you can do it without import like (inside component/instance)
+     * // this.$hmToaster.add(options)
      */
     add(options) {
         // debugger;
         const { placement } = options;
 
         if (!placement || !(placement in places)) {
-            // kinda shitty
+            // kinda shitty, but in we want to use it globally
             options.placement = this.props.defaultPosition.default;
         }
 
@@ -109,7 +117,6 @@ export default {
             options
         );
 
-        // places[options.placement].push(notification);
         Vue.set(places[notification.placement], notification.id, notification);
     },
 
@@ -122,27 +129,23 @@ export default {
     },
     data() {
         return {
-            places
+            places,
+            isPaused: false
         };
     },
     methods: {
         removeNtf({id, placement}) {
-            const _msgs = places[placement];
-
-            /* if (!Array.isArray(_msgs)) {
-                console.error(`Invalid "placement" value: ${placement}`);
+            try {
+                this.$delete(places[placement], id)
+            } catch (e) {
+                console.error(`Can't remove message id:${id} with placement ${placement}`);
             }
-
-            for (let i = 0; i < _msgs.length; i++) {
-                if (_msgs[i].id === id) {
-                    console.log('Found', _msgs[i]);
-                    _msgs.splice(i, 1);
-                    break;
-                }
-            } */
-            if (_msgs[id]) {
-                this.$delete(_msgs, id);
-            }
+        },
+        pauseTimers() {
+            this.isPaused = true;
+        },
+        unpauseTimers() {
+            this.isPaused = false;
         }
     },
     components: {
@@ -150,19 +153,6 @@ export default {
     },
     render() {
         const placeKeys = Object.keys(places);
-
-        /**
-         * <div
-                            class={className}
-                            id={`hm-toaster-place-${placeKey}`}>
-                            {places[placeKey].map((ntf) => (
-                                <HmNotification
-                                    { ... { props: ntf } }
-                                    onClose={this.removeNtf.bind(this, ntf.id, ntf.placement)}
-                                />
-                            ))}
-                        </div>
-         */
 
         return (
             <div class="hm-toaster">
@@ -172,13 +162,17 @@ export default {
                     return (
                         <div
                             class={className}
-                            id={`hm-toaster-place-${placeKey}`}>
+                            id={`hm-toaster-place-${placeKey}`}
+                            onMouseover={this.pauseTimers}
+                            onMouseleave={this.unpauseTimers}>
                             {Object.keys(places[placeKey]).map((ntfId) => {
                                 const ntf = places[placeKey][ntfId];
 
                                 return (
                                     <HmNotification
+                                        isPaused={this.isPaused}
                                         { ... { props: ntf } }
+                                        key={ntfId}
                                         onClose={this.removeNtf}
                                     />
                                 );

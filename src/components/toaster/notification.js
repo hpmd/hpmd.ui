@@ -4,6 +4,7 @@ import { HmIcon } from '../icon';
 HmIcon.add(uniMultiply);
 
 const MAX_POSSIBLE_DELAY = 60;
+const MIN_POSSIBLE_DELAY = 1;
 
 export default {
     name: 'HmNotification',
@@ -11,6 +12,13 @@ export default {
         id: {
             type: String,
             required: true
+        },
+        /**
+         * Is timer paused
+         */
+        isPaused: {
+            type: Boolean,
+            default: false
         },
         /**
          * Should notification be auto-closed after "delay" time
@@ -94,25 +102,25 @@ export default {
     },
     methods: {
         runTimer() {
-            console.log(`${this.id}: set timer`);
-            const _delay = (
-                parseFloat(this.delay < MAX_POSSIBLE_DELAY ? this.delay : MAX_POSSIBLE_DELAY)
-            ) * 1000;
+            let _delay = parseFloat(this.delay);
 
-            this.timer = setTimeout(() => {
-                console.log(`${this.id}: timer callback is executed`);
-                this.close();
-            }, _delay);
+            if (_delay < MIN_POSSIBLE_DELAY) {
+                _delay = MIN_POSSIBLE_DELAY;
+            } else if (_delay > MAX_POSSIBLE_DELAY) {
+                _delay = MAX_POSSIBLE_DELAY;
+            }
 
-            console.log(`${this.id}: timer id is: ${this.timer}`);
+            _delay = _delay * 1000;
+
+            this.timer = setTimeout(this.close, _delay);
         },
         /**
          * Emits "close event"
          * We don't pass any data, because toaster will handle it
          */
         close() {
-            this.$emit('close', { id: this.id, placement: this.placement });
-            console.log(`${this.id}: close method executed`);
+            const { id, placement } = this;
+            this.$emit('close', { id, placement });
         }
     },
     mounted() {

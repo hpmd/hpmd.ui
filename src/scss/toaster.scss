@@ -8,6 +8,8 @@
 
     &-place {
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
         position: fixed;
 
         @include media-breakpoint-up('xs') {
@@ -22,35 +24,33 @@
             width: 33.33333%;
         }
 
-        &-topleft {
+        &-topleft, &-topcenter, &-topright {
             top: $toaster-top-margin;
-            left: $toaster-left-margin;
         }
 
-        &-topcenter {
-            top: $toaster-top-margin;
+        &-bottomleft, &-bottomcenter, &-bottomright {
+            bottom: $toaster-bottom-margin;
+            /* flex-direction: column-reverse;
+
+            .hm-ntf + .hm-ntf {
+                margin-top: 0;
+                margin-bottom: $notification-space-between;
+            } */
+        }
+
+        &-topcenter, &-bottomcenter {
+            align-items: center;
             left: 50%;
             transform: translateX(-50%);
         }
 
-        &-topright {
-            top: $toaster-top-margin;
-            right: $toaster-right-margin;
-        }
-
-        &-bottomleft {
-            bottom: $toaster-bottom-margin;
+        &-topleft, &-bottom-left {
+            align-items: flex-start;
             left: $toaster-left-margin;
         }
 
-        &-bottomcenter {
-            bottom: $toaster-bottom-margin;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        &-bottomright {
-            bottom: $toaster-bottom-margin;
+        &-topright, &-bottomright {
+            align-items: flex-end;
             right: $toaster-right-margin;
         }
     }
@@ -69,6 +69,8 @@
     background-color: #fff;
     border-radius: $notification-radius;
     box-shadow: $notification-shadow;
+    overflow: hidden;
+    max-width: $notification-max-width;
     width: 100%;
 
     & + .hm-ntf {
@@ -76,26 +78,48 @@
     }
 
     &-heading {
-        padding: $notification-title-padding-y $notification-title-padding-y;
+        background-color: $gray-100;
+        padding: $notification-title-padding-y $notification-title-padding-x;
 
         &-text {
             flex-grow: 1;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        & > button {
+            background-color: transparent;
+            border: none;
+            line-height: 1;
+            margin-right: -$spacer;
+            margin-left: $spacer;
+            opacity: 0.5;
+            padding: $spacer;
+            transition: opacity .15s ease-in-out;
+            &:hover, &:focus {
+                opacity: 1;
+            }
+            &:focus:not(:focus-visible) {
+                outline: none;
+            }
         }
     }
 
     &-body {
         padding: $notification-body-padding-y $notification-body-padding-x;
+        overflow-wrap: break-word;
     }
 
     &-progress-container {
         background-color:$gray-300;
         display: block;
-        height: 10px; // $notification-progress-height;
+        height: $notification-progress-height;
         position: relative;
     }
 
     &-progress-bar {
-        background-color:red;
+        background-color: $primary;
         height: 100%;
         left: 0;
         position: absolute;
@@ -107,6 +131,26 @@
         &.hm-ntf-progress-bar-active {
             animation-name: hm-ntf-progress;
             animation-timing-function: linear;
+        }
+    }
+
+    @each $color, $value in $theme-colors {
+        &.hm-ntf-#{$color} {
+            .hm-ntf-heading {
+                background-color: rgba($value, 0.15);
+                color: mix($value, $black); // color-yiq($value);
+
+                button {
+                    color: mix($value, $black);
+                }
+            }
+            .hm-ntf-body {
+                color: $gray-800;
+                // background-color: rgba($value, 0.05);
+            }
+            .hm-ntf-progress-bar {
+                background-color: $value;
+            }
         }
     }
 }

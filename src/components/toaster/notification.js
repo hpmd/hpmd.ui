@@ -3,8 +3,8 @@ import { HmIcon } from '../icon';
 
 HmIcon.add(uniMultiply);
 
-const MAX_POSSIBLE_DELAY = 60;
-const MIN_POSSIBLE_DELAY = 1;
+const MAX_POSSIBLE_DURATION = 60;
+const MIN_POSSIBLE_DURATION = 1;
 
 export default {
     name: 'HmNotification',
@@ -45,11 +45,11 @@ export default {
          * in seconds
          * Max possible value is 60
          */
-        delay: {
+        timeShow: {
             type: Number,
             default: 5,
             validator(val) {
-                return val > 0 && val <= MAX_POSSIBLE_DELAY;
+                return val > 0 && val <= MAX_POSSIBLE_DURATION;
             }
         },
         headingIconName: {
@@ -82,7 +82,9 @@ export default {
     data() {
         return {
             isHovered: false,
-            timer: null
+            timer: null,
+            timerStartedTime: null,
+            timerRemainTime: null
         };
     },
     computed: {
@@ -98,21 +100,32 @@ export default {
             ];
 
             return classes;
+        },
+        durationMs() {
+            let d = parseFloat(this.timeShow);
+
+            if (d < MIN_POSSIBLE_DURATION) {
+                d = MIN_POSSIBLE_DURATION;
+            } else if (d > MAX_POSSIBLE_DURATION) {
+                d = MAX_POSSIBLE_DURATION;
+            }
+
+            return d * 1000;
         }
     },
     methods: {
         runTimer() {
-            let _delay = parseFloat(this.delay);
+            this.timerStartedTime = Date.now();
 
-            if (_delay < MIN_POSSIBLE_DELAY) {
-                _delay = MIN_POSSIBLE_DELAY;
-            } else if (_delay > MAX_POSSIBLE_DELAY) {
-                _delay = MAX_POSSIBLE_DELAY;
-            }
+            // In case we're call this method 2 or more times in a row
+            clearTimeout(this.timer);
 
-            _delay = _delay * 1000;
+            this.timer = setTimeout(this.close, this.timerRemainTime);
+        },
+        pauseTimer() {
+            clearTimeout(this.timer);
 
-            this.timer = setTimeout(this.close, _delay);
+            this.timerRemainTime -= Date.now() - this.timerStartedTime;
         },
         /**
          * Emits "close event"
@@ -125,12 +138,27 @@ export default {
     },
     mounted() {
         if (this.autoClose) {
+            this.timerRemainTime = this.durationMs;
             this.runTimer();
         }
     },
     beforeDestroy() {
         clearTimeout(this.timer);
         this.timer = null;
+    },
+    watch: {
+        isPaused: {
+            handler(val, oldVal) {
+                if (!this.autoClose || val === oldVal) return;
+
+                if (val) {
+                    this.pauseTimer();
+                } else {
+                    this.runTimer();
+                }
+            },
+            immediate: true
+        }
     },
     components: {
         HmIcon
@@ -145,7 +173,14 @@ export default {
             const style = {};
 
             if (!vm.isHovered) {
-                style.animationDuration = `${vm.delay}s`;
+                const delay = `${vm.durationMs / 1000}s`;
+                style.webkitAnimationPlayState = delay;
+                style.animationDuration = delay;
+            }
+
+            if (vm.isPaused) {
+                style.webkitAnimationPlayState = 'paused';
+                style.animationPlayState = 'paused';
             }
 
             const classes = ['hm-ntf-progress-bar'];
@@ -198,7 +233,9 @@ export default {
                         }
                         <span>{this.title}</span>
                     </div>
-                    <button onClick={this.close}><HmIcon name="multiply" /></button>
+                    <button onClick={this.close}>
+                        <HmIcon name="multiply" />
+                    </button>
                 </div>
 
                 {renderContent()}

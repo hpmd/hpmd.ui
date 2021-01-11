@@ -313,12 +313,13 @@ $toaster-left-margin: $spacer * 2;
 
 $notification-radius: $radius;
 $notification-shadow: 0 4px 4px 0 rgba(#000, .15);
-$notification-space-between: $spacer * 2;
-$notification-body-padding-y: $spacer * 2;
-$notification-body-padding-x: $spacer * 2;
+$notification-space-between: $spacer * 3;
+$notification-body-padding-y: $spacer * 3;
+$notification-body-padding-x: $spacer * 3;
+$notification-max-width: 400px;
 $notification-title-padding-y: $spacer * 2;
-$notification-title-padding-x: $spacer * 2;
-$notification-progress-height: $spacer / 2;
+$notification-title-padding-x: $spacer * 3;
+$notification-progress-height: $spacer;
 
 
 

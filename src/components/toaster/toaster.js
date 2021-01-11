@@ -1,15 +1,6 @@
 import Vue from 'vue';
 import HmNotification from './notification';
 
-/* const places = {
-    topleft: [],
-    topright: [],
-    topcenter: [],
-    bottomleft: [],
-    bottomcenter: [],
-    bottom: []
-}; */
-
 const places = {
     topleft: {},
     topcenter: {},
@@ -33,7 +24,7 @@ class Notification {
      */
     constructor(id, {
         autoClose = true,
-        delay = 5,
+        showTime = 5,
         content = '',
         headingIconName = null,
         placement = 'topleft',
@@ -57,11 +48,6 @@ class Notification {
         this.content = content;
 
         /**
-         * @type {number}
-         */
-        this.delay = delay;
-
-        /**
          * @type {string?}
          */
         this.headingIconName = headingIconName;
@@ -71,6 +57,10 @@ class Notification {
          */
         this.placement = placement;
 
+        /**
+         * @type {number}
+         */
+        this.showTime = showTime;
         /**
          * @type {boolean}
          */
@@ -134,11 +124,15 @@ export default {
         };
     },
     methods: {
-        removeNtf({id, placement}) {
+        removeNtf({ id, placement }) {
             try {
-                this.$delete(places[placement], id)
+                this.$delete(places[placement], id);
             } catch (e) {
                 console.error(`Can't remove message id:${id} with placement ${placement}`);
+            }
+
+            if (this.isPaused && Object.keys(places).some((placeKey) => !Object.keys(places[placeKey]).length)) {
+                this.isPaused = false;
             }
         },
         pauseTimers() {

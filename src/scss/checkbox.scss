@@ -1,5 +1,6 @@
 .custom-checkbox {
     display: inline-block;
+    margin-left: -0.25rem; // compensate hover effect on label
 
     .custom-control-input:focus + .custom-control-label:before,
     &__focus .custom-control-label:before {

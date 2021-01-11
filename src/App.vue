@@ -81,7 +81,7 @@ export default Vue.extend({
             ],
             toast: {
                 autoClose: true,
-                delay: 5,
+                showTime: 5,
                 placement: 'topright',
                 showProgressTimer: false,
                 variant: 'default',
@@ -295,7 +295,7 @@ export default Vue.extend({
 
             const {
                 autoClose,
-                delay,
+                showTime,
                 placement,
                 showProgressTimer,
                 variant
@@ -304,8 +304,9 @@ export default Vue.extend({
             this.$hmToaster.add({
                 autoClose,
                 content,
-                delay,
+                title: 'Новое_сообщение_asdasdakjsasываырлыроаллолываывалывролаылолывавллолоыавывало',
                 placement,
+                showTime,
                 showProgressTimer,
                 variant
             });
@@ -763,8 +764,8 @@ export default Vue.extend({
                                     number
                                     class="mb-4"
                                     type="number"
-                                    v-model="toast.delay"
-                                    label="Задержка (в секундах)" />
+                                    v-model="toast.showTime"
+                                    label="Время отображения (в секундах)" />
 
                                 <hm-checkbox v-model="toast.showProgressTimer">
                                     Показывать прогресс-бар до закрытия

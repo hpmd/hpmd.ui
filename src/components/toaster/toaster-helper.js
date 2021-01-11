@@ -12,13 +12,14 @@ const plugin = (Vue) => {
                 get() {
                     return {
                         add: Toaster.add.bind(Toaster)
-                    }
+                    };
                 }
             }
         );
     }
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export const HmToasterHelperPlugin = pluginFactory({
     plugins: { plugin }
 });

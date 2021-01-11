@@ -304,6 +304,24 @@ $tooltip-arrow-width: $spacer * 2;
 $tooltip-arrow-height: $spacer;
 
 
+// Toaster and Notifications
+$toaster-z-index: 1300;
+$toaster-top-margin: $spacer * 2;
+$toaster-right-margin: $spacer * 2;
+$toaster-bottom-margin: $spacer * 2;
+$toaster-left-margin: $spacer * 2;
+
+$notification-radius: $radius;
+$notification-shadow: 0 4px 4px 0 rgba(#000, .15);
+$notification-space-between: $spacer * 3;
+$notification-body-padding-y: $spacer * 3;
+$notification-body-padding-x: $spacer * 3;
+$notification-max-width: 400px;
+$notification-title-padding-y: $spacer * 2;
+$notification-title-padding-x: $spacer * 3;
+$notification-progress-height: $spacer;
+
+
 
 // Select input
 $select-border-radius: $radius;
@@ -411,3 +429,6 @@ $nav-tabs-link-active-border-color: transparent transparent $nav-tabs-border-col
 $nav-pills-border-radius: $radius;
 $nav-pills-link-active-color: $white;
 $nav-pills-link-active-bg: $black;
+
+
+

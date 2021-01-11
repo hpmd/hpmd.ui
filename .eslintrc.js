@@ -17,7 +17,7 @@ module.exports = {
             js: 'never',
             vue: 'never'
         }],
-        'indent': ['error', 4, { SwitchCase: 1 }],
+        indent: ['error', 4, { SwitchCase: 1 }],
         'linebreak-style': 0,
         'max-len': 0,
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

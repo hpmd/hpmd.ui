@@ -1,6 +1,7 @@
 
 .custom-radio {
     // display: inline-block;
+    margin-left: -0.25rem; // compensate hover effect
 
     .custom-control-input:focus~.custom-control-label:before,
     &__focus .custom-control-label:before {
@@ -19,13 +20,13 @@
         &:checked ~ .custom-control-label::before {
             background-color: $white;
             border-color: $black;
-            border-width: 4.5px;
+            border-width: $spacer;
         }
 
         &:checked:disabled ~ .custom-control-label::before {
             background-color: $gray-400;
             border-color: $gray-600;
-            border-width: 4.5px;
+            border-width: $spacer;
         }
     }
 
@@ -36,7 +37,7 @@
 
     .custom-control-label {
         padding-right: 0.25rem;
-        padding-left: 1.625rem;
+        padding-left: 1.525rem;
         margin-left: -1.5rem;
         font-size: 0.875em;
         line-height: 1.5rem;
@@ -49,7 +50,7 @@
         &:before,
         &:after {
             top: 0.35rem;
-            left: 0.35rem;
+            left: 0.25rem;
             width: 0.8rem;
             height: 0.8rem;
             border-radius: 0.75rem;

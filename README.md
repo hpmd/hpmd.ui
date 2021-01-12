@@ -312,11 +312,172 @@ HmIcon.add(uniTimes)
 **Свойства**
 | Свойство    | Тип     | По-умолчанию       | Допустимые значения | Описание                                 |
 |-------------|---------|--------------------|---------------------|------------------------------------------|
-| `fill`      | String  | 'currentColor'              |                     | Выбрать диапазон дат                     |
-| `name`      | String  | (Detect mobile OS) |                     | Использовать нативный ввод даты (input type="date") |
+| `fill`      | String  | 'currentColor'     |                     | Цвет иконки, по-умолчанию - цвет текста родительского элемента |
+| `name`      | String  | ''                 |                     | Имя иконки, определенное в Icon.name     |
+
+___
+
+### Input *(BootstrapVue)
+[Документация](https://bootstrap-vue.org/docs/components/form-input)
+
+**Реализованные компоненты**
+* HmInput
+
+Основное изменение - компонент завернут в контейнер для того, чтобы сопутствующие вводу элементы интерфейса можно было выводить прямо в нем (кнопки, лэйбл)
+
+**Добавленные свойства**
+| Свойство          | Тип     | По-умолчанию | Допустимые значения | Описание                                 |
+|-------------------|---------|--------------|---------------------|------------------------------------------|
+| `label`           | String? | ''           |                     | Текст лэйбла над полем ввода: рекомендуется использовать отдельно от placeholder, либо описать свои стили для placeholder, чтобы избежать визуального наложения |
+| `mask`            | IMask   | undefined    | IMask instance      | Маска ввода для текстовых полей: [документация IMask](https://imask.js.org/guide.html), [Документация Vue IMask](https://github.com/uNmAnNeR/imaskjs/tree/master/packages/vue-imask)     |
+| `showClearBtn`    | Boolean | true         |                     | Показывать кнопку очистки поля ввода     |
+| `showPasswordBtn` | Boolean | false        |                     | Показывать кнопку "показать ввод" для `type="password"` |
+
+
+**Добавленные события**
+| Событие    | Передаваемые данные                    | Описание                        |
+|------------|----------------------------------------|---------------------------------|
+| `accept`   | IMask Accept event data                | Событие отправляется каждый раз когда меняется значение маски при вводе. Практической ценности не имеет, добавлено в большей степени для дебага |
+| `complete` | IMask Complete event data              | Событие отправляется когда маска ввода заполнена |
+| `inputRaw` | Imask.AcceptEvent.detail.unmaskedValue | Сырой ввод пользователя в поле с маской - может быть нужно для получения неформатированного значения (например, номера телефона в виде `+79998887766`, а не `+7 (999) 888-77-66`) |
+
+
+**Добавленные слоты**
+| Имя слота | Описание                                               |
+| `append`  | Слот для вывода элементов после (справа от) поля ввода |
+| `prepend` | Слот для вывода элементов перед (слева от) полем ввода |
+
+
+### Input Group *(Bootstrap Vue)
+[Документация](https://bootstrap-vue.org/docs/components/input-group) **Без изменений**
+
+**Реализованные компоненты:**
+* HmInputGroup
+* HmInputGroupAddon
+* HmInputGroupAppend
+* HmInputGroupPrepend
+* HmInputGroupText
+
+
+### Modal *(Bootstrap Vue)
+> WARN: в плане добавить для компонента возможность выводить его на полный экран (`size = "fs"`).
+[Документация](https://bootstrap-vue.org/docs/components/modal) **Без изменений**
+
+**Реализованные компоненты:**
+* HmModal
+
+
+### Nav *(Bootstrap Vue)
+[Документация](https://bootstrap-vue.org/docs/components/nav) **Без изменений**
+
+**Реализованные компоненты**
+* HmNav
+* HmNavItem
+* HmNavItemDropdown
+* HmNavText
+
+
+### Popover *(Bootstrap Vue)
+[Документация](https://bootstrap-vue.org/docs/components/popover) **Без изменений**
+
+**Реализованные компоненты:**
+* HmPopover
+
+
+### Progress *(Bootstrap Vue)
+[Документация](https://bootstrap-vue.org/docs/components/progress) **Без изменений**
+
+**Реализованные компоненты:**
+* HmProgress
+
+
+### Radio *(Bootstrap Vue)
+[Документация](https://bootstrap-vue.org/docs/components/form-radio) **Без изменений**
+
+**Реализованные компоненты:**
+* HmRadio
+* HmRadioGroup
+
+
+### Range Slider *(Vue Slider Component)
+[Документация](https://nightcatsama.github.io/vue-slider-component) **Без изменений**
+
+**Реализованные компоненты**
+* HmRangeSlider
+
+
+### Select *(Vue Multiselect)
+[Документация](https://vue-multiselect.js.org/) **Без изменений**
+
+**Реализованные компоненты**
+* HmSelect
+
+
+### Selector
+> DEPRECATED: компонент ждет неминуемый рефакторинг (скорее всего весь функционал будет вынесен в Radio и Checkbox), старайтесь пока избегать его использования
+
+Компоненты для реализации чекбоксов в виде набора "кнопок"
+
+**Реализованные компоненты**
+* HmSelector
+* HmSelectorEl
+
+
+### Spin Button *(Bootstrap Vue)
+[Документация](https://bootstrap-vue.org/docs/components/form-spinbutton) **Без изменений**
+
+**Реализованные компоненты**
+* HmSpinButton
+
+
+### Table *(Bootstrap Vue)
+[Документация](https://bootstrap-vue.org/docs/components/form-table) **Без изменений**
+
+**Реализованные компоненты**
+* HmTable
+* HmTableLite
+* HmTableSimple
+* HmTbody
+* HmThead
+* HmTfoot
+* HmTr
+* HmTd
+* HmTh
+
+
+### Tip
+Компонент для вывода блока (например слова или заголовка) с подсказкой
+
+**Реализованные компоненты**
+#### HmTip
+| Свойство              | Тип     | По-умолчанию | Допустимые значения | Описание                                 |
+| `iconName`            | String | `'info-circle'` | Icon.name зарегистрированной иконки | Иконка подсказки |
+| `iconPosition`        | String | `'center'` | left, center, right | Положение иконки в кружке (по-горизонтали) |
+| `iconVariant`         | String | `primary` | Название цвета из $theme-colors | Цвет иконки |
+| `inText`              | Boolean | `false` |    | Подсказка внутри текста (на слове) |
+| `tip`                 | String | `''` |       | Текст подсказки |
+| `tooltipVariant`      | String | ``
+| `tooltipPlacemenet`   |
+| `triggers`            |
 
 
 
+inText
+tip
+tooltipVariant
+tooltipPlacemenet
+triggers
+iconPosition
+iconName
+iconVariant
+
+
+
+
+___
+___
+
+## Разработка
 
 ## Project setup
 ```

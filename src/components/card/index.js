@@ -8,7 +8,7 @@ const CardPlugin = pluginFactory({
 });
 
 /**
- * @see {@link https://bootstrap-vue.org/docs/components/collapse}
+ * @see {@link https://bootstrap-vue.org/docs/components/card}
  */
 export {
     CardPlugin,

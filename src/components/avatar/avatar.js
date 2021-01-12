@@ -56,8 +56,10 @@ export default {
         }
     },
     methods: {
-        handleError() {
+        handleError(e) {
             this.isImgAvailable = false;
+
+            this.$emit('imageLoadError', e);
         }
     },
     render() {

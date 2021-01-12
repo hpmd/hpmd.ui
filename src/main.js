@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { HpmdUI } from '..';
+import HpmdUI from '..';
 import '@/scss/hpmd.ui.scss';
 import App from './App';
 

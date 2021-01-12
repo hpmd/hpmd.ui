@@ -19,7 +19,6 @@ const plugin = (Vue) => {
     }
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export const HmIconHelperPlugin = pluginFactory({
+export default pluginFactory({
     plugins: { plugin }
 });

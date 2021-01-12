@@ -6,7 +6,7 @@ HmIcon.add(uniArrowDown);
 
 /**
  * @extends BCollapse
- * @see {@link https://bootstrap-vue.org/docs/components/}
+ * @see {@link https://bootstrap-vue.org/docs/components/collapse}
  */
 /**
  * Easily toggle visibility of almost any content on your pages in a vertically collapsing container

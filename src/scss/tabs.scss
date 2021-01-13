@@ -58,13 +58,13 @@
             color: $nav-tabs-link-color;
         }
 
-        &.active {
+        &.active, &.router-link-active {
             font-weight: 600;
         }
     }
 
     &-pills {
-        & .nav-link {
+        .nav-link {
             padding: $nav-link-pills-padding-y $nav-link-pills-padding-x;
 
             &:hover {

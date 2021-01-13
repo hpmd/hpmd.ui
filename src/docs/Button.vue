@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white p-5 shadow rounded mb-8">
+    <div>
         <h2 class="mb-9">Buttons</h2>
         <div class="mb-6">
             <h4>Styles</h4>

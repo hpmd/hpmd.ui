@@ -12,7 +12,7 @@
 </script>
 
 <template>
-    <div class="bg-white p-5 shadow rounded mb-8">
+    <div>
         <h2 class="mb-9">Spin Button</h2>
 
         <div class="p-5 mb-5 bg-light rounded">

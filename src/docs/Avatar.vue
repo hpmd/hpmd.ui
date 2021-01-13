@@ -4,8 +4,8 @@
 
 
 <template>
-    <div class="bg-white p-5 shadow rounded mb-8">
-        <h2 class="mb-9">Avatars</h2>
+    <div>
+        <h2 class="mb-9">Avatar</h2>
 
         <div class="mt-4 d-flex justify-content-start">
             <hm-avatar

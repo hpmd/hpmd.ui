@@ -1,11 +1,11 @@
 <script>
-    export default {
-        data() {
-            return {
-                dragAndDropModel: []
-            };
-        }
-    };
+export default {
+    data() {
+        return {
+            dragAndDropModel: []
+        };
+    }
+};
 </script>
 
 

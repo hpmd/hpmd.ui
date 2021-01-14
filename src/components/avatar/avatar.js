@@ -48,7 +48,7 @@ export default {
             return `hm-avatar-placeholder badge-${this.variant}`;
         },
         wrapperClasses() {
-            return `hm-avatar rounded-circle hm-avatar-${this.size}`
+            return `hm-avatar rounded-circle hm-avatar-${this.size}`;
         }
     },
     methods: {

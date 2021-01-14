@@ -74,9 +74,9 @@ export default Vue.extend({
 </script>
 
 <template>
-    <div id="app" class="d-flex flex-row align-items-stretch position-relative">
+    <div id="app" class="d-flex flex-row align-items-stretch position-relative w-100">
         <nav>
-            <div class="container position-sticky sticky-top" style="width: 300px">
+            <div class="container-fluid position-sticky sticky-top" style="width: 300px">
                 <h1>HPMD UI</h1>
 
                 <hm-nav vertical>
@@ -112,7 +112,7 @@ export default Vue.extend({
         </nav>
 
         <main class="flex-grow-1">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="panel shadow p-5 bg-white mb-10">
                     <router-view />
                 </div>
@@ -138,6 +138,10 @@ nav .nav-link.router-link-exact-active {
     font-weight: 600;
 }
 
+main {
+    overflow: auto;
+}
+
 pre {
     border-radius: $radius;
 }
@@ -145,7 +149,15 @@ pre {
 .code-block {
     display: block;
     max-height: 500px;
-    overflow: auto;
+    width: 100%;
+    overflow-x: hidden;
+
+    pre {
+        max-width:100%;
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+    }
 }
 
 /* h3 {

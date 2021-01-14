@@ -39,7 +39,15 @@ export default {
         curVariant() {
             const { type, variant } = this;
 
-            return type === 'link' ? type : type === 'solid' ? variant : `outline-${variant}`
+            if (type === 'link') {
+                return type;
+            } else if (type === 'solid') {
+                return variant;
+            } else if (type === 'outline') {
+                return `outline-${variant}`;
+            }
+
+            return variant;
         }
     }
 };

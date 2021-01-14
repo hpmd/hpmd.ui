@@ -1,40 +1,41 @@
 <script>
-    import debounce from 'lodash.debounce';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import debounce from 'lodash.debounce';
 
-    export default {
-        data() {
-            return {
-                inputs: {
-                    text: '',
-                    password: '',
-                    number: null,
-                    phone: '',
-                    error: '',
-                    inputGroup: '',
-                    isInputGroupValid: null
+export default {
+    data() {
+        return {
+            inputs: {
+                text: '',
+                password: '',
+                number: null,
+                phone: '',
+                error: '',
+                inputGroup: '',
+                isInputGroupValid: null
+            },
+            masked: {
+                phone: '',
+                phoneMask: {
+                    mask: '{+7} (000) 000-00-00',
                 },
-                masked: {
-                    phone: '',
-                    phoneMask: {
-                        mask: '{+7} (000) 000-00-00',
-                    },
-                    phoneRaw: '',
+                phoneRaw: '',
 
-                    number: '',
-                    numberMask: {
-                        mask: Number,
-                        thousandsSeparator: ' '
-                    },
-                    numberRaw: '',
-                }
-            };
-        },
-        methods: {
-            validateInputGroup: debounce(function validateInputGroup() {
-                this.inputs.isInputGroupValid = this.inputs.inputGroup.length >= 4;
-            }, 500)
-        }
-    };
+                number: '',
+                numberMask: {
+                    mask: Number,
+                    thousandsSeparator: ' '
+                },
+                numberRaw: '',
+            }
+        };
+    },
+    methods: {
+        validateInputGroup: debounce(function validateInputGroup() {
+            this.inputs.isInputGroupValid = this.inputs.inputGroup.length >= 4;
+        }, 500)
+    }
+};
 </script>
 
 

@@ -12,6 +12,6 @@ export default {
                 'dark'
             ],
             variant: 'primary'
-        }
+        };
     }
 };

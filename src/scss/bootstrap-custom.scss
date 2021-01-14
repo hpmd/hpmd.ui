@@ -270,6 +270,55 @@ $rangeslider-mark-fontsize: 11px;
 $rangeslider-mark-color: $gray-400;
 $rangeslider-mark-margin-top: $rangeslider-dot-height / 2;
 
+// Checkbox
+$custom-control-gutter: 0.65rem;
+$custom-control-spacer-x: 1.5rem;
+
+$custom-control-indicator-size: 0.875rem;
+// $custom-control-indicator-bg:           $input-bg !default;
+
+$custom-control-indicator-bg-size: 100%;
+// $custom-control-indicator-box-shadow:   $input-box-shadow !default;
+// $custom-control-indicator-border-color: $gray-500 !default;
+// $custom-control-indicator-border-width: $input-border-width !default;
+
+// $custom-control-label-color:            null !default;
+
+// $custom-control-indicator-disabled-bg:          $input-disabled-bg !default;
+// $custom-control-label-disabled-color:           $gray-600 !default;
+
+// $custom-control-indicator-checked-color:        $component-active-color !default;
+$custom-control-indicator-checked-bg:           $dark;
+$custom-control-indicator-checked-disabled-bg:  rgba($custom-control-indicator-checked-bg, .5);
+// $custom-control-indicator-checked-box-shadow:   null !default;
+$custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg;
+
+$custom-control-indicator-focus-box-shadow: none;
+// $custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
+
+// $custom-control-indicator-active-color:         $component-active-color !default;
+// $custom-control-indicator-active-bg:            lighten($component-active-bg, 35%) !default;
+// $custom-control-indicator-active-box-shadow:    null !default;
+// $custom-control-indicator-active-border-color:  $custom-control-indicator-active-bg !default;
+
+$custom-checkbox-indicator-border-radius: $radius;
+$custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12'><path fill='#{$custom-control-indicator-checked-color}' d='M8.8 3.21C9.07 2.93 9.52 2.93 9.79 3.21C10.07 3.48 10.07 3.93 9.79 4.2L5.56 8.44C5.28 8.72 4.84 8.72 4.56 8.44L2.21 6.09C1.93 5.81 1.93 5.36 2.21 5.09C2.48 4.81 2.93 4.81 3.2 5.09L5.06 6.94L8.8 3.21Z' /></svg>");
+
+// $custom-checkbox-indicator-indeterminate-bg:           $component-active-bg !default;
+// $custom-checkbox-indicator-indeterminate-color:        $custom-control-indicator-checked-color !default;
+// $custom-checkbox-indicator-icon-indeterminate:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'><path stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/></svg>") !default;
+// $custom-checkbox-indicator-indeterminate-box-shadow:   null !default;
+// $custom-checkbox-indicator-indeterminate-border-color: $custom-checkbox-indicator-indeterminate-bg !default;
+
+// $custom-radio-indicator-border-radius:          50% !default;
+$custom-radio-indicator-icon-checked:           url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><circle cx='6' cy='6' r='3' fill='#{$custom-control-indicator-bg}'/></svg>");
+
+$custom-switch-width: $custom-control-indicator-size * 1.7;
+// $custom-switch-indicator-border-radius:         $custom-control-indicator-size / 2 !default;
+$custom-switch-indicator-size: subtract($custom-control-indicator-size, $custom-control-indicator-border-width * 4);
+
+
+
 // File
 $custom-file-width: auto;
 $custom-file-height: 2.25em;

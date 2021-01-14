@@ -1,14 +1,14 @@
 <script>
-    import { version, dependencies } from '../../package.json';
+import { version, dependencies } from '../../package.json';
 
-    export default {
-        data() {
-            return {
-                version,
-                dependencies
-            };
-        }
-    };
+export default {
+    data() {
+        return {
+            version,
+            dependencies
+        };
+    }
+};
 </script>
 
 
@@ -35,6 +35,19 @@
                     Поддержка TypeScript
                 </li>
             </ul>
+        </div>
+
+        <hr>
+
+        <h3>Зависимости</h3>
+        <div
+            class="d-flex"
+            v-for="(version, packageName) in dependencies"
+            :key="packageName">
+            <div style="width: 200px">
+                <a :href="`https://npmjs.com/package/${packageName}`">{{packageName}}</a>
+            </div>
+            <div>{{version}}</div>
         </div>
     </section>
 </template>

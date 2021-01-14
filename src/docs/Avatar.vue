@@ -103,7 +103,6 @@ export default {
                         <th>Описание</th>
                     </tr>
                 </thead>
-                
                 <tbody>
                     <tr>
                         <td><code>size</code></td>

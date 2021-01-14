@@ -32,9 +32,6 @@ export default {
                     </b-form-group>
                 </div>
             </div>
-            
-
-            
         </div>
 
         <div class="row">

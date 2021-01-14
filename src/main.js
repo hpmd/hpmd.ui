@@ -1,8 +1,7 @@
 import Vue from 'vue';
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 import VueRouter from 'vue-router';
 import 'highlight.js/scss/atelier-dune-light.scss';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import VueHighlightjs from 'vue-highlightjs';
 import BootstrapVue from 'bootstrap-vue';
 import '@/scss/hpmd.ui.scss';

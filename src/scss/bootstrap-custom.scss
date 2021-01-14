@@ -95,11 +95,21 @@ $alert-border-radius: $radius;
 $alert-border-width: 0;
 
 // Avatar
+$avatarSizes: (
+    xs: $spacer * 6,
+    sm: $spacer * 9,
+    md: $spacer * 12,
+    lg: $spacer * 16,
+    xl: $spacer * 20
+);
 
-$hmavatar-xs-size: $spacer * 4;
-$hmavatar-sm-size: $spacer * 6;
-$hmavatar-md-size: $spacer * 9;
-$hmavatar-lg-size: $spacer * 12;
+// Badge
+$badge-font-weight: 600;
+$badge-padding-y: .335em;
+$badge-padding-x: .45em;
+$badge-border-radius: $border-radius;
+$badge-pill-padding-x: .675em;
+
 
 // Progress bars
 $progress-border-radius: $radius;

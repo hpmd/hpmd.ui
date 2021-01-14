@@ -26,6 +26,7 @@ import { SelectPlugin } from './select';
 import { SpinButtonPlugin } from './spin-button';
 import { SelectorPlugin } from './selector';
 import { TablePlugin } from './table';
+import { TabsPlugin } from './tabs';
 import { TipPlugin } from './tip';
 import { ToasterPlugin } from './toaster';
 import { TooltipPlugin } from './tooltip';
@@ -60,6 +61,7 @@ const componentsPlugin = pluginFactory({
         SelectPlugin,
         SelectorPlugin,
         TablePlugin,
+        TabsPlugin,
         TipPlugin,
         ToasterPlugin,
         TooltipPlugin

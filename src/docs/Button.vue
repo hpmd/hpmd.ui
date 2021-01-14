@@ -1,55 +1,125 @@
+<script>
+import sizeMixin from './sizeMixin';
+import variantMixin from './variantMixin';
+
+const example = `<div class="mb-4 mt-5">
+    <hm-button
+        :disabled="isDisabled"
+        :variant="curVariant"
+        :size="size"
+        :class="type === 'link' ? \`text-\${variant}\` : ''">
+        Fancy button
+    </hm-button>
+</div>
+<hm-button-group>
+    <hm-button :disabled="isDisabled"
+        :variant="curVariant"
+        :size="size"
+        :class="type === 'link' ? \`text-\${variant}\` : ''">
+        some action
+    </hm-button>
+    <hm-button
+        variant="primary"
+        :size="size">
+        second action
+    </hm-button>
+</hm-button-group>`;
+
+export default {
+    mixins: [sizeMixin, variantMixin],
+    data() {
+        return {
+            example,
+            isDisabled: false,
+            types: ['solid', 'outline', 'link'],
+            type: 'solid'
+        };
+    },
+    computed: {
+        curVariant() {
+            const { type, variant } = this;
+
+            return type === 'link' ? type : type === 'solid' ? variant : `outline-${variant}`
+        }
+    }
+};
+</script>
+
 <template>
     <div>
-        <h2 class="mb-9">Buttons</h2>
-        <div class="mb-6">
-            <h4>Styles</h4>
-            <div class="mb-5">
-                <p class="mb-0"><strong>Solid</strong></p>
-                <div>
-                    <hm-button variant="warning" class="mr-2">Yellow</hm-button>
-                    <hm-button variant="light" class="mr-2">Light</hm-button>
-                    <hm-button variant="primary" class="mr-2">Blue</hm-button>
-                    <hm-button variant="danger" class="mr-2">Red</hm-button>
-                    <hm-button variant="warning" class="mr-2" disabled="disabled">Disabled</hm-button>
-                </div>
-            </div>
+        <h2 class="mb-8 display-4">Button</h2>
 
-            <div class="mb-5">
-                <p class="mb-0"><strong>Outline</strong></p>
-                <div>
-                    <hm-button variant="outline-warning" class="mr-2">Yellow</hm-button>
-                    <hm-button variant="outline-light" class="mr-2">Light</hm-button>
-                    <hm-button variant="outline-primary" class="mr-2">Blue</hm-button>
-                    <hm-button variant="outline-danger" class="mr-2">Red</hm-button>
-                    <hm-button variant="warning" class="mr-2" disabled="disabled">Disabled</hm-button>
-                </div>
-            </div>
+        <h3 class="mt-8">Компоненты</h3>
+        <ul>
+            <li><strong>HmButton (HmBtn) </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
+            <li><strong>HmButtonClose (HmBtnClose)</strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
+        </ul>
 
-            <div>
-                <p class="mb-0"><strong>Secondary actions</strong></p>
-                <div>
-                    <hm-button variant="link" class="mr-2 text-dark">Regular</hm-button>
-                    <hm-button variant="link" class="mr-2 text-blue">Blue</hm-button>
-                    <hm-button variant="link" class="mr-2 text-danger">Dangerous</hm-button>
-                    <hm-button variant="link" class="mr-2" disabled="disabled">Disabled</hm-button>
+        <h3 class="mt-8">Использование</h3>
+        <div class="p-5 bg-light rounded">
+            <div class="row">
+                <div class="col">
+                    <hm-form-group label="Size">
+                        <hm-radio-group
+                            :options="sizes"
+                            v-model="size"
+                            stacked
+                        />
+                    </hm-form-group>
+                </div>
+                <div class="col">
+                    <hm-form-group label="Variant">
+                        <hm-radio-group
+                            :options="variants"
+                            v-model="variant"
+                            stacked
+                        />
+                    </hm-form-group>
+                </div>
+                <div class="col">
+                    <hm-form-group label="Style">
+                        <hm-radio-group
+                            :options="types"
+                            v-model="type"
+                            stacked
+                        />
+                    </hm-form-group>
+
+                    <hm-checkbox v-model="isDisabled">Is Disabled?</hm-checkbox>
                 </div>
             </div>
         </div>
 
-        <div class="mb-6">
-            <h4>Sizes</h4>
-            <div>
-                <hm-button variant="warning" class="mr-2" size="xs">Condensed (xs)</hm-button>
-                <hm-button variant="warning" size="sm" class="mr-2">small (sm)</hm-button>
-                <hm-button variant="warning" size="md" class="mr-2">regular (md)</hm-button>
-                <hm-button variant="warning" size="lg" class="mr-2">large (lg)</hm-button>
-            </div>
+        <div class="mb-4 mt-5">
+            <hm-button
+                :disabled="isDisabled"
+                :variant="curVariant"
+                :size="size"
+                :class="type === 'link' ? `text-${variant}` : ''">
+                Fancy button
+            </hm-button>
         </div>
-
-        <h3>Grouping</h3>
         <hm-button-group>
-            <hm-button variant="warning" active>some action</hm-button>
-            <hm-button variant="warning">second action</hm-button>
+            <hm-button :disabled="isDisabled"
+                :variant="curVariant"
+                :size="size"
+                :class="type === 'link' ? `text-${variant}` : ''">
+                some action
+            </hm-button>
+            <hm-button
+                variant="primary"
+                :size="size">
+                second action
+            </hm-button>
         </hm-button-group>
+
+        <hr>
+
+        <div class="code-block">
+            <pre v-highlightjs="example"><code class="html"></code></pre>
+        </div>
+
+        <h3 class="mt-8">Документация</h3>
+        <p><a href="https://bootstrap-vue.org/docs/components/button">BootstrapVue</a></p>
     </div>
 </template>

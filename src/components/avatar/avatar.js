@@ -16,7 +16,7 @@ export default {
     name: 'HmAvatar',
     props: {
         /**
-         * Sets icon size (xs, sm, md, lg)
+         * Sets icon size (xs, sm, md, lg or your custom class)
          */
         size: {
             type: String,
@@ -39,20 +39,16 @@ export default {
     },
     data() {
         return {
-            sizes: ['xs', 'sm', 'md', 'lg'],
+            isLoaded: false,
             isImgAvailable: true
         };
     },
     computed: {
-        /**
-         * Сomputed property to generate a list of classes for the main container
-         */
-        containerClasses() {
-            const isValidSize = this.sizes.indexOf(this.size) > -1;
-            return {
-                [`hm-avatar-${this.size}`]: isValidSize,
-                [`badge-${this.variant}`]: !!this.variant
-            };
+        placeholderClasses() {
+            return `hm-avatar-placeholder badge-${this.variant}`;
+        },
+        wrapperClasses() {
+            return `hm-avatar rounded-circle hm-avatar-${this.size}`
         }
     },
     methods: {
@@ -63,26 +59,31 @@ export default {
         }
     },
     render() {
-        return (
-            <div
-                staticClass="hm-avatar rounded-circle"
-                class={this.containerClasses}>
-                <div class="hm-avatar-img">
-                    {
-                        (this.src && this.src.length && this.isImgAvailable) ?
-                            (
-                                <img
-                                    src={this.src}
-                                    alt="avatar"
-                                    onError={this.handleError} />
-                            ) :
-                            (
-                                <HmIcon
-                                    class="d-flex"
-                                    name="user"></HmIcon>
-                            )
-                    }
+        const vm = this;
+
+        function renderImage() {
+            if (vm.src && vm.isImgAvailable) {
+                return (
+                    <img
+                        src={vm.src}
+                        alt="avatar"
+                        onError={vm.handleError} />
+                );
+            }
+
+            return (
+                <div class={vm.placeholderClasses}>
+                    <HmIcon
+                        class="d-flex"
+                        name="user"
+                    />
                 </div>
+            );
+        }
+
+        return (
+            <div class={vm.wrapperClasses}>
+                {renderImage()}
             </div>
         );
     }

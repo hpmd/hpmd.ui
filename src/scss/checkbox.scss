@@ -1,5 +1,5 @@
 .custom-checkbox {
-    display: inline-block;
+    // display: inline-block;
     margin-left: -0.25rem; // compensate hover effect on label
 
     .custom-control-input:focus + .custom-control-label:before,
@@ -42,7 +42,7 @@
         padding-right: 0.25rem;
         padding-left: 1.625rem;
         margin-left: -1.5rem;
-        font-size: 0.875em;
+        // font-size: 0.875em;
         border-radius: $radius;
         min-height: 1.5rem;
         // transition: background-color .1s ease-in-out;
@@ -52,7 +52,7 @@
         &:before,
         &:after {
             border-radius: 0.125rem;
-            top: 0.35rem;
+            top: 0.4125rem;
             left: 0.35rem;
             width: 0.8rem;
             height: 0.8rem;

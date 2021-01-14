@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import VueRouter from 'vue-router';
 import Alert from '../Alert';
 import Avatar from '../Avatar';
@@ -6,7 +7,13 @@ import Button from '../Button';
 import Calendar from '../Calendar';
 import Checkbox from '../Checkbox';
 import Collapse from '../Collapse';
+import Dropdown from '../Dropdown';
+import FileInput from '../FileInput';
+import Input from '../Input';
+import Modal from '../Modal';
 import SpinButton from '../SpinButton';
+
+import SectionAbout from '../_About';
 
 const routes = [
     {
@@ -14,26 +21,7 @@ const routes = [
         meta: {
             name: 'О библиотеке'
         },
-        component: {
-            render() {
-                return (
-                    <div>
-                        <p>
-                            <strong>HPMD.ui</strong> - Набор интерфейсов на основе Bootstrap 4 (и нескольких более мелких библиотек), сделанный для быстрого создания дэшбордов и подобных интерфейсов. Библиотека включает:
-                        </p>
-
-                        <ul>
-                            <li>
-                                Набор CSS - в виде подключаемого SCSS файла с возможностью кастомизации до сборки
-                            </li>
-                            <li>
-                                Vue-компоненты (Vue 2): набор отдельных компонентов для использования в Vue-приложениях.
-                            </li>
-                        </ul>
-                    </div>
-                );
-            }
-        }
+        component: SectionAbout
     },
     {
         path: '/components',
@@ -90,6 +78,34 @@ const routes = [
         component: Collapse,
         meta: {
             name: 'Collapse'
+        }
+    },
+    {
+        path: '/components/dropdown',
+        component: Dropdown,
+        meta: {
+            name: 'Dropdown'
+        }
+    },
+    {
+        path: '/components/file-input',
+        component: FileInput,
+        meta: {
+            name: 'FileInput'
+        }
+    },
+    {
+        path: '/components/input',
+        component: Input,
+        meta: {
+            name: 'Input'
+        }
+    },
+    {
+        path: '/components/modal',
+        component: Modal,
+        meta: {
+            name: 'Modal'
         }
     },
     {

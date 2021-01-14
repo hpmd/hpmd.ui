@@ -1,8 +1,13 @@
 import Vue from 'vue';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import VueRouter from 'vue-router';
-import HpmdUI from '..';
+import 'highlight.js/scss/atelier-dune-light.scss';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import VueHighlightjs from 'vue-highlightjs';
 import BootstrapVue from 'bootstrap-vue';
 import '@/scss/hpmd.ui.scss';
+// eslint-disable-next-line import/no-named-as-default
+import HpmdUI from '..';
 import App from './App';
 import router from './docs/router';
 
@@ -11,6 +16,7 @@ Vue.config.productionTip = false;
 Vue.use(HpmdUI);
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
+Vue.use(VueHighlightjs);
 
 
 new Vue({

@@ -1,7 +1,7 @@
 //
 // Nav
 //
-import { BvPlugin, BvComponent } from '../../'
+import { BvPlugin, BvComponent } from 'bootstrap-vue/src'
 
 // Plugin
 export declare const NavPlugin: BvPlugin

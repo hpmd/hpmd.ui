@@ -179,6 +179,12 @@ export {
 } from './src/components/table';
 
 export {
+    TabsPlugin,
+    HmTabs,
+    HmTab
+} from './src/components/tabs';
+
+export {
     TipPlugin,
     HmTip
 } from './src/components/tip';
@@ -192,7 +198,6 @@ export {
     TooltipPlugin,
     HmTooltip
 } from './src/components/tooltip';
-
 
 
 export default HpmdUI;

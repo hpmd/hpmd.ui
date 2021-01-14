@@ -113,7 +113,7 @@ export default Vue.extend({
 
         <main class="flex-grow-1">
             <div class="container">
-                <div class="panel shadow p-5 bg-white">
+                <div class="panel shadow p-5 bg-white mb-10">
                     <router-view />
                 </div>
             </div>
@@ -123,9 +123,11 @@ export default Vue.extend({
 
 <style lang="scss">
 @import '@/scss/bootstrap-custom';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,600;0,700;1,300&display=swap');
+
 
 #app {
-    // font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', $font-family-base;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-top: 60px;
@@ -133,5 +135,34 @@ export default Vue.extend({
 
 nav .nav-link.router-link-exact-active {
     color: $primary;
+    font-weight: 600;
+}
+
+pre {
+    border-radius: $radius;
+}
+
+.code-block {
+    display: block;
+    max-height: 500px;
+    overflow: auto;
+}
+
+/* h3 {
+    color: #6582a0;
+}
+
+h4 {
+    color: lighten(#6582a0, 10);
+}
+
+h5 {
+    color: mix($gray-400, $primary);
+} */
+
+.table-code {
+    td {
+        font-size: 14px;
+    }
 }
 </style>

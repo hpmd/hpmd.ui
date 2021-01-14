@@ -1,14 +1,14 @@
 <script>
-    export default {
-        data() {
-            return {
-                isDisabled: false,
-                isVertical: false,
-                isInline: false,
-                spinButtonModel: 0
-            };
-        }
-    };
+export default {
+    data() {
+        return {
+            isDisabled: false,
+            isVertical: false,
+            isInline: false,
+            spinButtonModel: 0
+        };
+    }
+};
 </script>
 
 <template>

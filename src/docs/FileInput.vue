@@ -2,7 +2,9 @@
 export default {
     data() {
         return {
-            dragAndDropModel: []
+            dragAndDropModel: [],
+            fileModel: null,
+            isCapture: false
         };
     }
 };
@@ -10,10 +12,28 @@ export default {
 
 
 <template>
-    <div class="bg-white p-5 shadow rounded mb-8">
-        <h2 class="mb-9">File Input</h2>
+    <section>
+        <h2 class="mb-8 display-4">File Input</h2>
 
-        <div class="row">
+        <hm-alert
+            show
+            variant="warning">
+            <strong>WARN:</strong> компонент может быть объединен в будущем с HmDragFile
+        </hm-alert>
+
+        <h3 class="mt-8">Компоненты</h3>
+        <ul>
+            <li><strong>HmFileInput </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="danger">No changes</hm-badge></li>
+        </ul>
+
+        <h3 class="mt-8">Использование</h3>
+        <div class="p-5 bg-light rounded mb-5">
+            <hm-checkbox v-model="isCapture">Использовать камеру устройства</hm-checkbox>
+        </div>
+
+        <hm-file-input v-model="fileModel" :is-capture="isCapture"></hm-file-input>
+
+        <!-- <div class="row">
             <div class="col">
                 <h4>Drag n drop</h4>
 
@@ -43,6 +63,6 @@ export default {
                     <hm-file-input />
                 </div>
             </div>
-        </div>
-    </div>
+        </div> -->
+    </section>
 </template>

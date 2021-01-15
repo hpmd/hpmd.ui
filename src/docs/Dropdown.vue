@@ -49,7 +49,16 @@ export default {
     <section>
         <h2 class="mb-5 display-4">Dropdown</h2>
 
-        <div class="p-5 bg-light rounded">
+        <h3 class="mt-8">Компоненты</h3>
+        <ul>
+            <li><strong>HmDropdown </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="danger">No changes</hm-badge></li>
+            <li><strong>HmDropdownDivider </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="danger">No changes</hm-badge></li>
+            <li><strong>HmDropdownItem </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="danger">No changes</hm-badge></li>
+            <li><strong>HmDropdownItemButton </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="danger">No changes</hm-badge></li>
+        </ul>
+
+        <h3 class="mt-8">Использование</h3>
+        <div class="p-5 bg-light rounded my-5">
             <b-form-group label="Variant">
                 <b-form-radio-group
                     :options="variants"

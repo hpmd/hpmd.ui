@@ -1,0 +1,12 @@
+.b-form-datepicker {
+    & > .btn {
+        opacity: 0.5;
+        padding-left: $spacer * 3;
+        padding-right: $spacer * 3;
+        transition: opacity .15s ease-in-out;
+    }
+
+    &:hover > .btn, & > .btn:hover {
+        opacity: 1;
+    }
+}

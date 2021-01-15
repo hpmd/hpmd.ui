@@ -3,7 +3,7 @@
  * @property {Boolean}  useNative          native input[type="file"]
  * @property {String}   selectedVariant    selected bootstrap theme
  * @property {String}   todayVariant       today bootstrap theme
- * @property {Boolean}  range              date range selection
+ * @property {Boolean}  isRange              date range selection
  */
 import { BFormDatepicker } from 'bootstrap-vue';
 import { BVFormBtnLabelControl } from 'bootstrap-vue/src/utils/bv-form-btn-label-control';
@@ -11,7 +11,11 @@ import { isUndefinedOrNull } from 'bootstrap-vue/src/utils/inspect';
 import { parseYMD } from 'bootstrap-vue/src/utils/date';
 import { pick } from 'bootstrap-vue/src/utils/object';
 import { HmCalendar } from '@/components/calendar';
+import { HmIcon } from '@/components/icon';
 import { HmInput } from '@/components/input';
+import { uniCalendar } from '@/assets/icons/unicons';
+
+HmIcon.add(uniCalendar);
 
 /**
  * Customized, cross-browser consistent,
@@ -42,7 +46,7 @@ export default {
             type: String,
             default: 'primary'
         },
-        range: {
+        isRange: {
             type: Boolean,
             default: false
         }
@@ -58,6 +62,11 @@ export default {
                 this.localYMD = ymd;
                 this.setAndClose(ymd);
             }
+        },
+        defaultButtonFn() {
+            return (
+                <HmIcon name="calendar" />
+            );
         }
     },
     render() {
@@ -146,7 +155,7 @@ export default {
                     ref="calendar"
                     staticClass="b-form-date-calendar w-100"
                     props={this.calendarProps}
-                    range={this.range}
+                    isRange={this.isRange}
                     onSelected={this.onSelected}
                     onInput={this.onInput}
                     onContext={this.onContext}

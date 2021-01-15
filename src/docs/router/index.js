@@ -7,6 +7,7 @@ import Button from '../Button';
 import Calendar from '../Calendar';
 import Checkbox from '../Checkbox';
 import Collapse from '../Collapse';
+import Datepicker from '../Datepicker';
 import Dropdown from '../Dropdown';
 import FileInput from '../FileInput';
 import Input from '../Input';
@@ -78,6 +79,13 @@ const routes = [
         component: Collapse,
         meta: {
             name: 'Collapse'
+        }
+    },
+    {
+        path: '/components/datepicker',
+        component: Datepicker,
+        meta: {
+            name: 'Datepicker'
         }
     },
     {

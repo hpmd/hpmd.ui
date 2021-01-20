@@ -84,7 +84,7 @@ export default {
         </div>
 
         <h3 class="mt-8">Документация</h3>
-        <p><a href="https://bootstrap-vue.org/docs/components/calendar">BootstrapVue</a></p>
+        <p><a href="https://bootstrap-vue.org/docs/components/calendar">Bootstrap Vue</a></p>
 
         <h4 class="text-danger">HmCalendar</h4>
         <h5>Добавленные свойства</h5>

@@ -30,6 +30,9 @@
                         background-color: $black;
                     }
                 }
+                &.disabled {
+                    color: $nav-link-disabled-color;
+                }
             }
 
             &.hover {
@@ -73,3 +76,4 @@
         }
     }
 }
+

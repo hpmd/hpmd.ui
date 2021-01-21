@@ -128,6 +128,6 @@ export default {
         </div>
 
         <h3 class="mt-8">Документация</h3>
-        <p><a href="https://bootstrap-vue.org/docs/components/button">BootstrapVue</a></p>
+        <p><a href="https://bootstrap-vue.org/docs/components/button">Bootstrap Vue</a></p>
     </div>
 </template>

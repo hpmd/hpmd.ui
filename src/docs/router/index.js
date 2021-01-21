@@ -13,7 +13,11 @@ import FileInput from '../FileInput';
 import Form from '../Form';
 import Icon from '../Icon';
 import Input from '../Input';
+import InputGroup from '../InputGroup';
 import Modal from '../Modal';
+import Nav from '../Nav';
+import Popover from '../Popover';
+import Progress from '../Progress';
 import SpinButton from '../SpinButton';
 
 import SectionAbout from '../_About';
@@ -126,10 +130,38 @@ const routes = [
         }
     },
     {
+        path: '/components/input-group',
+        component: InputGroup,
+        meta: {
+            name: 'InputGroup'
+        }
+    },
+    {
         path: '/components/modal',
         component: Modal,
         meta: {
             name: 'Modal'
+        }
+    },
+    {
+        path: '/components/nav',
+        component: Nav,
+        meta: {
+            name: 'Nav'
+        }
+    },
+    {
+        path: '/components/popover',
+        component: Popover,
+        meta: {
+            name: 'Popover'
+        }
+    },
+    {
+        path: '/components/progress',
+        component: Progress,
+        meta: {
+            name: 'Progress'
         }
     },
     {

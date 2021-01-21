@@ -51,10 +51,10 @@ export default {
 
         <h3 class="mt-8">Компоненты</h3>
         <ul>
-            <li><strong>HmDropdown </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="danger">No changes</hm-badge></li>
-            <li><strong>HmDropdownDivider </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="danger">No changes</hm-badge></li>
-            <li><strong>HmDropdownItem </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="danger">No changes</hm-badge></li>
-            <li><strong>HmDropdownItemButton </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="danger">No changes</hm-badge></li>
+            <li><strong>HmDropdown </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
+            <li><strong>HmDropdownDivider </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
+            <li><strong>HmDropdownItem </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
+            <li><strong>HmDropdownItemButton </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
         </ul>
 
         <h3 class="mt-8">Использование</h3>
@@ -125,6 +125,6 @@ export default {
         </div>
 
         <h3 class="mt-8">Документация</h3>
-        <p><a href="https://bootstrap-vue.org/docs/components/dropdown">BootstrapVue</a></p>
+        <p><a href="https://bootstrap-vue.org/docs/components/dropdown">Bootstrap Vue</a></p>
     </section>
 </template>

@@ -10,6 +10,8 @@ import Collapse from '../Collapse';
 import Datepicker from '../Datepicker';
 import Dropdown from '../Dropdown';
 import FileInput from '../FileInput';
+import Form from '../Form';
+import Icon from '../Icon';
 import Input from '../Input';
 import Modal from '../Modal';
 import SpinButton from '../SpinButton';
@@ -100,6 +102,20 @@ const routes = [
         component: FileInput,
         meta: {
             name: 'FileInput'
+        }
+    },
+    {
+        path: '/components/form',
+        component: Form,
+        meta: {
+            name: 'Form'
+        }
+    },
+    {
+        path: '/components/icon',
+        component: Icon,
+        meta: {
+            name: 'Icon'
         }
     },
     {

@@ -13,7 +13,7 @@ import { pick } from 'bootstrap-vue/src/utils/object';
 import { HmCalendar } from '@/components/calendar';
 import { HmIcon } from '@/components/icon';
 import { HmInput } from '@/components/input';
-import { uniCalendar } from '@/assets/icons/unicons';
+import { uniCalendar } from '@/icons/unicons';
 
 HmIcon.add(uniCalendar);
 
@@ -65,7 +65,7 @@ export default {
         },
         defaultButtonFn() {
             return (
-                <HmIcon name="calendar" />
+                <HmIcon name="uni-calendar" />
             );
         }
     },

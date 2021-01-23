@@ -2,9 +2,9 @@
     &.custom-checkbox, &.custom-radio {
         &::before {
             background-color: rgba($dark, 0);
-            border-radius: $radius;
+            border-radius: $border-radius;
             content: '';
-            display: block;
+            // display: block;
             position: absolute;
             top: 0; //-$spacer;
             right: -$spacer;

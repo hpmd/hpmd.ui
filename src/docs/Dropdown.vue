@@ -52,9 +52,9 @@ export default {
         <h3 class="mt-8">Компоненты</h3>
         <ul>
             <li><strong>HmDropdown </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
-            <li><strong>HmDropdownDivider </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
+            <li><span class="version">0.9.0</span> <strong>HmDropdownDivider </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
             <li><strong>HmDropdownItem </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
-            <li><strong>HmDropdownItemButton </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
+            <li><span class="version">0.9.0</span> <strong>HmDropdownItemButton </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
         </ul>
 
         <h3 class="mt-8">Использование</h3>

@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import VueRouter from 'vue-router';
+
 import Alert from '../Alert';
 import Avatar from '../Avatar';
 import Badge from '../Badge';
@@ -18,9 +19,18 @@ import Modal from '../Modal';
 import Nav from '../Nav';
 import Popover from '../Popover';
 import Progress from '../Progress';
+import Radio from '../Radio';
+import RangeSlider from '../RangeSlider';
+import Select from '../Select';
 import SpinButton from '../SpinButton';
+import Table from '../Table';
+import Tip from '../Tip';
+import Toaster from '../Toaster';
+import Tooltip from '../Tooltip';
 
 import SectionAbout from '../_About';
+import SectionChangelog from '../_Changelog';
+import SectionUsage from '../_Usage';
 
 const routes = [
     {
@@ -29,6 +39,20 @@ const routes = [
             name: 'О библиотеке'
         },
         component: SectionAbout
+    },
+    {
+        path: '/install-and-usage',
+        meta: {
+            name: 'Установка и использование'
+        },
+        component: SectionUsage
+    },
+    {
+        path: '/changelog',
+        meta: {
+            name: 'Changelog'
+        },
+        component: SectionChangelog
     },
     {
         path: '/components',
@@ -165,10 +189,59 @@ const routes = [
         }
     },
     {
+        path: '/components/radio',
+        component: Radio,
+        meta: {
+            name: 'Radio'
+        }
+    },
+    {
+        path: '/components/range-slider',
+        component: RangeSlider,
+        meta: {
+            name: 'RangeSlider'
+        }
+    },
+    {
+        path: '/components/select',
+        component: Select,
+        meta: {
+            name: 'Select'
+        }
+    },
+    {
         path: '/components/spin-button',
         component: SpinButton,
         meta: {
             name: 'Spin Button'
+        }
+    },
+    {
+        path: '/components/table',
+        component: Table,
+        meta: {
+            name: 'Table'
+        }
+    },
+    {
+        path: '/components/tip',
+        component: Tip,
+        meta: {
+            name: 'Tip'
+        }
+    },
+    {
+        path: '/components/toaster',
+        component: Toaster,
+        meta: {
+            name: 'Toaster'
+        }
+    },
+    {
+        path: '/components/tooltip',
+        component: Tooltip,
+        meta: {
+            name: 'Tooltip'
         }
     }
 ];

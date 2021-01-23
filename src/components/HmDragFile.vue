@@ -2,7 +2,7 @@
 import {
     uniUpload,
     uniExclamationCircle
-} from '@/assets/icons/unicons';
+} from '@/icons/unicons';
 import { HmFileInput } from '@/components/file-input';
 import { HmIcon } from '@/components/icon';
 

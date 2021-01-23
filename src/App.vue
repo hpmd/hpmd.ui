@@ -6,10 +6,9 @@ import {
     uniFilePlusAlt,
     uniTrashAlt,
     uniEllipsisV
-} from '@/assets/icons/unicons';
+} from '@/icons/unicons';
 
 import { HmIcon } from '@/components/icon';
-import HmDragFile from '@/components/HmDragFile';
 
 
 HmIcon.add(
@@ -18,68 +17,23 @@ HmIcon.add(
     uniEllipsisV
 );
 
-/* eslint-disable no-param-reassign */
-function getRandomIntInRange(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-/* eslint-enable */
-
-
 
 export default Vue.extend({
-    name: 'App',
-    data() {
-        return {
-            switchModel: false,
-            selectBar: {
-                value: 'Развлекательный контент',
-                options: [
-                    'Развлекательный контент',
-                    'Авто',
-                    'Здоровое питание',
-                    'Стриминговые сервисы'
-                ]
-            },
-            searchBar: {
-                value: [
-                    { name: 'Развлекательный контент', code: 'a' }
-                ],
-                options: [
-                    { name: 'Развлекательный контент', code: 'a' },
-                    { name: 'Авто', code: 'b' },
-                    { name: 'Другое', code: 'c' },
-                    { name: 'Здоровое питание', code: 'd' },
-                    { name: 'Стриминговые сервисы', code: 'e' }
-                ]
-            },
-            dropdownModel: true,
-            spinButtonModel: 0,
-            calendar: {
-                inputSingle: null,
-                inputRange: []
-            }
-        };
-    },
-    created() {
-        console.log(this)
-    },
-    components: {
-        HmDragFile,
-        HmIcon
-    }
+    name: 'App'
 });
 </script>
 
 <template>
     <div id="app" class="d-flex flex-row align-items-stretch position-relative w-100">
         <nav>
-            <div class="container-fluid position-sticky sticky-top" style="width: 300px">
+            <div
+                class="menu py-8 container-fluid position-fixed"
+                style="width: 300px">
                 <h1>HPMD UI</h1>
 
-                <hm-nav vertical>
+                <hm-nav
+                    class="pb-8"
+                    vertical>
                     <div
                         v-for="section in $router.options.routes"
                         :key="section.path">
@@ -111,7 +65,7 @@ export default Vue.extend({
             </div>
         </nav>
 
-        <main class="flex-grow-1">
+        <main class="flex-grow-1" style="padding-left: 300px;">
             <div class="container-fluid">
                 <div class="panel shadow p-5 bg-white mb-10">
                     <router-view />
@@ -131,6 +85,13 @@ export default Vue.extend({
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-top: 60px;
+}
+
+.menu {
+    top: 0;
+    left:0;
+    max-height: 100vh;
+    overflow: auto;
 }
 
 nav .nav-link.router-link-exact-active {
@@ -160,21 +121,19 @@ pre {
     }
 }
 
-/* h3 {
-    color: #6582a0;
-}
-
-h4 {
-    color: lighten(#6582a0, 10);
-}
-
-h5 {
-    color: mix($gray-400, $primary);
-} */
-
 .table-code {
     td {
         font-size: 14px;
     }
+}
+
+.version {
+    border-radius: $border-radius;
+    display: inline-block;
+    font-style: $font-family-monospace;
+    background-color: $teal;
+    color: $white;
+    line-height: 1;
+    padding: $spacer/2 $spacer;
 }
 </style>

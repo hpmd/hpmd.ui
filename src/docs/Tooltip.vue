@@ -1,18 +1,41 @@
 <script>
-    export default {
-        data() {
-            return {
-                placement: 'top',
-                variant: 'black',
-                trigger: 'hover'
-            };
-        }
-    };
+import variantMixin from './variantMixin';
+
+const example = `<hm-button id="tooltip-target">Interact me</hm-button>
+
+<hm-tooltip
+    target="tooltip-target"
+    :variant="variant"
+    :placement="placement"
+    :triggers="trigger">
+    Yay! Tooltip!
+</hm-tooltip>`;
+
+export default {
+    example,
+
+    mixins: [variantMixin],
+    data() {
+        return {
+            placement: 'top',
+            trigger: 'hover'
+        };
+    }
+};
 </script>
 
 <template>
-    <div class="bg-white p-5 shadow rounded mb-8">
-        <h2 class="mb-4">Tooltips</h2>
+    <section>
+        <h2 class="mb-8 display-4">Tooltip</h2>
+
+        <h3 class="mt-8">Компоненты</h3>
+        <ul>
+            <li>
+                <strong>HmTooltip</strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge>
+            </li>
+        </ul>
+
+        <h3 class="mt-8">Использование</h3>
 
         <div class="bg-light p-5 rounded mb-6">
             <div class="row">
@@ -26,11 +49,11 @@
                 </div>
                 <div class="col-4">
                     <hm-form-group label="Variant">
-                        <hm-radio v-model="variant" name="tt-variant" value="black">Default</hm-radio>
-                        <hm-radio v-model="variant" name="tt-variant" value="primary">Primary</hm-radio>
-                        <hm-radio v-model="variant" name="tt-variant" value="warning">Warning</hm-radio>
-                        <hm-radio v-model="variant" name="tt-variant" value="danger">Danger</hm-radio>
-                        <hm-radio v-model="variant" name="tt-variant" value="light">Light</hm-radio>
+                        <hm-radio-group
+                            :options="variants"
+                            stacked
+                            v-model="variant"
+                        />
                     </hm-form-group>
                 </div>
                 <div class="col-4">
@@ -54,5 +77,14 @@
                 Yay! Tooltip!
             </hm-tooltip>
         </div>
-    </div>
+
+        <hr>
+
+        <div class="code-block">
+            <pre v-highlightjs="$options.example"><code class="html"></code></pre>
+        </div>
+
+        <h3 class="mt-8">Документация</h3>
+        <p><a href="https://bootstrap-vue.org/docs/components/tooltip">Bootstrap Vue</a></p>
+    </section>
 </template>

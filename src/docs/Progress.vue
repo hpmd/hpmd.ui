@@ -42,13 +42,13 @@ export default {
             isAnimated: false,
             isShowValue: false,
             valueModel: 50
-        }
+        };
     },
     computed: {
         height() {
             const DEFAULT = 2;
 
-            if (!this.heightModel || isNaN(this.heightModel)) {
+            if (!this.heightModel || Number.isNaN(this.heightModel)) {
                 return `${DEFAULT}px`;
             }
 

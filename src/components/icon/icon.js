@@ -1,6 +1,6 @@
 /**
  * @typedef {object} HmfIconEl
- * @property {String}   name    Icon name to use in component: <HmIcon name="my-icon" />. Must be unique
+ * @property {String}   name    Icon name to use in component: <HmIcon name="uni-my-icon" />. Must be unique
  * @property {String}   iconset Decoration style, reserved
  * @property {Number}   height  Height of icon in pixels as number (i.e. 420)
  * @property {Number}   width   Width of icon in pixels as number (i.e. 420)
@@ -50,7 +50,7 @@ export default {
         },
         /**
          * Icon name to target icon in map
-         * @see {@link /src/assets/icons/unicons.js} for examples
+         * @see {@link /src/icons/unicons.js} for examples
          */
         name: {
             type: String,

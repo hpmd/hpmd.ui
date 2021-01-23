@@ -1,5 +1,5 @@
 import { BCalendar } from 'bootstrap-vue';
-import { uniCalendarAlt } from '@/assets/icons/unicons';
+import { uniCalendarAlt } from '@/icons/unicons';
 import identity from 'bootstrap-vue/src/utils/identity';
 import {
     createDate,
@@ -212,7 +212,7 @@ export default {
                     {
                         showIcon && (
                             <div class="d-inline-flex mr-1">
-                                <HmIcon name="calendar-alt" />
+                                <HmIcon name="uni-calendar-alt" />
                             </div>
                         )
                     }

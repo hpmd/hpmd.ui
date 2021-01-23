@@ -18,7 +18,7 @@
     width: 1em;
     height: 1em;
 
-    @each $size, $value in $avatarSizes {
+    @each $size, $value in $hm-avatar-sizes {
         &-#{$size} {
             height: $value;
             width: $value;

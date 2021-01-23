@@ -45,7 +45,7 @@ export default {
         </div>
 
         <h3>Документация</h3>
-        <p><a href="https://bootstrap-vue.org/docs/components/form-checkbox">BootstrapVue</a></p>
+        <p><a href="https://bootstrap-vue.org/docs/components/form-checkbox">Bootstrap Vue</a></p>
 
 
         <h5>Добавленные свойства</h5>

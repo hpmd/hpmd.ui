@@ -32,7 +32,9 @@
 
             &[aria-sort] {
                 &::after {
-                    background: transparent tableSortBackgroundImage(black) 50% 50% no-repeat;
+                    background-color: transparent;
+                    background-position: 50% 50%;
+                    background-repeat: no-repeat;
                     background-size: contain;
                     height: 0.8em;
                     content: '';
@@ -45,7 +47,7 @@
             }
 
             &[aria-sort="ascending"], &[aria-sort="descending"] {
-                color: $gray-700;
+                // color: $gray-700;
                 &::after {
                     opacity: 1;
                 }
@@ -57,7 +59,7 @@
         }
     }
     tbody > tr {
-        border-bottom: 1px solid $gray-400;
+        // border-bottom: 1px solid $gray-400;
 
         &:focus {
             outline: none;
@@ -72,7 +74,7 @@
         }
 
         &.disabled {
-            background-color: $gray-100;
+            // background-color: $gray-100;
             & > td {
                 opacity: 0.2;
                 pointer-events: none;
@@ -83,10 +85,10 @@
             border-top: none;
             transition: background-color .15s ease-in-out;
             &:first-child {
-                border-radius: $radius 0 0 $radius;
+                border-radius: $border-radius 0 0 $border-radius;
             }
             &:last-child {
-                border-radius: 0 $radius $radius 0;
+                border-radius: 0 $border-radius $border-radius 0;
             }
         }
 
@@ -94,6 +96,33 @@
             background-color: $gray-100;
         }
     }
+
+    // @each $color, $value in $theme-colors {
+    //     // $lightenedColor: 
+    //     &.table-#{$color} {
+    //         color: color-yiq($value);
+
+    //         thead > tr {
+    //             background-color: $value;
+
+    //             & > td, & > th {
+    //                 &[aria-sort]::after {
+    //                     background-image: tableSortBackgroundImage(color-yiq($value));
+    //                 }
+
+    //                 &[aria-sort="ascending"], &[aria-sort="descending"] {
+    //                     color: color-yiq($value);
+    //                 }
+    //             }
+    //         }
+
+    //         tbody > tr {
+    //             &.disabled {
+    //                 background-color: rgba(color-yiq($value), 0.1);
+    //             }
+    //         }
+    //     }
+    // }
 
     &.table-dark {
         color: $gray-400;

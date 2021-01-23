@@ -1,4 +1,4 @@
-import { uniUser } from '@/assets/icons/unicons';
+import { uniUser } from '@/icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniUser);
@@ -75,7 +75,7 @@ export default {
                 <div class={vm.placeholderClasses}>
                     <HmIcon
                         class="d-flex"
-                        name="user"
+                        name="uni-user"
                     />
                 </div>
             );

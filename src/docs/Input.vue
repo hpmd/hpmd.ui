@@ -1,7 +1,7 @@
 <script>
 // eslint-disable-next-line import/no-extraneous-dependencies
 import debounce from 'lodash.debounce';
-import { uniPhone } from '@/assets/icons/unicons';
+import { uniPhone } from '@/icons/unicons';
 import { HmIcon } from '../components/icon';
 
 HmIcon.add(uniPhone);
@@ -57,7 +57,7 @@ const exampleInput = `<div class="mt-4">
         <template v-slot:prepend>
             <hm-icon
                 class="text-primary"
-                name="phone"
+                name="uni-phone"
             />
         </template>
         <template v-slot:append>
@@ -213,7 +213,7 @@ export default {
                     <template v-slot:prepend>
                         <hm-icon
                             class="text-primary"
-                            name="phone"
+                            name="uni-phone"
                         />
                     </template>
                     <template v-slot:append>

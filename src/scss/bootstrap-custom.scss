@@ -10,7 +10,7 @@ $fontSize: 14px;
 $radius: 2px;
 $close-font-size: $fontSize * 1.5;
 // Colors
-$yiq-contrasted-threshold: 200;
+// $yiq-contrasted-threshold: 200;
 
 $blue: #3E72D8;
 $red: #F1505A;
@@ -95,7 +95,7 @@ $alert-border-radius: $radius;
 $alert-border-width: 0;
 
 // Avatar
-$avatarSizes: (
+$hm-avatar-sizes: (
     xs: $spacer * 6,
     sm: $spacer * 9,
     md: $spacer * 12,
@@ -131,13 +131,13 @@ $table-active-bg: rgba($blue, 0.5);
 $table-head-bg: $gray-400;
 $table-head-color: $gray-700;
 
-// Buttons
+// // Buttons
 $input-btn-padding-y: 12px;
 $input-btn-padding-x: 24px;
 $input-btn-font-size: 16px;
 $input-btn-line-height: 1;
 
-// $input-btn-focus-width: 0;
+$input-btn-focus-width: 0;
 // $input-btn-focus-color: //
 // $input-btn-focus-box-shadow: //
 

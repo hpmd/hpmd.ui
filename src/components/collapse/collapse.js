@@ -1,5 +1,5 @@
 import { BCollapse } from 'bootstrap-vue';
-import { uniArrowDown } from '@/assets/icons/unicons';
+import { uniArrowDown } from '@/icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniArrowDown);
@@ -63,7 +63,7 @@ export default {
                     class={this.buttonClasses}
                     onClick={this.toggle}>
                     <span class="hm-collapse-button-icon">
-                        <HmIcon name="arrow-down" />
+                        <HmIcon name="uni-arrow-down" />
                     </span>
                     <span class="hm-collapse-button-text">{this.buttonText}</span>
                 </div>

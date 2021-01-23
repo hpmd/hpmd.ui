@@ -1,0 +1,12 @@
+// Avatar
+$hm-avatar-sizes: (
+    xs: $spacer * 6,
+    sm: $spacer * 9,
+    md: $spacer * 12,
+    lg: $spacer * 16,
+    xl: $spacer * 20
+);
+
+// HR
+$hr-border-color-inverted: rgba($white, 0.3);
+

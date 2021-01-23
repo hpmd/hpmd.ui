@@ -1,25 +1,25 @@
 <script>
-    export default {
-        data() {
-            return {
-                selectors: {
-                    active: {
-                        text: 'Активная',
-                        disabled: false
-                    },
-                    available: {
-                        text: 'Доступная',
-                        disabled: false
-                    },
-                    nonactive: {
-                        text: 'Неактивная',
-                        disabled: true
-                    }
+export default {
+    data() {
+        return {
+            selectors: {
+                active: {
+                    text: 'Активная',
+                    disabled: false
                 },
-                selectorModel: ['active']
-            };
-        }
-    };
+                available: {
+                    text: 'Доступная',
+                    disabled: false
+                },
+                nonactive: {
+                    text: 'Неактивная',
+                    disabled: true
+                }
+            },
+            selectorModel: ['active']
+        };
+    }
+};
 </script>
 
 

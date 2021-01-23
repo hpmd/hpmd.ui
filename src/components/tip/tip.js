@@ -1,4 +1,4 @@
-import { uniInfoCircle } from '@/assets/icons/unicons';
+import { uniInfoCircle } from '@/icons/unicons';
 import { HmTooltip } from '../tooltip';
 import { HmIcon } from '../icon';
 

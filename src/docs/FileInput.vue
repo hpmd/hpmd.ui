@@ -17,7 +17,7 @@ export default {
 
         <hm-alert
             show
-            variant="warning">
+            variant="danger">
             <strong>WARN:</strong> компонент может быть объединен в будущем с HmDragFile
         </hm-alert>
 
@@ -31,7 +31,11 @@ export default {
             <hm-checkbox v-model="isCapture">Использовать камеру устройства</hm-checkbox>
         </div>
 
-        <hm-file-input v-model="fileModel" :is-capture="isCapture"></hm-file-input>
+        <hm-file-input v-model="fileModel" :is-capture="isCapture">
+            <template v-slot:drop-placeholder>
+                <div class="bg-primary" style="width: 300px; height: 300px;">12333</div>
+            </template>
+        </hm-file-input>
 
         <!-- <div class="row">
             <div class="col">

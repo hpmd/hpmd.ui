@@ -3,7 +3,7 @@
     border-width: $drag-file-border-style;
     border-style: $drag-file-border-style-basic;
     border-color: $drag-file-basic-color;
-    border-radius: $radius;
+    border-radius: $border-radius;
     position: relative;
     transition: border-color .3s ease-out, border-style .3s ease-out;
     background-color: #fff;

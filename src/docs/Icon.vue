@@ -1,13 +1,16 @@
 <script>
-import * as unicons from '@/assets/icons/unicons';
+import * as unicons from '@/icons/unicons';
 import { HmIcon } from '../components/icon';
 import variantMixin from './variantMixin';
 
 
-const allIcons = Object.keys(unicons)
-    .forEach(iconKey => {
-        HmIcon.add(unicons[iconKey]);
-    });
+const allIcons = [];
+
+Object.keys(unicons).forEach((iconKey) => {
+    HmIcon.add(unicons[iconKey]);
+
+    allIcons.push(unicons[iconKey]);
+});
 
 
 const example = `<div
@@ -16,23 +19,23 @@ const example = `<div
     <component :is="\`h\${n}\`">
         <span>Some text</span>
         <span :class="\`text-\${variant}\`">
-            <hm-icon name="thumbs-up" />
+            <hm-icon name="uni-thumbs-up" />
         </span>
     </component>
 </div>`;
 
-const addIconsComponent = `import { icon1, icon2 } from 'hpmd.ui/src/assets/icons/unicons';
+const addIconsComponent = `import { icon1, icon2 } from 'hpmd.ui/src/icons/unicons';
 import { HmIcon } from 'hpmd.ui';
 
 HmIcon.add(icon1, icon2);
 
 // ...
 // in template
-<hm-icon name="icon-name-1" />
-<hm-icon name="icon-name-2" />
+<hm-icon name="uni-icon-name-1" />
+<hm-icon name="uni-icon-name-2" />
 `;
 
-const addIconsGlobal = `import { icon1, icon2 } from 'hpmd.ui/src/assets/icons/unicons';
+const addIconsGlobal = `import { icon1, icon2 } from 'hpmd.ui/src/icons/unicons';
 
 // component
 export default {
@@ -42,12 +45,12 @@ export default {
 };
 
 // in template
-<hm-icon name="icon-name-1" />
-<hm-icon name="icon-name-2" />
+<hm-icon name="uni-icon-name-1" />
+<hm-icon name="uni-icon-name-2" />
 `;
 
 const iconGlobalFile = `// icons.js
-import * as unicons from 'hpmd.ui/src/assets/icons/unicons';
+import * as unicons from 'hpmd.ui/src/icons/unicons';
 import { HmIcon } from 'hpmd.ui';
 
 Object.keys(unicons).forEach(key => HmIcon.add(unicons[key]));
@@ -83,8 +86,22 @@ export default {
             example,
             asDate: false,
             model: null,
-            useNative: false
+            useNative: false,
+            searchIcon: ''
         };
+    },
+    computed: {
+        iconsFiltered() {
+            const s = this.searchIcon.toLowerCase().trim();
+
+            if (!s) return this.allIcons;
+
+            return this.allIcons.filter((icon) => {
+                const n = icon.name.toLowerCase();
+
+                return n.indexOf(s) !== -1;
+            });
+        }
     }
 };
 </script>
@@ -117,7 +134,7 @@ export default {
                 <component :is="`h${n}`">
                     <span>Some text</span>
                     <span :class="`text-${variant}`">
-                        <hm-icon name="thumbs-up" />
+                        <hm-icon name="uni-thumbs-up" />
                     </span>
                 </component>
             </div>
@@ -129,10 +146,22 @@ export default {
             </div>
         </div>
 
+        <h3 class="mt-8">Набор иконок</h3>
+        <hm-input placeholder="Поиск по имени" v-model="searchIcon" />
+        <div class="d-flex flex-row flex-wrap">
+            <div
+                class="icon-example"
+                v-for="icon in iconsFiltered"
+                :key="icon.style + icon.name"
+                :title="icon.name">
+                <hm-icon :name="icon.name" />
+            </div>
+        </div>
+
         <h3 class="mt-8">Документация</h3>
         <h4 class="mt-5">Регистрация / добавление иконок</h4>
 
-        <p>Для того чтобы использовать иконку в своем проекте ее сначала надо добавить. К UI-киту изначально приложен набор иконок 
+        <p>Для того чтобы использовать иконку в своем проекте ее сначала надо добавить. К UI-киту изначально приложен набор иконок
             <strong><a href="https://iconscout.com/unicons/explore/line">Unicons</a></strong>, но при необходимости можно добавлять и свои собственные иконки
             (о формате добавления <a href="#create-custom-icon">ниже</a>)</p>
 
@@ -142,7 +171,7 @@ export default {
             <pre v-highlightjs="$options.addIconsComponent"><code class="javascript"></code></pre>
         </div>
 
-        <h6>При использовании плагина (Vue.use(HpmdUI) / Vue.use(HmIcon))</h6>
+        <h6><span class="version">0.10.0</span> При использовании плагина (Vue.use(HpmdUI) / Vue.use(HmIcon))</h6>
         <div class="code-block">
             <pre v-highlightjs="$options.addIconsGlobal"><code class="javascript"></code></pre>
         </div>
@@ -229,3 +258,17 @@ export default {
 
     </section>
 </template>
+
+
+<style scoped lang="scss">
+    .icon-example {
+        flex-grow: 0;
+        flex-shrink: 0;
+        font-size: 20px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

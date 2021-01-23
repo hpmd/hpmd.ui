@@ -1,5 +1,6 @@
 <script>
 import variantMixin from './variantMixin';
+
 const example = `<hm-button
     id="popover-target"
     variant="primary">

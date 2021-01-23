@@ -69,7 +69,7 @@ export default {
 
         <p>Набор вспомогательных элементов для работы с формами</p>
 
-        <h3 class="mt-8">Компоненты</h3>
+        <h3 class="mt-8">Компоненты <span class="version">0.9.0</span></h3>
         <ul>
             <li><strong>HmForm </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
             <li><strong>HmFormDatalist </strong> <hm-badge variant="primary">Bootstrap Vue</hm-badge> <hm-badge variant="success">No changes</hm-badge></li>
@@ -116,9 +116,9 @@ export default {
 
         <h3 class="mt-8">Документация</h3>
         <h4>HmFormGroup:</h4>
-        <p><a href="https://bootstrap-vue.org/docs/components/form-group">BootstrapVue</a></p>
+        <p><a href="https://bootstrap-vue.org/docs/components/form-group">Bootstrap Vue</a></p>
 
         <h4>HmForm:</h4>
-        <p><a href="https://bootstrap-vue.org/docs/components/form">BootstrapVue</a></p>
+        <p><a href="https://bootstrap-vue.org/docs/components/form">Bootstrap Vue</a></p>
     </section>
 </template>

@@ -54,7 +54,7 @@ export default {
         </div>
 
         <h3 class="mt-8">Документация</h3>
-        <p><a href="https://bootstrap-vue.org/docs/components/form-datepicker">BootstrapVue</a></p>
+        <p><a href="https://bootstrap-vue.org/docs/components/form-datepicker">Bootstrap Vue</a></p>
 
         <h4 class="text-danger">HmDatepicker</h4>
         <h5>Добавленные свойства</h5>

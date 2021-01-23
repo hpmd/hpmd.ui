@@ -37,6 +37,6 @@
     }
 
     &-xs {
-        @include button-size($spacer, $spacer * 2, 12px, 1, $radius);
+        @include button-size($spacer, $spacer * 2, 12px, 1, $border-radius);
     }
 }

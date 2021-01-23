@@ -99,7 +99,7 @@ export default {
 
         if (!placement || !(placement in places)) {
             // kinda shitty, but in we want to use it globally
-            options.placement = this.props.defaultPosition.default;
+            options.placement = this.props.defaultPlacement.default;
         }
 
         const notification = new Notification(
@@ -112,7 +112,7 @@ export default {
 
     name: 'HmToaster',
     props: {
-        defaultPosition: {
+        defaultPlacement: {
             type: String,
             default: 'topright'
         }

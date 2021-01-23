@@ -1,5 +1,5 @@
 import { BModal } from 'bootstrap-vue';
-import { uniTimes } from '@/assets/icons/unicons';
+import { uniTimes } from '@/icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add([uniTimes]);
@@ -16,7 +16,7 @@ export default {
     beforeUpdate() {
         if (!this.$slots['modal-header-close']) {
             this.$slots['modal-header-close'] = [(
-                <HmIcon name="times"></HmIcon>
+                <HmIcon name="uni-times"></HmIcon>
             )];
         }
     },

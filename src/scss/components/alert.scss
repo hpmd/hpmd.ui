@@ -1,0 +1,25 @@
+.alert {
+    color: $black;
+    background-color: $white;
+
+    &-round {
+        font-size: 150%;
+        width: 48px;
+        height: 48px;
+    }
+
+    @each $color, $value in $theme-colors {
+        &.alert-#{$color} {
+            border: $spacer solid rgba($value, 0.25);
+        }
+        &.alert-#{$color} .alert-round {
+            background-color: rgba($value, 0.5);
+            color: $value;
+        }
+    }
+
+    button.close:focus {
+        opacity: .75;
+        outline: none;
+    }
+}

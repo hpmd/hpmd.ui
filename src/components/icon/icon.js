@@ -1,14 +1,14 @@
 /**
- * @typedef {object} Icon
- * @property {String}   name    Icon name to use in component: <HmIcon name="my-icon" />. Must be unique
- * @property {String}   iconset Decoration style
+ * @typedef {object} HmfIconEl
+ * @property {String}   name    Icon name to use in component: <HmIcon name="uni-my-icon" />. Must be unique
+ * @property {String}   iconset Decoration style, reserved
  * @property {Number}   height  Height of icon in pixels as number (i.e. 420)
  * @property {Number}   width   Width of icon in pixels as number (i.e. 420)
  * @property {string}   content XML-string of svg inner content
 
  /**
-  * Place to hold icons as [name]: Icon
-  * @type {Icon{}}
+  * Place to hold icons as [name]: HmfIconEl instance
+  * @type {HmfIconEl{}}
   */
 const _iconsMap = {};
 
@@ -20,7 +20,7 @@ export default {
     /**
      * Class method to register new icons (for global usage)
      * duplicate registration will silently fail with no errors and reason to worry about
-     * @param {...Icon} Icons separated with a comma
+     * @param {...HmfIconEl} icons separated with a comma
      * @example
      * // registers 3 icons to use
      * HmIcon.add(icon1, icon2, icon3);
@@ -50,7 +50,7 @@ export default {
         },
         /**
          * Icon name to target icon in map
-         * @see {@link /src/assets/icons/unicons.js} for examples
+         * @see {@link /src/icons/unicons.js} for examples
          */
         name: {
             type: String,
@@ -60,7 +60,7 @@ export default {
     computed: {
         /**
          * Getter for possible icon in map by passed "name" property
-         * @returns {Icon?} Icon added to map
+         * @returns {HmfIconEl?} Icon added to map
          */
         icon() {
             const _icon = _iconsMap[this.name];

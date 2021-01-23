@@ -1,0 +1,15 @@
+input, textarea, select {
+    &.form-control {
+        &:focus {
+            box-shadow: none;
+        }
+
+        &[disabled], &.disabled {
+            color: $gray-500;
+        }
+    }
+}
+
+small.form-text {
+    font-size: 80%;
+}

@@ -1,4 +1,4 @@
-import { uniMultiply } from '@/assets/icons/unicons';
+import { uniMultiply } from '@/icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniMultiply);
@@ -234,7 +234,7 @@ export default {
                         <span>{this.title}</span>
                     </div>
                     <button onClick={this.close}>
-                        <HmIcon name="multiply" />
+                        <HmIcon name="uni-multiply" />
                     </button>
                 </div>
 

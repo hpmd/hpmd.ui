@@ -1,0 +1,127 @@
+.drag-file {
+    display: inline-block;
+    border-width: $drag-file-border-style;
+    border-style: $drag-file-border-style-basic;
+    border-color: $drag-file-basic-color;
+    border-radius: $border-radius;
+    position: relative;
+    transition: border-color .3s ease-out, border-style .3s ease-out;
+    background-color: #fff;
+    z-index: $drag-file-z-index;
+
+    &-show-input {
+        margin-bottom: 2em;
+        .custom-file {
+            opacity: 1;
+            width: 100%;
+            &-label {
+                opacity: 1;
+                height: calc(1em + 0.5em);
+                top: auto;
+                bottom: -1.75em;
+                margin-bottom: 0;
+                overflow: hidden;
+            }
+        }
+    }
+
+    &-wrap {
+        padding: $spacer * 14 $spacer * 14;
+    }
+
+    &-fill-absolute,
+    &-fill-fixed {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        .drag-file-wrap {
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &-fill-absolute {
+        position: absolute;
+    }
+    &-fill-fixed {
+        position: fixed;
+    }
+
+    &-input,
+    &-input input,
+    &-input label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%!important;
+        height: 100%;
+        opacity: 0;
+    }
+
+    &-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $drag-file-circle-width;
+        height: $drag-file-circle-height;
+        background-color: $drag-file-basic-color;
+        border-radius: 100%;
+        transition: background-color .3s ease-out;
+        pointer-events: none;
+        touch-action: none;
+
+        .hm-icon {
+            line-height: 1em;
+            fill: $drag-file-circle-icon-color;
+            font-size: 1.375em;
+        }
+    }
+
+    &-error {
+        border-color: $drag-file-error-color;
+
+        &:hover {
+            border-color: $drag-file-error-color;
+        }
+
+        .drag-file-circle {
+            background-color: $drag-file-error-color;
+        }
+    }
+
+    &-placeholder {
+        color: $black;
+        line-height: 1em;
+
+        &-tip {
+            font-size: 0.75em;
+            line-height: 0.75em;
+            color: $gray;
+        }
+        &-wrap {
+            pointer-events: none;
+            touch-action: none;
+        }
+    }
+
+    &-drag {
+        border-style: $drag-file-border-style-active;
+        border-color: $drag-file-active-color;
+
+        .drag-file-circle {
+            background-color: $drag-file-active-color;
+        }
+    }
+
+    &:hover {
+        border-color: $drag-file-active-color;
+        cursor: pointer;
+
+        .drag-file-circle {
+            background-color: $drag-file-active-color;
+        }
+    }
+}

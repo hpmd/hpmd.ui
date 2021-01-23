@@ -8,7 +8,7 @@ import {
     uniMultiply,
     uniEye,
     uniEyeSlash
-} from '@/assets/icons/unicons';
+} from '@/icons/unicons';
 import { HmIcon } from '../icon';
 
 
@@ -275,7 +275,7 @@ export default {
                                             _bv.localValue = '';
                                             _bv.vModelValue = '';
                                         }}>
-                                        <HmIcon name="multiply" />
+                                        <HmIcon name="uni-multiply" />
                                     </BButton>
                                 ) }
 

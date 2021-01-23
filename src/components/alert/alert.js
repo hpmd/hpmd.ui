@@ -1,6 +1,6 @@
 import { BAlert } from 'bootstrap-vue';
 import BVTransition from 'bootstrap-vue/src/utils/bv-transition';
-import { uniExclamationTriangle } from '@/assets/icons/unicons';
+import { uniExclamationTriangle } from '@/icons/unicons';
 import { HmIcon } from '../icon';
 import { HmButtonClose } from '../button';
 
@@ -26,7 +26,8 @@ export default {
                                 <div class="alert-round rounded-circle d-flex align-items-center justify-content-center">
                                     <HmIcon
                                         class="d-flex"
-                                        name="exclamation-triangle"></HmIcon>
+                                        name="uni-exclamation-triangle"
+                                    />
                                 </div>
                             </div>
                             <div class="col">

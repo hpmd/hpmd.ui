@@ -165,92 +165,130 @@ export default {
         }
 
         const {
-            valueId,
-            widgetId,
-            navId,
-            gridId,
+            activeId,
+            activeYMD,
+            disabled,
             gridCaptionId,
             gridHelpId,
-            activeId,
+            gridId,
             isLive,
             isRange,
             isRTL,
-            activeYMD,
+            navId,
+            noKeyNav,
+            safeId,
             selectedYMD,
             selectedStartYMD,
             selectedEndYMD,
-            safeId
+            valueId,
+            widgetId
         } = this;
         const todayYMD = formatYMD(this.getToday());
         const highlightToday = !this.noHighlightToday;
 
-        // Header showing current selected date
-        const headerClasses = [];
 
-        if (this.disabled) {
-            headerClasses.push('text-muted');
-        }
 
-        if (this.readonly || this.disabled) {
-            headerClasses.push('readonly');
-        }
+        const $getHeaderOutput = (dateInput, showIcon = false) => {
+            const _toDate = new Date(dateInput);
 
-        const getHeaderOutput = (date, showIcon = false) => (
-            <output
-                staticClass="form-control form-control-sm text-center"
-                class={headerClasses}
-                id={valueId}
-                for={gridId}
-                role="status"
-                tabindex={this.disabled ? null : '-1'}
-                data-selected={toString(selectedStartYMD)}
-                aria-live={isLive ? 'polite' : 'off'}
-                aria-atomic={isLive ? 'true' : null}
-                onClick={this.onHeaderClick}
-                onFocus={this.onHeaderClick}>
-                <div class="d-flex align-items-center">
-                    {
-                        showIcon && (
-                            <div class="d-inline-flex mr-1">
-                                <HmIcon name="uni-calendar-alt" />
-                            </div>
+            const date = Number.isNaN(_toDate.getTime()) ?
+                null :
+                _toDate.toLocaleDateString();
+
+            const $headerOutputChildren = [];
+
+            if (showIcon) {
+                $headerOutputChildren.push(h(
+                    'div',
+                    { class: 'd-inline-flex mr-1' },
+                    [
+                        h(
+                            HmIcon,
+                            { props: { name: 'uni-calendar-alt' } }
                         )
-                    }
-                    <span class="text-nowrap">
-                        {
-                            date ?
-                                [
-                                    <bdi staticClass="sr-only">{` (${toString(this.labelSelected)}) `}</bdi>,
-                                    <bdi>{date}</bdi>
-                                ] :
-                                this.labelNoDateSelected || '\u00a0' // '&nbsp;'
-                        }
-                    </span>
-                </div>
-            </output>
-        );
-        const toLocaleDateString = (date) => (date ? date.toLocaleDateString() : null);
-        const $header = (
-            <header
-                staticClass="b-calendar-header d-flex m-0"
-                class={this.hideHeader ? 'sr-only' : ''}
-                title={this.selectedDate ? this.labelSelectedDate || null : null}>
+                    ]
+                ));
+            }
+
+            $headerOutputChildren.push(h(
+                'span',
+                { class: 'text-nowrap' },
+                date ?
+                    [
+                        // We use `bdi` elements here in case the label doesn't match the locale
+                        // Although IE 11 does not deal with <BDI> at all (equivalent to a span)
+                        h('bdi', { staticClass: 'sr-only' }, ` (${toString(this.labelSelected)}) `),
+                        h('bdi', date)
+                    ] :
+                    this.labelNoDateSelected || '\u00a0' // '&nbsp;'
+            ));
+
+            return h(
+                'output',
                 {
-                    isRange ?
-                        [
-                            getHeaderOutput(toLocaleDateString(this.selectedStartYMD ? new Date(this.selectedStartYMD) : null), true),
-                            getHeaderOutput(toLocaleDateString(this.selectedEndYMD ? new Date(this.selectedEndYMD) : null))
-                        ] :
-                        [getHeaderOutput(toLocaleDateString(this.selectedDate), true)]
-                }
-            </header>
+                    attrs: {
+                        id: valueId,
+                        for: gridId,
+                        role: 'status',
+                        tabindex: disabled ? null : '-1',
+                        // Mainly for testing purposes, as we do not know
+                        // the exact format `Intl` will format the date string
+                        'data-selected': toString(selectedYMD),
+                        // We wait until after mount to enable `aria-live`
+                        // to prevent initial announcement on page render
+                        'aria-live': isLive ? 'polite' : 'off',
+                        'aria-atomic': isLive ? 'true' : null
+                    },
+                    class: {
+                        'text-muted': disabled,
+                        readonly: this.readonly || disabled
+                    },
+                    staticClass: 'form-control form-control-sm text-center',
+                    on: {
+                        // Transfer focus/click to focus grid
+                        // and focus active date (or today if no selection)
+                        click: this.onHeaderClick,
+                        focus: this.onHeaderClick
+                    }
+                },
+                [
+                    h(
+                        'div',
+                        { class: 'd-flex align-items-center' },
+                        $headerOutputChildren
+                    )
+                ]
+            );
+        };
+
+        const $header = h(
+            'header',
+            {
+                attrs: {
+                    title: this.selectedDate ? this.labelSelectedDate || null : null
+                },
+                class: {
+                    'sr-only': this.hideHeader
+                },
+                staticClass: 'b-calendar-header d-flex m-0'
+            },
+            isRange ?
+                [
+                    $getHeaderOutput(this.selectedStartYMD, true),
+                    $getHeaderOutput(this.selectedEndYMD)
+                ] :
+                [
+                    $getHeaderOutput(this.selectedDate, true)
+                ]
         );
+
 
         // Content for the date navigation buttons
         const navScope = { isRTL };
         const navProps = { shiftV: 0.5 };
         const navPrevProps = { ...navProps, flipH: isRTL };
         const navNextProps = { ...navProps, flipH: !isRTL };
+
         const $prevMonthIcon = (
             this.normalizeSlot('nav-prev-month', navScope) ||
             h(BIconChevronLeft, { props: navPrevProps })
@@ -261,32 +299,50 @@ export default {
         );
 
         // Utility to create the date navigation buttons
-        const makeNavBtn = (content, label, handler, btnDisabled, shortcut) => (
-            <div
-                staticClass="b-calendar-btn border-0"
-                class={[{ disabled: btnDisabled }]}
-                title={label || null}
-                type="button"
-                aria-label={label || null}
-                aria-disabled={btnDisabled ? 'true' : null}
-                aria-keyshortcuts={shortcut || null}
-                onClick={btnDisabled ? () => { } : handler}>
-                <div aria-hidde={true}>
-                    {content}
-                </div>
-            </div>
+        const makeNavBtn = (content, label, handler, btnDisabled, shortcut) => h(
+            'div',
+            {
+                staticClass: 'b-calendar-btn border-0',
+                class: { disabled: btnDisabled },
+                attrs: {
+                    title: label || null,
+                    tabindex: noKeyNav ? '-1' : null,
+                    'aria-role': 'button',
+                    'aria-label': label || null,
+                    'aria-disabled': btnDisabled ? 'true' : null,
+                    'aria-keyshortcuts': shortcut || null
+                },
+                on: btnDisabled ? {} : { click: handler }
+            },
+            [
+                h(
+                    'div',
+                    {
+                        attrs: { 'aria-hidden': 'true' }
+                    },
+                    [content]
+                )
+            ]
         );
 
+
         // Generate the date navigation buttons
-        const $nav = (
-            <div
-                staticClass="b-calendar-nav d-flex m-0"
-                id={navId}
-                role="group"
-                aria-hidden={this.disabled ? 'true' : null}
-                aria-label={this.labelNav || null}
-                aria-controls={gridId}></div>
+        const $nav = h(
+            'div',
+            {
+                staticClass: 'b-calendar-nav d-flex m-0',
+                attrs: {
+                    id: navId,
+                    role: 'group',
+                    tabindex: noKeyNav ? '-1' : null,
+                    'aria-hidden': disabled ? 'true' : null,
+                    'aria-label': this.labelNav || null,
+                    'aria-controls': gridId
+                }
+            }
         );
+
+        const $gridCaptionChildren = [];
 
         const $prevYearIcon = (
             this.normalizeSlot('nav-prev-year', navScope) ||
@@ -297,71 +353,86 @@ export default {
             h(BIconChevronDoubleLeft, { props: navNextProps })
         );
 
+        if (this.showYearBtns) {
+            $gridCaptionChildren.push(
+                makeNavBtn(
+                    $prevYearIcon,
+                    this.labelPrevYear,
+                    this.gotoPrevYear,
+                    this.prevYearDisabled,
+                    'Alt+PageDown'
+                )
+            );
+        }
+
+        $gridCaptionChildren.push(
+            makeNavBtn(
+                $prevMonthIcon,
+                this.labelPrevMonth,
+                this.gotoPrevMonth,
+                this.prevMonthDisabled,
+                'PageDown'
+            ),
+            this.formatYearMonth(this.calendarFirstDay),
+            makeNavBtn(
+                $nextMonthIcon,
+                this.labelNextMonth,
+                this.gotoNextMonth,
+                this.nextMonthDisabled,
+                'PageUp'
+            )
+        );
+
+        if (this.showYearBtns) {
+            $gridCaptionChildren.push(
+                makeNavBtn(
+                    $nextYearIcon,
+                    this.labelNextYear,
+                    this.gotoNextYear,
+                    this.nextYearDisabled,
+                    'Alt+PageUp'
+                )
+            );
+        }
+
         // Caption for calendar grid
-        const $gridCaption = (
-            <header
-                key="grid-caption"
-                staticClass="b-calendar-grid-caption text-center font-weight-bold d-flex justify-content-around align-items-center"
-                class={this.disabled ? 'text-muted' : ''}
-                id={gridCaptionId}
-                aria-live={isLive ? 'polite' : null}
-                aria-atomic={isLive ? 'true' : null}>
-                {[
-                    this.showYearBtns ?
-                        makeNavBtn(
-                            $prevYearIcon,
-                            this.labelPrevYear,
-                            this.gotoPrevYear,
-                            this.prevYearDisabled,
-                            'Alt+PageDown'
-                        ) :
-                        h(),
-                    makeNavBtn(
-                        $prevMonthIcon,
-                        this.labelPrevMonth,
-                        this.gotoPrevMonth,
-                        this.prevMonthDisabled,
-                        'PageDown'
-                    ),
-                    this.formatYearMonth(this.calendarFirstDay),
-                    makeNavBtn(
-                        $nextMonthIcon,
-                        this.labelNextMonth,
-                        this.gotoNextMonth,
-                        this.nextMonthDisabled,
-                        'PageUp'
-                    ),
-                    this.showYearBtns ?
-                        makeNavBtn(
-                            $nextYearIcon,
-                            this.labelNextYear,
-                            this.gotoNextYear,
-                            this.nextYearDisabled,
-                            'Alt+PageUp'
-                        ) :
-                        h()
-                ]}
-            </header>
+        const $gridCaption = h(
+            'header',
+            {
+                attrs: {
+                    id: gridCaptionId,
+                    'aria-live': isLive ? 'polite' : null,
+                    'aria-atomic': isLive ? 'true' : null
+                },
+                class: {
+                    'text-muted': disabled
+                },
+                key: 'grid-caption',
+                staticClass: 'b-calendar-grid-caption text-center font-weight-bold d-flex justify-content-around align-items-center'
+            },
+            $gridCaptionChildren
         );
 
         // Calendar weekday headings
-        const $gridWeekDays = (
-            <div
-                staticClass="b-calendar-grid-weekdays row no-gutters border-bottom d-flex justify-content-center"
-                aria-hidden="true">
+        const $gridWeekDays = h(
+            'div',
+            {
+                staticClass: 'b-calendar-grid-weekdays row no-gutters border-bottom d-flex justify-content-center',
+                attrs: { 'aria-hidden': 'true' }
+            },
+            this.calendarHeadings.map((d, idx) => h(
+                'small',
                 {
-                    this.calendarHeadings.map((d, idx) => (
-                        <small
-                            key={idx}
-                            staticClass="col text-truncate"
-                            class={this.disabled ? 'text-muted' : ''}
-                            title={d.label === d.text ? null : d.label}
-                            aria-label={d.label}>
-                            {d.text}
-                        </small>
-                    ))
-                }
-            </div>
+                    staticClass: 'col text-truncate',
+                    class: { 'text-muted': disabled },
+                    attrs: {
+                        title: d.label === d.text ? null : d.label,
+                        'aria-label': d.label
+                    },
+                    key: idx
+                },
+                d.text
+            ))
         );
 
         // Calendar day grid
@@ -377,142 +448,165 @@ export default {
                 } else {
                     isSelected = day.ymd === selectedYMD;
                 }
+
                 const isActive = day.ymd === activeYMD;
                 const isToday = day.ymd === todayYMD;
                 const idCell = safeId(`_cell-${day.ymd}_`);
                 // "fake" button
-                const $btn = (
-                    <span
-                        staticClass="b-calendar-date btn border-0 text-nowrap font-weight-light m-0"
-                        class={{
-                            // Give the fake button a focus ring
+                const $btn = h(
+                    'span',
+                    {
+                        class: {
+                            active: isSelected,
+                            disabled: day.isDisabled || disabled,
                             focus: isActive && this.gridHasFocus,
-                            // Styling
-                            disabled: day.isDisabled || this.disabled,
-                            active: isSelected, // makes the button look "pressed"
-                            // Selected date style (need to computed from variant)
                             [this.computedVariant]: isSelected,
-                            // Today day style (if not selected), same variant color as selected date
-                            'font-weight-bold': isToday && highlightToday && !isSelected && day.isThisMonth,
-                            // Non selected/today styling
-                            'btn-outline-light': !(isToday && highlightToday) && !isSelected && !isActive,
+                            'b-calendar-selected-bg': isRangeBg,
                             'btn-light': !(isToday && highlightToday) && !isSelected && isActive,
-                            // Text styling
-                            'text-muted': !day.isThisMonth && !isSelected,
+                            'btn-outline-light': !(isToday && highlightToday) && !isSelected && !isActive,
+                            'font-weight-bold': isToday && highlightToday && !isSelected && day.isThisMonth,
                             'text-dark': !(isToday && highlightToday) && !isSelected && !isActive && day.isThisMonth,
-                            'b-calendar-selected-bg': isRangeBg
-                        }}
-                        onClick={() => this.onClickDay(day)}>
-                        {day.day}
-                    </span>
+                            'text-muted': !day.isThisMonth && !isSelected
+                        },
+                        staticClass: 'b-calendar-date btn border-0 text-nowrap font-weight-light m-0',
+                        on: {
+                            click: () => this.onClickDay(day)
+                        }
+                    },
+                    day.day
                 );
-                return (
-                    <div
-                        key={dIndex}
-                        staticClass="col p-0 b-calendar-grid-body-item"
-                        class={day.isDisabled ? 'bg-light' : day.info.class || ''}
-                        id={idCell}
-                        role="button"
-                        data-date={day.ymd} // Primarily for testing purposes
-                        // Only days in the month are presented as buttons to screen readers
-                        aria-hidden={day.isThisMonth ? null : 'true'}
-                        aria-disabled={day.isDisabled || this.disabled ? 'true' : null}
-                        aria-label={
-                            [
+
+                return h(
+                    'div',
+                    {
+                        attrs: {
+                            id: idCell,
+                            role: 'button',
+                            // Only days in the month are presented as buttons to screen readers
+                            'aria-hidden': day.isThisMonth ? null : 'true',
+                            'aria-disabled': day.isDisabled || disabled ? 'true' : null,
+                            'aria-label': [
                                 day.label,
                                 isSelected ? `(${this.labelSelected})` : null,
                                 isToday ? `(${this.labelToday})` : null
-                            ].filter(identity).join(' ')
-                        }
-                        // NVDA doesn't convey `aria-selected`, but does `aria-current`,
-                        // ChromeVox doesn't convey `aria-current`, but does `aria-selected`,
-                        // so we set both attributes for robustness
-                        aria-selected={isSelected ? 'true' : null}
-                        aria-current={isSelected ? 'date' : null}>
-                        {$btn}
-                    </div>
+                            ].filter(identity).join(' '),
+                            // NVDA doesn't convey `aria-selected`, but does `aria-current`,
+                            // ChromeVox doesn't convey `aria-current`, but does `aria-selected`,
+                            // so we set both attributes for robustness
+                            'aria-selected': isSelected ? 'true' : null,
+                            'aria-current': isSelected ? 'date' : null,
+                            'data-date': day.ymd
+                        },
+                        class: day.isDisabled ? 'bg-light' : day.info.class || '',
+                        key: dIndex,
+                        staticClass: 'col p-0 b-calendar-grid-body-item'
+
+                    },
+                    [$btn]
                 );
             });
+
             // Return the week "row"
             // We use the first day of the weeks YMD value as a
             // key for efficient DOM patching / element re-use
-            return (
-                <div
-                    key={week[0].ymd}
-                    staticClass="row no-gutters">
-                    {$cells}
-                </div>
+            return h(
+                'div',
+                {
+                    staticClass: 'row no-gutters',
+                    key: week[0].ymd
+                },
+                $cells
             );
         });
-        $gridBody = (
-            <div
-                staticClass="b-calendar-grid-body d-table"
-                style={this.disabled ? 'pointer-events: none;' : ''}>
-                {$gridBody}
-            </div>
+
+        $gridBody = h(
+            'div',
+            {
+                // A key is only required on the body if we add in transition support
+                staticClass: 'b-calendar-grid-body d-table',
+                style: disabled ? { pointerEvents: 'none' } : {}
+                // key: this.activeYMD.slice(0, -3)
+            },
+            $gridBody
         );
 
-        const $grid = (
-            <div
-                ref="grid"
-                staticClass="b-calendar-grid form-control h-auto text-center"
-                id={gridId}
-                role="application"
-                tabindex={this.disabled ? null : '0'}
-                data-month={activeYMD.slice(0, -3)}
-                aria-roledescription={this.labelCalendar || null}
-                aria-labelledby={gridCaptionId}
-                aria-describedby={gridHelpId}
-                // `aria-readonly` is not considered valid on `role="application"`
-                // https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
-                // 'aria-readonly': this.readonly && !this.disabled ? 'true' : null,
-                aria-disabled={this.disabled ? 'true' : null}
-                aria-activedescendant={activeId}
-                onKeydown={this.onKeydownGrid}
-                onFocus={this.setGridFocusFlag}
-                onBlur={this.setGridFocusFlag}>
-                {[$gridCaption, $gridWeekDays, $gridBody]}
-            </div>
+        const $grid = h(
+            'div',
+            {
+                attrs: {
+                    id: gridId,
+                    role: 'application',
+                    // eslint-disable-next-line no-nested-ternary
+                    tabindex: noKeyNav ? '-1' : disabled ? null : '0',
+                    'data-month': activeYMD.slice(0, -3), // `YYYY-MM`, mainly for testing
+                    'aria-roledescription': this.labelCalendar || null,
+                    'aria-labelledby': gridCaptionId,
+                    'aria-describedby': gridHelpId,
+                    // `aria-readonly` is not considered valid on `role="application"`
+                    // https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
+                    // 'aria-readonly': this.readonly && !disabled ? 'true' : null,
+                    'aria-disabled': disabled ? 'true' : null,
+                    'aria-activedescendant': activeId
+                },
+                ref: 'grid',
+                staticClass: 'b-calendar-grid form-control h-auto text-center',
+                on: {
+                    blur: this.setGridFocusFlag,
+                    focus: this.setGridFocusFlag,
+                    keydown: this.onKeydownGrid
+                }
+            },
+            [
+                $gridCaption, $gridWeekDays, $gridBody
+            ]
         );
 
         // Optional bottom slot
         let $slot = this.normalizeSlot();
-        $slot = $slot ? h('footer', { staticClass: 'b-calendar-footer' }, $slot) : h();
+        $slot = $slot ?
+            h('footer', { staticClass: 'b-calendar-footer' }, $slot) :
+            h();
 
-        const $widget = (
-            <div
-                staticClass="b-calendar-inner"
-                style={this.block ? '' : `width: ${this.width}px`}
-                id={widgetId}
-                dir={isRTL ? 'rtl' : 'ltr'}
-                lang={this.computedLocale || null}
-                role="group"
-                aria-disabled={this.disabled ? 'true' : null}
-                // If datepicker controls an input, this will specify the ID of the input
-                aria-controls={this.ariaControls || null}
-                // This should be a prop (so it can be changed to Date picker, etc, localized
-                aria-roledescription={this.roleDescription || null}
-                aria-describedby={
-                    [
+        const $widget = h(
+            'div',
+            {
+                staticClass: 'b-calendar-inner',
+                style: this.block ? {} : { width: `${this.width}px` },
+                attrs: {
+                    id: widgetId,
+                    dir: isRTL ? 'rtl' : 'ltr',
+                    lang: this.computedLocale || null,
+                    role: 'group',
+                    'aria-disabled': disabled ? 'true' : null,
+                    // If datepicker controls an input, this will specify the ID of the input
+                    'aria-controls': this.ariaControls || null,
+                    // This should be a prop (so it can be changed to Date picker, etc, localized
+                    'aria-roledescription': this.roleDescription || null,
+                    'aria-describedby': [
                         // Should the attr (if present) go last?
                         // Or should this attr be a prop?
                         this.bvAttrs['aria-describedby'],
                         valueId,
                         gridHelpId
-                    ].filter(identity).join(' ')
+                    ]
+                        .filter(identity)
+                        .join(' ')
+                },
+                on: {
+                    keydown: this.onKeydownWrapper
                 }
-                onKeydown={this.onKeydownWrapper}>
-                {[$header, $nav, $grid, $slot]}
-            </div>
+            },
+            [$header, $nav, $grid, $slot]
         );
 
         // Wrap in an outer div that can be styled
-        return (
-            <div
-                staticClass="b-calendar"
-                class={this.block ? 'd-block' : ''}>
-                {$widget}
-            </div>
+        return h(
+            'div',
+            {
+                class: { 'd-block': this.block },
+                staticClass: 'b-calendar'
+            },
+            [$widget]
         );
     },
     watch: {

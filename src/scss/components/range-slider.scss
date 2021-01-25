@@ -58,7 +58,7 @@
             border-radius: 50%;
             background-color: $rangeslider-dot-bg;
             box-sizing: border-box;
-            border: $spacer/2 solid $rangeslider-fill-bg;
+            border: ($spacer / 2) solid $rangeslider-fill-bg;
 
             &-focus {
                 box-shadow: $rangeslider-dot-handle-focus-border-radius;

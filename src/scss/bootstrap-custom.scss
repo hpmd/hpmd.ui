@@ -10,7 +10,7 @@ $fontSize: 14px;
 $radius: 2px;
 $close-font-size: $fontSize * 1.5;
 // Colors
-// $yiq-contrasted-threshold: 200;
+$yiq-contrasted-threshold: 200;
 
 $blue: #3E72D8;
 $red: #F1505A;
@@ -25,15 +25,15 @@ $spacer: 4px;
 $spacers: (
     0: 0,
     1: $spacer,
-    2: $spacer * 2,
-    3: $spacer * 3,
-    4: $spacer * 4,
-    5: $spacer * 5,
-    6: $spacer * 6,
-    7: $spacer * 8,
-    8: $spacer * 10,
-    9: $spacer * 12,
-    10: $spacer * 16
+    2: ($spacer * 2),
+    3: ($spacer * 3),
+    4: ($spacer * 4),
+    5: ($spacer * 5),
+    6: ($spacer * 6),
+    7: ($spacer * 8),
+    8: ($spacer * 10),
+    9: ($spacer * 12),
+    10: ($spacer * 16)
 );
 
 // Body
@@ -64,11 +64,11 @@ $font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Rob
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 
-$h1-font-size: $font-size-base * 2;
-$h2-font-size: $font-size-base * 1.714;
-$h3-font-size: $font-size-base * 1.429;
-$h4-font-size: $font-size-base * 1.286;
-$h5-font-size: $font-size-base * 1.143;
+$h1-font-size: ($font-size-base * 2);
+$h2-font-size: ($font-size-base * 1.714);
+$h3-font-size: ($font-size-base * 1.429);
+$h4-font-size: ($font-size-base * 1.286);
+$h5-font-size: ($font-size-base * 1.143);
 $h6-font-size: $font-size-base;
 
 
@@ -87,21 +87,21 @@ $border-radius-sm: $radius;
 // Alerts
 //
 // Define alert colors, border radius, and padding.
-
-$alert-padding-y: $spacer * 5;
-$alert-padding-x: $spacer * 5;
-$alert-margin-bottom: $spacer * 6;
-$alert-border-radius: $radius;
+$alert-padding-y: ($spacer * 5);
+$alert-padding-x: ($spacer * 5);
+$alert-margin-bottom: ($spacer * 6);
+$alert-border-radius: $border-radius;
 $alert-border-width: 0;
 
 // Avatar
 $hm-avatar-sizes: (
-    xs: $spacer * 6,
-    sm: $spacer * 9,
-    md: $spacer * 12,
-    lg: $spacer * 16,
-    xl: $spacer * 20
+    xs: ($spacer * 6),
+    sm: ($spacer * 9),
+    md: ($spacer * 12),
+    lg: ($spacer * 16),
+    xl: ($spacer * 20)
 );
+
 
 // Badge
 $badge-font-weight: 600;
@@ -110,19 +110,18 @@ $badge-padding-x: .45em;
 $badge-border-radius: $border-radius;
 $badge-pill-padding-x: .675em;
 
-
 // Progress bars
-$progress-border-radius: $radius;
+$progress-border-radius: $border-radius;
 
 // Divider: hr
 $hr-border-color: rgba($black, .15);
 $hr-border-color-white: rgba($white, .3);
 
-$hr-margin-y: $spacer * 4;
+$hr-margin-y: ($spacer * 4);
 
 // Tables
-$table-cell-padding: ($spacer * 4) ($spacer * 2);
-$table-cell-padding-sm: $spacer * 2;
+$table-cell-padding: ($spacer * 3);
+$table-cell-padding-sm: ($spacer * 2);
 
 // $table-hover-color: $gray-200;
 $table-hover-bg: $gray-200;
@@ -184,7 +183,7 @@ $btn-link-disabled-color: $gray-300 !important;
 
 
 // $input-padding-y: ;
-$input-padding-x: $spacer * 3;
+$input-padding-x: ($spacer * 3);
 $input-border-radius: $radius;
 $input-placeholder-color: $gray-500;
 
@@ -219,15 +218,15 @@ $dropdown-text-fontWeight: 400;
 $dropdown-link-active-color: $white;
 $dropdown-link-active-bg: $black;
 
-$dropdown-item-padding-y: $spacer * 2;
-$dropdown-item-padding-x: $spacer * 3;
+$dropdown-item-padding-y: ($spacer * 2);
+$dropdown-item-padding-x: ($spacer * 3);
 
 $dropdown-header-padding: $dropdown-padding-y $dropdown-item-padding-x;
 
 // Popovers
 
 $popover-heading-padding-bottom: $spacer;
-$popover-body-padding-bottom: $spacer * 4;
+$popover-body-padding-bottom: ($spacer * 4);
 
 $popover-bg: $white;
 $popover-border-width: $border-width;
@@ -236,13 +235,13 @@ $popover-border-radius: $radius;
 
 $popover-header-bg: $white;
 $popover-header-padding-y: $popover-heading-padding-bottom;
-$popover-header-padding-x: $spacer * 4;
+$popover-header-padding-x: ($spacer * 4);
 
 $popover-body-padding-y: $popover-body-padding-bottom;
-$popover-body-padding-x: $spacer * 4;
+$popover-body-padding-x: ($spacer * 4);
 
-$popover-arrow-width: $spacer * 5;
-$popover-arrow-height: $spacer * 3;
+$popover-arrow-width: ($spacer * 5);
+$popover-arrow-height: ($spacer * 3);
 $popover-arrow-color: $white;
 
 $popover-arrow-outer-color: $popover-border-color;
@@ -256,19 +255,20 @@ $rangeslider-dot-bg: $white;
 $rangeslider-tooltip-bg: transparent;
 $rangeslider-tooltip-color: $gray-600;
 $rangeslider-tooltip-offset-top: -($spacer);
-$rangeslider-tooltip-offset-bottom: -($spacer / 2);
+$rangeslider-tooltip-offset-bottom: -2px; // -($spacer / 2);
 
 $rangeslider-width: auto;
-$rangeslider-height: $spacer / 2;
+$rangeslider-height: 2px; // ($spacer / 2);
 $rangeslider-padding-x: 0;
-$rangeslider-padding-y: $spacer * 3;
+$rangeslider-padding-y: ($spacer * 3);
 
-$rangeslider-dot-width: $spacer * 4;
-$rangeslider-dot-height: $spacer * 4;
+$rangeslider-dot-width: ($spacer * 4);
+$rangeslider-dot-height: ($spacer * 4);
 $rangeslider-dot-handle-focus-border-radius: 0px 0px 1px 2px rgba($rangeslider-fill-bg, 0.36);
 $rangeslider-mark-fontsize: 11px;
 $rangeslider-mark-color: $gray-400;
-$rangeslider-mark-margin-top: $rangeslider-dot-height / 2;
+// @debug $rangeslider-dot-height / 2;
+$rangeslider-mark-margin-top: 8px; // ($rangeslider-dot-height / 2);
 
 // Checkbox
 $custom-control-gutter: 0.65rem;
@@ -313,7 +313,7 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 // $custom-radio-indicator-border-radius:          50% !default;
 $custom-radio-indicator-icon-checked:           url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><circle cx='6' cy='6' r='3' fill='#{$custom-control-indicator-bg}'/></svg>");
 
-$custom-switch-width: $custom-control-indicator-size * 1.7;
+$custom-switch-width: ($custom-control-indicator-size * 1.7);
 // $custom-switch-indicator-border-radius:         $custom-control-indicator-size / 2 !default;
 $custom-switch-indicator-size: subtract($custom-control-indicator-size, $custom-control-indicator-border-width * 4);
 
@@ -332,10 +332,10 @@ $custom-file-padding-x: 0.25em;
 $custom-file-line-height: 1em;
 $custom-file-color: $black;
 $custom-file-border-color: transparent;
-$custom-file-border-radius: $radius * 2;
+$custom-file-border-radius: ($radius * 2);
 $custom-file-button-color: $gray;
 $custom-file-button-bg: $gray-300;
-$custom-file-button-margin-right: $spacer * 3;
+$custom-file-button-margin-right: ($spacer * 3);
 
 // Drop and down
 $drag-file-border-style: 1px;
@@ -346,8 +346,8 @@ $drag-file-basic-color: $gray-500;
 $drag-file-active-color: $blue;
 $drag-file-error-color: $red;
 
-$drag-file-circle-width: $spacer * 10;
-$drag-file-circle-height: $spacer * 10;
+$drag-file-circle-width: ($spacer * 10);
+$drag-file-circle-height: ($spacer * 10);
 $drag-file-circle-icon-color: $white;
 
 $drag-file-z-index: 1000;
@@ -357,35 +357,35 @@ $drag-file-z-index: 1000;
 
 $tooltip-border-radius: $radius;
 $tooltip-padding-y: $spacer;
-$tooltip-padding-x: $spacer * 2;
+$tooltip-padding-x: ($spacer * 2);
 
-$tooltip-arrow-width: $spacer * 2;
+$tooltip-arrow-width: ($spacer * 2);
 $tooltip-arrow-height: $spacer;
 
 
 // Toaster and Notifications
 $toaster-z-index: 1300;
-$toaster-top-margin: $spacer * 2;
-$toaster-right-margin: $spacer * 2;
-$toaster-bottom-margin: $spacer * 2;
-$toaster-left-margin: $spacer * 2;
+$toaster-top-margin: ($spacer * 2);
+$toaster-right-margin: ($spacer * 2);
+$toaster-bottom-margin: ($spacer * 2);
+$toaster-left-margin: ($spacer * 2);
 
 $notification-radius: $radius;
 $notification-shadow: 0 4px 4px 0 rgba(#000, .15);
-$notification-space-between: $spacer * 3;
-$notification-body-padding-y: $spacer * 3;
-$notification-body-padding-x: $spacer * 3;
+$notification-space-between: ($spacer * 3);
+$notification-body-padding-y: ($spacer * 3);
+$notification-body-padding-x: ($spacer * 3);
 $notification-max-width: 400px;
-$notification-title-padding-y: $spacer * 2;
-$notification-title-padding-x: $spacer * 3;
+$notification-title-padding-y: ($spacer * 2);
+$notification-title-padding-x: ($spacer * 3);
 $notification-progress-height: $spacer;
 
 
 
 // Select input
 $select-border-radius: $radius;
-$select-tags-padding-x: $spacer * 2;
-$select-tags-padding-y: $spacer * 2;
+$select-tags-padding-x: ($spacer * 2);
+$select-tags-padding-y: ($spacer * 2);
 $select-tags-font-size: 0.875em;
 $select-tags-border: 1px solid $gray-400;
 $select-tags-bg: $blue;
@@ -396,32 +396,32 @@ $select-tag-font-size: 1.4em;
 $calendar-selected-date-bg: $primary;
 $calendar-range-selected-bg: lighten($calendar-selected-date-bg, 45);
 
-$calendar-grid-weekdays-padding-x: $spacer * 2;
-$calendar-grid-weekdays-padding-y: $spacer * 4;
+$calendar-grid-weekdays-padding-x: ($spacer * 2);
+$calendar-grid-weekdays-padding-y: ($spacer * 4);
 
-$calendar-grid-body-padding-x: $spacer * 4;
-$calendar-grid-body-padding-y: $spacer * 4;
+$calendar-grid-body-padding-x: ($spacer * 4);
+$calendar-grid-body-padding-y: ($spacer * 4);
 
 $calendar-grid-font-size-numbers: 0.75em;
 
 // Spin Button
 
-$spinbutton-focus-box-shadow: 0 0 0 $spacer / 2 rgba($gray-500, 0.25);
+$spinbutton-focus-box-shadow: 0 0 0 2px rgba($gray-500, 0.25); // (0 0 0 ($spacer / 2)
 $spinbutton-focus-border-color: #ced4da;
 $spinbutton-bdi-min-width: 100%;
 
 
 // Selector
 
-$hmselector-el-padding-x: $spacer * 2;
+$hmselector-el-padding-x: ($spacer * 2);
 $hmselector-el-padding-y: $spacer;
 
-$hm-selector-el-margin-right: $spacer * 2;
-$hm-selector-el-margin-bottom: $spacer * 2;
+$hm-selector-el-margin-right: ($spacer * 2);
+$hm-selector-el-margin-bottom: ($spacer * 2);
 
-$hm-selector-el-borderRadius: $spacer * 4;
+$hm-selector-el-borderRadius: ($spacer * 4);
 
-$hm-selector-el-fontSize: $fontSize * 0.85;
+$hm-selector-el-fontSize: ($fontSize * 0.85);
 $hm-selector-el-fontWeight: 600;
 
 $hm-selector-el-border-width: 1px;
@@ -443,42 +443,42 @@ $hm-selector-el-disabled-active-bg: rgba($yellow, 0.3);
 $tip-inline-bg: $gray-300;
 $tip-inline-hover-bg: rgba($primary, 0.3);
 
-$tip-inline-padding-x: $spacer / 2;
-$tip-inline-padding-y: $spacer / 2;
+$tip-inline-padding-x: ($spacer / 2);
+$tip-inline-padding-y: ($spacer / 2);
 
 $tip-tooltip-padding-y: $spacer;
-$tip-tooltip-padding-x: $spacer * 2;
+$tip-tooltip-padding-x: ($spacer * 2);
 $tip-block-icon-font-size: 1.375em;
 
 
 // Modals
 
 // Padding applied to the modal body
-$modal-inner-padding: $spacer * 5;
+$modal-inner-padding: ($spacer * 5);
 
 // Margin between elements in footer, must be lower than or equal to 2 * $modal-inner-padding
-$modal-footer-margin-between: $spacer * 2;
+$modal-footer-margin-between: ($spacer * 2);
 
 $modal-header-border-color: transparent;
 $modal-footer-border-color: transparent;
 $modal-header-border-width: 0;
 $modal-footer-border-width: 0;
-$modal-header-padding-top: $spacer * 5;
-$modal-header-padding-x: $spacer * 5;
+$modal-header-padding-top: ($spacer * 5);
+$modal-header-padding-x: ($spacer * 5);
 $modal-header-padding: $modal-header-padding-top $modal-header-padding-x 0;
 
 // Navs
 
-$nav-link-padding-y: $spacer * 2;
-$nav-link-padding-x: $spacer * 2;
+$nav-link-padding-y: ($spacer * 2);
+$nav-link-padding-x: ($spacer * 2);
 
 $nav-link-pills-padding-y: $spacer;
-$nav-link-pills-padding-x: $spacer * 3;
+$nav-link-pills-padding-x: ($spacer * 3);
 
 $nav-link-disabled-color: $gray-200;
 
 $nav-tabs-border-color: $black;
-$nav-tabs-border-width: $spacer / 2;
+$nav-tabs-border-width: ($spacer / 2);
 $nav-tabs-border-radius: $radius;
 $nav-tabs-link-hover-border-color: transparent transparent $gray-500 transparent;
 $nav-tabs-link-color: $gray-500;
@@ -488,6 +488,3 @@ $nav-tabs-link-active-border-color: transparent transparent $nav-tabs-border-col
 $nav-pills-border-radius: $radius;
 $nav-pills-link-active-color: $white;
 $nav-pills-link-active-bg: $black;
-
-
-

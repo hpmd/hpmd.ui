@@ -1,5 +1,5 @@
 import { BAlert } from 'bootstrap-vue';
-import BVTransition from 'bootstrap-vue/src/utils/bv-transition';
+import { BVTransition } from 'bootstrap-vue/src/components/transition/bv-transition';
 import { uniExclamationTriangle } from '@/icons/unicons';
 import { HmIcon } from '../icon';
 import { HmButtonClose } from '../button';

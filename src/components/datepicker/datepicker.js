@@ -6,7 +6,7 @@
  * @property {Boolean}  isRange              date range selection
  */
 import { BFormDatepicker } from 'bootstrap-vue';
-import { BVFormBtnLabelControl } from 'bootstrap-vue/src/utils/bv-form-btn-label-control';
+import { BVFormBtnLabelControl } from 'bootstrap-vue/src/components/form-btn-label-control/bv-form-btn-label-control';
 import { isUndefinedOrNull } from 'bootstrap-vue/src/utils/inspect';
 import { parseYMD } from 'bootstrap-vue/src/utils/date';
 import { pick } from 'bootstrap-vue/src/utils/object';

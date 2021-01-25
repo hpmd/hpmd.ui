@@ -1,6 +1,6 @@
 import { BCalendar } from 'bootstrap-vue';
 import { uniCalendarAlt } from '@/icons/unicons';
-import identity from 'bootstrap-vue/src/utils/identity';
+import { identity } from 'bootstrap-vue/src/utils/identity';
 import {
     createDate,
     datesEqual,

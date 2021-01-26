@@ -1,4 +1,4 @@
-import { uniMultiply } from '@/icons/unicons';
+import { uniMultiply } from '../../icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniMultiply);

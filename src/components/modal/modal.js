@@ -1,5 +1,5 @@
 import { BModal } from 'bootstrap-vue';
-import { uniTimes } from '@/icons/unicons';
+import { uniTimes } from '../../icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add([uniTimes]);

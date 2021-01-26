@@ -140,25 +140,42 @@ export default {
             }
         }
     },
-    render() {
+    render(h) {
         // Might be broken in Vue3
         const parentUid = this.$parent._uid;
 
-        return (
-            <div class={this.classes}>
-                <input
-                    type="checkbox"
-                    id={this.safeId}
-                    name={`hm_sel_${parentUid}`}
-                    checked={this.isChecked}
-                    disabled={this.isDisabled}
-                    value={this.value}
-                    onChange={this.onInputChange} />
-                <div class="hm-selector-el-slot">
-                    { this.$slots.default }
-                </div>
-                <label for={this.safeId}></label>
-            </div>
+        return h(
+            'div',
+            { class: this.classes },
+            [
+                h(
+                    'input',
+                    {
+                        attrs: {
+                            checked: this.isChecked,
+                            disabled: this.isDisabled,
+                            id: this.safeId,
+                            name: `hm_sel_${parentUid}`,
+                            type: 'checkbox'
+                        },
+                        domProps: {
+                            value: this.value
+                        },
+                        on: {
+                            change: this.onInputChange
+                        }
+                    }
+                ),
+                h(
+                    'div',
+                    { staticClass: 'hm-selector-el-slot' },
+                    this.$slots.default
+                ),
+                h(
+                    'label',
+                    { attrs: { for: this.safeId } }
+                )
+            ]
         );
     }
 };

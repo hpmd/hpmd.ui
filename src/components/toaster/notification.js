@@ -163,9 +163,10 @@ export default {
     components: {
         HmIcon
     },
-    render() {
+    render(h) {
         const vm = this;
         const isVNode = typeof this.content === 'object';
+
 
         function renderProgressBar() {
             if (!vm.autoClose || !vm.showProgressTimer) return null;
@@ -190,57 +191,77 @@ export default {
             }
 
 
-            return (
-                <div class="hm-ntf-progress-container">
-                    <div class={classes} style={style}></div>
-                </div>
+            return h(
+                'div',
+                { staticClass: 'hm-ntf-progress-container' },
+                [
+                    h(
+                        'div',
+                        {
+                            class: classes,
+                            style
+                        }
+                    )
+                ]
             );
         }
 
         function renderContent() {
             if (isVNode) {
-                return (
-                    <div class="hm-ntf-body">
-                        {vm.content}
-                    </div>
+                return h(
+                    'div',
+                    { staticClass: 'hm-ntf-body' },
+                    vm.content
                 );
             }
 
-            const innerHTML = {
-                domProps: {
-                    innerHTML: vm.content.toString()
+            return h(
+                'div',
+                {
+                    staticClass: 'hm-ntf-body',
+                    domProps: { innerHTML: vm.content.toString() }
                 }
-            };
-
-            return (
-                <div
-                    class="hm-ntf-body"
-                    {...innerHTML}>
-                </div>
             );
         }
 
-        return (
-            <div
-                class={this._classes}
-                role="alertdialog">
-                <div class="hm-ntf-heading d-flex align-items-center">
-                    <div class="hm-ntf-heading-text">
-                        {
-                            (this.headingIconName && (
-                                <HmIcon name={this.headingIconName} />
-                            ))
-                        }
-                        <span>{this.title}</span>
-                    </div>
-                    <button onClick={this.close}>
-                        <HmIcon name="uni-multiply" />
-                    </button>
-                </div>
+        const $headingTextEls = [];
 
-                {renderContent()}
-                {renderProgressBar()}
-            </div>
+        if (this.headingIconName) {
+            $headingTextEls.push(h(HmIcon, { props: { name: this.headingIconName } }));
+        }
+
+        $headingTextEls.push(h('span', this.title));
+
+        const $heading = h(
+            'div',
+            { staticClass: 'hm-ntf-heading d-flex align-items-center' },
+            [
+                h(
+                    'div',
+                    { staticClass: 'hm-ntf-heading-text' },
+                    $headingTextEls
+                ),
+                h(
+                    'button',
+                    { on: { click: this.close } },
+                    [
+                        h(HmIcon, { props: { name: 'uni-multiply' } })
+                    ]
+                )
+            ]
+        );
+
+        return h(
+            'div',
+            {
+                class: this._classes,
+                attrs: { role: 'alertdialog' }
+            },
+            [
+                $heading,
+                renderContent(),
+                renderProgressBar()
+            ]
         );
     }
 };

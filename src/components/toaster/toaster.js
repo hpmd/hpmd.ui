@@ -145,36 +145,45 @@ export default {
     components: {
         HmNotification
     },
-    render() {
+    render(h) {
         const placeKeys = Object.keys(places);
 
-        return (
-            <div class="hm-toaster">
-                {placeKeys.map((placeKey) => {
-                    const className = `hm-toaster-place hm-toaster-place-${placeKey}`;
+        const $places = placeKeys.map((placeKey) => {
+            const className = `hm-toaster-place hm-toaster-place-${placeKey}`;
 
-                    return (
-                        <div
-                            class={className}
-                            id={`hm-toaster-place-${placeKey}`}
-                            onMouseover={this.pauseTimers}
-                            onMouseleave={this.unpauseTimers}>
-                            {Object.keys(places[placeKey]).map((ntfId) => {
-                                const ntf = places[placeKey][ntfId];
+            const $ntfs = Object.keys(places[placeKey])
+                .map((ntfId) => h(
+                    HmNotification,
+                    {
+                        key: ntfId,
+                        props: {
+                            isPaused: this.isPaused,
+                            ...places[placeKey][ntfId]
+                        },
+                        on: { close: this.removeNtf }
+                    }
+                ));
 
-                                return (
-                                    <HmNotification
-                                        isPaused={this.isPaused}
-                                        { ... { props: ntf } }
-                                        key={ntfId}
-                                        onClose={this.removeNtf}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                })}
-            </div>
+            return h(
+                'div',
+                {
+                    class: className,
+                    attrs: {
+                        id: `hm-toaster-place-${placeKey}`
+                    },
+                    on: {
+                        mouseover: this.pauseTimers,
+                        mouseleave: this.unpauseTimers
+                    }
+                },
+                $ntfs
+            );
+        });
+
+        return h(
+            'div',
+            { staticClass: 'hm-toaster' },
+            $places
         );
     }
 };

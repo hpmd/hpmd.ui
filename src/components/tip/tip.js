@@ -92,17 +92,20 @@ export default {
             return c.join(' ');
         }
     },
-    render() {
+    render(h) {
         const { _uid } = this;
         const id = `hm-tip-${_uid}`;
 
-        const tooltipElement = () => (
-            <HmTooltip
-                target={id}
-                variant={this.tooltipVariant}
-                triggers={this.triggers}>
-                {this.$slots.tip || this.tip}
-            </HmTooltip>
+        const $tooltipElement = h(
+            HmTooltip,
+            {
+                props: {
+                    target: id,
+                    triggers: this.triggers,
+                    variant: this.tooltipVariant
+                }
+            },
+            this.$slots.tip || this.tip
         );
 
         const triggerElAttrs = {
@@ -114,24 +117,41 @@ export default {
         };
 
         if (this.inText) {
-            return (
-                <span class={this.containerClass} {...triggerElAttrs}>
-                    {this.$slots.default}
-                    {tooltipElement()}
-                </span>
+            return h(
+                'span',
+                {
+                    ...triggerElAttrs,
+                    class: this.containerClass
+                },
+                [
+                    this.$slots.default,
+                    $tooltipElement
+                ]
             );
         }
 
         const iconClass = `hm-tip-icon text-${this.iconVariant}`;
 
-        return (
-            <div class={this.containerClass}>
-                {this.$slots.default}
-                <span class={iconClass} {...triggerElAttrs}>
-                    <HmIcon name={this.iconName} />
-                </span>
-                {tooltipElement()}
-            </div>
+        return h(
+            'div',
+            { class: this.containerClass },
+            [
+                this.$slots.default,
+                h(
+                    'span',
+                    {
+                        ...triggerElAttrs,
+                        class: iconClass
+                    },
+                    [
+                        h(
+                            HmIcon,
+                            { props: { name: this.iconName } }
+                        )
+                    ]
+                ),
+                $tooltipElement
+            ]
         );
     },
     components: {

@@ -1,4 +1,4 @@
-import { uniUser } from '@/icons/unicons';
+import { uniUser } from '../../icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniUser);

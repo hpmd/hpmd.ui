@@ -73,21 +73,26 @@ export default {
             return null;
         }
     },
-    render() {
+    render(h) {
         if (!this.icon) return null;
 
         const viewBox = `0 0 ${this.icon.width} ${this.icon.height}`;
 
-        return (
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="hm-icon"
-                viewBox={viewBox}
-                width="1"
-                height="1"
-                fill={this.fill}
-                domPropsInnerHTML={this.icon.content}>
-            </svg>
+        return h(
+            'svg',
+            {
+                attrs: {
+                    fill: this.fill,
+                    height: '1',
+                    viewBox,
+                    width: '1',
+                    xmlns: 'http://www.w3.org/2000/svg'
+                },
+                domProps: {
+                    innerHTML: this.icon.content
+                },
+                staticClass: 'hm-icon'
+            }
         );
     }
 };

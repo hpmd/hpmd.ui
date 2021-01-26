@@ -1,5 +1,4 @@
 import {
-    BButton,
     BFormInput
 } from 'bootstrap-vue';
 import { IMaskDirective } from 'vue-imask';
@@ -8,7 +7,8 @@ import {
     uniMultiply,
     uniEye,
     uniEyeSlash
-} from '@/icons/unicons';
+} from '../../icons/unicons';
+import { HmButton } from '../button';
 import { HmIcon } from '../icon';
 
 
@@ -120,6 +120,12 @@ export default {
         }
     },
     methods: {
+        clearModel() {
+            const _bv = this;
+
+            _bv.localValue = '';
+            _bv.vModelValue = '';
+        },
         /**
          * Set focus enabled
          * @todo Watch for possible updates: focus listener could be added
@@ -175,12 +181,15 @@ export default {
         onImaskComplete(e) {
             // Emit original IMask "complete" event up
             this.$emit('complete', e);
+        },
+        togglePasswordShow() {
+            this.passwordShow = !this.passwordShow;
         }
     },
     directives: {
         'i-mask': IMaskDirective
     },
-    render() {
+    render(h) {
         /**
          * Let's refer BFormInput properties with "special" this
          */
@@ -221,80 +230,140 @@ export default {
         const shouldAddPasswordBtn = !!(this.showPasswordBtn && _bv.type === 'password');
         const shouldAddClearBtn = !!(this.showClearBtn && _bv.localValue.length && !_bv.disabled);
 
-
-        return (
-            <div class={this.wrapperClass}>
-                {/* input itself */}
-                <input
-                    id={this.id}
-                    ref="input"
-                    class={ this.computedClass }
-                    value={_bv.localValue}
-                    { ...{
-                        attrs: inputAttrs,
-                        directives: inputDirectives,
-                        on: inputListeners
-                    }} />
-
-                {/* prepend slot */ }
-                <div class="prepend-container">
-                    { shouldAddPrepend && (
-                        <div class="form-control-extra-prepend">
-                            {this.$slots.prepend}
-                        </div>
-                    )}
-
-                    {/* label */}
-                    { !!this.label && (
-                        <div class="label">
-                            <label for={this.id}>{this.label}</label>
-                            <span class="label-bg">{this.label}</span>
-                        </div>
-                    ) }
-                </div>
-
-
-                { /* any of extra controls / append data are presented? */ }
-                { (shouldAddAppend || shouldAddPasswordBtn || shouldAddClearBtn) && (
-                    <div class="form-control-extra">
-                        { /* create append named slot */ }
-                        { shouldAddAppend && (
-                            <div class="form-control-extra-append">
-                                {this.$slots.append}
-                            </div>
-                        ) }
-
-                        { (shouldAddPasswordBtn || shouldAddClearBtn) && (
-                            <div class="form-control-extra-buttons">
-                                { shouldAddClearBtn && (
-                                    <BButton
-                                        class="extra-control"
-                                        size="sm"
-                                        variant="link"
-                                        onClick={() => {
-                                            _bv.localValue = '';
-                                            _bv.vModelValue = '';
-                                        }}>
-                                        <HmIcon name="uni-multiply" />
-                                    </BButton>
-                                ) }
-
-                                { shouldAddPasswordBtn && (
-                                    <BButton
-                                        class="extra-control"
-                                        size="sm"
-                                        variant="link"
-                                        onClick={() => {
-                                            this.passwordShow = !this.passwordShow;
-                                        }}>
-                                        <HmIcon name={this.passwordShow ? 'eye-slash' : 'eye'} />
-                                    </BButton>
-                                ) }
-                            </div>
-                        ) }
-                    </div>
-                ) }
-            </div>
+        const $input = h(
+            'input',
+            {
+                attrs: {
+                    id: this.id,
+                    ...inputAttrs
+                },
+                class: this.computedClass,
+                directives: inputDirectives,
+                domProps: {
+                    value: _bv.value
+                },
+                ref: 'input',
+                on: inputListeners
+            }
         );
+
+        const $inputEls = [$input];
+
+        const $prependChildren = [];
+        const $appendChildren = [];
+
+        if (shouldAddPrepend) {
+            $prependChildren.push(h(
+                'div',
+                {
+                    staticClass: 'form-control-extra-prepend'
+                },
+                this.$slots.prepend
+            ));
+        }
+
+        if (this.label) {
+            $prependChildren.push(h(
+                'div',
+                { staticClass: 'label' },
+                [
+                    h(
+                        'label',
+                        { attrs: { for: this.id } },
+                        this.label
+                    ),
+                    h(
+                        'span',
+                        { staticClass: 'label-bg' },
+                        this.label
+                    )
+                ]
+            ));
+        }
+
+        if ($prependChildren.length) {
+            $inputEls.push(h(
+                'div',
+                { staticClass: 'prepend-container' },
+                $prependChildren
+            ));
+        }
+
+        if (shouldAddAppend) {
+            $appendChildren.push(h(
+                'div',
+                { staticClass: 'form-control-extra-append' },
+                this.$slots.append
+            ));
+        }
+
+        if (shouldAddClearBtn || shouldAddPasswordBtn) {
+            const $extraButtons = [];
+
+            if (shouldAddClearBtn) {
+                $extraButtons.push(h(
+                    HmButton,
+                    {
+                        props: {
+                            size: 'sm',
+                            variant: 'link'
+                        },
+                        staticClass: 'extra-control',
+                        on: {
+                            click: this.clearModel
+                        }
+                    },
+                    [
+                        h(
+                            HmIcon,
+                            { props: { name: 'uni-multiply' } }
+                        )
+                    ]
+                ));
+            }
+
+            if (shouldAddPasswordBtn) {
+                $extraButtons.push(h(
+                    HmButton,
+                    {
+                        props: {
+                            size: 'sm',
+                            variant: 'link'
+                        },
+                        staticClass: 'extra-control',
+                        on: {
+                            click: this.togglePasswordShow
+                        }
+                    },
+                    [
+                        h(
+                            HmIcon,
+                            { props: { name: this.passwordShow ? 'eye-slash' : 'eye' } }
+                        )
+                    ]
+                ));
+            }
+
+            $appendChildren.push(h(
+                'div',
+                { staticClass: 'form-control-extra-buttons' },
+                $extraButtons
+            ));
+        }
+
+        if (!$appendChildren.length) {
+            $inputEls.push($prependChildren);
+        }
+
+
+        return h(
+            'div',
+            { class: this.wrapperClass },
+            $inputEls
+        );
+    },
+    components: {
+        HmButton,
+        HmIcon
     }
 };

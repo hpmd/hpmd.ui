@@ -1,5 +1,5 @@
 import { BCollapse } from 'bootstrap-vue';
-import { uniArrowDown } from '@/icons/unicons';
+import { uniArrowDown } from '../../icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniArrowDown);
@@ -72,6 +72,7 @@ export default {
             [
                 h(
                     'span',
+                    { staticClass: 'hm-collapse-button-icon' },
                     [
                         h(HmIcon, { props: { name: 'uni-arrow-down' } })
                     ]
@@ -85,11 +86,11 @@ export default {
         );
 
         return h(
-            'div', 
+            'div',
             { staticClass: 'hm-collapse' },
             [
                 button,
-                hm(
+                h(
                     BCollapse,
                     { props: { visible: this.value } },
                     this.$slots.default

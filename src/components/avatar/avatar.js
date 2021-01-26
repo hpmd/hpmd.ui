@@ -1,4 +1,4 @@
-import { uniUser } from '@/icons/unicons';
+import { uniUser } from '../../icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniUser);
@@ -58,33 +58,44 @@ export default {
             this.$emit('imageLoadError', e);
         }
     },
-    render() {
+    render(h) {
+        const imageChild = [];
+
         const vm = this;
 
-        function renderImage() {
-            if (vm.src && vm.isImgAvailable) {
-                return (
-                    <img
-                        src={vm.src}
-                        alt="avatar"
-                        onError={vm.handleError} />
-                );
-            }
-
-            return (
-                <div class={vm.placeholderClasses}>
-                    <HmIcon
-                        class="d-flex"
-                        name="uni-user"
-                    />
-                </div>
+        if (vm.src && vm.isImgAvailable) {
+            imageChild.push(
+                h(
+                    'img',
+                    {
+                        attrs: {
+                            alt: 'avatar',
+                            src: vm.src
+                        },
+                        on: {
+                            error: vm.handleError
+                        }
+                    }
+                )
+            );
+        } else {
+            imageChild.push(
+                h('div', { class: vm.placeholderClasses }, [
+                    h(
+                        HmIcon,
+                        {
+                            class: 'd-flex',
+                            props: { name: 'uni-user' }
+                        }
+                    )
+                ])
             );
         }
 
-        return (
-            <div class={vm.wrapperClasses}>
-                {renderImage()}
-            </div>
+        return h(
+            'div',
+            { class: vm.wrapperClasses },
+            imageChild
         );
     }
 };

@@ -1,5 +1,5 @@
 import { BCollapse } from 'bootstrap-vue';
-import { uniArrowDown } from '@/icons/unicons';
+import { uniArrowDown } from '../../icons/unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniArrowDown);
@@ -56,21 +56,46 @@ export default {
             this.value = !this.value;
         }
     },
-    render() {
-        return (
-            <div class="hm-collapse">
-                <div
-                    class={this.buttonClasses}
-                    onClick={this.toggle}>
-                    <span class="hm-collapse-button-icon">
-                        <HmIcon name="uni-arrow-down" />
-                    </span>
-                    <span class="hm-collapse-button-text">{this.buttonText}</span>
-                </div>
-                <BCollapse visible={this.value}>
-                    {this.$slots.default}
-                </BCollapse>
-            </div>
+    render(h) {
+        const button = h(
+            'div',
+            {
+                class: this.buttonClasses,
+                attrs: {
+                    'aria-role': 'button',
+                    tabindex: '-1',
+                },
+                on: {
+                    click: this.toggle
+                }
+            },
+            [
+                h(
+                    'span',
+                    { staticClass: 'hm-collapse-button-icon' },
+                    [
+                        h(HmIcon, { props: { name: 'uni-arrow-down' } })
+                    ]
+                ),
+                h(
+                    'span',
+                    { staticClass: 'hm-collapse-button-text' },
+                    this.buttonText
+                )
+            ]
+        );
+
+        return h(
+            'div',
+            { staticClass: 'hm-collapse' },
+            [
+                button,
+                h(
+                    BCollapse,
+                    { props: { visible: this.value } },
+                    this.$slots.default
+                )
+            ]
         );
     },
     components: {

@@ -24,16 +24,16 @@ export default {
             default: 'flex-column'
         }
     },
-    render() {
-        const classes = [
-            'hm-selector',
-            `hm-selector-${this.layout}`
-        ];
-
-        return (
-            <div class={classes}>
-                { this.$slots.default }
-            </div>
+    computed: {
+        classes() {
+            return `hm-selector hm-selector-${this.layout}`;
+        }
+    },
+    render(h) {
+        return h(
+            'div',
+            { class: this.classes },
+            this.$slots.default
         );
     }
 };

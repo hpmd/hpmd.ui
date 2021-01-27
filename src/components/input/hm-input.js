@@ -121,10 +121,7 @@ export default {
     },
     methods: {
         clearModel() {
-            const _bv = this;
-
-            _bv.localValue = '';
-            _bv.vModelValue = '';
+            this.hijackOriginalOnInput('');
         },
         /**
          * Set focus enabled
@@ -338,7 +335,7 @@ export default {
                     [
                         h(
                             HmIcon,
-                            { props: { name: this.passwordShow ? 'eye-slash' : 'eye' } }
+                            { props: { name: this.passwordShow ? 'uni-eye-slash' : 'uni-eye' } }
                         )
                     ]
                 ));
@@ -351,8 +348,12 @@ export default {
             ));
         }
 
-        if (!$appendChildren.length) {
-            $inputEls.push($prependChildren);
+        if ($appendChildren.length) {
+            $inputEls.push(h(
+                'div',
+                { staticClass: 'form-control-extra' },
+                $appendChildren
+            ));
         }
 
 

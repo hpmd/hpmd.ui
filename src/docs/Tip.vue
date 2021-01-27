@@ -42,7 +42,7 @@ const example = `<h4>Подсказка в тексте</h4>
         class="mt-5"
         tooltip-variant="danger"
         icon-position="center"
-        icon-name="exclamation-triangle"
+        icon-name="uni-exclamation-triangle"
         icon-variant="danger">
         <input type="text" class="form-control" placeholder="Скидка" value="Some invalid text">
         <template v-slot:tip>
@@ -109,7 +109,7 @@ export default {
                 class="mt-5"
                 tooltip-variant="danger"
                 icon-position="center"
-                icon-name="exclamation-triangle"
+                icon-name="uni-exclamation-triangle"
                 icon-variant="danger">
                 <input type="text" class="form-control" placeholder="Скидка" value="Some invalid text">
                 <template v-slot:tip>

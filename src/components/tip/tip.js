@@ -69,7 +69,7 @@ export default {
          */
         iconName: {
             type: String,
-            default: 'info-circle'
+            default: 'uni-info-circle'
         },
         /**
          * Bootstrap .text-{variant} to color icon

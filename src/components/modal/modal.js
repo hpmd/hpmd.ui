@@ -16,7 +16,7 @@ export default {
     beforeUpdate() {
         if (!this.$slots['modal-header-close']) {
             this.$slots['modal-header-close'] = [
-                h(HmIcon, { props: { name: 'uni-times' } })
+                this.$createElement(HmIcon, { props: { name: 'uni-times' } })
             ];
         }
     },

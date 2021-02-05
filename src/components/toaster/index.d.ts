@@ -16,7 +16,7 @@ export interface HmfToasterMessage {
 
 // Component: hm-toaster
 export declare class HmToaster extends BvComponent {
-    add: (message: HmfToasterMessage) => void
+    static add: (message: HmfToasterMessage) => void
 }
 
 // Component: hm-notification

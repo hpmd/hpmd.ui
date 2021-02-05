@@ -14,7 +14,7 @@ import { HmButton } from '../button';
 import { HmCalendar } from '../calendar';
 import { HmIcon } from '../icon';
 import { HmInput } from '../input';
-import { uniCalendar } from '../../icons/unicons';
+import { uniCalendar } from '../../unicons';
 
 HmIcon.add(uniCalendar);
 

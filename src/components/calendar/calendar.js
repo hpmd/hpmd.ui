@@ -12,7 +12,7 @@ import {
     BIconChevronDoubleLeft
 } from 'bootstrap-vue/src/icons/icons';
 import { HmIcon } from '../icon';
-import { uniCalendarAlt } from '../../icons/unicons';
+import { uniCalendarAlt } from '../../unicons';
 
 HmIcon.add(uniCalendarAlt);
 

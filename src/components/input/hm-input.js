@@ -7,7 +7,7 @@ import {
     uniMultiply,
     uniEye,
     uniEyeSlash
-} from '../../icons/unicons';
+} from '../../unicons';
 import { HmButton } from '../button';
 import { HmIcon } from '../icon';
 

@@ -27,7 +27,7 @@ export interface BvEvent {
 }
 
 // Components & Plugins
-export * from './components'
+export * from './src/components'
 
 // Main plugin
 export interface HpmdUIPlugin extends BvPlugin {

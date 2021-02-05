@@ -1,7 +1,7 @@
 <script>
 // eslint-disable-next-line import/no-extraneous-dependencies
 import debounce from 'lodash.debounce';
-import { uniPhone } from '@/icons/unicons';
+import { uniPhone } from '@/unicons';
 import { HmIcon } from '../components/icon';
 
 HmIcon.add(uniPhone);

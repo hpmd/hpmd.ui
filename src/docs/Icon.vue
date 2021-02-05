@@ -1,5 +1,5 @@
 <script>
-import * as unicons from '@/icons/unicons';
+import * as unicons from '@/unicons';
 import { HmIcon } from '../components/icon';
 import variantMixin from './variantMixin';
 

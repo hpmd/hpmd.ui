@@ -1,5 +1,5 @@
 import { BCollapse } from 'bootstrap-vue';
-import { uniArrowDown } from '../../icons/unicons';
+import { uniArrowDown } from '../../unicons';
 import { HmIcon } from '../icon';
 
 HmIcon.add(uniArrowDown);

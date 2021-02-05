@@ -6,7 +6,7 @@ import {
     uniFilePlusAlt,
     uniTrashAlt,
     uniEllipsisV
-} from '@/icons/unicons';
+} from '@/unicons';
 
 import { HmIcon } from '@/components/icon';
 

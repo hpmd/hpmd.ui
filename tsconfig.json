@@ -1,5 +1,5 @@
 {
-    "include": ["./src/icons/unicons.js"],
+    "include": ["./src/unicons/*.js"],
     "compilerOptions": {
         "allowJs": true,
         "checkJs": true,

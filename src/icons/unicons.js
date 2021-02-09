@@ -1,28 +1,30 @@
 /**
  * Class representing a svg icon in HmIcon component
+ * @class
  */
 export class HmfIconEl {
     /**
      * Creates icons, mostly needed to auto-generate typescript definitions
+     * @constructor
      * @param {object}  props
-     * @prop {string}   props.name        Icon name to use in component: <HmIcon name="uni-my-icon" />. Must be unique
-     * @prop {string}   props.content     XML-string of svg inner content
-     * @prop {number}   props.height      Height of icon in pixels as number (i.e. 420)
-     * @prop {number}   props.width       Width of icon in pixels as number (i.e. 420)
-     * @prop {string?}  props.iconset     Keyword for icons set, reserved
+     * @param {String}   props.name        Icon name to use in component: <HmIcon name="uni-my-icon" />. Must be unique
+     * @param {String}   props.content     XML-string of svg inner content
+     * @param {Number}   props.height      Height of icon in pixels as number (i.e. 420)
+     * @param {Number}   props.width       Width of icon in pixels as number (i.e. 420)
+     * @param {String=}  props.iconset=""   Keyword for icons set, reserved
      */
-    constructor(props = {
+    constructor({
         name = '',
         content = '',
         height = 24,
         width = 24,
         iconset = ''
     }) {
-        this.name = props.name;
-        this.content = props.content;
-        this.height = props.height;
-        this.width = props.width;
-        this.iconset = props.iconset;
+        this.name = name;
+        this.content = content;
+        this.height = height;
+        this.width = width;
+        this.iconset = iconset;
     }
 }
 

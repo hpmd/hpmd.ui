@@ -1,0 +1,9 @@
+{
+    "include": ["./src/icons/unicons.js"],
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "declaration": true,
+        "emitDeclarationOnly": true
+    }
+}

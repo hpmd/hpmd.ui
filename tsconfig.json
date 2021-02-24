@@ -1,8 +1,13 @@
 {
-    "include": ["./src/unicons/*.js"],
+    "include": [
+        "node_modules/vue-tsx-support/enable-check.d.ts",
+        "./src/unicons/*.js"
+    ],
     "compilerOptions": {
         "allowJs": true,
         "checkJs": true,
+        "jsx": "preserve",
+        "jsxFactory": "VueTsxSupport",
         "declaration": true,
         "emitDeclarationOnly": true
     }

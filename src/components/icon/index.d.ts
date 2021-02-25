@@ -17,7 +17,17 @@ export declare interface HmIconEl {
     iconset?: string;
 }
 
+type addFn = (...icons: HmIconEl[]) => void;
+
 // Component: hm-icon
 export declare class HmIcon extends BvComponent {
-    static add: (...icons: HmIconEl[]) => void;
+    static add: addFn;
+}
+
+declare module 'vue/types/vue' {
+    interface Vue {
+        readonly $hmIcon: {
+            add: addFn;
+        }
+    }
 }

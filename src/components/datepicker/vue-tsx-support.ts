@@ -2,12 +2,14 @@ import * as tsx from 'vue-tsx-support';
 import { PopperOptions } from 'popper.js';
 import { CalendarProps, CalendarScopedSlots } from '../calendar/vue-tsx-support';
 import { HmDatepicker as HmDatepickerOriginal } from '.';
+import { BcCalendarCtxObject } from '../calendar';
+import { ElementBoundary, VueCssClass } from '../../types/tsx-common';
 
 
 type DatepickerProps = {
     // bootstrap-vue
     ariaControls?: string;
-    boundary?: 'scrollParent' | 'window' | 'viewport' | HTMLElement;
+    boundary?: ElementBoundary;
     buttonOnly?: boolean;
     buttonVariant?: string;
     calendarWidth?: CalendarProps['width'];
@@ -43,7 +45,7 @@ type DatepickerProps = {
     labelTodatButton?: string;
     locale?: CalendarProps['locale'];
     max?: CalendarProps['max'];
-    menuClass?: string | string[] | object | object[];
+    menuClass?: VueCssClass;
     min?: CalendarProps['min'];
     name?: string;
     navButtonVariant?: string;
@@ -72,7 +74,15 @@ type DatepickerProps = {
     weekdayHeaderFormat?: CalendarProps['weekdayHeaderFormat'];
 }
 
-interface DatepickerScopedSlots extends CalendarScopedSlots {
+type DatepickerEvents = {
+    onContext: BcCalendarCtxObject;
+    onHidden: void;
+    onInput: string | Date;
+    onShown: void;
+}
+
+
+type DatepickerBtnScopedSlot = {
     'button-content': {
         isHovered: boolean;
         hasFocus: boolean;
@@ -81,4 +91,6 @@ interface DatepickerScopedSlots extends CalendarScopedSlots {
     }
 }
 
+type DatepickerScopedSlots = CalendarScopedSlots & DatepickerBtnScopedSlot;
 
+export const HmDatepicker = tsx.ofType<DatepickerProps, DatepickerEvents, DatepickerScopedSlots>().convert(HmDatepickerOriginal);

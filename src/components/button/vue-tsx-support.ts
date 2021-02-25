@@ -1,5 +1,5 @@
 import * as tsx from 'vue-tsx-support';
-import { Location } from 'vue-router';
+import { RawLocation } from 'vue-router';
 import {
     HmButton as HmButtonOriginal,
     HmButtonClose as HmButtonCloseOriginal
@@ -24,14 +24,14 @@ type ButtonProps = {
     size?: string;
     squared?: boolean;
     tag?: string;
-    target?: string;
-    to: Location | string;
-    type?: string;
+    target?: HTMLAnchorElement['target'];
+    to: RawLocation;
+    type?: HTMLButtonElement['type'];
     variant?: string;
 };
 
 type ButtonEvents = {
-    onClick?: Event;
+    onClick?: MouseEvent;
 }
 
 const HmBtn = tsx.ofType<ButtonProps, ButtonEvents>().convert(HmButtonOriginal);

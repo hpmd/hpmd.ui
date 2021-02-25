@@ -7,6 +7,6 @@ import { BvPlugin, BvComponent } from 'bootstrap-vue/src'
 export declare const InputPlugin: BvPlugin
 
 // Component: hm-input
-export declare class HmFormInput extends BvComponent {
+export declare class HmInput extends BvComponent {
     focus: () => void
 }

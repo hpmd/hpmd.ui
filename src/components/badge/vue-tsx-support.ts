@@ -1,3 +1,4 @@
+import { RawLocation } from 'vue-router';
 import * as tsx from 'vue-tsx-support';
 import { HmBadge as HmBadgeOriginal } from '.';
 
@@ -17,7 +18,7 @@ type HmBadgeProps = {
     routerComponentName?: string;
     tag?: string;
     target?: string;
-    to?: Location | string;
+    to?: RawLocation;
     variant?: string;
 }
 

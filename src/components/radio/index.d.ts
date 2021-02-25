@@ -7,7 +7,7 @@ import { BvPlugin, BvComponent } from 'bootstrap-vue/src'
 export declare const RadioPlugin: BvPlugin
 
 // Component: hm-radio
-export declare class HmFormRadio extends BvComponent { }
+export declare class HmRadio extends BvComponent { }
 
 // Component: hm-radio-group
-export declare class HmFormRadioGroup extends BvComponent { }
+export declare class HmRadioGroup extends BvComponent { }

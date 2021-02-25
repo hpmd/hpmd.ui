@@ -1,4 +1,5 @@
-import Vue, { Component, PluginFunction, PluginObject } from 'vue'
+import Vue, { Component, PluginFunction, PluginObject } from 'vue';
+import { BvConfigOptions } from 'bootstrap-vue';
 
 // Plugin definition
 export interface BvPlugin extends PluginObject<BvConfigOptions> {

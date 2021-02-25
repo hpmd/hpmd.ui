@@ -1,5 +1,5 @@
 <script>
-const example = `<hm-form-spinbutton
+const example = `<hm-spinbutton
     :disabled="isDisabled"
     :inline="isInline"
     v-model="spinButtonModel"
@@ -38,7 +38,7 @@ export default {
             <hm-checkbox v-model="isDisabled">Is Disabled</hm-checkbox>
         </div>
 
-        <hm-form-spinbutton
+        <hm-spin-button
             :disabled="isDisabled"
             :inline="isInline"
             v-model="spinButtonModel"

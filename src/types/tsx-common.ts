@@ -52,6 +52,11 @@ export type TipPlacement = 'top' |
     'bottomright' |
     'righttop' |
     'rightbottom';
+export type TipTarget = string |
+    HTMLElement |
+    SVGElement |
+    object |
+    (() => HTMLElement | SVGElement);
 export type TipTrigger = 'click' | 'focus' | 'hover' | 'blur' | 'manual';
 export type VueCssClassObject = { [key: string]: boolean };
 export type VueCssClass = string | VueCssClassObject | Array<string | VueCssClassObject>;

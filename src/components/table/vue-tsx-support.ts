@@ -19,7 +19,8 @@ import {
     BvTableSortCompareCallback,
     BvTableLocaleCompareOptions,
     BvTableSortDirection,
-    BvTableField
+    BvTableField,
+    BvTableCtxObject
 } from '.';
 import { VueCssClass } from '../../types/tsx-common';
 
@@ -116,8 +117,180 @@ type TableLiteCellSlotScope = {
     value: any;
 }
 
-type TableLiteScopedSlots = {
-    'cell()': TableLiteCellSlotScope;
-
-    // cell({key}): https://medium.com/shyftplan-techblog/typescript-advanced-types-199ff1f3e3e8
+type TableSelectRowScopes = {
+    rowSelected: boolean;
+    selectRow: () => void;
+    unselectRow: () => void;
 }
+
+type TableCellSlotScope = TableSelectRowScopes & TableLiteCellSlotScope;
+
+type TableLiteCustomFootSlotScope = {
+    columns: number;
+    fields: TableField[];
+    items: any[];
+}
+
+type TableLiteFootSlotScope = {
+    column: TableField['key'];
+    field: TableField;
+    label: TableField['label'];
+}
+
+type TableClearSelectRowsScopes = {
+    clearSelected: () => void;
+    selectAllRows: () => void;
+}
+
+type TableFootSlotScope = TableLiteFootSlotScope & TableClearSelectRowsScopes;
+
+type TableLiteHeadSlotScope = { isFoot: boolean; } & TableLiteFootSlotScope;
+
+type TableHeadSlotScope = TableLiteHeadSlotScope & TableClearSelectRowsScopes;
+
+type TableLiteRowDetailsSlotScope = {
+    fields: TableField[];
+    index: number;
+    item: object;
+    toggleDetails: () => void;
+}
+
+type TableRowDetailsSlotScope = TableSelectRowScopes & TableLiteRowDetailsSlotScope;
+
+type TableLiteColgroupSlotScope = {
+    columns: number;
+    fields: TableField[];
+}
+
+type TableLiteTheadSlotScope = TableLiteColgroupSlotScope & TableClearSelectRowsScopes;
+
+type TableEmptySlotScope = {
+    emptyFilteredHtml: string;
+    emptyFilteredText: string;
+    emptyHtml: string;
+    emptyText: string;
+    fields: TableField[];
+    items: any[];
+}
+
+type TableLiteScopedSlots = {
+    'cell()'?: TableLiteCellSlotScope;
+    'custom-foot'?: TableLiteCustomFootSlotScope;
+    'foot()'?: TableLiteFootSlotScope;
+    'head()'?: TableLiteHeadSlotScope;
+    'row-details'?: TableLiteRowDetailsSlotScope;
+    'table-colgroup'?: TableLiteColgroupSlotScope;
+    'thead-top'?: TableLiteTheadSlotScope;
+
+    [key: string]:
+        TableLiteCellSlotScope |
+        TableLiteCustomFootSlotScope |
+        TableLiteFootSlotScope |
+        TableLiteHeadSlotScope |
+        TableLiteRowDetailsSlotScope |
+        TableLiteColgroupSlotScope |
+        TableLiteTheadSlotScope;
+}
+
+type TableScopedSlots = {
+    'bottom-row'?: TableLiteColgroupSlotScope;
+    'cell()'?: TableCellSlotScope;
+    'custom-foot'?: TableLiteCustomFootSlotScope;
+    'empty'?: TableEmptySlotScope;
+    'empty-filtered'?: TableEmptySlotScope;
+    'foot()'?: TableFootSlotScope;
+    'head()'?: TableHeadSlotScope;
+    'row-details'?: TableRowDetailsSlotScope;
+    'table-colgroup'?: TableLiteColgroupSlotScope;
+    'thead-top'?: TableLiteTheadSlotScope;
+    'top-row'?: TableLiteColgroupSlotScope;
+
+    [key: string]:
+        TableCellSlotScope |
+        TableLiteColgroupSlotScope |
+        TableLiteCustomFootSlotScope |
+        TableEmptySlotScope |
+        TableFootSlotScope |
+        TableHeadSlotScope |
+        TableRowDetailsSlotScope |
+        TableLiteTheadSlotScope;
+}
+
+type TableRowClickedEvent = {
+    item: any;
+    index: number;
+    event: CustomEvent | UIEvent | Event;
+}
+
+type TableLiteEvents = {
+    onHeadClicked?: {
+        key: TableField['key'];
+        field: TableField;
+        event: CustomEvent | UIEvent | Event;
+        isFooter: boolean;
+    }
+
+    onRowClicked?: TableRowClickedEvent;
+    onRowContextmenu?: TableRowClickedEvent;
+    onRowDblclicked?: TableRowClickedEvent;
+    onRowHovered?: TableRowClickedEvent;
+    onRowMiddleClicked?: TableRowClickedEvent;
+    onRowUnhovered?: TableRowClickedEvent;
+}
+
+type TableEvents = {
+    onContextChanged?: BvTableCtxObject;
+    onFiltered?: any[];
+    onRefreshed?: void;
+    onRowSelected?: any[];
+    onSortChanged?: BvTableCtxObject;
+} & TableLiteEvents;
+
+export const HmTable = tsx.ofType<TableProps, TableEvents, TableScopedSlots>().convert(HmTableOriginal);
+
+export const HmTableLite = tsx.ofType<TableLiteProps, TableLiteEvents, TableLiteScopedSlots>().convert(HmTableLiteOriginal);
+
+export const HmTableSimple = tsx.ofType<TableSimpleProps>().convert(HmTableSimpleOriginal);
+
+
+
+type TbodyProps = {
+    tbodyTransitionHandlers?: BvTableTbodyTransitionHandlers;
+    tbodyTransitionProps?: BvTableTbodyTransitionProps;
+}
+
+export const HmTbody = tsx.ofType<TbodyProps>().convert(HmTbodyOriginal);
+
+
+type TheadProps = {
+    headVariant?: string;
+}
+
+export const HmThead = tsx.ofType<TheadProps>().convert(HmTheadOriginal);
+
+
+type TfootProps = {
+    footVariant?: string;
+}
+
+export const HmTfood = tsx.ofType<TfootProps>().convert(HmTfootOriginal);
+
+
+type TrProps = {
+    variant?: string;
+}
+
+export const HmTr = tsx.ofType<TrProps>().convert(HmTrOriginal);
+
+
+type CellProps = {
+    colspan?: number | string | null;
+    rowspan?: number | string | null;
+    stackedHeading?: string;
+    stickyColumn?: boolean;
+    variant?: string;
+}
+
+export const HmTd = tsx.ofType<CellProps>().convert(HmTdOriginal);
+
+export const HmTh = tsx.ofType<CellProps>().convert(HmThOriginal);

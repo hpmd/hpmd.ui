@@ -1,5 +1,5 @@
 <script>
-import * as unicons from '@/unicons';
+import * as unicons from '../unicons';
 import { HmIcon } from '../components/icon';
 import variantMixin from './variantMixin';
 
@@ -24,7 +24,7 @@ const example = `<div
     </component>
 </div>`;
 
-const addIconsComponent = `import { icon1, icon2 } from 'hpmd.ui/src/icons/unicons';
+const addIconsComponent = `import { icon1, icon2 } from 'hpmd.ui/src/unicons';
 import { HmIcon } from 'hpmd.ui';
 
 HmIcon.add(icon1, icon2);
@@ -35,7 +35,7 @@ HmIcon.add(icon1, icon2);
 <hm-icon name="uni-icon-name-2" />
 `;
 
-const addIconsGlobal = `import { icon1, icon2 } from 'hpmd.ui/src/icons/unicons';
+const addIconsGlobal = `import { icon1, icon2 } from 'hpmd.ui/src/unicons';
 
 // component
 export default {
@@ -50,7 +50,7 @@ export default {
 `;
 
 const iconGlobalFile = `// icons.js
-import * as unicons from 'hpmd.ui/src/icons/unicons';
+import * as unicons from 'hpmd.ui/src/unicons';
 import { HmIcon } from 'hpmd.ui';
 
 Object.keys(unicons).forEach(key => HmIcon.add(unicons[key]));
@@ -152,7 +152,7 @@ export default {
             <div
                 class="icon-example"
                 v-for="icon in iconsFiltered"
-                :key="icon.style + icon.name"
+                :key="icon.iconset + icon.name"
                 :title="icon.name">
                 <hm-icon :name="icon.name" />
             </div>

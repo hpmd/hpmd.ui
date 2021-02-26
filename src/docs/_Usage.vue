@@ -44,8 +44,50 @@ const codeCustomizeBootstrap2 = `// your-global-styles.scss
 @import 'path/to/your-variables.scss';
 @import '~hpmd.ui/src/scss/all.scss';
 
-// You can optionally add your overrides and custom styles here
-`;
+// You can optionally add your overrides and custom styles here`;
+
+const connectTsxComponents = `// MyComponent.vue
+\u003cscript lang="tsx"\u003e
+import { Component, Vue } from 'vue-property-decorator';
+import {
+    HmButton,
+    HmAlert
+} from 'hpmd.ui/tsx-ready';
+
+@Component({
+    components: {
+        HmButton,
+        HmAlert
+    }
+})
+export default class MyComponent extends Vue {
+    showAlert = false;
+    buttonVariant = 'secondary';
+
+    clickHandler(btnText: string): void {
+        alert('1')
+    }
+
+    render(): VNode {
+        return (
+            <div>
+                <HmAlert
+                    fade="true" // ERROR, 'fade' type is boolean
+                    show={this.showAlert} // OK, property type is boolean
+                    variant="secondary"> // OK, property type is string
+                    Some text
+                </HmAlert>
+
+                <HmButton
+                    variant={this.buttonVariant} // OK, property type is string
+                    onClick={this.clickHandler}> // ERROR: HmButton click emits Event object, not string
+                    Button text
+                </HmButton>
+            </div>
+        )
+    }
+}
+\u003c/script\u003e`;
 
 export default {
     codeAddAllGlobal,
@@ -53,6 +95,7 @@ export default {
     codeAddSingleLocal,
     codeCustomizeBootstrap,
     codeCustomizeBootstrap2,
+    connectTsxComponents,
 
     data() {
         return {
@@ -101,6 +144,38 @@ export default {
         <div class="code-block">
             <pre v-highlightjs="$options.codeAddSingleLocal"><code class="javascript"></code></pre>
         </div>
+
+        <hr>
+
+        <h3 class="mt-8">Поддержка Typescript</h3>
+        <h4>В обычных шаблонах и нативной render-функции</h4>
+        <p>При использовании компонентов внутри тега <code>template</code> single-file компонента весь процесс подключения идентичен описанному выше</p>
+
+        <h4>В render-функции TSX (общие настройки)</h4>
+        <p>
+            Для использования TSX в рендер-функции файл компонента должен быть либо в формате <code>.tsx</code>
+            (подходит, если не надо описывать стили в теге style), или, аттрибут <code>lang</code> тега <code>script</code>
+            должен иметь значение <code>tsx</code>.
+        </p>
+
+        <h5>Проверка типов компонентов в шаблонах</h5>
+        <p>
+            В UI-ките реализована поддержка плагина <a href="https://github.com/wonderful-panda/vue-tsx-support">vue-tsx-support</a> &mdash;
+            с его помощью можно типизировать свойства, слоты и данные событий компонентов с проверкой внутри TSX-шаблона.
+        </p>
+        <h5>Подключение и использование</h5>
+        <p>
+            При использовании компонентов с поддержкой <code>vue-tsx-support</code> нет смысла
+            подключать их глобально: все равно придется явно импортировать компонент (или, возможно,
+            я просто не нашел способа описать это в declaration-файле). Поэтому все "аугментированные" компоненты вынесены
+            в отдельный файл в корне библиотеке &mdash; `hpmd.ui/tsx-ready.ts`
+        </p>
+        <div class="code-block">
+            <pre v-highlightjs="$options.connectTsxComponents"><code class="typescript"></code></pre>
+        </div>
+
+
+        <hr>
 
         <h3 class="mt-8">Настройка SCSS</h3>
         <p>Поскольку библиотека собрана на основе Bootstrap, в ней так же есть возможность кастомизации стилей.</p>

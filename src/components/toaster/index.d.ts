@@ -14,12 +14,20 @@ export interface HmfToasterMessage {
     variant?: string;
 }
 
+type addFn = (message: HmfToasterMessage) => void;
+
 // Component: hm-toaster
 export declare class HmToaster extends BvComponent {
-    static add: (message: HmfToasterMessage) => void
+    static add: addFn
 }
 
 // Component: hm-notification
 export declare class HmNotification extends BvComponent { }
 
-
+declare module 'vue/types/vue' {
+    interface Vue {
+        $hmToaster: {
+            add: addFn
+        }
+    }
+}

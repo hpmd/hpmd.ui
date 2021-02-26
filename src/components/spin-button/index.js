@@ -1,9 +1,9 @@
-import { BFormSpinbutton as HmFormSpinbutton } from 'bootstrap-vue';
+import { BFormSpinbutton as HmSpinButton } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 
 const SpinButtonPlugin = pluginFactory({
     components: {
-        HmFormSpinbutton
+        HmSpinButton
     }
 });
 
@@ -12,5 +12,5 @@ const SpinButtonPlugin = pluginFactory({
  */
 export {
     SpinButtonPlugin,
-    HmFormSpinbutton
+    HmSpinButton
 };

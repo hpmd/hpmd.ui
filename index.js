@@ -160,7 +160,7 @@ export {
 
 export {
     SpinButtonPlugin,
-    HmFormSpinbutton
+    HmSpinButton
 } from './src/components/spin-button';
 
 export {

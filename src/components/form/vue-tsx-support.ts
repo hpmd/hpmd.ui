@@ -79,7 +79,7 @@ type FormGroupScopedSlots = {
     }
 }
 
-export const HmFormGroup = tsx.ofType<FormGroupProps, undefined, FormGroupScopedSlots>().convert(HmFormGroupOriginal);
+export const HmFormGroup = tsx.ofType<FormGroupProps, {}, FormGroupScopedSlots>().convert(HmFormGroupOriginal);
 
 
 type FormFeedbackProps = {

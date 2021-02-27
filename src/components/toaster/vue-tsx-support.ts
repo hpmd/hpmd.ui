@@ -28,7 +28,7 @@ type NotificationProps = {
 }
 
 type NotificationEvents = {
-    onClose?: { id: number, placement: ToasterProps['defaultPlacement'] }
+    onClose: { id: number, placement: ToasterProps['defaultPlacement'] }
 }
 
 export const HmNotification = tsx.ofType<NotificationProps, NotificationEvents>().convert(HmNotificationOriginal);

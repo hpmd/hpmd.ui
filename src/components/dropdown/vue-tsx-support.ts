@@ -46,12 +46,12 @@ type DropdownProps = {
 type DropdownEvents = {
     // bv::dropdown::hide
     // bv::dropdown::show
-    onClick?: Event;
-    onHidden?: void;
-    onHide?: BvEvent;
-    onShow?: BvEvent;
-    onShown?: void;
-    onToggle?: void; // rly? todo
+    onClick: Event;
+    onHidden: void;
+    onHide: BvEvent;
+    onShow: BvEvent;
+    onShown: void;
+    onToggle: void; // rly? todo
 }
 
 type DropdownScopedSlots = {
@@ -83,7 +83,7 @@ type HmDropdownItemProps = {
 }
 
 type HmDropdownItemEvents = {
-    onClick?: MouseEvent;
+    onClick: MouseEvent;
 }
 
 export const HmDropdownItem = tsx.ofType<HmDropdownItemProps, HmDropdownItemEvents>().convert(HmDropdownItemOriginal);

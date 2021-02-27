@@ -19,7 +19,7 @@ type FormProps = {
 }
 
 type FormEvents = {
-    onSubmit?: SubmitEvent;
+    onSubmit: SubmitEvent;
 }
 
 export const HmForm = tsx.ofType<FormProps, FormEvents>().convert(HmFormOriginal);

@@ -26,8 +26,8 @@ type FileInputProps = {
 }
 
 type FileInputEvents = {
-    onChange?: Event;
-    onInput?: File | File[]; // null?
+    onChange: Event;
+    onInput: File | File[]; // null?
 }
 
 type FileInputScopedSlots = {

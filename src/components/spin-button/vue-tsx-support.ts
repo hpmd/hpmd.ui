@@ -30,8 +30,8 @@ type SpinButtonProps = {
 }
 
 type SpinButtonEvents = {
-    onChange?: SpinButtonProps['value'];
-    onInput?: SpinButtonProps['value'];
+    onChange: SpinButtonProps['value'];
+    onInput: SpinButtonProps['value'];
 }
 
 type SpinButtonScopedSlots = {

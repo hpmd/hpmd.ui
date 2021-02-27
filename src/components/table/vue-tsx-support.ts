@@ -174,13 +174,13 @@ type TableEmptySlotScope = {
 }
 
 type TableLiteScopedSlots = {
-    'cell()'?: TableLiteCellSlotScope;
-    'custom-foot'?: TableLiteCustomFootSlotScope;
-    'foot()'?: TableLiteFootSlotScope;
-    'head()'?: TableLiteHeadSlotScope;
-    'row-details'?: TableLiteRowDetailsSlotScope;
-    'table-colgroup'?: TableLiteColgroupSlotScope;
-    'thead-top'?: TableLiteTheadSlotScope;
+    'cell()': TableLiteCellSlotScope;
+    'custom-foot': TableLiteCustomFootSlotScope;
+    'foot()': TableLiteFootSlotScope;
+    'head()': TableLiteHeadSlotScope;
+    'row-details': TableLiteRowDetailsSlotScope;
+    'table-colgroup': TableLiteColgroupSlotScope;
+    'thead-top': TableLiteTheadSlotScope;
 
     [key: string]:
         TableLiteCellSlotScope |
@@ -193,17 +193,17 @@ type TableLiteScopedSlots = {
 }
 
 type TableScopedSlots = {
-    'bottom-row'?: TableLiteColgroupSlotScope;
-    'cell()'?: TableCellSlotScope;
-    'custom-foot'?: TableLiteCustomFootSlotScope;
-    'empty'?: TableEmptySlotScope;
-    'empty-filtered'?: TableEmptySlotScope;
-    'foot()'?: TableFootSlotScope;
-    'head()'?: TableHeadSlotScope;
-    'row-details'?: TableRowDetailsSlotScope;
-    'table-colgroup'?: TableLiteColgroupSlotScope;
-    'thead-top'?: TableLiteTheadSlotScope;
-    'top-row'?: TableLiteColgroupSlotScope;
+    'bottom-row': TableLiteColgroupSlotScope;
+    'cell()': TableCellSlotScope;
+    'custom-foot': TableLiteCustomFootSlotScope;
+    'empty': TableEmptySlotScope;
+    'empty-filtered': TableEmptySlotScope;
+    'foot()': TableFootSlotScope;
+    'head()': TableHeadSlotScope;
+    'row-details': TableRowDetailsSlotScope;
+    'table-colgroup': TableLiteColgroupSlotScope;
+    'thead-top': TableLiteTheadSlotScope;
+    'top-row': TableLiteColgroupSlotScope;
 
     [key: string]:
         TableCellSlotScope |
@@ -223,27 +223,27 @@ type TableRowClickedEvent = {
 }
 
 type TableLiteEvents = {
-    onHeadClicked?: {
+    onHeadClicked: {
         key: TableField['key'];
         field: TableField;
         event: CustomEvent | UIEvent | Event;
         isFooter: boolean;
     }
 
-    onRowClicked?: TableRowClickedEvent;
-    onRowContextmenu?: TableRowClickedEvent;
-    onRowDblclicked?: TableRowClickedEvent;
-    onRowHovered?: TableRowClickedEvent;
-    onRowMiddleClicked?: TableRowClickedEvent;
-    onRowUnhovered?: TableRowClickedEvent;
+    onRowClicked: TableRowClickedEvent;
+    onRowContextmenu: TableRowClickedEvent;
+    onRowDblclicked: TableRowClickedEvent;
+    onRowHovered: TableRowClickedEvent;
+    onRowMiddleClicked: TableRowClickedEvent;
+    onRowUnhovered: TableRowClickedEvent;
 }
 
 type TableEvents = {
-    onContextChanged?: BvTableCtxObject;
-    onFiltered?: any[];
-    onRefreshed?: void;
-    onRowSelected?: any[];
-    onSortChanged?: BvTableCtxObject;
+    onContextChanged: BvTableCtxObject;
+    onFiltered: any[];
+    onRefreshed: void;
+    onRowSelected: any[];
+    onSortChanged: BvTableCtxObject;
 } & TableLiteEvents;
 
 export const HmTable = tsx.ofType<TableProps, TableEvents, TableScopedSlots>().convert(HmTableOriginal);

@@ -75,11 +75,11 @@ enum SLIDER_ERROR_TYPE {
 type ChangeCallback = (value: Value, index: number) => void;
 
 type RangeSliderEvents = {
-    onChange?: ChangeCallback;
-    onDragging?: ChangeCallback;
-    onDragEnd?: number;
-    onDragStart?: number;
-    onError?: (type: SLIDER_ERROR_TYPE, message: string) => void;
+    onChange: ChangeCallback;
+    onDragging: ChangeCallback;
+    onDragEnd: number;
+    onDragStart: number;
+    onError: (type: SLIDER_ERROR_TYPE, message: string) => void;
 }
 
 type DotTooltipScope = {

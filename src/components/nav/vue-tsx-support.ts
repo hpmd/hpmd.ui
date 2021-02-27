@@ -71,11 +71,11 @@ type NavItemDropdownProps = {
 }
 
 type NavItemDropdownEvents = {
-    onHidden?: void;
-    onHide?: BvEvent;
-    onShow?: BvEvent;
-    onShown?: void;
-    onToggle?: void;
+    onHidden: void;
+    onHide: BvEvent;
+    onShow: BvEvent;
+    onShown: void;
+    onToggle: void;
 }
 
 type NavItemDropdownScopedSlots = {
@@ -84,7 +84,7 @@ type NavItemDropdownScopedSlots = {
     }
 }
 
-export const HmNavItemDropdown = tsx.ofType<NavItemDropdownProps, NavItemDropdownProps, NavItemDropdownScopedSlots>().convert(HmNavItemDropdownOriginal);
+export const HmNavItemDropdown = tsx.ofType<NavItemDropdownProps, NavItemDropdownEvents, NavItemDropdownScopedSlots>().convert(HmNavItemDropdownOriginal);
 
 
 export const HmNavText = tsx.ofType<{}>().convert(HmNavTextOriginal);

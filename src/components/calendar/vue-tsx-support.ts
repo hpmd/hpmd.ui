@@ -55,9 +55,9 @@ export type CalendarProps = {
 
 
 type CalendarEvents = {
-    onContext?: BcCalendarCtxObject;
-    onInput?: string | Date | Date[];
-    onSelected?: { ymd: string, date: Date };
+    onContext: BcCalendarCtxObject;
+    onInput: string | Date | Date[];
+    onSelected: { ymd: string, date: Date };
 }
 
 type CalendarSlotRTL = { isRTL: boolean };

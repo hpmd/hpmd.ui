@@ -31,18 +31,18 @@ type TabsProps = {
 }
 
 type TabsEvents = {
-    onActivateTab?: {
+    onActivateTab: {
         newTabIndex: number;
         prevTabIndex: number;
         bvEvent: BvEvent;
     }
 
-    onChanged?: {
+    onChanged: {
         currentTabs: typeof HmTab[];
         previousTabs: typeof HmTab[];
     }
 
-    onInput?: number;
+    onInput: number;
 }
 
 export const HmTabs = tsx.ofType<TabsProps, TabsEvents>().convert(HmTabsOriginal);

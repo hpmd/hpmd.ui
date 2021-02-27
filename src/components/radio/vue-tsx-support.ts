@@ -9,8 +9,8 @@ import { CheckboxRadioGroupCommonProps } from '../../types/tsx-common';
 type RadioProps = CheckboxRadioGroupCommonProps & { checked?: any };
 
 type RadioEvents = {
-    onChange?: any;
-    onInput?: any;
+    onChange: any;
+    onInput: any;
 }
 
 export const HmRadio = tsx.ofType<RadioProps, RadioEvents>().convert(HmRadioOriginal);

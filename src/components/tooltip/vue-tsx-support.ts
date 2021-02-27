@@ -32,12 +32,12 @@ type TooltipEvents = {
     // bv:: tooltip:: show
     // bv:: tooltip:: shown
 
-    onDisabled?: BvEvent;
-    onEnabled?: BvEvent;
-    onHidden?: BvEvent;
-    onHide?: BvEvent;
-    onShow?: BvEvent;
-    onShown?: BvEvent;
+    onDisabled: BvEvent;
+    onEnabled: BvEvent;
+    onHidden: BvEvent;
+    onHide: BvEvent;
+    onShow: BvEvent;
+    onShown: BvEvent;
 }
 
 export const HmTooltip = tsx.ofType<TooltipProps, TooltipEvents>().convert(HmTooltipOriginal);

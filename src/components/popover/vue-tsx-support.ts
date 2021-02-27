@@ -32,12 +32,12 @@ type PopoverEvents = {
     // bv::popover::hide
     // bv::popover::show
     // bv::popover::shown
-    onDisabled?: BvEvent;
-    onEnabled?: BvEvent;
-    onHidden?: BvEvent;
-    onHide?: BvEvent;
-    onShow?: BvEvent;
-    onShown?: BvEvent;
+    onDisabled: BvEvent;
+    onEnabled: BvEvent;
+    onHidden: BvEvent;
+    onHide: BvEvent;
+    onShow: BvEvent;
+    onShown: BvEvent;
 }
 
 export const HmPopover = tsx.ofType<PopoverProps, PopoverEvents>().convert(HmPopoverOriginal);

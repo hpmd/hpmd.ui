@@ -15,11 +15,11 @@ type CollapseProps = {
 
 type CollapseEvents = {
     // bv::collapse::state
-    onHidden?: void;
-    onHide?: void;
-    onInput?: boolean;
-    onShow?: void;
-    onShown?: void;
+    onHidden: void;
+    onHide: void;
+    onInput: boolean;
+    onShow: void;
+    onShown: void;
 }
 
 type CollapseScopedSlots = {

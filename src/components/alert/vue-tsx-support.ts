@@ -10,9 +10,9 @@ type HmAlertProps = {
 }
 
 type HmAlertEvents = {
-    onDismissCountDown?: number;
-    onDismissed?: undefined;
-    onInput?: boolean | number;
+    onDismissCountDown: number;
+    onDismissed: void;
+    onInput: boolean | number;
 }
 
 export const HmAlert = tsx.ofType<HmAlertProps, HmAlertEvents>().convert(HmAlertOriginal);

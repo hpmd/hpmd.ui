@@ -2,9 +2,9 @@ import * as tsx from 'vue-tsx-support';
 import { HmAvatar as HmAvatarOriginal } from '.';
 
 type HmAvatarProps = {
-    size: string;
-    src: string;
-    variant: string;
+    size?: string;
+    src?: string;
+    variant?: string;
 }
 
 type HmAvatarEvents = {

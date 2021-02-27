@@ -25,13 +25,13 @@ type ButtonProps = {
     squared?: boolean;
     tag?: string;
     target?: HTMLAnchorElement['target'];
-    to: RawLocation;
+    to?: RawLocation;
     type?: HTMLButtonElement['type'];
     variant?: string;
 };
 
 type ButtonEvents = {
-    onClick?: MouseEvent;
+    onClick: MouseEvent;
 }
 
 const HmBtn = tsx.ofType<ButtonProps, ButtonEvents>().convert(HmButtonOriginal);

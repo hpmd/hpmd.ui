@@ -39,15 +39,15 @@ type InputProps = {
 
 type InputEvents = {
     // bootstrap-vue
-    onBlur?: FocusEvent;
-    onChange?: string | number;
-    onInput?: string | number;
-    onUpdate?: string; // on formatted
+    onBlur: FocusEvent;
+    onChange: string | number;
+    onInput: string | number;
+    onUpdate: string; // on formatted
 
     // custom
-    onAccept?: CustomEvent;
-    onComplete?: CustomEvent;
-    onInputRaw?: string;
+    onAccept: CustomEvent;
+    onComplete: CustomEvent;
+    onInputRaw: string;
 }
 
 export const HmInput = tsx.ofType<InputProps, InputEvents>().convert(HmInputOriginal);

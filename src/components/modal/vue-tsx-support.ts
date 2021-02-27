@@ -34,7 +34,7 @@ type ModalProps = {
     hideHeader?: boolean;
     hideHeaderClose?: boolean;
     id?: string;
-    ignoreEnforceFocusSelector: string | string[];
+    ignoreEnforceFocusSelector?: string | string[];
     lazy?: boolean;
     modalClass: VueCssClass;
     noCloseOnBackdrop?: boolean;
@@ -64,14 +64,14 @@ type ModalEvents = {
     // bv::modal::hide
     // bv::modal::show
     // bv::modal::shown
-    onCancel?: BvModalEvent;
-    onChange?: boolean;
-    onClose?: BvModalEvent;
-    onHidden?: BvModalEvent;
-    onHide?: BvModalEvent;
-    onOk?: BvModalEvent;
-    onShow?: BvModalEvent;
-    onShown?: BvModalEvent;
+    onCancel: BvModalEvent;
+    onChange: boolean;
+    onClose: BvModalEvent;
+    onHidden: BvModalEvent;
+    onHide: BvModalEvent;
+    onOk: BvModalEvent;
+    onShow: BvModalEvent;
+    onShown: BvModalEvent;
 }
 
 type ModalSlotData = {
@@ -83,10 +83,10 @@ type ModalSlotData = {
 }
 
 type ModalScopedSlots = {
-    default?: ModalSlotData;
-    modalFooter?: ModalSlotData;
-    modalHeader?: ModalSlotData;
-    modalTitle?: ModalSlotData;
+    default: ModalSlotData;
+    'modal-footer': ModalSlotData;
+    'modal-header': ModalSlotData;
+    'modal-title': ModalSlotData;
 }
 
 export const HmModal = tsx.ofType<ModalProps, ModalEvents, ModalScopedSlots>().convert(HmModalOriginal);

@@ -182,14 +182,7 @@ export type TableLiteScopedSlots = {
     'table-colgroup'?: TableLiteColgroupSlotScope;
     'thead-top'?: TableLiteTheadSlotScope;
 
-    [key: string]:
-        TableLiteCellSlotScope |
-        TableLiteCustomFootSlotScope |
-        TableLiteFootSlotScope |
-        TableLiteHeadSlotScope |
-        TableLiteRowDetailsSlotScope |
-        TableLiteColgroupSlotScope |
-        TableLiteTheadSlotScope;
+    [key: string]: any;
 }
 
 export type TableScopedSlots = {
@@ -205,15 +198,7 @@ export type TableScopedSlots = {
     'thead-top'?: TableLiteTheadSlotScope;
     'top-row'?: TableLiteColgroupSlotScope;
 
-    [key: string]:
-        TableCellSlotScope |
-        TableLiteColgroupSlotScope |
-        TableLiteCustomFootSlotScope |
-        TableEmptySlotScope |
-        TableFootSlotScope |
-        TableHeadSlotScope |
-        TableRowDetailsSlotScope |
-        TableLiteTheadSlotScope;
+    [key: string]: any;
 }
 
 type TableRowClickedEvent = {

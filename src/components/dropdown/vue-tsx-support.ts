@@ -55,7 +55,7 @@ type DropdownEvents = {
 }
 
 type DropdownScopedSlots = {
-    default: {
+    default?: {
         hide: (refocus?: boolean) => void
     }
 }

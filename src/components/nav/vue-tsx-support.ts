@@ -79,7 +79,7 @@ type NavItemDropdownEvents = {
 }
 
 type NavItemDropdownScopedSlots = {
-    default: {
+    default?: {
         hide: () => void;
     }
 }

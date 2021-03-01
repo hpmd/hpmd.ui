@@ -63,13 +63,13 @@ type CalendarEvents = {
 type CalendarSlotRTL = { isRTL: boolean };
 
 export type CalendarScopedSlots = {
-    'nav-next-decade': CalendarSlotRTL;
-    'nav-next-month': CalendarSlotRTL;
-    'nav-next-year': CalendarSlotRTL;
-    'nav-prev-decade': CalendarSlotRTL;
-    'nav-prev-month': CalendarSlotRTL;
-    'nav-prev-year': CalendarSlotRTL;
-    'nav-this-month': CalendarSlotRTL;
+    'nav-next-decade'?: CalendarSlotRTL;
+    'nav-next-month'?: CalendarSlotRTL;
+    'nav-next-year'?: CalendarSlotRTL;
+    'nav-prev-decade'?: CalendarSlotRTL;
+    'nav-prev-month'?: CalendarSlotRTL;
+    'nav-prev-year'?: CalendarSlotRTL;
+    'nav-this-month'?: CalendarSlotRTL;
 }
 
 

@@ -174,13 +174,13 @@ type TableEmptySlotScope = {
 }
 
 export type TableLiteScopedSlots = {
-    'cell()': TableLiteCellSlotScope;
-    'custom-foot': TableLiteCustomFootSlotScope;
-    'foot()': TableLiteFootSlotScope;
-    'head()': TableLiteHeadSlotScope;
-    'row-details': TableLiteRowDetailsSlotScope;
-    'table-colgroup': TableLiteColgroupSlotScope;
-    'thead-top': TableLiteTheadSlotScope;
+    'cell()'?: TableLiteCellSlotScope;
+    'custom-foot'?: TableLiteCustomFootSlotScope;
+    'foot()'?: TableLiteFootSlotScope;
+    'head()'?: TableLiteHeadSlotScope;
+    'row-details'?: TableLiteRowDetailsSlotScope;
+    'table-colgroup'?: TableLiteColgroupSlotScope;
+    'thead-top'?: TableLiteTheadSlotScope;
 
     [key: string]:
         TableLiteCellSlotScope |
@@ -193,17 +193,17 @@ export type TableLiteScopedSlots = {
 }
 
 export type TableScopedSlots = {
-    'bottom-row': TableLiteColgroupSlotScope;
-    'cell()': TableCellSlotScope;
-    'custom-foot': TableLiteCustomFootSlotScope;
-    'empty': TableEmptySlotScope;
-    'empty-filtered': TableEmptySlotScope;
-    'foot()': TableFootSlotScope;
-    'head()': TableHeadSlotScope;
-    'row-details': TableRowDetailsSlotScope;
-    'table-colgroup': TableLiteColgroupSlotScope;
-    'thead-top': TableLiteTheadSlotScope;
-    'top-row': TableLiteColgroupSlotScope;
+    'bottom-row'?: TableLiteColgroupSlotScope;
+    'cell()'?: TableCellSlotScope;
+    'custom-foot'?: TableLiteCustomFootSlotScope;
+    'empty'?: TableEmptySlotScope;
+    'empty-filtered'?: TableEmptySlotScope;
+    'foot()'?: TableFootSlotScope;
+    'head()'?: TableHeadSlotScope;
+    'row-details'?: TableRowDetailsSlotScope;
+    'table-colgroup'?: TableLiteColgroupSlotScope;
+    'thead-top'?: TableLiteTheadSlotScope;
+    'top-row'?: TableLiteColgroupSlotScope;
 
     [key: string]:
         TableCellSlotScope |

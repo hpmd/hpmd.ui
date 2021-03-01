@@ -173,7 +173,7 @@ type TableEmptySlotScope = {
     items: any[];
 }
 
-type TableLiteScopedSlots = {
+export type TableLiteScopedSlots = {
     'cell()': TableLiteCellSlotScope;
     'custom-foot': TableLiteCustomFootSlotScope;
     'foot()': TableLiteFootSlotScope;
@@ -192,7 +192,7 @@ type TableLiteScopedSlots = {
         TableLiteTheadSlotScope;
 }
 
-type TableScopedSlots = {
+export type TableScopedSlots = {
     'bottom-row': TableLiteColgroupSlotScope;
     'cell()': TableCellSlotScope;
     'custom-foot': TableLiteCustomFootSlotScope;

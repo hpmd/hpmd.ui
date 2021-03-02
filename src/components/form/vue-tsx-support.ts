@@ -71,7 +71,7 @@ type FormGroupProps = {
 }
 
 type FormGroupScopedSlots = {
-    default: {
+    default?: {
         ariaDescribedby: string;
         id: string;
         descriptionId: string;

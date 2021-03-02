@@ -31,8 +31,8 @@ type FileInputEvents = {
 }
 
 type FileInputScopedSlots = {
-    'drop-placeholder': { allowed: boolean };
-    'file-name': {
+    'drop-placeholder'?: { allowed: boolean };
+    'file-name'?: {
         files: File[],
         filesTraversed: File[][];
         names: string[];

@@ -173,47 +173,32 @@ type TableEmptySlotScope = {
     items: any[];
 }
 
-type TableLiteScopedSlots = {
-    'cell()': TableLiteCellSlotScope;
-    'custom-foot': TableLiteCustomFootSlotScope;
-    'foot()': TableLiteFootSlotScope;
-    'head()': TableLiteHeadSlotScope;
-    'row-details': TableLiteRowDetailsSlotScope;
-    'table-colgroup': TableLiteColgroupSlotScope;
-    'thead-top': TableLiteTheadSlotScope;
+export type TableLiteScopedSlots = {
+    'cell()'?: TableLiteCellSlotScope;
+    'custom-foot'?: TableLiteCustomFootSlotScope;
+    'foot()'?: TableLiteFootSlotScope;
+    'head()'?: TableLiteHeadSlotScope;
+    'row-details'?: TableLiteRowDetailsSlotScope;
+    'table-colgroup'?: TableLiteColgroupSlotScope;
+    'thead-top'?: TableLiteTheadSlotScope;
 
-    [key: string]:
-        TableLiteCellSlotScope |
-        TableLiteCustomFootSlotScope |
-        TableLiteFootSlotScope |
-        TableLiteHeadSlotScope |
-        TableLiteRowDetailsSlotScope |
-        TableLiteColgroupSlotScope |
-        TableLiteTheadSlotScope;
+    [key: string]: any;
 }
 
-type TableScopedSlots = {
-    'bottom-row': TableLiteColgroupSlotScope;
-    'cell()': TableCellSlotScope;
-    'custom-foot': TableLiteCustomFootSlotScope;
-    'empty': TableEmptySlotScope;
-    'empty-filtered': TableEmptySlotScope;
-    'foot()': TableFootSlotScope;
-    'head()': TableHeadSlotScope;
-    'row-details': TableRowDetailsSlotScope;
-    'table-colgroup': TableLiteColgroupSlotScope;
-    'thead-top': TableLiteTheadSlotScope;
-    'top-row': TableLiteColgroupSlotScope;
+export type TableScopedSlots = {
+    'bottom-row'?: TableLiteColgroupSlotScope;
+    'cell()'?: TableCellSlotScope;
+    'custom-foot'?: TableLiteCustomFootSlotScope;
+    'empty'?: TableEmptySlotScope;
+    'empty-filtered'?: TableEmptySlotScope;
+    'foot()'?: TableFootSlotScope;
+    'head()'?: TableHeadSlotScope;
+    'row-details'?: TableRowDetailsSlotScope;
+    'table-colgroup'?: TableLiteColgroupSlotScope;
+    'thead-top'?: TableLiteTheadSlotScope;
+    'top-row'?: TableLiteColgroupSlotScope;
 
-    [key: string]:
-        TableCellSlotScope |
-        TableLiteColgroupSlotScope |
-        TableLiteCustomFootSlotScope |
-        TableEmptySlotScope |
-        TableFootSlotScope |
-        TableHeadSlotScope |
-        TableRowDetailsSlotScope |
-        TableLiteTheadSlotScope;
+    [key: string]: any;
 }
 
 type TableRowClickedEvent = {

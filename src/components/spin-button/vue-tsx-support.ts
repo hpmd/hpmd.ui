@@ -35,8 +35,8 @@ type SpinButtonEvents = {
 }
 
 type SpinButtonScopedSlots = {
-    decrement: { hasFocus: boolean };
-    increment: { hasFocus: boolean };
+    decrement?: { hasFocus: boolean };
+    increment?: { hasFocus: boolean };
 }
 
 export const HmSpinButton = tsx.ofType<SpinButtonProps, SpinButtonEvents, SpinButtonScopedSlots>().convert(HmSpinButtonOriginal);

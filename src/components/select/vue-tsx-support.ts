@@ -63,17 +63,17 @@ type SelectEvents = {
 }
 
 type SelectScopedSlots = {
-    caret: {
+    caret?: {
         toggle: () => void;
     };
-    clear: {
+    clear?: {
         search: string;
     };
-    option: {
+    option?: {
         option: object | string | number;
         search: string;
     };
-    tag: {
+    tag?: {
         option: object | string | number;
         remove: () => void;
         search: string;

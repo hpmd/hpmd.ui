@@ -83,10 +83,10 @@ type ModalSlotData = {
 }
 
 type ModalScopedSlots = {
-    default: ModalSlotData;
-    'modal-footer': ModalSlotData;
-    'modal-header': ModalSlotData;
-    'modal-title': ModalSlotData;
+    default?: ModalSlotData;
+    'modal-footer'?: ModalSlotData;
+    'modal-header'?: ModalSlotData;
+    'modal-title'?: ModalSlotData;
 }
 
 export const HmModal = tsx.ofType<ModalProps, ModalEvents, ModalScopedSlots>().convert(HmModalOriginal);

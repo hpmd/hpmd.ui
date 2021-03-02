@@ -97,18 +97,18 @@ type LabelStepMarkScope = {
 }
 
 type RangeSliderScopedSlots = {
-    default: { value: Value };
-    dot: DotTooltipScope;
-    label: LabelStepMarkScope;
-    mark: LabelStepMarkScope;
-    process: {
+    default?: { value: Value };
+    dot?: DotTooltipScope;
+    label?: LabelStepMarkScope;
+    mark?: LabelStepMarkScope;
+    process?: {
         end: number;
         index: number;
         start: number;
         style: object;
     };
-    step: LabelStepMarkScope;
-    tooltip: DotTooltipScope;
+    step?: LabelStepMarkScope;
+    tooltip?: DotTooltipScope;
 }
 
 export const HmRangeSlider = tsx.ofType<RangeSliderProps, RangeSliderEvents, RangeSliderScopedSlots>().convert(HmRangeSliderOriginal);

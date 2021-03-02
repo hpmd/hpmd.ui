@@ -23,7 +23,7 @@ type CollapseEvents = {
 }
 
 type CollapseScopedSlots = {
-    default: {
+    default?: {
         close: () => void,
         visible: boolean
     };

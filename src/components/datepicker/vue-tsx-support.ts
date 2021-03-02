@@ -83,7 +83,7 @@ type DatepickerEvents = {
 
 
 type DatepickerBtnScopedSlot = {
-    'button-content': {
+    'button-content'?: {
         isHovered: boolean;
         hasFocus: boolean;
         state: boolean | null;

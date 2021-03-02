@@ -5,9 +5,9 @@ import { RawLocation } from 'vue-router';
 import { ElementBoundary, VueCssClass } from '../../types/tsx-common';
 import {
     HmDropdown as HmDropdownOriginal,
+    HmDropdownDivider as HmDropdownDividerOriginal,
     HmDropdownItem as HmDropdownItemOriginal,
-    HmDropdownItemButton as HmDropdownItemButtonOriginal,
-    HmDropdownItemDivider as HmDropdownItemDividerOriginal
+    HmDropdownItemButton as HmDropdownItemButtonOriginal
 } from '.';
 
 
@@ -63,6 +63,13 @@ type DropdownScopedSlots = {
 export const HmDropdown = tsx.ofType<DropdownProps, DropdownEvents, DropdownScopedSlots>().convert(HmDropdownOriginal);
 
 
+type HmDropdownDividerProps = {
+    tag?: string;
+}
+
+export const HmDropdownDivider = tsx.ofType<HmDropdownDividerProps>().convert(HmDropdownDividerOriginal);
+
+
 type HmDropdownItemProps = {
     active?: boolean;
     activeClass?: string;
@@ -98,10 +105,3 @@ type HmDropdownItemButtonProps = {
 }
 
 export const HmDropdownItemButton = tsx.ofType<HmDropdownItemButtonProps, HmDropdownItemEvents>().convert(HmDropdownItemButtonOriginal);
-
-
-type HmDropdownItemDividerProps = {
-    tag?: string;
-}
-
-export const HmDropdownItemDivider = tsx.ofType<HmDropdownItemDividerProps>().convert(HmDropdownItemDividerOriginal);

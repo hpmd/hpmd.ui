@@ -28,9 +28,9 @@ export { HmDatepicker } from './src/components/datepicker/vue-tsx-support';
 
 export {
     HmDropdown,
+    HmDropdownDivider,
     HmDropdownItem,
-    HmDropdownItemButton,
-    HmDropdownItemDivider
+    HmDropdownItemButton
 } from './src/components/dropdown/vue-tsx-support';
 
 export { HmFileInput } from './src/components/file-input/vue-tsx-support';

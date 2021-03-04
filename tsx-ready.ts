@@ -103,8 +103,7 @@ export {
 export { HmTip } from './src/components/tip/vue-tsx-support';
 
 export {
-    HmToaster,
-    HmNotification
+    HmToaster
 } from './src/components/toaster/vue-tsx-support';
 
 export { HmTooltip } from './src/components/tooltip/vue-tsx-support';

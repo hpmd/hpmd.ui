@@ -17,5 +17,5 @@ export declare class HmDropdown extends BvComponent {
 export declare class HmDropdownItem extends BvComponent {}
 // Component: hm-dropdown-item-button
 export declare class HmDropdownItemButton extends BvComponent { }
-// Component: hm-dropdown-item-divider
-export declare class HmDropdownItemDivider extends BvComponent {}
+// Component: hm-dropdown-divider
+export declare class HmDropdownDivider extends BvComponent {}

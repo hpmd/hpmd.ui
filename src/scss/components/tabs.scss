@@ -23,7 +23,7 @@
                     transition: width .3s ease-in-out, background-color .3s ease-in-out;
                 }
 
-                &.active {
+                &.active, &.router-link-active, &.router-link-exact-active {
                     color: $black;
                     &:before {
                         width: 100%;
@@ -61,7 +61,7 @@
             color: $nav-tabs-link-color;
         }
 
-        &.active {
+        &.active, &.router-link-active, &.router-link-exact-active {
             font-weight: 600;
         }
     }

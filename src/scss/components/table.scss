@@ -1,8 +1,8 @@
 @function tableSortBackgroundImage($color) {
     // convert color to avoid escaping #, which will break UTF-8 string
-    $color: rgba($color, 1);
+    $colorR: rgba($color, 0.99);
 
-    @return url('data:image/svg+xml;charset=utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.9394 6.43936L22.0607 8.56068L12 18.6213L1.93936 8.56068L4.06068 6.43936L12 14.3787L19.9394 6.43936Z" fill="#{$color}"/></svg>');
+    @return url('data:image/svg+xml;charset=utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.9394 6.43936L22.0607 8.56068L12 18.6213L1.93936 8.56068L4.06068 6.43936L12 14.3787L19.9394 6.43936Z" fill="#{$colorR}"/></svg>');
 }
 
 .table {
@@ -31,29 +31,37 @@
             }
 
             &[aria-sort] {
+                transition: color .15s ease-in-out;
+                & > div:first-child {
+                    margin-right: $spacer;
+                }
+                // vertical-align: middle;
                 &::after {
+                    background-image: tableSortBackgroundImage($dark);
                     background-color: transparent;
                     background-position: 50% 50%;
                     background-repeat: no-repeat;
                     background-size: contain;
-                    height: 0.8em;
                     content: '';
                     display: inline-block;
-                    margin-left: $spacer;
-                    // margin-top: 0.5em;
+                    height: 0.8em;
+                    // margin-left: $spacer;
                     opacity: 0.5;
                     width: 1.5em;
+                }
+                &:hover {
+                    color: $dark;
                 }
             }
 
             &[aria-sort="ascending"], &[aria-sort="descending"] {
-                // color: $gray-700;
+                color: $dark;
                 &::after {
                     opacity: 1;
                 }
             }
 
-            &[aria-sort="descending"]::after {
+            &[aria-sort="ascending"]::after {
                 transform: rotate(180deg);
             }
         }
@@ -133,6 +141,10 @@
                 color: $gray-600;
                 &[aria-sort]::after {
                     background-image: tableSortBackgroundImage($white);
+                }
+
+                &[aria-sort]:hover {
+                    color: $white;
                 }
 
                 &[aria-sort="ascending"], &[aria-sort="descending"] {

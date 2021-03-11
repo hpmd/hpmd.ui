@@ -31,7 +31,7 @@ type TabsProps = {
 }
 
 type TabsEvents = {
-    onActivateTab: {
+    'onActivate-tab': {
         newTabIndex: number;
         prevTabIndex: number;
         bvEvent: BvEvent;

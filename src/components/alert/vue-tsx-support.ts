@@ -10,7 +10,7 @@ type HmAlertProps = {
 }
 
 type HmAlertEvents = {
-    onDismissCountDown: number;
+    'onDismiss-count-down': number;
     onDismissed: void;
     onInput: boolean | number;
 }

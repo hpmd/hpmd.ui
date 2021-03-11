@@ -57,7 +57,7 @@ type SelectEvents = {
     onInput: (value?: SelectProps['value'], id?: SelectProps['id']) => void;
     onOpen: SelectProps['id'];
     onRemove: (removedOption?: object | string | number, id?: SelectProps['id']) => void;
-    onSearchChange: (searchQuery?: string, id?: SelectProps['id']) => void;
+    'onSearch-change': (searchQuery?: string, id?: SelectProps['id']) => void;
     onSelect: (selectedOption?: object | string | number, id?: SelectProps['id']) => void;
     onTag: (searchQuery?: string, id?: SelectProps['id']) => void;
 }

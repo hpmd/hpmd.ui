@@ -8,7 +8,7 @@ type HmAvatarProps = {
 }
 
 type HmAvatarEvents = {
-    onImageLoadError: Event;
+    'onImage-load-error': Event;
 }
 
 export const HmAvatar = tsx.ofType<HmAvatarProps, HmAvatarEvents>().convert(HmAvatarOriginal);

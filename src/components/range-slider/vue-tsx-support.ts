@@ -77,8 +77,8 @@ type ChangeCallback = (value: Value, index: number) => void;
 type RangeSliderEvents = {
     onChange: ChangeCallback;
     onDragging: ChangeCallback;
-    onDragEnd: number;
-    onDragStart: number;
+    'onDrag-end': number;
+    'onDrag-start': number;
     onError: (type: SLIDER_ERROR_TYPE, message: string) => void;
 }
 

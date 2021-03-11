@@ -208,27 +208,27 @@ type TableRowClickedEvent = {
 }
 
 type TableLiteEvents = {
-    onHeadClicked: {
+    'onHead-clicked': {
         key: TableField['key'];
         field: TableField;
         event: CustomEvent | UIEvent | Event;
         isFooter: boolean;
     }
 
-    onRowClicked: TableRowClickedEvent;
-    onRowContextmenu: TableRowClickedEvent;
-    onRowDblclicked: TableRowClickedEvent;
-    onRowHovered: TableRowClickedEvent;
-    onRowMiddleClicked: TableRowClickedEvent;
-    onRowUnhovered: TableRowClickedEvent;
+    'onRow-clicked': TableRowClickedEvent;
+    'onRow-contextmenu': TableRowClickedEvent;
+    'onRow-dblclicked': TableRowClickedEvent;
+    'onRow-hovered': TableRowClickedEvent;
+    'onRow-middle-clicked': TableRowClickedEvent;
+    'onRow-unhovered': TableRowClickedEvent;
 }
 
 type TableEvents = {
-    onContextChanged: BvTableCtxObject;
+    'onContext-changed': BvTableCtxObject;
     onFiltered: any[];
     onRefreshed: void;
-    onRowSelected: any[];
-    onSortChanged: BvTableCtxObject;
+    'onRow-selected': any[];
+    'onSort-changed': BvTableCtxObject;
 } & TableLiteEvents;
 
 export const HmTable = tsx.ofType<TableProps, TableEvents, TableScopedSlots>().convert(HmTableOriginal);

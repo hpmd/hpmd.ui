@@ -97,7 +97,7 @@ type TableProps = TableLiteProps & {
     selectable?: boolean;
     selectedVariant?: string;
     showEmpty?: boolean;
-    sortBy?: string;
+    sortBy?: string | null;
     sortCompare?: BvTableSortCompareCallback;
     sortCompareLocale?: string | string[];
     sortCompareOptions?: BvTableLocaleCompareOptions;

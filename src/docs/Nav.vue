@@ -56,7 +56,7 @@ export default {
             :tabs="!isPills"
             :pills="isPills"
             :vertical="isVertical">
-            <hm-nav-item active>Выбранная</hm-nav-item>
+            <hm-nav-item to="/components/nav">Выбранная</hm-nav-item>
             <hm-nav-item-dropdown
                 variant="primary"
                 text="Доступная">
@@ -64,8 +64,8 @@ export default {
                 <hm-dropdown-item>Two</hm-dropdown-item>
                 <hm-dropdown-item>Three</hm-dropdown-item>
             </hm-nav-item-dropdown>
-            <hm-nav-item>Доступная</hm-nav-item>
-            <hm-nav-item disabled>Недоступная</hm-nav-item>
+            <hm-nav-item to="/components/popover">Доступная</hm-nav-item>
+            <hm-nav-item to="/components/table" disabled>Недоступная</hm-nav-item>
         </hm-nav>
 
         <hr>

@@ -1,20 +1,110 @@
-.custom-control {
-    &.custom-checkbox, &.custom-radio {
+$hm-custom-control-label-gutter: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;;
+$hm-custom-control-label-gutter-sm: ($font-size-sm * $line-height-sm - $b-custom-control-indicator-size-sm) / 2;
+$hm-custom-control-label-gutter-lg: ($font-size-lg * $line-height-lg - $b-custom-control-indicator-size-lg) / 2;
+
+@mixin hm-custom-control-sizings($label-gutter, $gutter, $indicator-size, $radius) {
+    .custom-control-label {
+        border-radius: $radius;
+        margin-left: -$label-gutter + -($gutter + $indicator-size);
+
         &::before {
-            background-color: rgba($dark, 0);
-            border-radius: $border-radius;
-            content: '';
-            // display: block;
-            position: absolute;
-            top: 0; //-$spacer;
-            right: -$spacer;
-            bottom: 0; // -$spacer;
-            left: -$spacer;
-            pointer-events: none;
+            left: $label-gutter;
         }
 
-        &:hover::before {
-            background-color: rgba($dark, 0.1);
+        &::after {
+            left: $label-gutter;
+        }
+    }
+
+    .custom-control-label:not(:empty) {
+        padding-left: $label-gutter + $gutter + $indicator-size;
+        padding-right: $label-gutter;
+    }
+
+    .custom-control-label:empty {
+        height: $indicator-size + ($label-gutter * 2);
+        padding: 0 $label-gutter;
+        width: $indicator-size + ($label-gutter * 2);
+    }
+}
+
+.custom-control {
+    &.custom-checkbox, &.custom-radio {
+        input:not([disabled]) + .custom-control-label {
+            background-color: rgba(0,0,0,0);
+
+            &:hover {
+                background-color: rgba(0,0,0,0.07);
+            }
+        }
+
+        &:not(.custom-control-inline) {
+            .custom-control-label:not(:empty) {
+                display: block;
+            }
         }
     }
 }
+
+.custom-control {
+    &.custom-radio, &.custom-checkbox {
+        &, .input-group & {
+            @include hm-custom-control-sizings(
+                $hm-custom-control-label-gutter,
+                $custom-control-gutter,
+                $custom-control-indicator-size,
+                $border-radius
+            );
+        }
+
+        &.b-custom-control-lg, .input-group-lg & {
+            @include hm-custom-control-sizings(
+                $hm-custom-control-label-gutter-lg,
+                $b-custom-control-gutter-lg,
+                $b-custom-control-indicator-size-lg,
+                $border-radius-lg
+            );
+        }
+
+        &.b-custom-control-sm, .input-group-sm & {
+            @include hm-custom-control-sizings(
+                $hm-custom-control-label-gutter-sm,
+                $b-custom-control-gutter-sm,
+                $b-custom-control-indicator-size-sm,
+                $border-radius-sm
+            );
+        }
+    }
+}
+
+// .custom-control.custom-checkbox,
+// .custom-control.custom-radio,
+// .input-group .custom-control.custom-checkbox,
+// .input-group .custom-control.custom-radio {
+//     @include hm-custom-control-sizings(
+//         $hm-custom-control-label-gutter,
+//         $custom-control-gutter,
+//         $custom-control-indicator-size,
+//         $border-radius
+//     );
+// }
+
+// .custom-control.custom-checkbox.b-custom-control-lg,
+// .input-group-lg .custom-control.custom-checkbox {
+//     @include hm-custom-control-sizings(
+//         $hm-custom-control-label-gutter-lg,
+//         $b-custom-control-gutter-lg,
+//         $b-custom-control-indicator-size-lg,
+//         $border-radius-lg
+//     )
+// }
+
+// .custom-control.custom-checkbox.b-custom-control-sm,
+// .input-group-sm .custom-control.custom-checkbox {
+//     @include hm-custom-control-sizings(
+//         $hm-custom-control-label-gutter-sm,
+//         $b-custom-control-gutter-sm,
+//         $b-custom-control-indicator-size-sm,
+//         $border-radius-sm
+//     )
+// }

@@ -39,7 +39,16 @@ const example = `<h4>Single Checkboxes</h4>
             />
         </hm-form-group>
     </div>
-</div>`;
+</div>
+
+<h4>No label</h4>
+<hm-checkbox
+    inline
+    :disabled="isDisabled"
+    :size="size"
+    :switch="isToggle"
+    v-model="checkboxEmpty">
+</hm-checkbox>`;
 
 export default {
     mixins: [sizeMixin],
@@ -50,7 +59,8 @@ export default {
             checkboxGroupSelected: [],
             example,
             isDisabled: false,
-            isToggle: false
+            isToggle: false,
+            checkboxEmpty: false
         };
     },
     computed: {
@@ -127,6 +137,15 @@ export default {
                     </hm-form-group>
                 </div>
             </div>
+
+            <h4>No label</h4>
+            <hm-checkbox
+                inline
+                :disabled="isDisabled"
+                :size="size"
+                :switch="isToggle"
+                v-model="checkboxEmpty">
+            </hm-checkbox>
         </div>
 
         <hr>

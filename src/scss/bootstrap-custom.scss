@@ -290,6 +290,7 @@ $custom-control-indicator-bg-size: 100%;
 // $custom-control-indicator-checked-color:        $component-active-color !default;
 $custom-control-indicator-checked-bg:           $dark;
 $custom-control-indicator-checked-disabled-bg:  rgba($custom-control-indicator-checked-bg, .5);
+
 // $custom-control-indicator-checked-box-shadow:   null !default;
 $custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg;
 
@@ -488,3 +489,17 @@ $nav-tabs-link-active-border-color: transparent transparent $nav-tabs-border-col
 $nav-pills-border-radius: $radius;
 $nav-pills-link-active-color: $white;
 $nav-pills-link-active-bg: $black;
+
+
+// Bootstrap Vue custom
+// Indicator height (and sometimes width)
+$b-custom-control-indicator-size-lg: $custom-control-indicator-size * 1.25 !default;
+$b-custom-control-indicator-size-sm: $custom-control-indicator-size * 0.875 !default;
+
+// Indicator background
+$b-custom-control-indicator-bg-size-lg: $custom-control-indicator-bg-size !default;
+$b-custom-control-indicator-bg-size-sm: $custom-control-indicator-bg-size !default;
+
+// Gutter widths
+$b-custom-control-gutter-lg: $custom-control-gutter * 1.25 !default;
+$b-custom-control-gutter-sm: $custom-control-gutter * 0.875 !default;

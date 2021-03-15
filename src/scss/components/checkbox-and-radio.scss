@@ -5,7 +5,7 @@ $hm-custom-control-label-gutter-lg: ($font-size-lg * $line-height-lg - $b-custom
 @mixin hm-custom-control-sizings($label-gutter, $gutter, $indicator-size, $radius) {
     .custom-control-label {
         border-radius: $radius;
-        margin-left: -$label-gutter + -($gutter + $indicator-size);
+        margin-left: -$label-gutter;
 
         &::before {
             left: $label-gutter;
@@ -28,8 +28,10 @@ $hm-custom-control-label-gutter-lg: ($font-size-lg * $line-height-lg - $b-custom
     }
 }
 
+
 .custom-control {
-    &.custom-checkbox, &.custom-radio {
+    &.custom-radio, &.custom-checkbox {
+        padding-left: 0;
         input:not([disabled]) + .custom-control-label {
             background-color: rgba(0,0,0,0);
 
@@ -43,11 +45,7 @@ $hm-custom-control-label-gutter-lg: ($font-size-lg * $line-height-lg - $b-custom
                 display: block;
             }
         }
-    }
-}
 
-.custom-control {
-    &.custom-radio, &.custom-checkbox {
         &, .input-group & {
             @include hm-custom-control-sizings(
                 $hm-custom-control-label-gutter,

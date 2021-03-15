@@ -9,8 +9,6 @@ type CollapseProps = {
     isNav?: boolean;
     tag?: string;
     visible?: boolean; // v-model
-    // custom
-    buttonText?: string;
 }
 
 type CollapseEvents = {

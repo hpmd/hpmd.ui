@@ -1,7 +1,7 @@
 %dropdownToggleAfter {
     content: '';
     display: inline-block;
-    mask-image: url('../assets/icons/chevron-bottom.svg');
+    mask-image: $dropdown-toggle-icon;
     border: none;
     background-color: $gray-400;
     width: 0.75em;

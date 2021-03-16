@@ -2,8 +2,14 @@
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 @import './color-blend-modes.scss';
+@import './functions.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+
+@function chevron-icon($color) {
+    @return '<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 12 12"><path fill="#{$color}" d="M10,3L11,4L6,9L1,4L2,3l4,4L10,3z" /></svg>'
+}
 
 // HPMD Custom
 $fontSize: 14px;
@@ -214,6 +220,7 @@ $dropdown-disabled-bg: $gray-300;
 $dropdown-divider-margin-y: 0;
 $dropdown-box-shadow: 0 4px 4px $gray-200;
 $dropdown-text-fontWeight: 400;
+$dropdown-toggle-icon: url(svg-to-base64(chevron-icon($gray-500)));
 
 $dropdown-link-active-color: $white;
 $dropdown-link-active-bg: $black;
@@ -392,6 +399,10 @@ $select-tags-border: 1px solid $gray-400;
 $select-tags-bg: $blue;
 $select-tag-bg: $gray-400;
 $select-tag-font-size: 1.4em;
+$select-chevron-icon-color: $gray-500;
+$select-chevron-icon-url: url(svg-to-base64(chevron-icon($select-chevron-icon-color)));
+$select-checked-icon-url: url(svg-to-base64('<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.85355 7.14645L9.5 2.5L10.2071 3.20711L4.85355 8.56066L2 5.70711L2.70711 5L4.85355 7.14645Z" fill="white"/></svg>'));
+
 
 // Calendar
 $calendar-selected-date-bg: $primary;
@@ -470,8 +481,8 @@ $modal-header-padding: $modal-header-padding-top $modal-header-padding-x 0;
 
 // Navs
 
-$nav-link-padding-y: ($spacer * 2);
-$nav-link-padding-x: ($spacer * 2);
+$nav-link-padding-y: ($spacer * 3);
+$nav-link-padding-x: ($spacer * 3);
 
 $nav-link-pills-padding-y: $spacer;
 $nav-link-pills-padding-x: ($spacer * 3);
@@ -481,10 +492,11 @@ $nav-link-disabled-color: $gray-200;
 $nav-tabs-border-color: $black;
 $nav-tabs-border-width: ($spacer / 2);
 $nav-tabs-border-radius: $radius;
-$nav-tabs-link-hover-border-color: transparent transparent $gray-500 transparent;
+$nav-tabs-link-hover-border-color: transparent;
 $nav-tabs-link-color: $gray-500;
 $nav-tabs-link-active-color: $black;
-$nav-tabs-link-active-border-color: transparent transparent $nav-tabs-border-color transparent;
+$nav-tabs-link-active-bg: transparent;
+$nav-tabs-link-active-border-color: transparent;
 
 $nav-pills-border-radius: $radius;
 $nav-pills-link-active-color: $white;

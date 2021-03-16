@@ -21,7 +21,8 @@ export default {
     data() {
         return {
             isPills: false,
-            isVertical: false
+            isVertical: false,
+            menuHeight: '50'
         };
     }
 };
@@ -50,23 +51,35 @@ export default {
             <hm-checkbox v-model="isPills">Style: pills</hm-checkbox>
 
             <hm-checkbox v-model="isVertical">Mode: vertical</hm-checkbox>
+
+            <hm-input
+                placeholder="Высота меню (mode: horizontal)"
+                type="number"
+                v-model="menuHeight"
+            />
         </div>
 
-        <hm-nav
-            :tabs="!isPills"
-            :pills="isPills"
-            :vertical="isVertical">
-            <hm-nav-item to="/components/nav">Выбранная</hm-nav-item>
-            <hm-nav-item-dropdown
-                variant="primary"
-                text="Доступная">
-                <hm-dropdown-item>One</hm-dropdown-item>
-                <hm-dropdown-item>Two</hm-dropdown-item>
-                <hm-dropdown-item>Three</hm-dropdown-item>
-            </hm-nav-item-dropdown>
-            <hm-nav-item to="/components/popover">Доступная</hm-nav-item>
-            <hm-nav-item to="/components/table" disabled>Недоступная</hm-nav-item>
-        </hm-nav>
+
+        <div
+            class="menu-te"
+            :style="isVertical ? '' : { height: `${menuHeight}px` }">
+            <hm-nav
+                :tabs="!isPills"
+                :pills="isPills"
+                :vertical="isVertical">
+                <hm-nav-item active-class="active" exact-active-class="active" to="/components/nav">Выбранная</hm-nav-item>
+                <hm-nav-item-dropdown
+                    variant="primary"
+                    text="Доступная">
+                    <hm-dropdown-item>One</hm-dropdown-item>
+                    <hm-dropdown-item>Two</hm-dropdown-item>
+                    <hm-dropdown-item>Three</hm-dropdown-item>
+                </hm-nav-item-dropdown>
+                <hm-nav-item active-class="active" exact-active-class="active" to="/components/popover">Доступная</hm-nav-item>
+                <hm-nav-item active-class="active" exact-active-class="active" to="/components/table" disabled>Недоступная</hm-nav-item>
+                <hm-nav-text class="text-danger">Some random text</hm-nav-text>
+            </hm-nav>
+        </div>
 
         <hr>
 
@@ -78,3 +91,9 @@ export default {
         <p><a href="https://bootstrap-vue.org/docs/components/nav">Bootstrap Vue</a></p>
     </section>
 </template>
+
+<style lang="scss">
+    .menu-te {
+        border: 1px dotted #eee;
+    }
+</style>

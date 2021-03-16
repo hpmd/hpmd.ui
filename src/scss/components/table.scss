@@ -1,8 +1,7 @@
-@function tableSortBackgroundImage($color) {
-    // convert color to avoid escaping #, which will break UTF-8 string
-    $colorR: rgba($color, 0.99);
+@import '../functions.scss';
 
-    @return url('data:image/svg+xml;charset=utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.9394 6.43936L22.0607 8.56068L12 18.6213L1.93936 8.56068L4.06068 6.43936L12 14.3787L19.9394 6.43936Z" fill="#{$colorR}"/></svg>');
+@function tableSortBackgroundImage($color) {
+    @return url(svg-to-base64('<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.9394 6.43936L22.0607 8.56068L12 18.6213L1.93936 8.56068L4.06068 6.43936L12 14.3787L19.9394 6.43936Z" fill="#{$color}"/></svg>'));
 }
 
 .table {

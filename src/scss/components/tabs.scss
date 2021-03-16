@@ -1,3 +1,5 @@
+
+
 .nav {
     &-tabs {
         border: none;
@@ -6,10 +8,9 @@
             margin-bottom: 0 !important;
 
             .nav-link {
-                border-color: transparent;
-                color: $nav-tabs-link-color;
+                border: none;
                 position: relative;
-                transition: color .3s ease-in-out;
+                transition: color .2s ease-in-out;
 
                 &:before {
                     content: '';
@@ -24,20 +25,16 @@
                 }
 
                 &.active, &.router-link-active, &.router-link-exact-active {
-                    color: $black;
+                    // color: $black;
                     &:before {
                         width: 100%;
-                        background-color: $black;
+                        background-color: $nav-tabs-link-active-color;
                     }
-                }
-                &.disabled {
-                    color: $nav-link-disabled-color;
                 }
             }
 
             &.hover {
                 .nav-link {
-                    color: $nav-tabs-link-color;
                     &:before {
                         width: 100%;
                     }
@@ -50,6 +47,22 @@
                 &:before {
                     width: 100%;
                 }
+            }
+        }
+
+        &.nav-tabs:not(.flex-column) {
+            height: 100%;
+
+            .nav-item, .navbar-text, .nav-link, .nav-text {
+                display: flex;
+            }
+
+            .navbar-text {
+                margin-bottom: 0;
+            }
+
+            .navbar-text, .nav-link {
+                align-items: center;
             }
         }
     }
@@ -68,7 +81,12 @@
 
     &-pills {
         .nav-link {
+            border: none;
             padding: $nav-link-pills-padding-y $nav-link-pills-padding-x;
+
+            & + & {
+                margin-right: $spacer;
+            }
 
             &:hover {
                 border-color: transparent;

@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import 'highlight.js/scss/atelier-dune-light.scss';
 import VueHighlightjs from 'vue-highlightjs';
 import BootstrapVue from 'bootstrap-vue';
+import '@/scss/bootstrap-custom.scss';
 import '@/scss/hpmd.ui.scss';
 // eslint-disable-next-line import/no-named-as-default
 import HpmdUI from '..';

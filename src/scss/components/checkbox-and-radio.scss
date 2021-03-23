@@ -36,7 +36,7 @@ $hm-custom-control-label-gutter-lg: ($font-size-lg * $line-height-lg - $b-custom
             background-color: rgba(0,0,0,0);
 
             &:hover {
-                background-color: rgba(0,0,0,0.07);
+                background-color: $hm-custom-control-label-hover-color;
             }
         }
 

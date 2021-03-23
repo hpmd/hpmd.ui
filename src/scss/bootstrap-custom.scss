@@ -297,6 +297,7 @@ $custom-control-indicator-bg-size: 100%;
 // $custom-control-indicator-checked-color:        $component-active-color !default;
 $custom-control-indicator-checked-bg:           $dark;
 $custom-control-indicator-checked-disabled-bg:  rgba($custom-control-indicator-checked-bg, .5);
+$hm-custom-control-label-hover-color: rgba(0,0,0,.07);
 
 // $custom-control-indicator-checked-box-shadow:   null !default;
 $custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg;

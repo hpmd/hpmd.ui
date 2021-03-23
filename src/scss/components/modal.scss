@@ -12,3 +12,24 @@
         padding-top: 0;
     }
 }
+
+.modal-fs {
+    height: 1px;
+    margin: 0 auto;
+    max-width: 100%;
+    min-height: 100%;
+    width: 100vw;
+
+    .close {
+        font-size: 2em;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .modal-content {
+        border: none;
+        border-radius: 0;
+        min-height: 100%;
+    }
+}

@@ -1,4 +1,5 @@
 import { BvEvent } from 'bootstrap-vue';
+import Vue from 'vue';
 import * as tsx from 'vue-tsx-support';
 import { HmTooltip as HmTooltipOriginal } from '.';
 import { ElementBoundary, TipPlacement, TipTarget, TipTrigger } from '../../types/tsx-common';
@@ -7,7 +8,7 @@ import { ElementBoundary, TipPlacement, TipTarget, TipTrigger } from '../../type
 type TooltipProps = {
     boundary?: ElementBoundary;
     boundaryPadding?: number | string;
-    container?: HTMLElement | object | string;
+    container?: HTMLElement | Vue | string;
     customClass?: string;
     delay?: number | string | { show: number, hide: number };
     disabled?: boolean;

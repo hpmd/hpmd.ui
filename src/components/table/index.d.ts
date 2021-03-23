@@ -2,6 +2,8 @@
 // Table
 //
 import { BvPlugin, BvComponent } from 'bootstrap-vue'
+import { HTMLAttributes } from 'vue-tsx-support/types/dom'
+import { VueCssClass } from '../../types/tsx-common'
 
 // Table Plugins
 export declare const TablePlugin: BvPlugin
@@ -36,7 +38,7 @@ export declare class HmTable extends BvComponent {
     filterIgnoredFields?: Array<string>
     filterIncludedFields?: Array<string>
     busy?: boolean
-    tbodyTrClass?: string | Array<any> | object | BvTableTbodyTrClassCallback
+    tbodyTrClass?: VueCssClass | BvTableTbodyTrClassCallback
     tbodyTrAttr?: object | BvTableTbodyTrAttrCallback
     tabelVariant?: BvTableVariant | string
     headVariant?: BvTableHeadFootVariant | string
@@ -55,8 +57,8 @@ export declare class HmTableLite extends BvComponent {
     items: Array<any> | BvTableProviderCallback
     fields?: BvTableFieldArray
     primaryKey?: string
-    tbodyTrClass?: string | Array<any> | object | BvTableTbodyTrClassCallback
-    tbodyTrAttr?: object | BvTableTbodyTrAttrCallback
+    tbodyTrClass?: VueCssClass | BvTableTbodyTrClassCallback
+    tbodyTrAttr?: { [key in keyof HTMLAttributes]: string | number | boolean } | BvTableTbodyTrAttrCallback
     tableClass?: string
     tableVariant?: BvTableVariant | string
     headVariant?: BvTableHeadFootVariant | string

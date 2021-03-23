@@ -5,6 +5,7 @@ import {
     HmTabs as HmTabsOriginal,
     HmTab as HmTabOriginal
 } from '.';
+import { LinkHTMLAttributes } from 'vue-tsx-support/types/dom';
 
 
 type TabsProps = {
@@ -58,7 +59,7 @@ type TabProps = {
     tag?: string;
     title?: string;
     titleItemClass?: VueCssClass;
-    titleLinkAttributes?: object;
+    titleLinkAttributes?: { [key in keyof LinkHTMLAttributes]: string | number | boolean };
     titleLinkClass?: VueCssClass;
 }
 

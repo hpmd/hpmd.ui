@@ -1,13 +1,18 @@
 import * as tsx from 'vue-tsx-support';
 import { HmSelect as HmSelectOriginal } from '.';
 
+type SelectOption = {
+    [key: string]: any;
+    [index: number]: any;
+}
+
 type SelectProps = {
     // multiselect mixin
     allowEmpty?: boolean;
     blockKeys?: string[];
     clearOnSelect?: boolean;
     closeOnSelect?: boolean;
-    customLabel?: (value?: object | string | number) => string;
+    customLabel?: (value?: { [key: string]: string | number } | string | number) => string;
     groupLabel?: string;
     groupSelect?: boolean;
     groupValues?: string;
@@ -17,7 +22,7 @@ type SelectProps = {
     label?: string;
     max?: number;
     multiple?: boolean;
-    options?: object[] | string[] | number[];
+    options?: SelectOption[] | string[] | number[];
     optionsLimit?: number;
     placeholder?: string;
     preselectFirst?: boolean;
@@ -28,7 +33,7 @@ type SelectProps = {
     tagPlaceholder?: string;
     tagPosition?: 'top' | 'bottom';
     trackBy?: string;
-    value?: object | string | number;
+    value?: SelectOption | string | number;
 
     // Multiselect
     deselectGroupLabel?: string;
@@ -56,9 +61,9 @@ type SelectEvents = {
     onClose: (value?: SelectProps['value'], id?: SelectProps['id']) => void;
     onInput: (value?: SelectProps['value'], id?: SelectProps['id']) => void;
     onOpen: SelectProps['id'];
-    onRemove: (removedOption?: object | string | number, id?: SelectProps['id']) => void;
+    onRemove: (removedOption?: SelectOption | string | number, id?: SelectProps['id']) => void;
     'onSearch-change': (searchQuery?: string, id?: SelectProps['id']) => void;
-    onSelect: (selectedOption?: object | string | number, id?: SelectProps['id']) => void;
+    onSelect: (selectedOption?: SelectOption | string | number, id?: SelectProps['id']) => void;
     onTag: (searchQuery?: string, id?: SelectProps['id']) => void;
 }
 
@@ -70,11 +75,11 @@ type SelectScopedSlots = {
         search: string;
     };
     option?: {
-        option: object | string | number;
+        option: SelectOption | string | number;
         search: string;
     };
     tag?: {
-        option: object | string | number;
+        option: SelectOption | string | number;
         remove: () => void;
         search: string;
     }

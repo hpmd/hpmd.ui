@@ -36,7 +36,7 @@ type NavItemProps = {
     exact?: boolean;
     exactActiveClass?: string;
     href?: string;
-    linkAttrs?: object;
+    linkAttrs?: { [key: string]: any };
     linkClasses?: VueCssClass;
     noPrefetch?: boolean;
     prefetch?: boolean | null;

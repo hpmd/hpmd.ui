@@ -1,4 +1,5 @@
 import { BvEvent } from 'bootstrap-vue';
+import Vue from 'vue';
 import * as tsx from 'vue-tsx-support';
 import { ElementBoundary, TipPlacement, TipTarget, TipTrigger } from '../../types/tsx-common';
 import { HmPopover as HmPopoverOriginal } from '.';
@@ -7,7 +8,7 @@ import { HmPopover as HmPopoverOriginal } from '.';
 type PopoverProps = {
     boundary?: ElementBoundary;
     boundaryPadding?: number | string;
-    container?: HTMLElement | object | string;
+    container?: HTMLElement | Vue | string;
     content?: string | null;
     customClass?: string;
     delay?: number | { show: number, hide: number };

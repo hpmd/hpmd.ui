@@ -1,4 +1,5 @@
 import * as tsx from 'vue-tsx-support';
+import Vue from 'vue';
 import { VueCssClass } from '../../types/tsx-common';
 import { BvModalEvent, HmModal as HmModalOriginal } from '.';
 
@@ -36,7 +37,7 @@ type ModalProps = {
     id?: string;
     ignoreEnforceFocusSelector?: string | string[];
     lazy?: boolean;
-    modalClass: VueCssClass;
+    modalClass?: VueCssClass;
     noCloseOnBackdrop?: boolean;
     noCloseOnEsc?: boolean;
     noEnforceFocus?: boolean;
@@ -47,7 +48,7 @@ type ModalProps = {
     okTitle?: string;
     okTitleHtml?: string;
     okVariant?: string;
-    returnFocus?: HTMLElement | object | string;
+    returnFocus?: HTMLElement | Vue | string;
     scrollable?: boolean;
     size?: string;
     static?: boolean;

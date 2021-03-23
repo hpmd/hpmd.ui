@@ -11,22 +11,26 @@ import {
     TooltipStyle
 } from 'vue-slider-component/typings/typings';
 import { HmRangeSlider as HmRangeSliderOriginal } from '.';
+import { HTMLAttributes } from 'vue-tsx-support/types/dom';
 
 type Value = number | string | number[] | string[];
 // @Param {index} Index of the active slider
 // @Return New index
 type HandleFunction = (index: number) => number;
 
+type RangeSliderPropData = { [key: string]: any; }
+type RangeSliderPropStyle = { [key: string]: string; }
+
 type RangeSliderProps = {
     absorb?: boolean;
     clickable?: boolean;
     contained?: boolean;
-    data?: number[] | string[] | object[] | object;
+    data?: number[] | string[] | RangeSliderPropData[] | RangeSliderPropData;
     dataLabel?: string;
     dataValue?: string;
     direction?: Direction;
     disabled?: boolean;
-    dotAttrs?: object;
+    dotAttrs?: { [key: string]: any };
     dotOptions?: DotOption | DotOption[];
     dotSize?: number | [number, number];
     dotStyle?: DotStyle | null;
@@ -38,8 +42,8 @@ type RangeSliderProps = {
     included?: boolean;
     interval?: number;
     keydownHook?: (e: KeyboardEvent) => HandleFunction | boolean;
-    labelActiveStyle?: object | null;
-    labelStyle?: object | null;
+    labelActiveStyle?: RangeSliderPropStyle | null;
+    labelStyle?: RangeSliderPropStyle | null;
     lazy?: boolean;
     marks?: MarksProp;
     max?: number;
@@ -48,11 +52,11 @@ type RangeSliderProps = {
     minRange?: number;
     order?: boolean;
     process?: ProcessProp;
-    processStyle?: object | null;
-    railStyle?: object | null;
+    processStyle?: RangeSliderPropStyle | null;
+    railStyle?: RangeSliderPropStyle | null;
     silent?: boolean;
-    stepActiveStyle?: object | null;
-    stepStyle?: object | null;
+    stepActiveStyle?: RangeSliderPropStyle | null;
+    stepStyle?: RangeSliderPropStyle | null;
     tooltip?: TooltipProp;
     tooltipPlacement?: Position | Position[];
     tooltipFormatter?: TooltipFormatterFunc | TooltipFormatterFunc[];
@@ -105,7 +109,7 @@ type RangeSliderScopedSlots = {
         end: number;
         index: number;
         start: number;
-        style: object;
+        style: RangeSliderPropStyle;
     };
     step?: LabelStepMarkScope;
     tooltip?: DotTooltipScope;

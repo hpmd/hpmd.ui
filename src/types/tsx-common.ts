@@ -27,7 +27,7 @@ export type CheckboxRadioGroupCommonProps = {
     htmlField?: string;
     id?: string;
     name?: string;
-    options: any[] | object;
+    options: any[] | { [key: string]: any };
     plain?: boolean;
     required?: boolean;
     size?: string;

@@ -9,7 +9,7 @@ export default {
         return {
             example,
             asDate: false,
-            model: null,
+            model: new Date(2020, 3, 10),
             useNative: false
         };
     }
@@ -21,11 +21,8 @@ export default {
     <section>
         <h2 class="mb-8 display-4">Datepicker</h2>
 
-        <hm-alert
-            show
-            variant="danger">
-            <strong>WARN:</strong> в компоненте есть баг с отображением календаря и выбором диапазона дат - он будет исправлен в следующей ревизии
-        </hm-alert>
+        <h3>Изменения</h3>
+        <p><span class="version">0.13.7</span> Убрал свойство <code>isRange</code> &mdash; оно больше мешало чем помогало</p>
 
         <h3 class="mt-8">Компоненты</h3>
         <ul>
@@ -41,7 +38,6 @@ export default {
         </div>
 
         <hm-datepicker
-            range
             :use-native="useNative"
             v-model="model"
             :value-as-date="asDate">
@@ -70,13 +66,6 @@ export default {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><code>is-range</code></td>
-                        <td><code>Boolean</code></td>
-                        <td><code>false</code></td>
-                        <td></td>
-                        <td>Выбрать диапазон дат</td>
-                    </tr>
                     <tr>
                         <td><code>use-native</code></td>
                         <td><code>Boolean</code></td>

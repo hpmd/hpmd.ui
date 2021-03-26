@@ -3,13 +3,13 @@
  * @property {Boolean}  useNative          native input[type="file"]
  * @property {String}   selectedVariant    selected bootstrap theme
  * @property {String}   todayVariant       today bootstrap theme
- * @property {Boolean}  isRange              date range selection
  */
 import { BFormDatepicker } from 'bootstrap-vue';
-import { BVFormBtnLabelControl } from 'bootstrap-vue/src/components/form-btn-label-control/bv-form-btn-label-control';
+import { BVFormBtnLabelControl, props as BVFormBtnLabelControlProps } from 'bootstrap-vue/src/components/form-btn-label-control/bv-form-btn-label-control';
 import { isUndefinedOrNull } from 'bootstrap-vue/src/utils/inspect';
 import { parseYMD } from 'bootstrap-vue/src/utils/date';
-import { pick } from 'bootstrap-vue/src/utils/object';
+import { omit, pick } from 'bootstrap-vue/src/utils/object';
+import { pluckProps } from 'bootstrap-vue/src/utils/props';
 import { HmButton } from '../button';
 import { HmCalendar } from '../calendar';
 import { HmIcon } from '../icon';
@@ -17,6 +17,14 @@ import { HmInput } from '../input';
 import { uniCalendar } from '../../unicons';
 
 HmIcon.add(uniCalendar);
+
+const formBtnLabelControlProps = omit(BVFormBtnLabelControlProps, [
+    'formattedValue',
+    'id',
+    'lang',
+    'rtl',
+    'value'
+]);
 
 /**
  * Customized, cross-browser consistent,
@@ -46,10 +54,6 @@ export default {
             // Variant color to use for today's date (defaults to `selectedVariant`)
             type: String,
             default: 'primary'
-        },
-        isRange: {
-            type: Boolean,
-            default: false
         }
     },
     methods: {
@@ -183,9 +187,9 @@ export default {
                 staticClass: 'b-form-date-calendar w-100',
                 props: {
                     ...this.calendarProps,
-                    // hidden: !this.isVisible,
-                    isRange: this.isRange,
-                    // value: localYMD,
+                    hidden: !this.isVisible,
+                    isRange: false,
+                    value: localYMD,
                     valueAsDate: false,
                     width: this.calendarWidth
                 },
@@ -214,7 +218,7 @@ export default {
             {
                 staticClass: 'b-form-datepicker',
                 props: {
-                    ...$props,
+                    ...pluckProps(formBtnLabelControlProps, $props),
                     formattedValue: localYMD ? this.formattedValue : '',
                     id: this.safeId(),
                     lang: this.computedLang,

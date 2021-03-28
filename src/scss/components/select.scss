@@ -329,7 +329,7 @@ fieldset[disabled] .multiselect{
         vertical-align: middle;
         position: relative;
         cursor:pointer;
-        white-space: nowrap;
+        // white-space: nowrap;
         border-radius: $select-border-radius;
 
         span {

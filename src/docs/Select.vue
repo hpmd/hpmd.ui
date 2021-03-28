@@ -24,29 +24,19 @@ export default {
 
     data() {
         return {
-            searchBar: {
-                value: [
-                    { name: 'Развлекательный контент', code: 'a' }
-                ],
-                options: [
-                    { name: 'Развлекательный контент', code: 'a' },
-                    { name: 'Авто', code: 'b' },
-                    { name: 'Другое', code: 'c' },
-                    { name: 'Здоровое питание', code: 'd' },
-                    { name: 'Стриминговые сервисы', code: 'e' },
-                    { name: 'Чертовски длинная строка со всяким разным текстом', code: 'f' }
-                ]
-            },
-            selectBar: {
-                value: 'Развлекательный контент',
-                options: [
-                    'Развлекательный контент',
-                    'Авто',
-                    'Здоровое питание',
-                    'Стриминговые сервисы',
-                    'Чертовски длинная строка со всяким разным текстом'
-                ]
-            },
+            options: [
+                { name: 'Развлекательный контент', code: 'a' },
+                { name: 'Авто', code: 'b' },
+                { name: 'Другое', code: 'c' },
+                { name: 'Здоровое питание', code: 'd' },
+                { name: 'Стриминговые сервисы', code: 'e' },
+                { name: 'Чертовски длинная строка со всяким разным текстом', code: 'f' }
+            ],
+            search: [{ name: 'Развлекательный контент', code: 'a' }],
+            single: { name: 'Развлекательный контент', code: 'a' },
+            multiple: [],
+            isDisabled: false,
+            selectLimit: 3
         };
     },
     methods: {
@@ -74,22 +64,59 @@ export default {
         </ul>
 
         <h3 class="mt-8">Использование</h3>
+        <div class="p-5 mb-5 bg-light rounded">
+            <div class="row">
+                <div class="col">
+                    <hm-checkbox v-model="isDisabled">
+                        Is Disabled?
+                    </hm-checkbox>
+                </div>
+                <div class="col">
+                    <hm-input
+                        label="Limit selected"
+                        type="number"
+                        number
+                        v-model="selectLimit"
+                    />
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col">
-                <h5>Select bar</h5>
+                <h5>Select (single)</h5>
                 <hm-select
-                    v-model="selectBar.value"
-                    :options='selectBar.options'/>
+                    :disabled="isDisabled"
+                    v-model="single"
+                    label="name"
+                    :options="options" />
             </div>
             <div class="col">
-                <h5>Search bar multiple selection</h5>
+                <h5>Select (multiple)</h5>
                 <hm-select
+                    :disabled="isDisabled"
+                    label="name"
+                    track-by="code"
+                    :max="selectLimit"
+                    multiple
+                    :options="options"
+                    v-model="multiple">
+                    <template #maxElements>
+                        <div>Выбрано макисмальное количество значений ({{selectLimit}})</div>
+                    </template>
+                </hm-select>
+            </div>
+            <div class="col">
+                <h5>Search bar (multiple, taggable)</h5>
+                <hm-select
+                    :disabled="isDisabled"
                     track-by="name"
                     label="name"
                     taggable
                     multiple
-                    v-model="searchBar.value"
-                    :options='searchBar.options'
+                    searchable
+                    v-model="search"
+                    :options="options"
                     v-on:tag="addTag"/>
             </div>
         </div>

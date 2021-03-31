@@ -394,11 +394,14 @@ $notification-progress-height: $spacer;
 // Select input
 $select-main-color: $dark;
 $select-input-font-size: 1rem;
-$select-input-placeholder-color: $gray-400;
+$select-input-placeholder-color: $input-placeholder-color;
+$select-input-color: $gray-700;
+$select-input-padding-left: $spacer;
 $select-border-radius: $radius;
 $select-tags-padding-x: ($spacer * 2);
 $select-tags-padding-y: ($spacer * 2);
-$select-tags-font-size: 0.875em;
+$select-tags-font-size: 1rem;
+$select-tags-tag-font-size: 0.875em;
 $select-tags-border: 1px solid $gray-400;
 $select-tags-bg: $primary;
 $select-tag-bg: $gray-400;

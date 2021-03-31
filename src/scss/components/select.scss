@@ -112,21 +112,21 @@ fieldset[disabled] .multiselect{
         border: none;
         border-radius: $select-border-radius;
         background: $white;
-        padding-left: 5px;
+        padding-left: $select-input-padding-left;
         width: 100%;
         transition: border .1s ease;
         box-sizing: border-box;
-        vertical-align: top;
+        // vertical-align: top;
     }
 
     &__input {
         &:-ms-input-placeholder{
-            color: $select-input-placeholder-color;
+            color: $select-input-color;
         }
 
         &,
         &::placeholder {
-            color: $select-input-placeholder-color;
+            color: $select-input-color;
         }
     }
 
@@ -164,6 +164,13 @@ fieldset[disabled] .multiselect{
             flex-wrap: wrap;
             width: calc(100% - 40px);
             margin-top: -10px;
+
+            &:not(:empty) ~ .multiselect__input {
+                &::placeholder {
+                    color: $select-input-placeholder-color;
+                }
+                font-size: 0.875em;
+            }
         }
     }
 
@@ -176,6 +183,7 @@ fieldset[disabled] .multiselect{
         margin-right: 10px;
         margin-top: 10px;
         color: $black;
+        font-size: $select-tags-tag-font-size;
         line-height: 1;
         background: $select-tag-bg;
         white-space: nowrap;
@@ -261,9 +269,12 @@ fieldset[disabled] .multiselect{
     }
 
     &__placeholder{
-        color: #adadad;
+        color: $select-input-placeholder-color;
         display: inline-block;
-        padding-top: 2px;
+        line-height: 1;
+        min-height: 20px;
+        padding-left: $select-input-padding-left;
+        // padding-top: 2px;
     }
 
     &__content {
@@ -285,8 +296,8 @@ fieldset[disabled] .multiselect{
             overflow: auto;
             border: 1px solid #e8e8e8;
             border-top: none;
-            border-bottom-left-radius: $radius;
-            border-bottom-right-radius: $radius;
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
             z-index: 50;
             -webkit-overflow-scrolling: touch;
         }
@@ -297,8 +308,8 @@ fieldset[disabled] .multiselect{
             bottom: 100%;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
             border-bottom: none;
             border-top: 1px solid #e8e8e8;
         }

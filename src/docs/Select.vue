@@ -33,7 +33,7 @@ export default {
                 { name: 'Чертовски длинная строка со всяким разным текстом', code: 'f' }
             ],
             search: [{ name: 'Развлекательный контент', code: 'a' }],
-            single: { name: 'Развлекательный контент', code: 'a' },
+            single: null, // { name: 'Развлекательный контент', code: 'a' },
             multiple: [],
             isDisabled: false,
             selectLimit: 3

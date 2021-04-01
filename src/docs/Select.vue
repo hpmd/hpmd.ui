@@ -1,23 +1,44 @@
 <script>
 const example = `<div class="row">
-    <div class="col">
-        <h5>Select bar</h5>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <h5>Select (single)</h5>
         <hm-select
-            v-model="selectBar.value"
-            :options='selectBar.options'/>
+            :clearable="isClearable"
+            :disabled="isDisabled"
+            v-model="single"
+            label="name"
+            :options="options" />
     </div>
-    <div class="col">
-        <h5>Search bar multiple selection</h5>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <h5>Select (multiple)</h5>
         <hm-select
+            :clearable="isClearable"
+            :disabled="isDisabled"
+            label="name"
+            track-by="code"
+            :max="selectLimit"
+            multiple
+            :options="options"
+            v-model="multiple">
+            <template #maxElements>
+                <div>Выбрано макисмальное количество значений ({{selectLimit}})</div>
+            </template>
+        </hm-select>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+        <h5>Search bar (multiple, taggable)</h5>
+        <hm-select
+            :clearable="isClearable"
+            :disabled="isDisabled"
             track-by="name"
             label="name"
             taggable
             multiple
-            v-model="searchBar.value"
-            :options='searchBar.options'
+            searchable
+            v-model="search"
+            :options="options"
             v-on:tag="addTag"/>
-    </div>
-</div>`;
+    </div>`;
 
 export default {
     example,
@@ -46,8 +67,8 @@ export default {
                 name: newTag,
                 code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
             };
-            this.searchBar.options.push(tag);
-            this.searchBar.value.push(tag);
+            this.options.push(tag);
+            this.search.push(tag);
         }
     }
 };
@@ -56,6 +77,9 @@ export default {
 <template>
     <section>
         <h2 class="mb-8 display-4">Select Input</h2>
+
+        <h3 class="mt-8">Изменения</h3>
+        <p><span class="version">0.13.9</span> Переписан шаблон компонента (полностью), добавлено свойство <code>clearable: boolean = true</code></p>
 
         <h3 class="mt-8">Компоненты</h3>
         <ul>
@@ -138,5 +162,50 @@ export default {
 
         <h3 class="mt-8">Документация</h3>
         <p><a href="https://vue-multiselect.js.org/">Vue Multiselect</a></p>
+
+        <h4 class="text-danger">HmSelect</h4>
+        <h5>Добавленные свойства</h5>
+        <div class="table-responsive">
+            <table class="table table-sm table-code table-striped">
+                <thead>
+                    <tr>
+                        <th>Свойство</th>
+                        <th>Тип</th>
+                        <th>По-умолчанию</th>
+                        <th>Допустимые значения</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>clearable</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>true</code></td>
+                        <td></td>
+                        <td>Выводит контрол для очистки поля ввода (при нажатии отсылает событие <code>clear</code>: очистка преданного значения внутри самого компонента кажется излишне рискованным предприятием, в виду того, что не всегда очевидно какое пустое значение может понадобиться пользователю (null | string | [] | {})</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h5 class="mt-6">Добавленные события</h5>
+        <div class="table-responsive">
+            <table class="table table-sm table-code table-striped">
+                <thead>
+                    <tr>
+                        <th>Событие</th>
+                        <th>Передаваемые данные</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>clear</code></td>
+                        <td><code>void</code></td>
+                        <td>Отправляется при нажатии на clear-кнопку, если <code>clearable=true</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 </template>

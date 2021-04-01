@@ -3,8 +3,10 @@ fieldset[disabled] .multiselect{
 }
 
 .multiselect {
-    box-sizing: content-box;
-    display: inline-block;
+    box-sizing: border-box;
+    border-radius: $select-border-radius;
+    border: $select-tags-border;
+    display: flex;
     width: 100%;
     position: relative;
     min-height: 40px;
@@ -106,7 +108,7 @@ fieldset[disabled] .multiselect{
     &__input,
     &__single{
         position: relative;
-        display: inline-block;
+        // display: inline-block;
         min-height: 20px;
         line-height: 20px;
         border: none;
@@ -154,18 +156,17 @@ fieldset[disabled] .multiselect{
     }
 
     &__tags {
+        flex-grow: 1;
         min-height: 40px;
         display: block;
         padding: $select-tags-padding-x $select-tags-padding-y;
-        border-radius: $select-border-radius;
-        border: $select-tags-border;
         background: $white;
         font-size: $select-tags-font-size;
 
         &-wrap{
             display: inline-flex;
             flex-wrap: wrap;
-            width: calc(100% - 40px);
+            width: 100%; // calc(100% - 40px);
             margin-top: -10px;
 
             &:not(:empty) ~ .multiselect__input {
@@ -248,19 +249,25 @@ fieldset[disabled] .multiselect{
     }
 
     &__select{
-        position: absolute;
+        align-self: stretch;
+        align-items: center;
+        flex-grow: 0;
+        display: flex;
+        justify-content: center;
+        // position: absolute;
         width: 40px;
-        height: 100%;
-        right: 0;
-        top: 0;
+        // height: 100%;
+        // right: 0;
+        // top: 0;
         padding: $spacer $spacer * 2;
+        position: relative;
         text-align: center;
         transition: transform .2s ease;
 
         &:before {
-            position: absolute;
-            right: calc(50% - 6px);
-            top: calc(50% - 6px);
+            // position: absolute;
+            // right: calc(50% - 6px);
+            // top: calc(50% - 6px);
             width: $spacer * 3;
             height: $spacer * 3;
             mask-image: $select-chevron-icon-url;
@@ -294,13 +301,17 @@ fieldset[disabled] .multiselect{
             position: absolute;
             display: block;
             background: $white;
-            width: 100%;
+            width: calc(100% + 2px);
             max-height: 240px;
             overflow: auto;
             border: 1px solid #e8e8e8;
             border-top: none;
             border-bottom-left-radius: $border-radius;
             border-bottom-right-radius: $border-radius;
+            margin-left: -$border-width;
+            margin-right: -$border-width;
+            top: 100%;
+            transform: translateY(1px);
             z-index: 50;
             -webkit-overflow-scrolling: touch;
         }
@@ -475,18 +486,18 @@ fieldset[disabled] .multiselect{
 
     &__clear {
         color: rgba($dark, 0.5);
+        flex-grow: 0;
         font-size: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: absolute;
-        right: 40px;
-        height: 100%;
+        transition: color .15s ease-in-out;
         width: 24px;
+        z-index: 1;
         &:focus {
             outline: none;
         }
-        &:hover, &:focus {
+        &:hover {
             color: rgba($dark, 1);
         }
     }

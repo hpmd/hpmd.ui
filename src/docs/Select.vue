@@ -35,6 +35,7 @@ export default {
             search: [{ name: 'Развлекательный контент', code: 'a' }],
             single: null, // { name: 'Развлекательный контент', code: 'a' },
             multiple: [],
+            isClearable: true,
             isDisabled: false,
             selectLimit: 3
         };
@@ -72,6 +73,11 @@ export default {
                     </hm-checkbox>
                 </div>
                 <div class="col">
+                    <hm-checkbox v-model="isClearable">
+                        Is clearable?
+                    </hm-checkbox>
+                </div>
+                <div class="col">
                     <hm-input
                         label="Limit selected"
                         type="number"
@@ -83,17 +89,19 @@ export default {
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <h5>Select (single)</h5>
                 <hm-select
+                    :clearable="isClearable"
                     :disabled="isDisabled"
                     v-model="single"
                     label="name"
                     :options="options" />
             </div>
-            <div class="col">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <h5>Select (multiple)</h5>
                 <hm-select
+                    :clearable="isClearable"
                     :disabled="isDisabled"
                     label="name"
                     track-by="code"
@@ -106,9 +114,10 @@ export default {
                     </template>
                 </hm-select>
             </div>
-            <div class="col">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <h5>Search bar (multiple, taggable)</h5>
                 <hm-select
+                    :clearable="isClearable"
                     :disabled="isDisabled"
                     track-by="name"
                     label="name"

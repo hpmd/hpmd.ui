@@ -6,6 +6,7 @@
  */
 import { BFormDatepicker } from 'bootstrap-vue';
 import { BVFormBtnLabelControl, props as BVFormBtnLabelControlProps } from 'bootstrap-vue/src/components/form-btn-label-control/bv-form-btn-label-control';
+import { props as BCalendarProps } from 'bootstrap-vue/src/components/calendar/calendar';
 import { isUndefinedOrNull } from 'bootstrap-vue/src/utils/inspect';
 import { parseYMD } from 'bootstrap-vue/src/utils/date';
 import { omit, pick } from 'bootstrap-vue/src/utils/object';
@@ -17,6 +18,16 @@ import { HmInput } from '../input';
 import { uniCalendar } from '../../unicons';
 
 HmIcon.add(uniCalendar);
+
+const calendarProps = omit(BCalendarProps, [
+    'block',
+    'hidden',
+    'id',
+    'noKeyNav',
+    'roleDescription',
+    'value',
+    'width'
+]);
 
 const formBtnLabelControlProps = omit(BVFormBtnLabelControlProps, [
     'formattedValue',
@@ -186,7 +197,7 @@ export default {
             {
                 staticClass: 'b-form-date-calendar w-100',
                 props: {
-                    ...this.calendarProps,
+                    ...pluckProps(calendarProps, $props),
                     hidden: !this.isVisible,
                     isRange: false,
                     value: localYMD,

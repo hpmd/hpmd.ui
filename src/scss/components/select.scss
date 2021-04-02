@@ -3,8 +3,10 @@ fieldset[disabled] .multiselect{
 }
 
 .multiselect {
-    box-sizing: content-box;
-    display: inline-block;
+    box-sizing: border-box;
+    border-radius: $select-border-radius;
+    border: $select-tags-border;
+    display: flex;
     width: 100%;
     position: relative;
     min-height: 40px;
@@ -106,27 +108,30 @@ fieldset[disabled] .multiselect{
     &__input,
     &__single{
         position: relative;
-        display: inline-block;
+        // display: inline-block;
         min-height: 20px;
         line-height: 20px;
         border: none;
         border-radius: $select-border-radius;
         background: $white;
-        padding-left: 5px;
+        padding-left: $select-input-padding-left;
         width: 100%;
         transition: border .1s ease;
         box-sizing: border-box;
-        vertical-align: top;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        // vertical-align: top;
     }
 
     &__input {
         &:-ms-input-placeholder{
-            color: $select-input-placeholder-color;
+            color: $select-input-color;
         }
 
         &,
         &::placeholder {
-            color: $select-input-placeholder-color;
+            color: $select-input-color;
         }
     }
 
@@ -151,19 +156,25 @@ fieldset[disabled] .multiselect{
     }
 
     &__tags {
+        flex-grow: 1;
         min-height: 40px;
         display: block;
         padding: $select-tags-padding-x $select-tags-padding-y;
-        border-radius: $select-border-radius;
-        border: $select-tags-border;
         background: $white;
         font-size: $select-tags-font-size;
 
         &-wrap{
             display: inline-flex;
             flex-wrap: wrap;
-            width: calc(100% - 40px);
+            width: 100%; // calc(100% - 40px);
             margin-top: -10px;
+
+            &:not(:empty) ~ .multiselect__input {
+                &::placeholder {
+                    color: $select-input-placeholder-color;
+                }
+                font-size: 0.875em;
+            }
         }
     }
 
@@ -176,6 +187,7 @@ fieldset[disabled] .multiselect{
         margin-right: 10px;
         margin-top: 10px;
         color: $black;
+        font-size: $select-tags-tag-font-size;
         line-height: 1;
         background: $select-tag-bg;
         white-space: nowrap;
@@ -237,19 +249,25 @@ fieldset[disabled] .multiselect{
     }
 
     &__select{
-        position: absolute;
+        align-self: stretch;
+        align-items: center;
+        flex-grow: 0;
+        display: flex;
+        justify-content: center;
+        // position: absolute;
         width: 40px;
-        height: 100%;
-        right: 0;
-        top: 0;
+        // height: 100%;
+        // right: 0;
+        // top: 0;
         padding: $spacer $spacer * 2;
+        position: relative;
         text-align: center;
         transition: transform .2s ease;
 
         &:before {
-            position: absolute;
-            right: calc(50% - 6px);
-            top: calc(50% - 6px);
+            // position: absolute;
+            // right: calc(50% - 6px);
+            // top: calc(50% - 6px);
             width: $spacer * 3;
             height: $spacer * 3;
             mask-image: $select-chevron-icon-url;
@@ -261,9 +279,12 @@ fieldset[disabled] .multiselect{
     }
 
     &__placeholder{
-        color: #adadad;
+        color: $select-input-placeholder-color;
         display: inline-block;
-        padding-top: 2px;
+        line-height: 1;
+        min-height: 20px;
+        padding-left: $select-input-padding-left;
+        // padding-top: 2px;
     }
 
     &__content {
@@ -280,13 +301,17 @@ fieldset[disabled] .multiselect{
             position: absolute;
             display: block;
             background: $white;
-            width: 100%;
+            width: calc(100% + 2px);
             max-height: 240px;
             overflow: auto;
             border: 1px solid #e8e8e8;
             border-top: none;
-            border-bottom-left-radius: $radius;
-            border-bottom-right-radius: $radius;
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+            margin-left: -$border-width;
+            margin-right: -$border-width;
+            top: 100%;
+            transform: translateY(1px);
             z-index: 50;
             -webkit-overflow-scrolling: touch;
         }
@@ -297,8 +322,8 @@ fieldset[disabled] .multiselect{
             bottom: 100%;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
             border-bottom: none;
             border-top: 1px solid #e8e8e8;
         }
@@ -458,32 +483,53 @@ fieldset[disabled] .multiselect{
         display:inline-block;
         vertical-align:top;
     }
+
+    &__clear {
+        color: rgba($dark, 0.5);
+        flex-grow: 0;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color .15s ease-in-out;
+        width: 24px;
+        z-index: 1;
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            color: rgba($dark, 1);
+        }
+    }
 }
 
-[dir=rtl] .multiselect{
-    text-align:right;
-}
-[dir=rtl] .multiselect__select{
-    right:auto;
-    left:1px;
-}
-[dir=rtl] .multiselect__tags{
-    padding:8px 8px 0 40px;
-}
-[dir=rtl] .multiselect__content{
-    text-align:right;
-}
-[dir=rtl] .multiselect__option:after{
-    right:auto;
-    left:0;
-}
-[dir=rtl] .multiselect__clear{
-    right:auto;
-    left:12px;
-}
-[dir=rtl] .multiselect__spinner{
-    right:auto;
-    left:1px;
+[dir=rtl] {
+    .multiselect {
+        text-align: right;
+
+        &__select {
+            right: auto;
+            left: 1px;
+        }
+        &__tags {
+            padding: 8px 8px 0 40px;
+        }
+        &__content {
+            text-align: right;
+        }
+        &__option:after {
+            right: auto;
+            left: 0;
+        }
+        &__clear {
+            right: auto;
+            left: 12px;
+        }
+        &__spinner {
+            right: auto;
+            left: 1px;
+        }
+    }
 }
 @keyframes spinning{
     0% {

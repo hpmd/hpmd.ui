@@ -1,16 +1,31 @@
 <script>
 const example = `<hm-datepicker
+    :max="max"
+    :min="min"
+    :use-native="useNative"
     v-model="model"
     :value-as-date="asDate">
 </hm-datepicker>`;
 
 export default {
     data() {
+        const now = new Date();
+        const min = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+        const max = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate() + 10);
+
         return {
             example,
             asDate: false,
-            model: new Date(2020, 3, 10),
-            useNative: false
+            model: now,
+            state: false,
+            stateOptions: [
+                { value: null, text: 'null' },
+                { value: false, text: 'false' },
+                { value: true, text: 'true' }
+            ],
+            useNative: false,
+            max,
+            min
         };
     }
 };
@@ -35,9 +50,28 @@ export default {
             <hr>
             <hm-checkbox v-model="asDate">Возвращать объект Date</hm-checkbox>
             <hm-checkbox v-model="useNative">Использовать нативный ввод даты</hm-checkbox>
+            <hm-form-group label="Validation state">
+                <hm-radio-group v-model="state" :options="stateOptions"></hm-radio-group>
+            </hm-form-group>
+
+            <div class="row mt-5">
+                <div class="col">
+                    <hm-form-group label="Минимально возможная дата">
+                        <hm-datepicker v-model="min"></hm-datepicker>
+                    </hm-form-group>
+                </div>
+                <div class="col">
+                    <hm-form-group label="Максимально возможная дата">
+                        <hm-datepicker v-model="max"></hm-datepicker>
+                    </hm-form-group>
+                </div>
+            </div>
         </div>
 
         <hm-datepicker
+            :max="max"
+            :min="min"
+            :state="state"
             :use-native="useNative"
             v-model="model"
             :value-as-date="asDate">

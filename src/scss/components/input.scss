@@ -17,6 +17,27 @@
         }
     }
 
+    &.hide-datetime-mask {
+        &::before {
+            background: $white;
+            bottom: $border-width + 1px;
+            content: '';
+            display: block;
+            left: $border-width + 1px;
+            pointer-events: none;
+            position: absolute;
+            top: $border-width + 1px;
+            user-select: none;
+            z-index: 1;
+        }
+
+        &.empty:not(.focused) {
+            &::before {
+                width: 50%;
+            }
+        }
+    }
+
     .prepend-container {
         align-items: center;
         display: flex;
@@ -74,7 +95,7 @@
 
     input:-webkit-autofill,
     input:focus,
-    input:not(.empty),
+    &:not(.empty) input.form-control,
     input.focus {
         & + .prepend-container > .label {
             & > label {
@@ -90,8 +111,10 @@
         }
     }
 
+
+
     input:-webkit-autofill,
-    input:not(.empty) {
+    &:not(.empty) input {
         & + .prepend-container > .label > label {
             color: $gray-500;
         }

@@ -119,6 +119,8 @@ export default {
                 phone: '',
                 error: '',
                 inputGroup: '',
+                time: '',
+                date: null,
                 isInputGroupValid: null
             },
             masked: {
@@ -222,6 +224,20 @@ export default {
                         </span>
                     </template>
                 </hm-input>
+            </div>
+
+            <div class="mt-4">
+                <hm-input
+                    label="Время"
+                    type="time"
+                    v-model="inputs.time" />
+            </div>
+
+            <div class="mt-4">
+                <hm-input
+                    label="Дата"
+                    type="date"
+                    v-model="inputs.date" />
             </div>
 
             <hr>

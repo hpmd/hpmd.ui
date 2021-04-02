@@ -9,4 +9,10 @@
     &:hover > .btn, & > .btn:hover {
         opacity: 1;
     }
+
+    label.form-control {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap !important;
+    }
 }

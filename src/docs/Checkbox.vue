@@ -60,7 +60,8 @@ export default {
             example,
             isDisabled: false,
             isToggle: false,
-            checkboxEmpty: false
+            checkboxEmpty: false,
+            indeterminate: false
         };
     },
     computed: {
@@ -95,6 +96,7 @@ export default {
 
             <hm-checkbox v-model="isDisabled">Is Disabled?</hm-checkbox>
             <hm-checkbox v-model="isToggle">Toggle-style checkbox</hm-checkbox>
+            <hm-checkbox v-model="indeterminate">Indeterminate</hm-checkbox>
         </div>
 
         <div class="mt-5">
@@ -145,6 +147,15 @@ export default {
                 :size="size"
                 :switch="isToggle"
                 v-model="checkboxEmpty">
+            </hm-checkbox> some text!
+
+            <h4>Indeterminate checkbox</h4>
+            <hm-checkbox
+                :disabled="isDisabled"
+                :size="size"
+                :indeterminate="indeterminate"
+                v-model="checkboxSingle">
+                Single checkbox
             </hm-checkbox>
         </div>
 

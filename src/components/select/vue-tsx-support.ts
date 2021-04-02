@@ -55,9 +55,13 @@ type SelectProps = {
     // pointerMixin
     optionHeight?: number;
     showPointer?: boolean;
+
+    // custom
+    clearable?: boolean;
 }
 
 type SelectEvents = {
+    onClear: () => void;
     onClose: (value?: SelectProps['value'], id?: SelectProps['id']) => void;
     onInput: (value?: SelectProps['value'], id?: SelectProps['id']) => void;
     onOpen: SelectProps['id'];

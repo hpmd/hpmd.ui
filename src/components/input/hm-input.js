@@ -88,7 +88,9 @@ export default {
                 'form-control-wrap',
                 {
                     focused: this.isFocused,
-                    disabled: this.disabled
+                    disabled: this.disabled,
+                    'hide-datetime-mask': this.label && (_bv.type === 'time' || _bv.type === 'date'),
+                    empty: !_bv.localValue
                 },
                 _bv.stateClass
             ];
@@ -108,10 +110,6 @@ export default {
 
             if ((!_bv.plaintext && _bv.type !== 'range') || _bv.type === 'color') {
                 classes.push('form-control');
-            }
-
-            if (!_bv.localValue) {
-                classes.push('empty');
             }
 
             classes.push(_bv.sizeFormClass);

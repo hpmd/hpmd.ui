@@ -313,11 +313,11 @@ $custom-control-indicator-focus-box-shadow: none;
 $custom-checkbox-indicator-border-radius: $radius;
 $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12'><path fill='#{$custom-control-indicator-checked-color}' d='M8.8 3.21C9.07 2.93 9.52 2.93 9.79 3.21C10.07 3.48 10.07 3.93 9.79 4.2L5.56 8.44C5.28 8.72 4.84 8.72 4.56 8.44L2.21 6.09C1.93 5.81 1.93 5.36 2.21 5.09C2.48 4.81 2.93 4.81 3.2 5.09L5.06 6.94L8.8 3.21Z' /></svg>");
 
-// $custom-checkbox-indicator-indeterminate-bg:           $component-active-bg !default;
-// $custom-checkbox-indicator-indeterminate-color:        $custom-control-indicator-checked-color !default;
-// $custom-checkbox-indicator-icon-indeterminate:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'><path stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/></svg>") !default;
+$custom-checkbox-indicator-indeterminate-bg: lighten($custom-control-indicator-checked-bg, 40);
+$custom-checkbox-indicator-indeterminate-color: $custom-control-indicator-checked-color;
+$custom-checkbox-indicator-icon-indeterminate: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M2 4h4'/></svg>");
 // $custom-checkbox-indicator-indeterminate-box-shadow:   null !default;
-// $custom-checkbox-indicator-indeterminate-border-color: $custom-checkbox-indicator-indeterminate-bg !default;
+$custom-checkbox-indicator-indeterminate-border-color: $custom-checkbox-indicator-indeterminate-bg;
 
 // $custom-radio-indicator-border-radius:          50% !default;
 $custom-radio-indicator-icon-checked:           url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><circle cx='6' cy='6' r='3' fill='#{$custom-control-indicator-bg}'/></svg>");

@@ -326,6 +326,8 @@ fieldset[disabled] .multiselect{
             border-top-right-radius: $border-radius;
             border-bottom: none;
             border-top: 1px solid #e8e8e8;
+            top: auto;
+            transform: translateY(-1px);
         }
     }
 

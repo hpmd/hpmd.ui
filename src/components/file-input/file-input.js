@@ -34,13 +34,15 @@ export default {
             type: String,
             default: 'Файл не выбран'
         }
-    },
-    watch: {
-        /**
-         * @this {BFormFile}
-         */
-        value(val) {
-            this.handleFiles(val);
-        }
     }
+    // Todo: why this watcher was used?
+    // watch: {
+    //     /**
+    //      * @this {BFormFile}
+    //      */
+    //     value(val) {
+    //         debugger;
+    //         this.handleFiles(val);
+    //     }
+    // }
 };

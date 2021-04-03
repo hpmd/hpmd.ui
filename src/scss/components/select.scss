@@ -78,7 +78,7 @@ fieldset[disabled] .multiselect{
         opacity: .6;
     }
     &--active{
-        z-index:50;
+        z-index: $select-wrapper-active-z-index;
 
         &:not(.multiselect--above) .multiselect__current,
         &:not(.multiselect--above) .multiselect__input,
@@ -274,7 +274,7 @@ fieldset[disabled] .multiselect{
             background-color: $gray;
             color: #999;
             content: "";
-            z-index: 1000;
+            z-index: 1;
         }
     }
 
@@ -312,7 +312,7 @@ fieldset[disabled] .multiselect{
             margin-right: -$border-width;
             top: 100%;
             transform: translateY(1px);
-            z-index: 50;
+            z-index: $select-options-z-index;
             -webkit-overflow-scrolling: touch;
         }
     }
@@ -495,7 +495,6 @@ fieldset[disabled] .multiselect{
         justify-content: center;
         transition: color .15s ease-in-out;
         width: 24px;
-        z-index: 1;
         &:focus {
             outline: none;
         }

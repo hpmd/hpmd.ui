@@ -392,6 +392,7 @@ $notification-progress-height: $spacer;
 
 
 // Select input
+$select-wrapper-active-z-index: 50;
 $select-main-color: $dark;
 $select-input-font-size: 1rem;
 $select-input-placeholder-color: $input-placeholder-color;
@@ -410,6 +411,7 @@ $select-tag-padding-x: $spacer;
 $select-tag-padding-y: $spacer;
 $select-tag-icon-color: rgba($dark, 0.4);
 $select-tag-icon-hover-color: $dark;
+$select-options-z-index: 50;
 $select-selected-option-color: $primary;
 $select-chevron-icon-color: $gray-500;
 $select-chevron-icon-url: url(svg-to-base64(chevron-icon($select-chevron-icon-color)));

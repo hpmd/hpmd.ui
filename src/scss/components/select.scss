@@ -9,31 +9,32 @@ fieldset[disabled] .multiselect{
     display: flex;
     width: 100%;
     position: relative;
-    min-height: 40px;
+    min-height: calc(1.5em + 0.75rem + 2px);
     text-align:left;
     color: $select-main-color;//#35495e;
 
     &__spinner{
         position: absolute;
-        right: 1px;
-        top: 1px;
-        width: 48px;
-        height: 35px;
+        right: 0;
+        top: 0;
+        width: 70px;
+        height: 100%;
         background: $white;
         display: block;
+        z-index: 2;
 
         &:after,
         &:before{
             position: absolute;
-            content: "";
+            content: '';
             top: 50%;
-            left: 50%;
+            right: $select-spinner-right;
             margin: -8px 0 0 -8px;
             width: 16px;
             height: 16px;
             border-radius: 100%;
             border: 2px solid transparent;
-            border-top-color: $select-tags-bg;
+            border-top-color: $select-spinner-color;
             box-shadow: 0 0 0 1px transparent;
         }
 
@@ -42,7 +43,7 @@ fieldset[disabled] .multiselect{
             animation-iteration-count: infinite;
         }
         &:after{
-            animation:spinning 2.4s cubic-bezier(.51,.09,.21,.8);
+            animation: spinning 2.4s cubic-bezier(.51,.09,.21,.8);
             animation-iteration-count: infinite;
         }
     }
@@ -157,9 +158,10 @@ fieldset[disabled] .multiselect{
 
     &__tags {
         flex-grow: 1;
-        min-height: 40px;
+        min-height: 38px;
         display: block;
-        padding: $select-tags-padding-x $select-tags-padding-y;
+        overflow: hidden;
+        padding: $select-tags-padding-y $select-tags-padding-x;
         background: $white;
         font-size: $select-tags-font-size;
 

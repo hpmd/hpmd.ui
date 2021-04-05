@@ -168,11 +168,16 @@ export default {
                                     });
                                 }
 
+                                const tagLabel = vm.getOptionLabel(option);
+
                                 return h(
                                     'span',
                                     {
                                         class: 'multiselect__tag',
                                         key: index,
+                                        attrs: {
+                                            title: tagLabel
+                                        },
                                         on: {
                                             mousedown(e) {
                                                 e.preventDefault();
@@ -182,7 +187,7 @@ export default {
                                     [
                                         h(
                                             'span',
-                                            vm.getOptionLabel(option)
+                                            tagLabel
                                         ),
                                         h(
                                             'i',

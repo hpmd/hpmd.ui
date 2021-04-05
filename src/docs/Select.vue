@@ -58,6 +58,7 @@ export default {
             multiple: [],
             isClearable: true,
             isDisabled: false,
+            isLoading: false,
             selectLimit: 3
         };
     },
@@ -102,6 +103,11 @@ export default {
                     </hm-checkbox>
                 </div>
                 <div class="col">
+                    <hm-checkbox v-model="isLoading">
+                        Is loading?
+                    </hm-checkbox>
+                </div>
+                <div class="col">
                     <hm-input
                         label="Limit selected"
                         type="number"
@@ -118,6 +124,7 @@ export default {
                 <hm-select
                     :clearable="isClearable"
                     :disabled="isDisabled"
+                    :loading="isLoading"
                     v-model="single"
                     label="name"
                     :options="options" />
@@ -127,6 +134,7 @@ export default {
                 <hm-select
                     :clearable="isClearable"
                     :disabled="isDisabled"
+                    :loading="isLoading"
                     label="name"
                     track-by="code"
                     :max="selectLimit"
@@ -143,6 +151,7 @@ export default {
                 <hm-select
                     :clearable="isClearable"
                     :disabled="isDisabled"
+                    :loading="isLoading"
                     track-by="name"
                     label="name"
                     taggable

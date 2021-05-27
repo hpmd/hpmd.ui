@@ -211,15 +211,15 @@ $form-validation-states: ("valid": ("color": $form-feedback-valid-color,
 $dropdown-padding-y: 0;
 $dropdown-spacer: 0;
 $dropdown-font-size: $font-size-base !default;
-$dropdown-border-color: $white;
+$dropdown-border-color: $gray-500;
 $dropdown-border-radius: $radius;
 $dropdown-border-width: 0;
 $dropdown-inner-border-radius: 0;
 $dropdown-divider-bg: $gray-500;
 $dropdown-disabled-bg: $gray-300;
 $dropdown-divider-margin-y: 0;
-$dropdown-box-shadow: 0 4px 4px $gray-200;
-$dropdown-text-fontWeight: 400;
+$dropdown-box-shadow: 0 4px 4px rgba($black, 0.15);
+$hpmd-dropdown-text-font-weight: 400;
 $dropdown-toggle-icon: url(svg-to-base64(chevron-icon($gray-500)));
 
 $dropdown-link-active-color: $white;

@@ -11,23 +11,20 @@
 }
 
 .dropdown {
-    &-menu {
-        border: 1px solid $dropdown-divider-bg;
-    }
-
-    &:focus,
-    &.focus {
+    &:focus:not(:focus-visible),
+    &.focus:not(.focus-visible),
+    &.focus:not(:focus-visible) {
         outline: none;
     }
 
-    &.focus .dropdown-toggle,
-    &:focus .dropdown-toggle,
-    & .dropdown-toggle:focus {
+    &.focus-visible .dropdown-toggle,
+    &:focus-visible .dropdown-toggle,
+    & .dropdown-toggle:focus-visible {
         border: 1px solid $black;
     }
 
     .btn {
-        font-weight: $dropdown-text-fontWeight;
+        font-weight: $hpmd-dropdown-text-font-weight;
     }
 
     &-toggle {

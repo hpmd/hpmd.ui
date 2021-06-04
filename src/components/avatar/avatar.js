@@ -16,7 +16,7 @@ export default {
     name: 'HmAvatar',
     props: {
         /**
-         * Sets icon size (xs, sm, md, lg or your custom class)
+         * Sets icon size (xs, sm, md, lg, xl, xxl or your custom class)
          */
         size: {
             type: String,
@@ -56,6 +56,15 @@ export default {
             this.isImgAvailable = false;
 
             this.$emit('imageLoadError', e);
+        }
+    },
+    watch: {
+        src: {
+            handler(val, prev) {
+                if (val !== prev) {
+                    this.isImgAvailable = true;
+                }
+            }
         }
     },
     render(h) {

@@ -18,7 +18,34 @@ export default {
     data() {
         return {
             example,
-            checked: []
+            checked: [],
+            sample: 'https://4.img-dpreview.com/files/p/E~TS590x0~articles/3925134721/0266554465.jpeg',
+            samples: [
+                {
+                    url: 'https://4.img-dpreview.com/files/p/E~TS590x0~articles/3925134721/0266554465.jpeg',
+                    title: 'birdie'
+                },
+                {
+                    url: 'https://f002.stockerwill.com/file/Stockerwill-preview/527697_thumb2.jpg',
+                    title: 'kitten'
+                },
+                {
+                    url: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/cdoC/d646Tf3gQ/28/91/289125225/289125225_450.jpg',
+                    title: 'mushroom',
+                },
+                {
+                    url: '',
+                    title: 'broken image'
+                },
+                {
+                    url: 'http://i.4cdn.org/lgbt/1521711096067.jpg',
+                    title: '404'
+                },
+                {
+                    url: 'https://dev.influencer.ru/api/test/getHttpError?code=403',
+                    title: '403'
+                }
+            ]
         };
     }
 };
@@ -28,6 +55,9 @@ export default {
 <template>
     <div>
         <h2 class="mb-9 display-4">Avatar</h2>
+
+        <h3>Изменения</h3>
+        <p><span class="version">0.13.15</span> Добавлены размеры xl / xxl, исправлен баг с незагружаюшимся изображение, если предыдущая ссылка была битой</p>
 
         <div>
             Компонент для отрисовки аватаров пользователей (ну или любых других картинок в виде "превью").
@@ -65,6 +95,17 @@ export default {
                         />
                     </hm-form-group>
                 </div>
+                <div class="col">
+                    <hm-form-group label="Switch image">
+                        <hm-radio-group
+                            :options="samples"
+                            text-field="title"
+                            value-field="url"
+                            v-model="sample"
+                            stacked
+                        />
+                    </hm-form-group>
+                </div>
             </div>
         </div>
 
@@ -73,11 +114,7 @@ export default {
                 class="mr-3 mb-2"
                 :variant="variant"
                 :size="size"
-                src="https://placekitten.com/300/400" />
-            <hm-avatar
-                class="mr-3 mb-2"
-                :size="size"
-                :variant="variant" />
+                :src="sample" />
         </div>
 
         <hr>

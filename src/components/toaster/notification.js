@@ -211,7 +211,7 @@ export default {
                 return h(
                     'div',
                     { staticClass: 'hm-ntf-body' },
-                    vm.content
+                    Array.isArray(vm.content) ? vm.content : [vm.content]
                 );
             }
 

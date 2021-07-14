@@ -1,11 +1,12 @@
-import { BvPlugin, BvComponent } from 'bootstrap-vue/src'
+import { VNode } from 'vue';
+import { BvPlugin, BvComponent } from 'bootstrap-vue/src';
 
 // Plugin
 export declare const ToasterPlugin: BvPlugin
 
 export interface HmfToasterMessage {
     autoClose?: boolean;
-    content: string;
+    content: VNode | VNode[] | string;
     headingIconName?: null | string;
     placement?: string;
     showProgressTimer?: boolean;

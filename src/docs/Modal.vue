@@ -24,6 +24,8 @@ export default {
     mixins: [sizeMixin],
     data() {
         return {
+            maskedInput: '',
+            numberInput: '',
             showModal: false
         };
     },
@@ -58,6 +60,7 @@ export default {
                 />
             </hm-form-group>
         </div>
+        <hm-input v-model="numberInput" step="0.5" type="number" />
         <hm-button
             variant="warning"
             v-on:click="showModal = !showModal">
@@ -73,6 +76,18 @@ export default {
             title="Напоминалочка"
             v-model="showModal">
             <p class="mb-0">Производство в принципе масштабирует убывающий инвестиционный продукт. Линейное уравнение сохраняет социометрический криволинейный интеграл. В рамках концепции Акоффа и Стэка, правовое государство соответствует гуманизм. Ряд Тейлора неестественно тормозит потребительский коллапс Советского Союза. Теорема представляет собой  <hm-tip in-text tip="Подсказка в тексте">культ</hm-tip>  личности. Огибающая очевидна не для всех. Ряд Тейлора неестественно тормозит. Ряд Тейлора неестественно тормозит потребительский коллапс Советского Союза.</p>
+
+            <hr />
+
+            <input type="number" v-model="numberInput" step="0.5">
+
+            <hm-input v-model="numberInput" step="0.5" type="number" />
+
+            <b-form-input v-model="numberInput" step="0.5" type="number"></b-form-input>
+
+            <hr />
+
+            <hm-input v-model="maskedInput" :mask="{ mask: Number }" />
         </hm-modal>
 
         <hr>

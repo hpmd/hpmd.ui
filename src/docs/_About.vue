@@ -32,7 +32,7 @@ export default {
                     Vue-компоненты (Vue 2): набор отдельных компонентов для использования в Vue-приложениях.
                 </li>
                 <li>
-                    Поддержка TypeScript
+                    Поддержка TypeScript (включая отдельную поддержку плагина <code>vue-tsx-support</code>)
                 </li>
             </ul>
         </div>

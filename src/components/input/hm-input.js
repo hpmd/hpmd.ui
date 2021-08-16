@@ -119,6 +119,7 @@ export default {
     },
     methods: {
         clearModel() {
+            this.updateValue('');
             this.hijackOriginalOnInput('');
         },
         /**
@@ -235,7 +236,7 @@ export default {
                 class: this.computedClass,
                 directives: inputDirectives,
                 domProps: {
-                    value: _bv.value
+                    value: _bv.localValue
                 },
                 ref: 'input',
                 on: inputListeners

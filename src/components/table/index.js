@@ -1,5 +1,5 @@
 import {
-    BTable as HmTable,
+    // BTable as HmTable,
     BTableLite as HmTableLite,
     BTableSimple as HmTableSimple,
     BTbody as HmTbody,
@@ -10,6 +10,7 @@ import {
     BTh as HmTh
 } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
+import HmTable from './hm-table'; // modified
 
 const TableLitePlugin = pluginFactory({
     components: {

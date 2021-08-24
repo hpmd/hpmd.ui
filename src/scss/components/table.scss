@@ -159,3 +159,40 @@
         }
     }
 }
+
+
+.table-responsive {
+    &-wrap {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+
+        .table-responsive {
+            margin-bottom: 0;
+            margin-top: -$spacer;
+        }
+
+        &::after, &::before {
+            box-shadow: $hm-table-responsive-guide-shadow;
+            content: '';
+            display: none;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            width: 1px;
+            z-index: 1;
+        }
+
+        &::before {
+            left: -1px;
+        }
+
+        &::after {
+            right: -1px;
+        }
+    }
+
+    &-guide-left::before, &-guide-right::after {
+        display: block;
+    }
+}

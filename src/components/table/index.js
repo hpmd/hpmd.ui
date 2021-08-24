@@ -1,7 +1,4 @@
 import {
-    // BTable as HmTable,
-    BTableLite as HmTableLite,
-    BTableSimple as HmTableSimple,
     BTbody as HmTbody,
     BThead as HmThead,
     BTfoot as HmTfoot,
@@ -11,6 +8,8 @@ import {
 } from 'bootstrap-vue';
 import { pluginFactory } from 'bootstrap-vue/src/utils/plugins';
 import HmTable from './hm-table'; // modified
+import HmTableLite from './hm-table-lite'; // modified
+import HmTableSimple from './hm-table-simple'; // modified
 
 const TableLitePlugin = pluginFactory({
     components: {

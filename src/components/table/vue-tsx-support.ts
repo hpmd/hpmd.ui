@@ -37,6 +37,7 @@ type TableSimpleProps = {
     noBorderCollapse?: boolean;
     outlined?: boolean;
     responsive?: boolean | 'sm' | 'md' | 'lg' | 'xl';
+    showScrollGuides?: boolean;
     small?: boolean;
     stacked?: boolean;
     stickyHeader?: boolean | string;

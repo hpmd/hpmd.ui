@@ -1,5 +1,5 @@
 <script>
-// import variantMixin from './variantMixin';
+import variantMixin from './variantMixin';
 
 const example = `<h4>Table</h4>
 <hm-table
@@ -80,7 +80,7 @@ function getRandomIntInRange(min, max) {
 export default {
     example,
 
-    // mixins: [variantMixin],
+    mixins: [variantMixin],
     data() {
         const tableData = new Array(10).fill(1).map((_, index) => ({
             id: getRandomIntInRange(1, 5000),
@@ -97,6 +97,7 @@ export default {
         return {
             isDark: false,
             isCompact: false,
+            isResponsive: false,
             tableData,
             tableFields: [
                 { key: 'id', label: 'id', sortable: false },
@@ -128,6 +129,9 @@ export default {
     <section>
         <h2 class="mb-8 display-4">Table</h2>
 
+        <h3>Изменения</h3>
+        <p><span class="version">0.14.0</span> Добавлено свойство <code>showScrollGuides</code> (для компонентов <code>HmTable</code> и <code>HmTableLite</code>) для удобства ориентировки в таблице с горизонтальной прокруткой (<code>responsive=true</code>)</p>
+
         <hm-alert show variant="warning">
             <strong>WARN:</strong> Не полная поддержка <code>variant</code> и некоторых стилей, компонент будет дорабатываться
         </hm-alert>
@@ -152,6 +156,8 @@ export default {
                     <hm-checkbox v-model="isCompact">Condensed</hm-checkbox>
 
                     <hm-checkbox v-model="isDark">Dark</hm-checkbox>
+
+                    <hm-checkbox v-model="isResponsive">Responsive</hm-checkbox>
                 </div>
                 <div class="col">
                     <hm-radio-group :options="variants" v-model="variant"></hm-radio-group>
@@ -169,7 +175,8 @@ export default {
             :fields="tableFields"
             :items="tableData"
             :tbody-tr-class="tableDataTrClass"
-            responsive
+            :responsive="isResponsive"
+            showScrollGuides
             selectable
             select-mode="range">
             <template v-slot:head(id)>
@@ -235,5 +242,30 @@ export default {
 
         <h3 class="mt-8">Документация</h3>
         <p><a href="https://bootstrap-vue.org/docs/components/table">Bootstrap Vue</a></p>
+
+        <h4>Добавленные свойства</h4>
+        <h5>(HmTable, HmTableLite, HmTableSimple)</h5>
+        <div class="table-responsive">
+            <table class="table table-sm table-code table-striped">
+                <thead>
+                    <tr>
+                        <th>Свойство</th>
+                        <th>Тип</th>
+                        <th>По-умолчанию</th>
+                        <th>Допустимые значения</th>
+                        <th>Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>showScrollGuides</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>false</code></td>
+                        <td></td>
+                        <td>В случае <code>responsive=true</code> и если значение <code>showScrollGuides=true</code> добавляет по краям таблицы тени, указывающие на доступный за границей видимости контент</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 </template>

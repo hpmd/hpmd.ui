@@ -46,6 +46,7 @@ export declare class HmTable extends BvComponent {
     tbodyTransitionProps?: BvTableTbodyTransitionProps
     tbodyTransitionHandlers?: BvTableTbodyTransitionHandlers
     responsive?: boolean | string
+    showScrollGuides?: boolean
     stacked?: boolean | string
     stickyHeader?: boolean
 }
@@ -66,6 +67,7 @@ export declare class HmTableLite extends BvComponent {
     tbodyTransitionProps?: BvTableTbodyTransitionProps
     tbodyTransitionHandlers?: BvTableTbodyTransitionHandlers
     responsive?: boolean | string
+    showScrollGuides?: boolean
     stacked?: boolean | string
     stickyHeader?: boolean
 }
@@ -77,6 +79,7 @@ export declare class HmTableSimple extends BvComponent {
     tableClass?: string
     tabelVariant?: BvTableVariant | string
     responsive?: boolean | string
+    showScrollGuides?: boolean
     stacked?: boolean | string
     stickyHeader?: boolean
 }

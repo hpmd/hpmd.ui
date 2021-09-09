@@ -1,3 +1,39 @@
+const GUIDES_WRAP = 'table-responsive-wrap';
+const LEFT_GUIDE_CLASS = 'table-responsive-guide-left';
+const RIGHT_GUIDE_CLASS = 'table-responsive-guide-right';
+const MIN_SCROLL_GAP = 5;
+const SCROLL_CHECK_TIME_MS = 100;
+
+function scrollGuidesDirectiveFn(ctx, el) {
+    const ref = el.querySelector('.table-responsive');
+
+    if (ref) {
+        const { clientWidth, scrollLeft, scrollWidth } = ref;
+
+        if (scrollWidth <= clientWidth) {
+            el.classList.remove(LEFT_GUIDE_CLASS, RIGHT_GUIDE_CLASS);
+        } else {
+            el.classList.add(GUIDES_WRAP);
+
+            if (scrollLeft >= MIN_SCROLL_GAP) {
+                el.classList.add(LEFT_GUIDE_CLASS);
+            }
+
+            el.classList[(scrollLeft >= MIN_SCROLL_GAP) ? 'add' : 'remove'](LEFT_GUIDE_CLASS);
+
+            el.classList[((scrollWidth - (clientWidth + scrollLeft)) >= MIN_SCROLL_GAP) ? 'add' : 'remove'](RIGHT_GUIDE_CLASS);
+        }
+    } else {
+        el.classList.remove(GUIDES_WRAP, LEFT_GUIDE_CLASS, RIGHT_GUIDE_CLASS);
+    }
+
+    clearTimeout(ctx.scrollWatcher);
+
+    ctx.scrollWatcher = setTimeout(() => {
+        scrollGuidesDirectiveFn(ctx, el);
+    }, SCROLL_CHECK_TIME_MS);
+}
+
 /**
  * Strongly bounded to BTable, BTableLite and BTableSimple
  * links to native props are marked with _bv prefix (_bv = bootstrap vue)
@@ -17,77 +53,39 @@ export default {
             hmScrollGuideRight: false
         };
     },
-    computed: {
-        hmWrapperClasses() {
-            const wrapperClasses = ['table-responsive-wrap'];
+    directives: {
+        scrollGuides: {
+            bind(el, binding, vnode) {
+                const ctx = vnode.context;
 
-            if (!this.showScrollGuides) return wrapperClasses;
-
-            if (this.hmScrollGuideLeft) {
-                wrapperClasses.push('table-responsive-guide-left');
+                ctx.scrollWatcher = setTimeout(() => {
+                    scrollGuidesDirectiveFn(ctx, el);
+                }, SCROLL_CHECK_TIME_MS);
+            },
+            unbind(el, binding, vnode) {
+                clearTimeout(vnode.context.scrollWatcher);
             }
-
-            if (this.hmScrollGuideRight) {
-                wrapperClasses.push('table-responsive-guide-right');
-            }
-
-            return wrapperClasses;
         }
-    },
-    methods: {
-        hmRemoveGuides() {
-            this.hmScrollGuideLeft = false;
-            this.hmScrollGuideRight = false;
-        },
-        hmSetScrollGuides() {
-            const el = this.hmTableScrollEl;
-
-            if (!el) return;
-
-            const { scrollLeft, scrollWidth, clientWidth } = el;
-
-            if (scrollWidth <= clientWidth) {
-                this.hmRemoveGuides();
-                return;
-            }
-
-            this.hmScrollGuideLeft = scrollLeft >= 5;
-            this.hmScrollGuideRight = (scrollWidth - (clientWidth + scrollLeft)) >= 5;
-        },
-        setScrollGuides() {
-            requestAnimationFrame(this.hmSetScrollGuides);
-
-            clearTimeout(this.scrollWatcher);
-
-            this.scrollWatcher = setTimeout(this.setScrollGuides, 100);
-        }
-    },
-    mounted() {
-        this.$watch('responsive', function onRespChange(val, prevVal) {
-            if (val && !prevVal) {
-                this.hmTableScrollEl = this.$el.querySelector('.table-responsive');
-
-                this.scrollWatcher = setTimeout(this.setScrollGuides, 100);
-            } else if (!val && prevVal) {
-                try {
-                    clearTimeout(this.scrollWatcher);
-                    this.hmRemoveGuides();
-                } catch (e) {
-                    // silent
-                }
-            }
-        }, { immediate: true });
     },
     beforeDestroy() {
         try {
             clearTimeout(this.scrollWatcher);
         } catch (e) {
-            // probably already destroyed
-            this.hmRemoveGuides();
+            // probably already destroyed by directive
         }
     },
     render(h, ctx) {
-        const tableWrap = h('div', { class: this.hmWrapperClasses, ref: 'wrap' }, [
+        const tableWrapOpts = {
+            ref: 'wrap'
+        };
+
+        if (this.responsive && this.showScrollGuides) {
+            tableWrapOpts.directives = [
+                { name: 'scrollGuides' }
+            ];
+        }
+
+        const tableWrap = h('div', tableWrapOpts, [
             this.constructor.superOptions.render.call(this, h, ctx)
         ]);
 

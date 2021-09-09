@@ -212,7 +212,7 @@ export default {
         </hm-table>
 
         <h4>Table Simple</h4>
-        <hm-table-simple>
+        <hm-table-simple :responsive="isResponsive" showScrollGuides>
             <hm-thead>
                 <hm-tr>
                     <th rowspan="2">Название</th>

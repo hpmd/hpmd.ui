@@ -1,5 +1,5 @@
 /**
- * Strongly bounded to BTable and BTableLite
+ * Strongly bounded to BTable, BTableLite and BTableSimple
  * links to native props are marked with _bv prefix (_bv = bootstrap vue)
  */
 export default {
@@ -57,6 +57,8 @@ export default {
         setScrollGuides() {
             requestAnimationFrame(this.hmSetScrollGuides);
 
+            clearTimeout(this.scrollWatcher);
+
             this.scrollWatcher = setTimeout(this.setScrollGuides, 100);
         }
     },
@@ -68,8 +70,8 @@ export default {
                 this.scrollWatcher = setTimeout(this.setScrollGuides, 100);
             } else if (!val && prevVal) {
                 try {
-                    this.hmRemoveGuides();
                     clearTimeout(this.scrollWatcher);
+                    this.hmRemoveGuides();
                 } catch (e) {
                     // silent
                 }
@@ -78,7 +80,7 @@ export default {
     },
     beforeDestroy() {
         try {
-            this.scrollWatcher.clear();
+            clearTimeout(this.scrollWatcher);
         } catch (e) {
             // probably already destroyed
             this.hmRemoveGuides();

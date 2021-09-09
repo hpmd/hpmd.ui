@@ -1,27 +1,3 @@
-function requestInterval(callback, delay) {
-    const { now } = Date;
-    const { requestAnimationFrame } = window;
-    let start = now();
-    let stop;
-    function intervalFunc() {
-        if ((now() - start) < delay) {
-            start += delay;
-            callback();
-        }
-
-        if (!stop) {
-            requestAnimationFrame(intervalFunc);
-        }
-    }
-
-    requestAnimationFrame(intervalFunc);
-
-    return {
-        clear() {
-            stop = 1;
-        }
-    };
-}
 /**
  * Strongly bounded to BTable and BTableLite
  * links to native props are marked with _bv prefix (_bv = bootstrap vue)
@@ -77,6 +53,11 @@ export default {
 
             this.hmScrollGuideLeft = scrollLeft >= 5;
             this.hmScrollGuideRight = (scrollWidth - (clientWidth + scrollLeft)) >= 5;
+        },
+        setScrollGuides() {
+            requestAnimationFrame(this.hmSetScrollGuides);
+
+            this.scrollWatcher = setTimeout(this.setScrollGuides, 100);
         }
     },
     mounted() {
@@ -84,11 +65,11 @@ export default {
             if (val && !prevVal) {
                 this.hmTableScrollEl = this.$el.querySelector('.table-responsive');
 
-                this.scrollWatcher = requestInterval(this.hmSetScrollGuides, 100);
+                this.scrollWatcher = setTimeout(this.setScrollGuides, 100);
             } else if (!val && prevVal) {
                 try {
                     this.hmRemoveGuides();
-                    this.scrollWatcher.clear();
+                    clearTimeout(this.scrollWatcher);
                 } catch (e) {
                     // silent
                 }

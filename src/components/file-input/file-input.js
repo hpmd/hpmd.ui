@@ -265,7 +265,7 @@ export default BFormFile.extend({
             )
         ];
 
-        if (this.dndAcceptFormatText && this.dndAcceptFormatText?.trim()) {
+        if (typeof this.dndAcceptFormatText === 'string' && this.dndAcceptFormatText.trim()) {
             defaultBlockTexts.push(h(
                 'div',
                 { class: 'hm-file-input-dnd-text-accept-format' },

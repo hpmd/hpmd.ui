@@ -8,10 +8,18 @@ type FileInputProps = {
     capture?: boolean;
     directory?: boolean;
     disabled?: boolean;
+    disableInvalidDropNotification?: boolean;
+    dndAcceptFormatText?: string;
+    dndBrowseText?: string;
+    dndGlobal?: boolean;
+    dndGlobalStyles?: Partial<CSSStyleDeclaration>;
+    dndGlobalTriggerSelector?: string;
     dropPlaceholder?: string;
     fileNameFormatter?: (files?: File[], filesTraversed?: File[][], names?: string[]) => string;
     form?: string;
     id?: string;
+    invalidAcceptFormatText?: string;
+    invalidDropTimerMs?: number;
     multiple?: boolean;
     name?: string;
     noDrop?: boolean;
@@ -27,6 +35,7 @@ type FileInputProps = {
 
 type FileInputEvents = {
     onChange: Event;
+    onFilesNotMatchAccept: File[];
     onInput: File | File[]; // null?
 }
 

@@ -34,8 +34,161 @@
     }
 
     &-input:disabled + .custom-file-label {
+        cursor: not-allowed;
+
         span {
             color: $gray-500;
+        }
+    }
+}
+
+.hm-file-input {
+    &-label {
+        display: block;
+        position: relative;
+    }
+
+    input[type="file"] {
+        opacity: 0;
+        position: absolute;
+        z-index: -5;
+    }
+
+    &-dnd-container {
+        align-items: center;
+        background-color: $hm-file-input-dnd-bg-color;
+        border: $hm-file-input-dnd-border-width $hm-file-input-dnd-border-style $hm-file-input-dnd-border-color;
+        border-radius: $hm-file-input-dnd-border-radius;
+        display: flex;
+        padding: $hm-file-input-dnd-padding;
+        transition: background-color .15s ease-in-out;
+    }
+
+    &-dnd {
+        &-text {
+            &-accept-format {
+                color: $gray;
+                font-size: 12px;
+                margin-top: $spacer;
+            }
+        }
+
+        &-icon {
+            background: $hm-file-input-dnd-icon-bg-color $hm-file-input-dnd-icon center center no-repeat;
+            background-size: 50%;
+            border-radius: 100%;
+            height: $hm-file-input-dnd-icon-block-size;
+            margin-right: 20px;
+            width: $hm-file-input-dnd-icon-block-size;
+        }
+
+        &-global-container {
+            background-color: $hm-file-input-dnd-global-cont-bg;
+            border-radius: $hm-file-input-dnd-global-cont-radius;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: $hm-file-input-dnd-global-cont-offset;
+            left: $hm-file-input-dnd-global-cont-offset;
+            right: $hm-file-input-dnd-global-cont-offset;
+            top: $hm-file-input-dnd-global-cont-offset;
+            z-index: $hm-file-input-dnd-global-cont-zindex;
+        }
+
+        &-global-default-wrap {
+            bottom: $hm-file-input-dnd-global-default-wrap-offset-y;
+            left: $hm-file-input-dnd-global-default-wrap-offset-x;
+            right: $hm-file-input-dnd-global-default-wrap-offset-x;
+            top: $hm-file-input-dnd-global-default-wrap-offset-y;
+            border: $hm-file-input-dnd-border-width $hm-file-input-dnd-border-style $hm-file-input-dnd-border-color;
+            position: absolute;
+            border-radius: 4px; //$hm-file-input-dnd-global-default-wrap-radius;
+        }
+
+        &-global-img {
+            background: transparent $hm-file-input-dnd-global-icon center center no-repeat;
+            background-size: contain;
+            height: 180px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 130px;
+        }
+
+        &-global-default {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        &-fade {
+            &-enter-active, &-leave-active {
+                transition: opacity .15s ease-in;
+            }
+
+            &-enter, &-leave {
+                opacity: 0;
+            }
+        }
+    }
+
+    &-drag-drop {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+
+        &:not(.disabled) {
+            cursor: pointer;
+
+            &:hover, &.dragover {
+                .hm-file-input-dnd-container {
+                    background-color: rgba($hm-file-input-dnd-border-color, 0.1);
+                }
+            }
+
+            &.dragover {
+                .hm-file-input-dnd-container {
+                    border-style: solid;
+                }
+            }
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+            // icon
+            .hm-file-input-dnd {
+                &-container {
+                    background-color: $gray-200;
+                    border-color: $gray-200;
+                }
+                &-icon {
+                    background-color: $gray-400;
+                }
+                &-text-accept-format, &-text-browse {
+                    color: $gray-500 !important;
+                }
+            }
+            // text
+            // borders
+        }
+
+        &.invalid-drop {
+            .hm-file-input-dnd {
+                &-container {
+                    border-color: $danger;
+                }
+                &-icon {
+                    background-color: $danger;
+                }
+                &-text-browse {
+                    color: $danger;
+                }
+            }
+
+            &:hover {
+                .hm-file-input-dnd-container {
+                    background-color: rgba($danger, 0.1);
+                }
+            }
         }
     }
 }

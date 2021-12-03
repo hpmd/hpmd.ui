@@ -186,12 +186,12 @@ export default BFormFile.extend({
             return files.filter((file) => (
                 !this.acceptOrdered.some((acceptType) => {
                     if (acceptType.acceptFormat === 'wildcard') {
-                        return file.type.indexOf(acceptType.slice(0, -2));
+                        return file.type.indexOf(acceptType.value.slice(0, -2)) === 0;
                     } else if (acceptType.acceptFormat === 'extension') {
-                        return acceptType.type === file.name.slice(-acceptType.type.length);
+                        return acceptType.value === file.name.slice(-acceptType.type.length);
                     }
 
-                    return acceptType.type === file.type;
+                    return acceptType.value === file.type;
                 })
             ));
         },

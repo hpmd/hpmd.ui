@@ -1,6 +1,6 @@
 {
   "name": "hpmd.ui",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "private": true,
   "description": "UI Kit for dashboard purposes. Include scss styles based on Bootstrap and Vue 2 components",
   "keywords": [

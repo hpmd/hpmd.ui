@@ -1,9 +1,39 @@
 <script>
+const example = `<hm-file-input
+    :disabled="isDisabled"
+    :accept="acceptValue"
+    dnd-accept-format-text="JPEG или PNG, не более 20mb"
+    :dnd-global="isDndGlobal"
+    :dnd-global-styles="offset"
+    dnd-global-trigger-selector="#test-dnd"
+    :multiple="isMultiple"
+    :no-drop="isNoDrop"
+    no-drop-placeholder="asshole"
+    :plain="isPlain"
+    v-model="fileModel">
+</hm-file-input>
+
+<h5>Файлы</h5>
+<template v-if="fileModel && fileModelIsFile">
+    <p>Добавлено: {{fileModel.name}}</p>
+</template>
+<template v-else-if="fileModel && fileModel.length">
+    <p>Добавлено: {{fileModel.length}}</p>
+    <ul>
+        <li v-for="file in fileModel" :key="\`\${file.name}-\${file.size}\`">
+            {{file.name}}
+        </li>
+    </ul>
+</template>
+<div v-else key="empty" class="panel bg-light rounded p-3">
+    Нет добавленных файлов
+</div>`;
 
 export default {
+    example,
+
     data() {
         return {
-            dragAndDropModel: [],
             fileModel: null,
 
             acceptValue: '',
@@ -20,6 +50,11 @@ export default {
                 top: ''
             }
         };
+    },
+    computed: {
+        fileModelIsFile() {
+            return this.fileModel && this.fileModel instanceof File;
+        }
     }
 };
 </script>
@@ -30,6 +65,7 @@ export default {
         <h2 class="mb-8 display-4">File Input</h2>
 
         <h3>Изменения</h3>
+        <p><span class="version">0.15.3</span> Исправлена валидация файлов по свойству <code>accept</code>, переписана часть внутреннего функционала</p>
         <p><span class="version">0.15.0</span> Компонент был полностью переписан: в <strong>HmFileInput</strong> был добавлен функционал drag-n-drop, до этого наполовину реализованный в <strong>HmDragFile</strong> (который был удален, но и до этого полноценно в набор не входил). Полный список новых возможностей смотри в документации ниже.</p>
 
         <h3 class="mt-8">Компоненты</h3>
@@ -82,8 +118,34 @@ export default {
             :multiple="isMultiple"
             :no-drop="isNoDrop"
             no-drop-placeholder="asshole"
-            :plain="isPlain">
+            :plain="isPlain"
+            v-model="fileModel">
         </hm-file-input>
+
+        <h5>Файлы</h5>
+        <template v-if="fileModel && fileModelIsFile">
+            <p>Добавлено: {{fileModel.name}}</p>
+        </template>
+        <template v-else-if="fileModel && fileModel.length">
+            <p>Добавлено: {{fileModel.length}}</p>
+            <ul>
+                <li v-for="file in fileModel" :key="`${file.name}-${file.size}`">
+                    {{file.name}}
+                </li>
+            </ul>
+        </template>
+        <div v-else key="empty" class="panel bg-light rounded p-3">
+            Нет добавленных файлов
+        </div>
+
+        <hr>
+
+        <div class="code-block">
+            <pre v-highlightjs="$options.example"><code class="html"></code></pre>
+        </div>
+
+        <hr>
+
 
         <h3 class="mt-8">Документация</h3>
 

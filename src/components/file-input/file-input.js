@@ -1,4 +1,8 @@
 import { BFormFile } from 'bootstrap-vue';
+import { identity } from 'bootstrap-vue/src/utils/identity';
+import { escapeRegExp } from 'bootstrap-vue/src/utils/string';
+import { RX_EXTENSION, RX_STAR } from 'bootstrap-vue/src/constants/regex';
+import mime from 'mime.json';
 
 /**
  * Customized, cross-browser consistent,
@@ -84,35 +88,125 @@ export default BFormFile.extend({
 
             return {};
         },
-        acceptOrdered() {
-            if (!this.accept || typeof this.accept !== 'string') return [];
+        // Re-define BFormFile.computedAccept getter
+        // to force it always be lowercase
+        computedAccept() {
+            let { accept } = this;
 
-            return this.accept.split(',')
-                .map((acceptType) => {
-                    const type = acceptType.trim();
+            accept = (accept || '')
+                .toLowerCase()
+                .trim()
+                .split(/[,\s]+/)
+                .filter(identity);
 
-                    let acceptFormat = '';
+            // Allow any file type/extension
+            if (accept.length === 0) {
+                return null;
+            }
 
-                    if (type[0] === '.') {
-                        acceptFormat = 'extension';
-                    } else if (type.slice(-2) === '/*') {
-                        acceptFormat = 'wildcard';
-                    } else if (type.indexOf('/') > 0) {
-                        acceptFormat = 'mime';
+            return accept.map((extOrType) => {
+                let prop = 'name';
+                let startMatch = '^';
+                let endMatch = '$';
+
+                if (RX_EXTENSION.test(extOrType)) {
+                    // File extension /\.ext$/
+                    startMatch = '';
+                } else {
+                    // MIME type /^mime\/.+$/ or /^mime\/type$/
+                    prop = 'type';
+                    if (RX_STAR.test(extOrType)) {
+                        endMatch = '.+$';
+                        // Remove trailing `*`
+                        // eslint-disable-next-line no-param-reassign
+                        extOrType = extOrType.slice(0, -1);
                     }
-
-                    return acceptFormat ?
-                        {
-                            acceptFormat,
-                            value: type
-                        } :
-                        null;
-                })
-                .filter((accept) => !!accept);
+                }
+                // Escape all RegExp special chars
+                // eslint-disable-next-line no-param-reassign
+                extOrType = escapeRegExp(extOrType);
+                const rx = new RegExp(`${startMatch}${extOrType}${endMatch}`);
+                return { rx, prop };
+            });
         }
     },
 
     methods: {
+        /**
+         * Re-define BFormFile.isFileValid check function to extend it by checking MIME-type
+         * by file extension in case if File.type is empty
+         */
+        isFileValid(file) {
+            if (!file) {
+                return false;
+            }
+
+            const accept = this.computedAccept;
+
+            return accept ?
+                accept.some((a) => {
+                    if (a.prop === 'type' && !file.type) {
+                        const fileExt = file.name.slice(file.name.lastIndexOf('.') + 1).toLowerCase();
+
+                        // in case there is no reference in "mime.json"
+                        // it should be OK to test undefined, but anyway
+                        return mime[fileExt] ? a.rx.test(mime[fileExt]) : false;
+                    }
+
+                    return a.rx.test(file[a.prop]);
+                }) :
+                true;
+        },
+        /**
+         * Re-define BFormFile.handleFiles
+         * to add support for invalid files
+         * for both - regular input and drop event
+         */
+        handleFiles(files, isDrop = false) {
+            const valid = [];
+            const invalid = [];
+
+            files.forEach((file) => {
+                const isValid = this.isFilesArrayValid(file);
+
+                if (isValid) {
+                    valid.push(file);
+                } else {
+                    invalid.push(file);
+                }
+            });
+
+            if (invalid.length) {
+                this.$emit('filesNotMatchAccept', invalid);
+
+                if (!this.disableInvalidDropNotification) {
+                    this.invalidDropWarn = true;
+                    this.dragging = false;
+                    this.dragCounter = 0;
+
+                    clearTimeout(this.invalidDropWarnTimer);
+
+                    this.invalidDropWarnTimer = setTimeout(() => {
+                        this.invalidDropWarn = false;
+                    }, this.invalidDropTimerMs || 1000);
+                }
+            }
+
+            if (isDrop) {
+                // When dropped, make sure to filter files with the internal `accept` logic
+                // const filteredFiles = files.filter(this.isFilesArrayValid) - ^ done above
+                // Only update files when we have any after filtering
+                if (valid.length > 0) {
+                    this.setFiles(valid);
+                    // Try an set the file input's files array so that `required`
+                    // constraint works for dropped files (will fail in IE 11 though)
+                    this.setInputFiles(valid);
+                }
+            } else {
+                // We always update the files from the `change` event
+                this.setFiles(files);
+            }
+        },
         _onDragenter(event) {
             if (this.disabled || this.noDrop) return;
 
@@ -138,62 +232,11 @@ export default BFormFile.extend({
             }
         },
         _onDrop(event) {
-            event.preventDefault();
-
-            const filesNotMatchAccept = this.getFilesNotMatchAccept(event);
-            const hasInvalidFiles = filesNotMatchAccept.length;
-
-            if (hasInvalidFiles) {
-                this.$emit('filesNotMatchAccept', filesNotMatchAccept);
-            }
-
-            if (!this.disableInvalidDropNotification) {
-                this.invalidDropWarn = hasInvalidFiles;
-
-                if (this.invalidDropWarn) {
-                    this.dragging = false;
-                    this.dragCounter = 0;
-
-                    clearTimeout(this.invalidDropWarnTimer);
-
-                    this.invalidDropWarnTimer = setTimeout(() => {
-                        this.invalidDropWarn = false;
-                    }, this.invalidDropTimerMs || 1000);
-
-                    return;
-                }
-            }
-
             this.onDrop(event);
 
             this.$nextTick(() => {
                 this.dragCounter = 0;
             });
-        },
-        getFilesNotMatchAccept(dropEvent) {
-            // No files or no accept format requirements, no problems
-            if (
-                !this.acceptOrdered ||
-                !this.acceptOrdered.length ||
-                !(dropEvent instanceof DragEvent) ||
-                !dropEvent.dataTransfer.files.length
-            ) {
-                return [];
-            }
-
-            const files = Array.prototype.slice.call(dropEvent.dataTransfer.files);
-
-            return files.filter((file) => (
-                !this.acceptOrdered.some((acceptType) => {
-                    if (acceptType.acceptFormat === 'wildcard') {
-                        return file.type.indexOf(acceptType.value.slice(0, -2)) === 0;
-                    } else if (acceptType.acceptFormat === 'extension') {
-                        return acceptType.value === file.name.slice(-acceptType.type.length);
-                    }
-
-                    return acceptType.value === file.type;
-                })
-            ));
         },
         setGlobalListeners() {
             this.dndGlobalEl = document.querySelector(this.dndGlobalTriggerSelector);

@@ -6,4 +6,4 @@ type IconProps = {
     name: string;
 }
 
-export const HmIcon = tsx.ofType<IconProps>().convert(HmIconOriginal);
+export const HmIcon = tsx.ofType<IconProps>().extendFrom(HmIconOriginal);

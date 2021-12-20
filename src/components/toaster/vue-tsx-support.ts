@@ -12,24 +12,4 @@ type ToasterProps = {
     defaultPlacement?: 'topleft' | 'topcenter' | 'topright' | 'bottomleft' | 'bottomcenter' | 'bottomright';
 }
 
-export const HmToaster = tsx.ofType<ToasterProps>().convert(HmToasterOriginal);
-
-
-// type NotificationProps = {
-//     autoClose?: boolean;
-//     content?: VNode | VNode[] | string;
-//     headingIconName?: HmIconEl['name'];
-//     id: string;
-//     isPaused?: boolean;
-//     placement?: ToasterProps['defaultPlacement'];
-//     showProgressTimer?: boolean;
-//     timeShow?: number;
-//     title?: string;
-//     variant?: string;
-// }
-
-// type NotificationEvents = {
-//     onClose: { id: number, placement: ToasterProps['defaultPlacement'] }
-// }
-
-// export const HmNotification = tsx.ofType<NotificationProps, NotificationEvents>().convert(Vue.extend(HmNotificationOriginal));
+export const HmToaster = tsx.ofType<ToasterProps>().extendFrom(HmToasterOriginal);

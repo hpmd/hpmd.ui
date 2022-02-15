@@ -1,7 +1,7 @@
 import Vue from 'vue';
 /* eslint-disable import/no-extraneous-dependencies */
 import VueRouter from 'vue-router';
-import 'highlight.js/scss/atelier-dune-light.scss';
+import 'highlight.js/scss/atom-one-light.scss';
 import VueHighlightjs from 'vue-highlightjs';
 import BootstrapVue from 'bootstrap-vue';
 import '@/scss/bootstrap-custom.scss';

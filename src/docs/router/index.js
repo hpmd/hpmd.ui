@@ -24,6 +24,7 @@ import RangeSlider from '../RangeSlider';
 import Select from '../Select';
 import SpinButton from '../SpinButton';
 import Table from '../Table';
+import Textarea from '../Textarea';
 import Tip from '../Tip';
 import Toaster from '../Toaster';
 import Tooltip from '../Tooltip';
@@ -221,6 +222,13 @@ const routes = [
         component: Table,
         meta: {
             name: 'Table'
+        }
+    },
+    {
+        path: '/components/textarea',
+        component: Textarea,
+        meta: {
+            name: 'Textarea'
         }
     },
     {

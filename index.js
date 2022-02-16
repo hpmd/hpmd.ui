@@ -185,6 +185,11 @@ export {
 } from './src/components/tabs';
 
 export {
+    HmTextarea,
+    TextareaPlugin
+} from './src/components/textarea';
+
+export {
     TipPlugin,
     HmTip
 } from './src/components/tip';

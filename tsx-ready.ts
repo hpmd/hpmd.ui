@@ -100,7 +100,7 @@ export {
     HmTabs
 } from './src/components/tabs/vue-tsx-support';
 
-export { HmContentEditable } from './src/components/textarea/vue-tsx-support';
+export { HmTextarea } from './src/components/textarea/vue-tsx-support';
 
 export { HmTip } from './src/components/tip/vue-tsx-support';
 

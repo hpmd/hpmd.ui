@@ -7,12 +7,13 @@ const example = `<hm-textarea
     :no-auto-shrink="noAutoShrink"
     :no-resize="noResize"
 />`;
+
 export default {
     data() {
         return {
             example,
             isDisabled: false,
-            autoHeight: false,
+            noAutoShrink: false,
             noResize: false,
             rows: 2,
             maxRows: 20,
@@ -41,8 +42,17 @@ export default {
                         <hm-checkbox v-model="noResize">No resize</hm-checkbox>
                 </div>
                 <div class="col">
-                    <hm-input class="mb-4" type="number" v-model="rows" label="rows" />
-                    <hm-input type="number" v-model="maxRows" label="max-rows" />
+                    <hm-input
+                        class="mb-4"
+                        type="number"
+                        v-model="rows"
+                        label="rows"
+                    />
+                    <hm-input
+                        type="number"
+                        v-model="maxRows"
+                        label="max-rows"
+                    />
                 </div>
             </div>
         </div>
@@ -56,7 +66,7 @@ export default {
                 :no-auto-shrink="noAutoShrink"
                 :no-resize="noResize"
             />
-            <hr>
+            <hr />
             <div class="code-block">
                 <pre v-highlightjs="example"><code class="html"></code></pre>
             </div>
